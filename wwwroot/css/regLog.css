@@ -1,0 +1,66 @@
+body{
+    width: 100vw;
+    margin: 0;
+}
+
+ ::-webkit-scrollbar {
+    display: none;
+  }
+
+.regLog-container{
+    width: auto;
+    height: 100vh;
+    background: white;
+    display: grid;
+    grid-template-rows: 100px 60vh 1fr;
+
+}
+.regLog-container>svg:first-of-type{
+    margin-top: -200px;
+}
+
+.form-container{
+    display: grid;
+    background: white;
+    width: 400px;
+    height: 700px;
+    box-shadow: 0 0 5px #6621795d;
+    align-items: center;
+    padding: 40px;
+    margin: 0 auto;
+    z-index: 2;
+    border-radius: 10px;
+}
+
+.form-container form{
+    display: grid;
+    row-gap: 5px;
+}
+
+
+
+.form-container form input{
+    font: 1em sans-serif;
+    padding: 10px;
+    height: 20px;
+}
+
+
+.form-container form button{
+    font: 1.4em sans-serif;
+    background: #662179;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+    
+}
+
+
+
+.regHeader_container{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    align-items: center;
+}
