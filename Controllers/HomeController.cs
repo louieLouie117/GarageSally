@@ -63,7 +63,7 @@ namespace UserLogin.Controllers
 
 
         // Processing Registration and Login-------------------------------------------------
-        [HttpPost("Redgister")]
+        [HttpPost("register")]
         public IActionResult Redgister(User FromForm)
         {
             // Check if email is already in db
@@ -86,12 +86,12 @@ namespace UserLogin.Controllers
                 // Session
                 HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
                 // Redirect
-                System.Console.WriteLine("You may contine!");
+                Console.WriteLine("You may contine!");
                 return RedirectToAction("dashboard");
             }
             else
             {
-                System.Console.WriteLine("Fix your erros!");
+                Console.WriteLine("Fix your erros!");
                 return View("index");
 
             }
@@ -100,8 +100,8 @@ namespace UserLogin.Controllers
 
 
 
-        //Processing Registration Login-------------------------------------------------    
-        [HttpPost("Login")]
+        //Processing Registration Login-------------------------------------------------
+        [HttpPost("login")]
         public IActionResult Login(LoginUser userSubmission)
         {
             // Validations
@@ -142,17 +142,7 @@ namespace UserLogin.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("index");
         }
-
-
-
         // ------------------------------------------end of registration and login
-
-
-
-
-
-
-
 
     }
 }

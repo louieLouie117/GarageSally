@@ -9,23 +9,19 @@ namespace UserLogin.Models
         [Key]
         public int UserId { get; set; }
 
-        [Display]
-        [Required(ErrorMessage = "Can not be empty")]
-        [MinLength(2, ErrorMessage = "That is to short")]
+        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "First name cannot be empty")]
+        [MinLength(2, ErrorMessage = "First name is too short")]
         public string FirstName { get; set; }
 
-
-        [Display]
-        [Required(ErrorMessage = "Can not be empty")]
-        [MinLength(2, ErrorMessage = "That is to short")]
+        [Display(Name = "Last Name")]
+        [Required(ErrorMessage = "Last name cannot be empty")]
+        [MinLength(2, ErrorMessage = "Last name is too short")]
         public string LastName { get; set; }
 
-
-        [Display]
         [EmailAddress]
         [Required]
         public string Email { get; set; }
-
 
         [DataType(DataType.Password)]
         [Required]
@@ -35,14 +31,10 @@ namespace UserLogin.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-
         // Will not be mapped to your users table!
         [NotMapped]
         [Compare("Password")]
         [DataType(DataType.Password)]
         public string Confirm { get; set; }
-
     }
-
-
 }
