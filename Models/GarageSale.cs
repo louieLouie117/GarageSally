@@ -40,7 +40,7 @@ namespace UserLogin.Models
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         //Relationships
-        public User Creator {get; set;} // User who posted O2M
-        List<User> FavedBy {get; set;} // matched Favorites in User M2M
+        public User Seller {get; set;} // User who posted O2M
+        List<GarageList> FavedBy {get; set;} // matched Favorites in User M2M
     }
 }

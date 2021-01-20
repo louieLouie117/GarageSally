@@ -61,9 +61,9 @@ namespace UserLogin.Models
         public string Confirm { get; set; }
 
         // Relationships
-        List<User> Following { get; set; } // who the user is following M2M (other end of vvv)
-        List<User> Followers { get; set; } // who is following the user M2M (other end of ^^^)
-        List<GarageSale> Favorites { get; set; } // matches list of FavedBy in GarageSale M2M
+        List<UserList> Following { get; set; } // who the user is following M2M (other end of vvv)
+        List<UserList> Followers { get; set; } // who is following the user M2M (other end of ^^^)
+        List<GarageList> Favorites { get; set; } // matches list of FavedBy in GarageSale M2M FIX!!!!
         List<GarageSale> GarageSales { get; set; } //matches Creator in GarageSale O2M
         List<Review> Reviews { get; set; } // list of Reviews made O2M
         List<Review> UserReviews { get; set; } // list of Reviews left O2M
