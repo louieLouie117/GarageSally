@@ -17,7 +17,6 @@ namespace UserLogin.Controllers
             _context = context;
         }
 
-
         // Navigation no process
         [HttpGet("signin")]
         public IActionResult gotoSignin()
@@ -30,7 +29,6 @@ namespace UserLogin.Controllers
         {
             return RedirectToAction("index");
         }
-
         // -----------------------------------------------------------end
 
         // Rendering Pages in Views--------------------------------------------
@@ -40,13 +38,11 @@ namespace UserLogin.Controllers
             return View("index");
         }
 
-
         [HttpGet("login")]
         public IActionResult login()
         {
             return View("login");
         }
-
 
         [HttpGet("dashboard")]
         public IActionResult dashboard()
@@ -56,14 +52,12 @@ namespace UserLogin.Controllers
             {
                 return RedirectToAction("index");
             }
-
             return View("dashboard");
         }
         // -----------------------------------------------------------end
 
-
         // Processing Registration and Login-------------------------------------------------
-        [HttpPost("Redgister")]
+        [HttpPost("register")]
         public IActionResult Redgister(User FromForm)
         {
             // Check if email is already in db
@@ -71,37 +65,31 @@ namespace UserLogin.Controllers
             {
                 ModelState.AddModelError("Email", "Email already in use!");
             }
-
             // Validations
             if (ModelState.IsValid)
             {
                 // #hash password
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
-
                 // Add to db
                 _context.Add(FromForm);
                 _context.SaveChanges();
-
                 // Session
                 HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
                 // Redirect
-                System.Console.WriteLine("You may contine!");
+                Console.WriteLine("You may contine!");
                 return RedirectToAction("dashboard");
             }
             else
             {
-                System.Console.WriteLine("Fix your erros!");
+                Console.WriteLine("Fix your erros!");
                 return View("index");
-
             }
 
         }
 
-
-
-        //Processing Registration Login-------------------------------------------------    
-        [HttpPost("Login")]
+        //Processing Registration Login-------------------------------------------------
+        [HttpPost("login")]
         public IActionResult Login(LoginUser userSubmission)
         {
             // Validations
@@ -109,7 +97,6 @@ namespace UserLogin.Controllers
             {
                 // Check db email with from email
                 var userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
-
                 // No user in db
                 if (userInDb == null)
                 {
@@ -119,7 +106,6 @@ namespace UserLogin.Controllers
                 // Check hashing are the same
                 var hasher = new PasswordHasher<LoginUser>();
                 var result = hasher.VerifyHashedPassword(userSubmission, userInDb.Password, userSubmission.Password);
-
                 if (result == 0)
                 {
                     // handle failure (this should be similar to how "existing email" is handled)
@@ -127,11 +113,8 @@ namespace UserLogin.Controllers
                 // Set Session Instance
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
                 return RedirectToAction("dashboard");
-
             }
-
             return View("login");
-
         }
 
 
@@ -142,17 +125,6 @@ namespace UserLogin.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("index");
         }
-
-
-
         // ------------------------------------------end of registration and login
-
-
-
-
-
-
-
-
     }
 }

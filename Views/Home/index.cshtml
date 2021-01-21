@@ -27,11 +27,14 @@
             <form asp-action="Redgister" asp-controller="Home" method="POST">
                 <a href="/signin">Sign in.</a>
 
-                <span asp-validation-for="FirstName"></span>
+                @* <span asp-validation-for="FirstName"></span>
                 <input asp-for="FirstName" placeholder="First Name">
 
                 <span asp-validation-for="LastName"></span>
-                <input asp-for="LastName" placeholder="Last Name">
+                <input asp-for="LastName" placeholder="Last Name"> *@
+
+                <span asp-validation-for="Username"></span>
+                <input asp-for="Username" placeholder="Username">
 
                 <span asp-validation-for="Email"></span>
                 <input asp-for="Email" placeholder="Email">
