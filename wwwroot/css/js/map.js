@@ -32,7 +32,6 @@ function initMap(){
   
   function setMapCenter(map, latLng){
   
-    map.setCenter(latLng);
     // userLocation.setPosistion(latLng);
     // navigator gets the location of user from the browser
     // user must allow location access on the browser either mobile or pc
@@ -47,11 +46,16 @@ function initMap(){
         latLng= new google.maps.LatLng(position.coords.latitude,
             position.coords.longitude);
         map.setCenter(latLng);
-        // userLocation.setPosition(latLng);
-        // no need to set info window on user location
-        // userLocation.addListener('click', () => {
-        //     new google.maps.InfoWindow().open(map, userLocation)
-        // })
+        const marker= new google.maps.Marker({
+          position: latLng,
+          map,
+          title: "User"
+        })
+        marker.addListener("click", () =>{
+          new google.maps.InfoWindow({
+            content: setMarkerInfo('USER', 'TEST THIS IS WHERE YOU ARE!')
+          }).open(map, marker);
+        });
     }), function (error) {
         console.log(`GeoLocation Failed ${error}`);
         map.setCenter(latLng)
@@ -90,9 +94,7 @@ function initMap(){
     // details of the user location info is subject to change
     // may not be something used in the future
     // will be used for garage sale pins
-    () =>userLocationContent={
-        content:
-        '<div id="marker-wrapper">' +
+    return '<div id="marker-wrapper">' +
             '<div id="marker-title-wrapper">' +
                 '<h1 id="marker-title class="firstHeading">' + username + '</h1>' +
             '</div>' +
@@ -100,7 +102,6 @@ function initMap(){
                 '<p>' + info + '</p>' +
             '</div>' +
         '</div>'
-    }
   }
   
   function directionsFunction(){}
