@@ -16,21 +16,20 @@ function initMap(){
     //   null for user location to be set)
     const map= new googlemaps.Map(document.getElementById('map'), {
         zoom: 13,
-        fullscreenControl: true,
+        fullscreenControl: false,
+        mapTypeControl: false,
+        rotateControl: false,
+        scaleControl: false,
         zoomControl: true,
         streetViewControl: false
     });
 
-    // userLocation is a marker made to pin
-    // where the use is current at
-    // latLng is currently null may cause issues without
-    // default values
-    const userLocation= new google.maps.Marker({
-        position: latLng,
-        map,
-        title: "Garage Sally User"
-    });
+    let userLocation= getUserLocation(map, latLng);
 
+    setMapCenter(map, latLng, userLocation);
+}
+
+function setMapCenter(map, latLng, userLocation){
     // navigator gets the location of user from the browser
     // user must allow location access on the browser either mobile or pc
     // if succesful latLng variable will be set to the the users location
@@ -45,9 +44,10 @@ function initMap(){
             position.coords.longitude);
         map.setCenter(latLng);
         userLocation.setPosition(latLng);
-        userLocation.addListener('click', () => {
-            new google.maps.InfoWindow().open(map, userLocation)
-        })
+        // no need to set info window on user location
+        // userLocation.addListener('click', () => {
+        //     new google.maps.InfoWindow().open(map, userLocation)
+        // })
     }), function (error) {
         console.log(`GeoLocation Failed ${error}`);
         map.setCenter({
@@ -58,20 +58,61 @@ function initMap(){
 }
 
 
-// details of the user location info is subject to change
-// may not be something used in the future
-// will be used for garage sale pins
-function setUserLocationMarkerInfo(){ 
+function getUserLocation(map, latLng){
+    // userLocation is a marker made to pin
+    // where the use is current at
+    // latLng is currently null may cause issues without
+    // default values
+    return new google.maps.Marker({
+        position: latLng,
+        map,
+        title: "Garage Sally User"
+    });
+}
+
+// REF for loading in a radius:
+// https://developers.google.com/maps/documentation/javascript/geometry
+// https://developers.google.com/maps/documentation/javascript/reference#spherical
+function getRadiusMarkers(map){
+    let garageSales= [{
+        username: "Test_User",
+        lat: 37.000,
+        lng: -100.0064,
+        details: "info here"
+    }];
+    let markers=[];
+    let marker;
+    garageSales.forEach(garageSale => {
+        markers.push(
+            marker= new google.maps.Marker({
+                position: new google.maps.LatLng(garageSale.lat, garageSale.lng),
+                map,
+                title: garageSale.username
+            })
+        );
+        marker.addListener("click", () => {
+            new google.maps.InfoWindow({
+                content: setMarkerInfo(garageSale.username, garageSale.details)
+            });
+        });
+    });
+}
+
+function setMarkerInfo(username, info){
+    // details of the user location info is subject to change
+    // may not be something used in the future
+    // will be used for garage sale pins
     () =>userLocationContent={
         content:
         '<div id="marker-wrapper">' +
             '<div id="marker-title-wrapper">' +
-                '<h1 id="marker-title class="firstHeading">You Are Here!</h1>' +
+                '<h1 id="marker-title class="firstHeading">' + username + '</h1>' +
             '</div>' +
-        '<div id="marker-body">' +
-          '<p>This is where you currently are located.' +
-          'Garage sale markers will be generated around you.</p>' +
-        '</div>' +
-      '</div>'
+            '<div id="marker-body">' +
+                '<p>' + info + '</p>' +
+            '</div>' +
+        '</div>'
     }
 }
+
+function directionsFunction(){}
