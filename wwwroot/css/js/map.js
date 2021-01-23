@@ -6,15 +6,18 @@ function initMap(){
     // latLng will hold an object location for
     // where the map should be centered on once
     // loaded.
-    // example:( let latLng= {lat: 37.221, lng: -122.0841}; )...
-    // example coordinates are google in san fransico
-    let latLng;
-
+    // default coordinates are google in san fransico
+    let latLng= {
+      lat: 37.221,
+      lng: -122.0841
+    }
+  
     // generate map with specific controls enabled or disabled
     // zoom determines the closeness of the map 0 being the furthest out
     // center option determines where the map will start at (currently...
     //   null for user location to be set)
-    const map= new googlemaps.Map(document.getElementById('map'), {
+    const map= new google.maps.Map(document.getElementById('map'), {
+        // center: latLng,
         zoom: 13,
         fullscreenControl: false,
         mapTypeControl: false,
@@ -23,13 +26,14 @@ function initMap(){
         zoomControl: true,
         streetViewControl: false
     });
-
-    let userLocation= getUserLocation(map, latLng);
-
-    setMapCenter(map, latLng, userLocation);
-}
-
-function setMapCenter(map, latLng, userLocation){
+  
+    setMapCenter(map, latLng);
+  }
+  
+  function setMapCenter(map, latLng){
+  
+    map.setCenter(latLng);
+    // userLocation.setPosistion(latLng);
     // navigator gets the location of user from the browser
     // user must allow location access on the browser either mobile or pc
     // if succesful latLng variable will be set to the the users location
@@ -43,37 +47,21 @@ function setMapCenter(map, latLng, userLocation){
         latLng= new google.maps.LatLng(position.coords.latitude,
             position.coords.longitude);
         map.setCenter(latLng);
-        userLocation.setPosition(latLng);
+        // userLocation.setPosition(latLng);
         // no need to set info window on user location
         // userLocation.addListener('click', () => {
         //     new google.maps.InfoWindow().open(map, userLocation)
         // })
     }), function (error) {
         console.log(`GeoLocation Failed ${error}`);
-        map.setCenter({
-            lat: 37.221,
-            lng: -122.0841
-        })
+        map.setCenter(latLng)
     }
-}
-
-
-function getUserLocation(map, latLng){
-    // userLocation is a marker made to pin
-    // where the use is current at
-    // latLng is currently null may cause issues without
-    // default values
-    return new google.maps.Marker({
-        position: latLng,
-        map,
-        title: "Garage Sally User"
-    });
-}
-
-// REF for loading in a radius:
-// https://developers.google.com/maps/documentation/javascript/geometry
-// https://developers.google.com/maps/documentation/javascript/reference#spherical
-function getRadiusMarkers(map){
+  }
+  
+  // REF for loading in a radius:
+  // https://developers.google.com/maps/documentation/javascript/geometry
+  // https://developers.google.com/maps/documentation/javascript/reference#spherical
+  function getRadiusMarkers(map){
     let garageSales= [{
         username: "Test_User",
         lat: 37.000,
@@ -96,9 +84,9 @@ function getRadiusMarkers(map){
             });
         });
     });
-}
-
-function setMarkerInfo(username, info){
+  }
+  
+  function setMarkerInfo(username, info){
     // details of the user location info is subject to change
     // may not be something used in the future
     // will be used for garage sale pins
@@ -113,6 +101,6 @@ function setMarkerInfo(username, info){
             '</div>' +
         '</div>'
     }
-}
-
-function directionsFunction(){}
+  }
+  
+  function directionsFunction(){}
