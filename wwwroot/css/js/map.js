@@ -32,6 +32,11 @@ function initMap(){
   
   function setMapCenter(map, latLng){
   
+    // TEST garage sell GPS
+    let TST_LatLng= {
+      lat: 33.8383883,
+      lng: -117.9589673
+    }
     // userLocation.setPosistion(latLng);
     // navigator gets the location of user from the browser
     // user must allow location access on the browser either mobile or pc
@@ -53,7 +58,7 @@ function initMap(){
         })
         marker.addListener("click", () =>{
           new google.maps.InfoWindow({
-            content: setMarkerInfo('USER', 'TEST THIS IS WHERE YOU ARE!')
+            content: setMarkerInfo('USER', 'TEST THIS IS WHERE YOU ARE!', latLng, TST_LatLng)
           }).open(map, marker);
         });
     }), function (error) {
@@ -90,7 +95,7 @@ function initMap(){
     });
   }
   
-  function setMarkerInfo(username, info){
+  function setMarkerInfo(username, info, userLatLng, markerLatLng){
     // details of the user location info is subject to change
     // may not be something used in the future
     // will be used for garage sale pins
@@ -100,6 +105,9 @@ function initMap(){
             '</div>' +
             '<div id="marker-body">' +
                 '<p>' + info + '</p>' +
+            '</div>' +
+            '<div> <a href="https://www.google.com/maps/dir//' + markerLatLng.lat + ',' + markerLatLng.lng + 
+              '/@' + userLatLng.lat +',' + userLatLng.lng + '/data=!4m2!4m1!3e2">TEST</a>' + 
             '</div>' +
         '</div>'
   }
