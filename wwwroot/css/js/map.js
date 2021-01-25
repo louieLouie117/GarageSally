@@ -32,10 +32,10 @@ function initMap(){
   
   function setMapCenter(map, latLng){
   
-    // TEST garage sell GPS
+    // TEST garage sale GPS
     let TST_LatLng= {
-      lat: 33.8383883,
-      lng: -117.9589673
+      lat: 37.221,
+      lng: -122.9589673
     }
     // userLocation.setPosistion(latLng);
     // navigator gets the location of user from the browser
