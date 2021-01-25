@@ -107,7 +107,7 @@ function initMap(){
                 '<p>' + info + '</p>' +
             '</div>' +
             '<div> <a href="https://www.google.com/maps/dir//' + markerLatLng.lat + ',' + markerLatLng.lng + 
-              '/@' + userLatLng.lat +',' + userLatLng.lng + '/data=!4m2!4m1!3e2">TEST</a>' + 
+              '/@' + userLatLng.lat +',' + userLatLng.lng + '">TEST</a>' + // TODO: following user longitude a z variable required also /data values
             '</div>' +
         '</div>'
   }
