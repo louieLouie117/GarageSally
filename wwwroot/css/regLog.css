@@ -79,7 +79,7 @@ body{
 
 #address-container footer{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 4fr;
 }
 
 #address-container footer :first-child{
