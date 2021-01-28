@@ -10,9 +10,9 @@ namespace UserLogin.Models
         [Key]
         public int UserListId { get; set; }
 
-        public int UserId { get; set;} // Follower
+        public int FollowerId { get; set;}
 
-        public int UserId2 { get; set; } // Following
+        public int FollowingId { get; set; }
 
         //Relationships
         public User Follower { get; set; }

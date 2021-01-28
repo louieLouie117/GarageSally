@@ -14,9 +14,9 @@ namespace UserLogin.Models
 
         public string Comment { get; set; }
 
-        public int UserId { get; set;} // Reviewer
+        public int ReviewerId { get; set;} // Reviewer
 
-        public int UserId2 { get; set;} // Reviewed
+        public int ReviewedId { get; set;} // Reviewed
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
