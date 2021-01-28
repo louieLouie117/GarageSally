@@ -48,10 +48,10 @@ namespace UserLogin.Controllers
         public IActionResult dashboard()
         {
             // block pages is not in session
-            if (HttpContext.Session.GetInt32("UserId") == null)
-            {
-                return RedirectToAction("index");
-            }
+            // if (HttpContext.Session.GetInt32("UserId") == null)
+            // {
+            //     return RedirectToAction("index");
+            // }
             return View("dashboard");
         }
         // -----------------------------------------------------------end
