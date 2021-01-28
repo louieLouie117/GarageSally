@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -35,18 +36,20 @@ namespace UserLogin.Models
         public string Password { get; set; }
 
         [Display(Name = "Building Number")]
-        [Required]
-        public int StreetNumber {get; set;}
+        // [Required]
+        public int StreetNumber { get; set; }
 
+        [DefaultValue("n/a")]
         [Display(Name = "Street Name")]
-        [Required]
-        public string StreetName {get; set;}
+        // [Required]
+        public string StreetName { get; set; }
 
-        [Required]
-        public string City {get; set;}
+        // [Required]
+        [DefaultValue("n/a")]
+        public string City { get; set; }
 
-        [Required]
-        public int Zipcode {get; set;}
+        // [Required]
+        public int Zipcode { get; set; }
 
         [Display(Name = "Profile Picture")]
         public string ProfilePic { get; set; }
