@@ -39,13 +39,13 @@ namespace UserLogin.Models
         // [Required]
         public int StreetNumber { get; set; }
 
-        [DefaultValue("n/a")]
+        // [DefaultValue("n/a")]
         [Display(Name = "Street Name")]
         // [Required]
         public string StreetName { get; set; }
 
         // [Required]
-        [DefaultValue("n/a")]
+        // [DefaultValue("n/a")]
         public string City { get; set; }
 
         // [Required]

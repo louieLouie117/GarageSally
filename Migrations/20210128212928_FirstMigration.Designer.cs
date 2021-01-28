@@ -9,8 +9,8 @@ using UserLogin.Models;
 namespace UserLogin.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210127203105_KeyTest")]
-    partial class KeyTest
+    [Migration("20210128212928_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,7 +125,6 @@ namespace UserLogin.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreatedAt")
@@ -143,7 +142,6 @@ namespace UserLogin.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("StreetName")
-                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("StreetNumber")

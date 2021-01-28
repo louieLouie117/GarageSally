@@ -3,6 +3,7 @@
 // 
 
 function initMap(){
+    alert("Hello map")
     // latLng will hold an object location for
     // where the map should be centered on once
     // loaded.
@@ -19,6 +20,7 @@ function initMap(){
     const map= new google.maps.Map(document.getElementById('map'), {
         // center: latLng,
         zoom: 13,
+        center: latLng,
         fullscreenControl: false,
         mapTypeControl: false,
         rotateControl: false,

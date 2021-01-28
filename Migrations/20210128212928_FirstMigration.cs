@@ -4,49 +4,31 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UserLogin.Migrations
 {
-    public partial class KeyTest : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "FirstName",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "LastName",
-                table: "Users");
-
-            migrationBuilder.AddColumn<string>(
-                name: "City",
-                table: "Users",
-                nullable: false);
-
-            migrationBuilder.AddColumn<string>(
-                name: "ProfilePic",
-                table: "Users",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "StreetName",
-                table: "Users",
-                nullable: false);
-
-            migrationBuilder.AddColumn<int>(
-                name: "StreetNumber",
-                table: "Users",
-                nullable: false,
-                defaultValue: 0);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Username",
-                table: "Users",
-                nullable: false);
-
-            migrationBuilder.AddColumn<int>(
-                name: "Zipcode",
-                table: "Users",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Username = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    StreetNumber = table.Column<int>(nullable: false),
+                    StreetName = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    Zipcode = table.Column<int>(nullable: false),
+                    ProfilePic = table.Column<string>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                });
 
             migrationBuilder.CreateTable(
                 name: "GarageSales",
@@ -208,43 +190,8 @@ namespace UserLogin.Migrations
             migrationBuilder.DropTable(
                 name: "GarageSales");
 
-            migrationBuilder.DropColumn(
-                name: "City",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "ProfilePic",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "StreetName",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "StreetNumber",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "Username",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "Zipcode",
-                table: "Users");
-
-            migrationBuilder.AddColumn<string>(
-                name: "FirstName",
-                table: "Users",
-                type: "longtext CHARACTER SET utf8mb4",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "LastName",
-                table: "Users",
-                type: "longtext CHARACTER SET utf8mb4",
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }
