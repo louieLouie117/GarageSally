@@ -1,23 +1,21 @@
 body{
     display: grid;
     margin: 0 auto;
-    background: red;
 }
 
 
 header{
    padding: 0;
     z-index: 10;
-    background: pink;
 }
 
 main{
-    background: red;
+    background: whitesmoke;
   
 }
 
 footer{
-    /* background:rgba(0, 0, 0, 0.344); */
+    background:rgba(0, 0, 0, 0.556);
     position: fixed;
     bottom: 0;
     left: 0;
@@ -32,31 +30,76 @@ footer{
 
 /* menu styles----------------------------------------------- */
 
+.menu-container{
+    display: grid;
+    row-gap: 10px;
+    grid-template-rows: 40px;
+    background: #B936D2;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.734);
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 40px;
+    margin: 20px;
+    padding: 10px;
+    overflow: hidden;
+    /* border: solid 2px white; */
+    /* margin-left: -500px; */
+
+}
+.menu-container h2, a{
+    font: 1.4em sans-serif;
+    color: white;
+}
+
+
+.menuIcon-container{
+    display: grid;
+    row-gap: 6px;
+    /* padding: 10px; */
+    background: none;
+    border-radius: 40px;
+    /* margin: 20px; */
+    /* height: 40px; */
+    align-content: center;
+    /* border: solid 2px white; */
+    justify-self: left;
+}
+
+.menuIcon{
+    height: 4px;
+    width: 40px;
+    border-radius: 10px;
+    background: white;
+
+}
+
 .showMenu-container{
     position: fixed;
     top: 0;
     left: 0;
 }
 
-.menu-container{
-    display: none;
-    background: #B936D2;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
 
-@media screen and (min-width: 1100px){
+
+/* @media screen and (min-width: 1100px){
     .menu-container{
         width: 20vw;
     }
-}
+} */
 
 .menu-container button{
     height: 40px;
-    width: 150px;
+    width: 40px;
+    background: none;
+    border: 2px solid white;
+    font: 1.2em sans-serif;
+    color: white;
+    border-radius: 40px;
+    margin: 20px;
+    justify-self: flex-end;
 }
 
 
@@ -71,12 +114,12 @@ footer{
 
 .cardItems {
     display: grid;
-    background: rgba(0, 0, 0, 0.2);
+    /* background: rgba(0, 0, 0, 0.2); */
     height: auto;
     margin: 0;
     padding: 0;
     height: auto;
-    box-shadow: -5px 10px 13px rgba(0, 0, 0, 0.11);
+    box-shadow: -5px 10px 13px rgba(0, 0, 0, 0.377);
     width: auto;
 
   }
@@ -105,8 +148,16 @@ footer{
   margin-bottom: 20px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.226);
   width: 320px;
+  justify-items: center;
+  align-items: center;
 
 }
+
+
+.allGaragePost-container ul li p {
+    width: 130px;
+}
+
 .allGaragePost-container>picture img {
     margin: 0;
     padding: 0;
