@@ -1,0 +1,135 @@
+body{
+    display: grid;
+    margin: 0 auto;
+    background: red;
+}
+
+
+header{
+   padding: 0;
+    z-index: 10;
+    background: pink;
+}
+
+main{
+    background: red;
+  
+}
+
+footer{
+    /* background:rgba(0, 0, 0, 0.344); */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    /* height: 150px; */
+    align-self: flex-end;
+    z-index: 5;
+    /* box-shadow: 0 0 5px black; */
+
+}
+
+
+
+/* menu styles----------------------------------------------- */
+
+.showMenu-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.menu-container{
+    display: none;
+    background: #B936D2;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+@media screen and (min-width: 1100px){
+    .menu-container{
+        width: 20vw;
+    }
+}
+
+.menu-container button{
+    height: 40px;
+    width: 150px;
+}
+
+
+
+/* All Garage Sales post--------------------------------------------- */
+
+
+.allGaragePost-container{
+    align-items: center;
+
+}
+
+.cardItems {
+    display: grid;
+    background: rgba(0, 0, 0, 0.2);
+    height: auto;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    box-shadow: -5px 10px 13px rgba(0, 0, 0, 0.11);
+    width: auto;
+
+  }
+
+.allGaragePost-container ul {
+    display: flex;
+    float: left;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    padding: 0px;
+    margin: 0px;
+
+
+}
+
+.allGaragePost-container ul li {
+  border: 2px white solid;
+  display: grid;
+  grid-template-columns: 100px 180px 40px ;
+  grid-template-rows: auto;
+  background: rgb(255, 255, 255);
+  margin-left: 20px;
+  border-radius: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.226);
+  width: 320px;
+
+}
+.allGaragePost-container>picture img {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
+.allGaragePost-container li aside{
+    display: grid;
+    justify-content: center;
+    align-self: center;
+    height: 70px;
+    cursor: pointer;
+}
+
+#circleIcon{
+    height: 13px;
+    width: 13px;
+    background: #B936D2;
+    border-radius: 40px;
+    
+}
+
+
+/* --------------------------------------------- All Garage Sales post */

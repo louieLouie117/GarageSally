@@ -48,7 +48,7 @@ body{
 
 .form-container form button{
     font: 1.4em sans-serif;
-    background: #662179;
+    background: #B936D2;
     color: white;
     padding: 10px;
     border-radius: 10px;
@@ -64,3 +64,25 @@ body{
     grid-template-columns: 4fr 1fr;
     align-items: center;
 }
+
+
+#user-container{
+    display: grid;
+    row-gap: 5px;
+}
+
+#address-container{
+    display: none;
+    row-gap: 5px;
+
+}
+
+#address-container footer{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+#address-container footer :first-child{
+    background: lightgray;
+}
+

@@ -1,16 +1,10 @@
-@using UserLogin.Models
-@model User
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/dashboard.css">
-    <script src="~/js/dashboard.js" async=""></script>
+    <title>Menu</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
@@ -26,22 +20,17 @@
 
 <body>
 
-    <header>
+    <div class="showMenu-container" id="showMenu">
+        <button onclick="showMainMenu()">open menu</button>
+    </div>
 
-        <partial name="menuPartial" />
 
+    <div class="menu-container" id="mainMenu">
+        <button onclick="hideMainMenu()">close</button>
 
-    </header>
+        <a href="/logout">Logout</a>
 
-    <main>
-        <partial name="mapPartial" />
-    </main>
-
-    <footer>
-        <partial name="allGaragePost" />
-
-    </footer>
-
+    </div>
 
 </body>
 

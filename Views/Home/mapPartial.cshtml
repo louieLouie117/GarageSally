@@ -1,16 +1,11 @@
-@using UserLogin.Models
-@model User
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/dashboard.css">
-    <script src="~/js/dashboard.js" async=""></script>
+    <title>maps</title>
+    <link rel="stylesheet" href="~/css/regLog.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
@@ -26,23 +21,10 @@
 
 <body>
 
-    <header>
-
-        <partial name="menuPartial" />
-
-
-    </header>
-
-    <main>
-        <partial name="mapPartial" />
-    </main>
-
-    <footer>
-        <partial name="allGaragePost" />
-
-    </footer>
-
-
+    <picture>
+        <source media="(min-width: 1100px)" srcset="~/img/Assets/mapDesktopPlaceholder.png" />
+        <img src="~/img/Assets/mapPlaceholder.png" alt="">
+    </picture>
 </body>
 
 </html>
