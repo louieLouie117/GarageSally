@@ -1,5 +1,5 @@
 @using UserLogin.Models
-@model User
+@model DashboardWrapper
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,23 +20,10 @@
 
 <body>
 
-    <header>
-
-        <partial name="menuPartial" />
-
-
-    </header>
-
-    <main>
-        <partial name="mapPartial" />
-    </main>
-
-    <footer>
-        <partial name="allGaragePost" />
-
-    </footer>
-
-
+    <partial name="mapPartial" />
+    <partial name="allGaragePost" />
+    <partial name="profilePartial" model="@Model.User" />
+    <partial name="menuPartial" />
 </body>
 
 </html>

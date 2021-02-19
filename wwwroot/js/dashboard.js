@@ -4,27 +4,27 @@
 let menu = "close"
 
 const showMainMenu =(e) => {
+
         console.log(e);
         if (menu === "close") {     
-        document.getElementById("mainMenu").style.height = "100%";
-        document.getElementById("mainMenu").style.width = "80%";
+        document.getElementById("mainMenu").style.height = "100vh";
+        document.getElementById("mainMenu").style.width = "45vh";
         document.getElementById("mainMenu").style.margin = "0px";
         document.getElementById("mainMenu").style.borderRadius = "0";
         document.getElementById("mainMenu").style.transition = "smooth";
-        document.getElementById("mainMenu").style.transition = "1.5s";
+        document.getElementById("mainMenu").style.transition = ".5s";
         document.getElementById("mainMenu").style.padding = "30px";
         console.log("inside the if stament",menu);
         return (menu = "open");
 
 
-    }else {
-            
+    }else {      
         document.getElementById("mainMenu").style.height = "40px";
         document.getElementById("mainMenu").style.width = "40px";
         document.getElementById("mainMenu").style.margin = "20px";
         document.getElementById("mainMenu").style.borderRadius = "40px";
         document.getElementById("mainMenu").style.transition = "smooth";
-        document.getElementById("mainMenu").style.transition = "1.5s";
+        document.getElementById("mainMenu").style.transition = ".5s";
         document.getElementById("mainMenu").style.padding = "10px";
         return (menu = "close");
 
@@ -32,6 +32,26 @@ const showMainMenu =(e) => {
 
         
 };
+
+let profilePage = "close"
+
+const profile = (e) =>{
+
+    if (profilePage === "close") { 
+    document.getElementById("profile").style.display = "grid";
+    return (profilePage = "open")
+
+    } else{
+    document.getElementById("profile").style.display = "none";
+    return (profilePage = "close");
+    }
+Page
+
+}
+
+
+
+
 
 
 //Modify how to create a website article--------------------------------------------------->
