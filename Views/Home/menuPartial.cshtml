@@ -11,15 +11,6 @@
 
 <body>
 
-    @* <div class="showMenu-container" id="showMenu">
-        <div class="menuIcon-container" onclick="showMainMenu()">
-        <div class="menuIcon"></div>
-        <div class="menuIcon"></div>
-        <div class="menuIcon"></div>
-        </div>
-        </div> *@
-
-
     <div class="menu-container" id="mainMenu">
 
         <div class="menuIcon-container" onclick="showMainMenu()">
@@ -27,15 +18,18 @@
             <div class="menuIcon"></div>
             <div class="menuIcon"></div>
         </div>
-        @* <button onclick="hideMainMenu()">X</button> *@
 
-        <div>
+        <div class="menuList-Container">
 
-            <h2>Portfolio</h2>
-            <h2>New Post</h2>
-            <h2>Settings</h2>
-            <h2>Term of Service</h2>
-            <h2>Privacy Policy</h2>
+
+            <h2> <button onclick="profile()"> Profile </button></h2>
+            <h2> <button onclick="profile()"> New Post </button></h2>
+            <h2> <button onclick="profile()"> Settings </button></h2>
+            <h2> <button onclick="profile()"> Term of Service </button></h2>
+            <h2> <button onclick="profile()"> Privacy Policy </button></h2>
+
+
+
             <a href="/logout">Logout</a>
 
 

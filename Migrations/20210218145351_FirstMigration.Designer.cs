@@ -9,7 +9,7 @@ using UserLogin.Models;
 namespace UserLogin.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210128212928_FirstMigration")]
+    [Migration("20210218145351_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -23,9 +23,10 @@
         <div class="form-container">
             <div class="regHeader_container">
                 <h1>Register</h1>
+
             </div>
 
-            <form asp-action="Redgister" asp-controller="Home" method="POST">
+            <form asp-action="Redgister" asp-controller="Home" method="POST" enctype="multipart/form-data">
                 <a href="/signin">Sign in.</a>
 
                 @* <span asp-validation-for="FirstName"></span>
@@ -46,25 +47,32 @@
 
                     <span asp-validation-for="Confirm"></span>
                     <input asp-for="Confirm" placeholder="Confirm Password">
-                    <button type="button" onclick="showAddress()">Next</button>
+                    <button type="button" onclick="step2UserPhoto()">Next</button>
+
+                </div>
+
+                <div id="userPhoto-container">
+
+                    <img src="~/img/Assets/placeholder.png" alt="">
+                    <p>Customise your porfolio with a photo.</p>
+                    <input asp-for="files" type="file" multiple>
+
+
+                    <footer>
+                        <button type="button" onclick="step1UserInfo()">back</button>
+                        <button type="button" onclick="step3ZipCode()">Next</button>
+
+                    </footer>
 
                 </div>
 
                 <div id="address-container">
-                    @* <span asp-validation-for="StreetNumber"></span> *@
-                    @* <input asp-for="StreetNumber" placeholder="Street #"> *@
-
-                    @* <span asp-validation-for="StreetName"></span> *@
-                    @* <input asp-for="StreetName" placeholder="Street Name"> *@
-
-                    @* <span asp-validation-for="City"></span> *@
-                    @* <input asp-for="City" placeholder="City"> *@
-
+                    <p>Congratulation, your last step is to start finding garage sales in your area.</p>
                     <span asp-validation-for="Zipcode"></span>
                     <input asp-for="Zipcode" placeholder="Zipcode">
 
                     <footer>
-                        <button type="button" onclick="hideAddress()">back</button>
+                        <button type="button" onclick="step2UserPhoto()">back</button>
 
                         <button type="submit">Get Started</button>
 

@@ -5,6 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+
+// for file upload
+using System.IO;
+using System.Threading.Tasks;
+using IFormFile = Microsoft.AspNetCore.Http.IFormFile;
+
 
 namespace UserLogin.Controllers
 {
@@ -48,17 +55,70 @@ namespace UserLogin.Controllers
         public IActionResult dashboard()
         {
             // block pages is not in session
-            // if (HttpContext.Session.GetInt32("UserId") == null)
-            // {
-            //     return RedirectToAction("index");
-            // }
-            return View("dashboard");
+            if (HttpContext.Session.GetInt32("UserId") == null)
+            {
+                return RedirectToAction("login");
+
+            }
+
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+            // Filter db by User in Session 
+            User UserIndb = _context.Users
+                .FirstOrDefault(u => u.UserId == UserIdInSession);
+            ViewBag.ToDisplay = UserIndb;
+
+            // filter db by user id 
+            ViewBag.allUserLogs = _context.Users
+                .Where(ul => ul.UserId == UserIdInSession)
+                .ToList();
+
+
+            DashboardWrapper wMod = new DashboardWrapper();
+
+
+            return View("dashboard", wMod);
         }
+
+
+        [HttpGet("profile")]
+        public IActionResult profilePartial()
+        {
+
+
+
+            // block pages is not in session
+            if (HttpContext.Session.GetInt32("UserId") == null)
+            {
+                return RedirectToAction("login");
+            }
+
+            ViewBag.AllUsers = _context.Users.ToList();
+
+
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+
+            // Filter db by User in Session 
+            User UserIndb = _context.Users
+                .FirstOrDefault(u => u.UserId == UserIdInSession);
+            ViewBag.ToDisplay = UserIndb;
+
+
+            // filter db by section id 
+            ViewBag.allUserLogs = _context.Users
+                .Where(ul => ul.UserId == UserIdInSession)
+                .ToList();
+
+
+
+            return View("profilePartial");
+        }
+
+
         // -----------------------------------------------------------end
 
         // Processing Registration and Login-------------------------------------------------
         [HttpPost("register")]
-        public IActionResult Redgister(User FromForm)
+        public async Task<IActionResult> Redgister(List<IFormFile> files, User FromForm)
         {
             // Check if email is already in db
             if (_context.Users.Any(u => u.Email == FromForm.Email))
@@ -68,9 +128,48 @@ namespace UserLogin.Controllers
             // Validations
             if (ModelState.IsValid)
             {
-                // #hash password
-                PasswordHasher<User> Hasher = new PasswordHasher<User>();
-                FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
+
+                long size = files.Sum(f => f.Length);
+
+                System.Console.WriteLine("here is files:", files);
+                var filePaths = new List<string>();
+                foreach (var formFile in files)
+                {
+                    if (formFile.Length > 0)
+                    {
+                        // TimeStamp
+                        string timeStampMonth = DateTime.Now.Month.ToString("00");
+                        string timeStampDay = DateTime.Now.Day.ToString("00");
+                        string timeStampHour = DateTime.Now.Hour.ToString("00");
+                        string timeStampMinutes = DateTime.Now.Minute.ToString("00");
+                        string timeStampSeconds = DateTime.Now.Second.ToString("00");
+
+                        string timeStamp = $"{timeStampMonth}{timeStampDay}{timeStampHour}{timeStampMinutes}{timeStampSeconds}";
+
+                        //Place to save file
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                         "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
+
+                        // for the db
+                        Console.WriteLine($"Apprentice Name: {FromForm.Username}");
+                        Console.WriteLine($"FileName: {timeStamp}{formFile.FileName}");
+
+                        // Assign name to be saved to the db
+                        string newName = $"{timeStamp}{formFile.FileName}";
+                        FromForm.ProfilePic = newName;
+
+
+                        filePaths.Add(filePath);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await formFile.CopyToAsync(stream);
+                            // #hash password
+                            PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                            FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
+                        }
+                    }
+                }
+
                 // Add to db
                 _context.Add(FromForm);
                 _context.SaveChanges();
