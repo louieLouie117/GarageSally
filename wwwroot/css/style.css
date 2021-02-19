@@ -1,7 +1,31 @@
+/* global styles */
+
 body{
-    max-width: 45em;
+    /* max-width: 45em; */
     margin: 0 auto;
     background: whitesmoke;
+    padding: 0;
+    display: grid;
+    height: 100vh;
 }
+
+
+button{
+    cursor: pointer;
+    font: 1em sans-serif;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ ::-webkit-scrollbar{
+    display: none;}
+
 
 

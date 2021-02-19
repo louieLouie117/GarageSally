@@ -15,8 +15,6 @@ namespace UserLogin
 {
     public class Startup
     {
-
-
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
@@ -44,8 +42,6 @@ namespace UserLogin
             app.UseSession();
             app.UseStaticFiles();
             app.UseMvc();
-
-
         }
     }
 }

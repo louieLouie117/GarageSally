@@ -7,6 +7,8 @@ namespace UserLogin.Models
     {
         // No other fields!
         public int UserId { get; set; }
+
+        [Required]
         public string Email { get; set; }
 
         [DataType(DataType.Password)]
