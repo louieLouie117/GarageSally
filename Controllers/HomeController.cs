@@ -42,8 +42,13 @@ namespace UserLogin.Controllers
         [HttpGet("")]
         public IActionResult index()
         {
-            return View("index");
+
+
+            DashboardWrapper wMod = new DashboardWrapper();
+            return View("index", wMod);
         }
+
+
 
         [HttpGet("login")]
         public IActionResult login()
@@ -120,6 +125,9 @@ namespace UserLogin.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Redgister(List<IFormFile> files, User FromForm)
         {
+
+            DashboardWrapper wMod = new DashboardWrapper();
+
             // Check if email is already in db
             if (_context.Users.Any(u => u.Email == FromForm.Email))
             {
@@ -182,7 +190,7 @@ namespace UserLogin.Controllers
             else
             {
                 Console.WriteLine("Fix your erros!");
-                return View("index");
+                return View("index", wMod);
             }
 
         }
@@ -191,6 +199,9 @@ namespace UserLogin.Controllers
         [HttpPost("login")]
         public IActionResult Login(LoginUser userSubmission)
         {
+
+            DashboardWrapper wMod = new DashboardWrapper();
+
             // Validations
             if (ModelState.IsValid)
             {
@@ -213,7 +224,7 @@ namespace UserLogin.Controllers
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
                 return RedirectToAction("dashboard");
             }
-            return View("login");
+            return View("index", wMod);
         }
 
 
