@@ -1,13 +1,18 @@
 body{
-    margin: 0;
     display: grid;
-    background: whitesmoke;
+    margin: 0 auto;
 
 }
 
 p{
-    font: 1.4em sans-serif;
+    font: 1.1em sans-serif;
+    color: black;
 }
+
+input{
+    color: black;
+}
+
  ::-webkit-scrollbar {
     display: none;
   }
@@ -15,7 +20,7 @@ p{
 .regLog-container{
     width: auto;
     height: auto;
-    background: whitesmoke;
+    background: none;
     display: grid;
 
 }
@@ -26,7 +31,7 @@ p{
 .form-container{
     display: grid;
     background: white;
-    width: 400px;
+    width: 320px;
     height: 400px;
     box-shadow: 0 0 5px #6621795d;
     padding: 40px;
@@ -34,8 +39,7 @@ p{
     margin: 0 auto;
     z-index: 2;
     border-radius: 10px;
-    align-items: flex-end;
-
+    align-items: flex-start;
 
 }
 
@@ -70,22 +74,31 @@ p{
     display: grid;
     grid-template-columns: 4fr 1fr;
     align-items: center;
+  
 }
 
+.regHeader_container>h4{
+    font: 1.5em sans-serif;
+    text-align: left;
+    color: #B936D2;
+}
 
-#user-container{
+.user-container{
     display: grid;
     row-gap: 5px;
 }
 
-#address-container, #userPhoto-container{
+
+
+.address-container, .userPhoto-container, .password-container{
     display: none;
     row-gap: 5px;
 
 }
 
-#address-container footer,
-#userPhoto-container footer{
+.address-container footer,
+.userPhoto-container footer,
+.password-container footer{
     display: grid;
     grid-template-columns: 1fr 4fr;
     font: 1em sans-serif;
@@ -95,10 +108,14 @@ p{
 
 
 
-#address-container footer :first-child{
-    background: lightgray;
-}
-#userPhoto-container footer :first-child{
+.address-container footer :first-child,
+.userPhoto-container footer :first-child,
+.password-container footer :first-child{
     background: lightgray;
 }
 
+
+
+#login{
+    display: none;
+}

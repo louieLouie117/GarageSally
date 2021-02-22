@@ -8,15 +8,100 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="~/css/landingPage.css">
+    <script src="~/js/loginReg.js" async=""></script>
+    <title>Garage Sally</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WGFK1GC4RE');
+    </script>
+
 </head>
 
 <body>
 
-    <partial name="registrationPartial" model="@Model.User" view-data="ViewData" />
+    <div class="landingPage-container">
+        <header>
+            <h1>Garage Sally</h1>
+            <picture>
+                <img src="~/img/Assets/logo.png" alt="">
+            </picture>
 
-    <partial name="loginPartial" model="@Model.LoginUser" view-data="ViewData" />
+            <p>find, post, and share sales.</p>
 
+            <footer>
+                <button>Find</button>
+                <button>Post</button>
+            </footer>
+
+        </header>
+        <partial name="loginPartial" model="@Model.LoginUser" view-data="ViewData" />
+
+        <main>
+            <section class="freeAccount-container">
+                <div class="info-container">
+                    <div>
+                        <h2>Search for free.</h2>
+                        <p>Find a garage sale near you.</p>
+                    </div>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, quia. Sed enim rerum, reiciendis
+                        quiquam officiis perspiciatis laboriosam dolore eos repellendus consequatur iste? Vel aliquid
+                        reprehenderit fuga qui. Quae.</p>
+                </div>
+
+                <picture>
+                    <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
+                    <img src="~/img/Assets/mapSmall.png" alt="">
+                </picture>
+
+                <aside>
+                    <h3>Start searching and find garage sales near you.</h3>
+                    <div class="partial-container">
+                        <partial name="registrationPartial" model="@Model.User" view-data="ViewData" />
+                    </div>
+                </aside>
+
+
+            </section>
+            <section class="sellersAccount-container">
+                <div class="info-container">
+                    <div>
+                        <h2>Post garage sales.</h2>
+                        <p>post and get paid.</p>
+
+                    </div>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, quia. Sed enim rerum, reiciendis
+                        quiquam officiis perspiciatis laboriosam dolore eos repellendus consequatur iste? Vel aliquid
+                        reprehenderit fuga qui. Quae.</p>
+                </div>
+
+                <aside>
+                    <div class="sellersForm">
+                        <h3>Create a sellers account and get discovered.</h3>
+
+                        <partial name="registrationPartial" model="@Model.User" view-data="ViewData" />
+                    </div>
+                </aside>
+
+                <picture>
+                    <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
+                    <img src="~/img/Assets/mapSmall.png" alt="">
+                </picture>
+
+
+            </section>
+        </main>
+
+
+    </div>
 
 </body>
 

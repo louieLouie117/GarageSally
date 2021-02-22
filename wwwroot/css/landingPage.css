@@ -1,0 +1,199 @@
+body{
+    display: grid;
+    margin: 0 auto;
+    max-width: 35em;
+
+
+}
+
+h1,h2,h3,p{
+    margin: 0;
+}
+
+.landingPage-container{
+    display: grid;
+    padding-top: 40px;
+}
+
+.landingPage-container>header h1{
+    display: none;
+}
+
+.landingPage-container>header{
+    display: grid;
+    justify-items: center;
+}
+
+.landingPage-container>header footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    padding-top: 20px;
+
+}
+
+
+.landingPage-container>header footer button{
+    background: #B936D2;
+    height: 40px;
+    width: 120px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font: 1.2em sans-serif;
+}
+
+.landingPage-container>main{
+    display: grid;
+
+}
+
+.landingPage-container>main section{
+    display: grid;
+    justify-content: center;
+    padding-top: 40px;
+    row-gap: 20px;
+
+
+
+}
+
+
+.landingPage-container>main>section>aside{
+    background: #B936D2;
+    display: grid;
+    padding-bottom: 40px;
+}
+
+.landingPage-container>main section aside h3{
+    color: white;
+
+}
+
+
+
+.landingPage-container>main section h2{
+    font: 2.3em sans-serif;
+    color: #B936D2;
+    padding: 0 10px;
+}
+
+.landingPage-container>main section p{
+    padding: 0 10px;
+
+}
+
+
+
+.landingPage-container>main section h3{
+    font: 1.9em sans-serif;
+    text-align: center;
+    padding: 40px;
+}
+
+
+.landingPage-container>picture{
+    justify-self: center;
+}
+
+.landingPage-container>main section picture img {
+    width: auto;
+}
+
+
+.freeAccount-container>aside{
+    margin-top: -200px;
+
+}
+
+
+.sellersAccount-container>picture{
+    margin-top: -200px;
+    z-index: -1;
+
+}
+
+
+/* Desktop version */
+
+@media screen and (min-width: 1100px){
+    body{
+        max-width: none;
+    }
+
+    .landingPage-container>main section aside h3{
+        font-size: 3em;
+
+    }
+
+    .landingPage-container>header{
+        justify-content: left;
+        padding-left: 5%;
+    }
+
+
+
+    .freeAccount-container{
+        margin-top: 150px;
+        align-items: center;
+        display: grid;
+        grid-template-columns: 450px 1fr 1fr;
+
+
+    }
+
+    .freeAccount-container>aside{
+        margin-top: 0;
+        grid-column: 2/4;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        height: 450px;
+
+    }
+
+    .freeAccount-container>picture{
+        grid-column: 3/4;
+        grid-row: 1/2;
+        margin-top: -500px;
+    }
+
+    .info-container{
+        padding: 20px;
+        align-content: center;
+    }
+
+    .partial-container{
+        margin-top: -200px;
+    }
+
+
+    .sellersAccount-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 450px;
+    }
+
+    .sellersAccount-container>picture{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        margin-top: 200px;
+    }
+
+    .sellersAccount-container>aside{
+        grid-column: 1/3;
+        grid-row: 1/2;
+        height: 450px;
+    }
+
+    .sellersForm{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .sellersForm h3{
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+  
+}
