@@ -4,7 +4,7 @@ function Step1Reg(e) {
     document.getElementById("section2Reg").style.display = "none";
     document.getElementById("section3Reg").style.display = "none";
     document.getElementById("section4Reg").style.display = "none";
-    document.getElementById("sectionHeading").innerText = "Customize your profile."
+    document.getElementById("sectionHeading").innerText = "Start searching for free."
     
 
 };
