@@ -41,13 +41,8 @@
 
             <form asp-action="Redgister" asp-controller="Home" method="POST" enctype="multipart/form-data">
 
-                @* <span asp-validation-for="FirstName"></span>
-                    <input asp-for="FirstName" placeholder="First Name">
 
-                    <span asp-validation-for="LastName"></span>
-                    <input asp-for="LastName" placeholder="Last Name"> *@
-
-                <div class="user-container" id="section1Reg">
+                <div class="section1-container" id="section1Reg">
 
                     <span asp-validation-for="Email"></span>
                     <input asp-for="Email" placeholder="Email">
@@ -56,7 +51,7 @@
 
                 </div>
 
-                <div class="password-container" id="section2Reg">
+                <div class="section2-container" id="section2Reg">
                     <span asp-validation-for="Password"></span>
                     <input asp-for="Password" placeholder="Password">
 
@@ -73,7 +68,7 @@
 
 
 
-                <div class="userPhoto-container" id="section3Reg">
+                <div class="section3-container" id="section3Reg">
                     <span asp-validation-for="Username"></span>
                     <input asp-for="Username" placeholder="Name">
 
@@ -91,7 +86,7 @@
 
                 </div>
 
-                <div class="address-container" id="section4Reg">
+                <div class="section4-container" id="section4Reg">
                     <p>Let's start finding garage sales in your area.</p>
                     <span asp-validation-for="Zipcode"></span>
                     <input asp-for="Zipcode" placeholder="Zipcode">

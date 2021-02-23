@@ -36,8 +36,7 @@
             <p>find, post, and share sales.</p>
 
             <footer>
-                <button>Find</button>
-                <button>Post</button>
+                <button>sign in</button>
             </footer>
 
         </header>
@@ -63,13 +62,20 @@
 
                 <aside>
                     <h3>Start searching and find garage sales near you.</h3>
-                    <div class="partial-container">
+                    <div class="userReg-container">
                         <partial name="registrationPartial" model="@Model.User" view-data="ViewData" />
                     </div>
                 </aside>
 
 
             </section>
+
+            <section>
+                <partial name="allGaragePost" />
+
+            </section>
+
+
             <section class="sellersAccount-container">
                 <div class="info-container">
                     <div>
@@ -84,10 +90,10 @@
                 </div>
 
                 <aside>
-                    <div class="sellersForm">
-                        <h3>Create a sellers account and get discovered.</h3>
+                    <h3>Create a sellers account and get discovered.</h3>
 
-                        <partial name="registrationPartial" model="@Model.User" view-data="ViewData" />
+                    <div class="sellersForm">
+                        <partial name="sellersRegPartial" model="@Model.User" view-data="ViewData" />
                     </div>
                 </aside>
 
