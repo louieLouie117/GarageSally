@@ -1,6 +1,16 @@
 body{
-    width: 100vw;
-    margin: 0;
+    display: grid;
+    margin: 0 auto;
+
+}
+
+p{
+    font: 1.1em sans-serif;
+    color: black;
+}
+
+input{
+    color: black;
 }
 
  ::-webkit-scrollbar {
@@ -9,27 +19,28 @@ body{
 
 .regLog-container{
     width: auto;
-    height: 100vh;
-    background: white;
+    height: auto;
+    background: none;
     display: grid;
-    grid-template-rows: 100px 60vh 1fr;
 
 }
 .regLog-container>svg:first-of-type{
-    margin-top: -200px;
+    margin-top: -150px;
 }
 
 .form-container{
     display: grid;
     background: white;
-    width: 400px;
-    height: 700px;
+    width: 320px;
+    height: auto;
     box-shadow: 0 0 5px #6621795d;
-    align-items: center;
     padding: 40px;
+    padding-bottom: 80px;
     margin: 0 auto;
     z-index: 2;
     border-radius: 10px;
+    align-items: flex-start;
+
 }
 
 .form-container form{
@@ -63,26 +74,56 @@ body{
     display: grid;
     grid-template-columns: 4fr 1fr;
     align-items: center;
+  
 }
 
+.regHeader_container>h4{
+    font: 1.5em sans-serif;
+    text-align: left;
+    color: #B936D2;
+}
 
-#user-container{
+.section1-container{
     display: grid;
     row-gap: 5px;
 }
 
-#address-container{
+
+
+.section4-container, .section2-container, .section3-container{
     display: none;
     row-gap: 5px;
 
 }
 
-#address-container footer{
+.section4-container footer,
+.section3-container footer,
+.section2-container footer{
     display: grid;
     grid-template-columns: 1fr 4fr;
+    font: 1em sans-serif;
+    column-gap: 7px;
 }
 
-#address-container footer :first-child{
+
+
+
+.section4-container footer :first-child,
+.section3-container footer :first-child,
+.section2-container footer :first-child{
     background: lightgray;
 }
 
+
+
+#login{
+    display: none;
+}
+
+@media screen and (min-width: 1100px){
+
+
+.form-container{
+    height: 400px;
+}
+}

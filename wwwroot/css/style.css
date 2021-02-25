@@ -6,8 +6,18 @@ body{
     background: whitesmoke;
     padding: 0;
     display: grid;
+    height: 100vh;
+    
 }
 
+
+button{
+    cursor: pointer;
+    font: 1em sans-serif;
+    background: none;
+    border: none;
+    padding: 0;
+}
 
 ul {
     margin: 0;
@@ -17,5 +27,6 @@ ul {
 
  ::-webkit-scrollbar{
     display: none;}
+
 
 

@@ -54,6 +54,10 @@ namespace UserLogin.Models
         [Display(Name = "Profile Picture")]
         public string ProfilePic { get; set; }
 
+        [NotMapped]
+        public IFormFile files { get; set; }
+
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 

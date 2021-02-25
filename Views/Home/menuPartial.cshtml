@@ -20,15 +20,30 @@
 
 <body>
 
-    <div class="showMenu-container" id="showMenu">
-        <button onclick="showMainMenu()">open menu</button>
-    </div>
-
-
     <div class="menu-container" id="mainMenu">
-        <button onclick="hideMainMenu()">close</button>
 
-        <a href="/logout">Logout</a>
+        <div class="menuIcon-container" onclick="showMainMenu()">
+            <div class="menuIcon"></div>
+            <div class="menuIcon"></div>
+            <div class="menuIcon"></div>
+        </div>
+
+        <div class="menuList-Container">
+
+
+            <h2> <button onclick="profile()"> Profile </button></h2>
+            <h2> <button onclick="profile()"> New Post </button></h2>
+            <h2> <button onclick="profile()"> Settings </button></h2>
+            <h2> <button onclick="profile()"> Term of Service </button></h2>
+            <h2> <button onclick="profile()"> Privacy Policy </button></h2>
+
+
+
+            <a href="/logout">Logout</a>
+
+
+        </div>
+
 
     </div>
 
