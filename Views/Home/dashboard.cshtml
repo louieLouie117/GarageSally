@@ -1,5 +1,5 @@
 @using UserLogin.Models
-@model User
+@model DashboardWrapper
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-WGFK1GC4RE');
@@ -26,21 +26,12 @@
 
 <body>
 
-    <header>
+    <partial name="mapPartial" />
+    <partial name="allGaragePost" />
+    <partial name="profilePartial" model="@Model.User" />
+    <partial name="menuPartial" />
+    <partial name="postSalePartial" />
 
-        <partial name="menuPartial" />
-
-
-    </header>
-
-    <main>
-        <partial name="mapPartial" />
-    </main>
-
-    <footer>
-        <partial name="allGaragePost" />
-
-    </footer>
 
 
 </body>
