@@ -45,9 +45,10 @@ const profile = (e) =>{
     document.getElementById("profile").style.display = "none";
     return (profilePage = "close");
     }
-Page
+// Page
 
 }
+
 
 
 

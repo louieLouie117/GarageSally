@@ -13,6 +13,7 @@ h1,h2,h3,p{
 .landingPage-container{
     display: grid;
     padding-top: 40px;
+
 }
 
 .landingPage-container>header h1{
@@ -22,6 +23,7 @@ h1,h2,h3,p{
 .landingPage-container>header{
     display: grid;
     justify-items: center;
+    z-index: 10;
 }
 
 .landingPage-container>header footer{
@@ -33,13 +35,14 @@ h1,h2,h3,p{
 
 
 .landingPage-container>header footer button{
-    background: #B936D2;
+    background: white;
+    border: none;
     height: 40px;
     width: 120px;
-    border: none;
-    border-radius: 20px;
-    color: white;
-    font: 1.2em sans-serif;
+    border-radius: 5px;
+    color:#B936D2;
+    font: 1.3em sans-serif;
+    text-decoration: underline;
 }
 
 .landingPage-container>main{
@@ -132,9 +135,28 @@ h1,h2,h3,p{
 
     }
 
+
+
+
     .landingPage-container>header{
         justify-content: left;
+        grid-template-columns: 1fr 2fr;
         padding-left: 5%;
+    }
+
+    .landingPage-container>header p{
+        font: 1.7em sans-serif;
+        padding-top: 10px;
+        font-family: cursive;
+    }
+
+    .landingPage-container>header footer{
+        grid-column: 2/3;
+        grid-row: 1/3;
+        justify-self: right;
+        margin-right: 150px;
+
+    
     }
 
 
@@ -193,7 +215,8 @@ h1,h2,h3,p{
         grid-column: 1/2;
         grid-row: 1/2;
         margin-top: 200px;
-    }
+    } 
+  
 
     .sellersAccount-container>aside{
         grid-column: 1/3;
@@ -220,5 +243,8 @@ h1,h2,h3,p{
     .sellersForm{
         margin-top: 100px;
     }
+
+
+  
   
 }
