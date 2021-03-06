@@ -90,3 +90,24 @@ function Step4SellerReg(e) {
 
     
 };
+
+
+
+
+
+const ShowLogin = ()=>{
+    
+    document.getElementById("logInState").style.marginTop = "0";
+    document.getElementById("logInState").style.transition = "1s";
+    document.getElementById("logInState").style.transform = "smooth";
+
+
+}
+
+const HideLogin = ()=>{
+    
+    document.getElementById("logInState").style.marginTop = "-1500px";
+    document.getElementById("logInState").style.transition = "1s";
+    document.getElementById("logInState").style.transform = "smooth";
+
+}
