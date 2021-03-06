@@ -9,12 +9,24 @@ body{
 /* placement of container on the gird */
 
 .profile-container{
-    background: whitesmoke;
+    background: white;
+    box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.501);
     grid-row: 1/2;
     grid-column: 1/2;
     height: 100vh;
+    width: 43vh;
     z-index: 100;
-    display: none;
+    display: grid;
+    margin-left: -700px;
+    padding:30px;
+
+}
+
+@media screen and (min-width: 1100px){
+.profile-container{
+    max-width: 25vw;
+
+}
 
 }
 
