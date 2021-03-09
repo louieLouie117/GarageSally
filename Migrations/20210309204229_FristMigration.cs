@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UserLogin.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class FristMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,8 +37,8 @@ namespace UserLogin.Migrations
                     GarageSaleId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     StreetNumber = table.Column<int>(nullable: false),
-                    StreetName = table.Column<string>(nullable: false),
-                    City = table.Column<string>(nullable: false),
+                    StreetName = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
                     Zipcode = table.Column<int>(nullable: false),
                     StartTime = table.Column<DateTime>(nullable: false),
                     EndTime = table.Column<DateTime>(nullable: false),

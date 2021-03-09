@@ -11,7 +11,7 @@ const showMainMenu =(e) => {
         document.getElementById("mainMenu").style.width = "43vh";
         document.getElementById("mainMenu").style.margin = "0px";
         document.getElementById("mainMenu").style.borderRadius = "0";
-        document.getElementById("mainMenu").style.transition = "smooth";
+        document.getElementById("mainMenu").style.transform = "smooth";
         document.getElementById("mainMenu").style.transition = ".5s";
         document.getElementById("mainMenu").style.padding = "30px";
         document.getElementById("mainMenu").style.boxShadow = "5px 0px 20px rgba(0, 0, 0, 0.501)";
@@ -27,7 +27,7 @@ const showMainMenu =(e) => {
         document.getElementById("mainMenu").style.transform = "smooth";
         document.getElementById("mainMenu").style.transition = ".5s";
         document.getElementById("mainMenu").style.padding = "10px";
-        document.getElementById("mainMenu").style.boxShadow = "0px 0px 5px rgba(0, 0, 0, 0.734);";
+        document.getElementById("mainMenu").style.boxShadow = "0px 0px 5px rgba(0, 0, 0, 0.734)";
 
     
 

@@ -1,3 +1,6 @@
+@using UserLogin.Models
+@model GarageSale
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +9,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Garage Sale</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            alert("hellow Ajax my friend")
+            $("#postForm").html(
+                "<form asp-action='postSale' asp-controller='Home' method='POST'><input asp-for='City' type='text'placeholder='city'><input asp-for='StreetNumber' type='text' placeholder='Street Number'><input type='submit' value='test'></form > "
+            )
+
+
+        });
+
+        function PopulatePage(data) {
+            console.log(data)
+        }
+
+
+
+        $(document).on('submit', 'form', function (e) {
+            e.preventDefault();
+            console.log("hello from")
+            console.log(e.target)
+            $.post($(this).attr('asp-action'), data => PopulatePage(data));
+
+        })
+
+
+    </script>
 </head>
 
 <body>
 
-    <h1>Hello, from for postin a new Garage Sale</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore pariatur laudantium impedit ab vel ipsum, id rem
-        rerum! Illo earum tempore aliquid cumque, debitis odit ea sint tempora culpa ducimus?</p>
+    <h1>Post a garage sale</h1>
+
+    <div class="form-postContainer">
+        <main id="postForm"></main>
+
+    </div>
+
 
 
 </body>
