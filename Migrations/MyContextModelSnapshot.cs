@@ -45,7 +45,6 @@ namespace UserLogin.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreatedAt")
@@ -61,7 +60,6 @@ namespace UserLogin.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("StreetName")
-                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("StreetNumber")

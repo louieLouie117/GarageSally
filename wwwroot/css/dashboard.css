@@ -213,9 +213,16 @@ body{
     
 }
 
+.form-postContainer main form{
+    display: grid;
+    background: red;
+}
+
 
 /* --------------------------------------------- All Garage Sales post */
 
 
-/* map container------------------------------------------ */
+/* from ------------------------------------------ */
+
+
 
