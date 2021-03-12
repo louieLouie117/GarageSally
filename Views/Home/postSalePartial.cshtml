@@ -24,6 +24,14 @@
                 let zipcode = $('#Zipcode').val()
 
 
+                var json = {
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    zipcode: zipcode,
+                }
+
+                console.log(json)
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("PostSaleHandler", "Home")',
@@ -32,8 +40,6 @@
                         streetname: streetname,
                         city: city,
                         zipcode: zipcode,
-
-
                     }
                 })
 

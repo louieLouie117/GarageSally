@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 
+
 // for file upload
 using System.IO;
 using System.Threading.Tasks;
@@ -123,9 +124,10 @@ namespace UserLogin.Controllers
 
 
         [HttpPost("postSale")]
-        public JsonResult PostSaleHandler(GarageSale FromForm)
+        public IActionResult PostSaleHandler(GarageSale FromForm)
         {
 
+            // JsonResult
             System.Console.WriteLine("test button was click");
             System.Console.WriteLine("the backend has been reached");
 
@@ -144,8 +146,10 @@ namespace UserLogin.Controllers
             // _context.Add(FromForm);
             // _context.SaveChanges();
 
-            return Json(new { Status = "success" });
+            return Json(new { Status = "success", FromForm });
         }
+
+
 
 
 
