@@ -122,34 +122,37 @@ namespace UserLogin.Controllers
         // -----------------------------------------------------------end
 
 
-        // Processing From data--------------------------------------------
         [HttpPost("postSale")]
-        public JsonResult PostSale(GarageSale FromForm)
+        public JsonResult PostSaleHandler(GarageSale FromForm)
         {
 
             System.Console.WriteLine("test button was click");
             System.Console.WriteLine("the backend has been reached");
 
-            System.Console.WriteLine("date from form:", FromForm.City);
+            System.Console.WriteLine($"FromForm: {FromForm}");
+            System.Console.WriteLine($"Street #: {FromForm.StreetNumber}");
+            System.Console.WriteLine($"Street name: {FromForm.StreetName}");
+            System.Console.WriteLine($"City: {FromForm.City}");
+            System.Console.WriteLine($"ZipCode: {FromForm.Zipcode}");
 
 
-            GarageSale FromData = FromForm;
 
-            System.Console.WriteLine(FromData);
+
+
 
 
             // _context.Add(FromForm);
             // _context.SaveChanges();
 
-            return Json(FromForm);
+            return Json(new { Status = "success" });
         }
 
 
-        // ------------------------------------------------------------end
 
 
 
-        // Processing Registration and Login-------------------------------------------------
+
+        // Processing From data--------------------------------------------
         [HttpPost("register")]
         public async Task<IActionResult> Redgister(List<IFormFile> files, User FromForm)
         {
