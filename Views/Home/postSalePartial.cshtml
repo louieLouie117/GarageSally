@@ -29,7 +29,7 @@
 
         $(document).on('submit', 'form', function (e) {
             e.preventDefault();
-            console.log("hello from")
+            console.log("hello form",)
             console.log(e.target)
             $.post($(this).attr('asp-action'), data => PopulatePage(data));
 

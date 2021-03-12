@@ -124,16 +124,19 @@ namespace UserLogin.Controllers
 
         // Processing From data--------------------------------------------
         [HttpPost("postSale")]
-        public JsonResult PostSale(GarageSale FromForm)
+        public JsonResult PostSale(GarageSale data)
         {
 
             System.Console.WriteLine("test button was click");
             System.Console.WriteLine("the backend has been reached");
 
-            System.Console.WriteLine("date from form:", FromForm.City);
+            System.Console.WriteLine("data:", data);
+            System.Console.WriteLine("strertNumber:", data.StreetNumber);
+            System.Console.WriteLine("City:", data.City);
 
 
-            GarageSale FromData = FromForm;
+
+            GarageSale FromData = data;
 
             System.Console.WriteLine(FromData);
 
@@ -141,8 +144,36 @@ namespace UserLogin.Controllers
             // _context.Add(FromForm);
             // _context.SaveChanges();
 
-            return Json(FromForm);
+            return Json(new { Status = "success", FromData });
         }
+
+
+        // public IActionResult postSale(GarageSale FromForm)
+        // {
+
+        //     System.Console.WriteLine("test button was click");
+        //     System.Console.WriteLine("the backend has been reached");
+
+        //     System.Console.WriteLine("data:", FromForm);
+        //     System.Console.WriteLine("strertNumber:", FromForm.StreetNumber);
+        //     System.Console.WriteLine("City:", FromForm.City);
+
+
+
+        //     GarageSale FromData = FromForm;
+
+        //     System.Console.WriteLine(FromData);
+
+
+        //     // _context.Add(FromForm);
+        //     // _context.SaveChanges();
+
+        //     // return RedirectToAction("dashboard");
+        //     return Json(new { Status = "success", FromData });
+
+
+        // }
+
 
 
         // ------------------------------------------------------------end
