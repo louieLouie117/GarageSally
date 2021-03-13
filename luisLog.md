@@ -6,3 +6,8 @@ Today I was able to get the registration and login working. I made the registrat
 Friday January 29 2020 
 
 Today I was abel to implement behavior with vanilla javascript to the menu. I will be implementing vanilla javascript to the full app. 
+
+
+Saturday March 03 2021
+
+Today I was able to get Ajax to communicate from the front-end to the back-end and submit to mysql db. 
