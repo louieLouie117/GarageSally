@@ -24,17 +24,21 @@
                 let zipcode = $('#Zipcode').val()
 
 
+                var jsonData = {
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    zipcode: zipcode,
+                }
+
+
+
+                console.log(jsonData)
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("PostSaleHandler", "Home")',
-                    data: {
-                        streetnumber: streetnumber,
-                        streetname: streetname,
-                        city: city,
-                        zipcode: zipcode,
+                    data: jsonData,
 
-
-                    }
                 })
 
             })
@@ -51,7 +55,8 @@
 
     <div class="form-postContainer">
         <main>
-            <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'>
+            <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
                 <input asp-for='StreetNumber' type='text' placeholder='street #:'>
                 <input asp-for='StreetName' type='text' placeholder='Street Name: '>
                 <input asp-for='City' type='text' placeholder='City:'>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 
+
 // for file upload
 using System.IO;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace UserLogin.Controllers
     public class HomeController : Controller
     {
         private MyContext _context;
+
+        public int GarageSaleId { get; private set; }
 
         public HomeController(MyContext context)
         {
@@ -56,6 +59,7 @@ namespace UserLogin.Controllers
             return View("login");
         }
 
+
         [HttpGet("dashboard")]
         public IActionResult dashboard()
         {
@@ -79,6 +83,7 @@ namespace UserLogin.Controllers
 
 
             DashboardWrapper wMod = new DashboardWrapper();
+
 
 
             return View("dashboard", wMod);
@@ -123,9 +128,10 @@ namespace UserLogin.Controllers
 
 
         [HttpPost("postSale")]
-        public JsonResult PostSaleHandler(GarageSale FromForm)
+        public IActionResult PostSaleHandler(GarageSale FromForm)
         {
 
+            // JsonResult
             System.Console.WriteLine("test button was click");
             System.Console.WriteLine("the backend has been reached");
 
@@ -136,16 +142,36 @@ namespace UserLogin.Controllers
             System.Console.WriteLine($"ZipCode: {FromForm.Zipcode}");
 
 
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+
+
+
+            var Entry = new GarageSale
+            {
+                UserId = UserIdInSession,
+                StreetNumber = FromForm.StreetNumber,
+                StreetName = FromForm.StreetName,
+                City = FromForm.City,
+                Zipcode = FromForm.Zipcode,
+                Image = "placeholder.png",
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now
+
+            };
+
+            System.Console.WriteLine($"Entry to be send to db {Entry}");
 
 
 
 
 
-            // _context.Add(FromForm);
-            // _context.SaveChanges();
+            _context.Add(Entry);
+            _context.SaveChanges();
 
-            return Json(new { Status = "success" });
+            return Json(new { Status = "success", FromForm });
         }
+
+
 
 
 
