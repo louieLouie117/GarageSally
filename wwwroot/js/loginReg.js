@@ -65,6 +65,8 @@ const Step2SellerReg = (e) =>{
     document.getElementById("section4SellerReg").style.display = "none";
     document.getElementById("sellerHeading").innerText = "Congratulation, garageSally is available in your area, create your account."
 
+    document.querySelector('#Redgister').innerHTML = "registerSeller"
+
 
 }
 
@@ -111,3 +113,4 @@ const HideLogin = ()=>{
     document.getElementById("logInState").style.transform = "smooth";
 
 }
+

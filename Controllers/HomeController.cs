@@ -235,6 +235,85 @@ namespace UserLogin.Controllers
                     }
                 }
 
+
+                FromForm.AccountType = "Buyer";
+
+                // Add to db
+                _context.Add(FromForm);
+                _context.SaveChanges();
+                // Session
+                HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
+                // Redirect
+                Console.WriteLine("You may contine!");
+                return RedirectToAction("dashboard");
+            }
+            else
+            {
+                Console.WriteLine("Fix your erros!");
+                return View("index", wMod);
+            }
+
+        }
+
+        [HttpPost("registerSeller")]
+        public async Task<IActionResult> registerSeller(List<IFormFile> files, User FromForm)
+        {
+
+            DashboardWrapper wMod = new DashboardWrapper();
+
+            // Check if email is already in db
+            if (_context.Users.Any(u => u.Email == FromForm.Email))
+            {
+                ModelState.AddModelError("Email", "Email already in use!");
+            }
+            // Validations
+            if (ModelState.IsValid)
+            {
+
+                long size = files.Sum(f => f.Length);
+
+                System.Console.WriteLine("here is files:", files);
+                var filePaths = new List<string>();
+                foreach (var formFile in files)
+                {
+                    if (formFile.Length > 0)
+                    {
+                        // TimeStamp
+                        string timeStampMonth = DateTime.Now.Month.ToString("00");
+                        string timeStampDay = DateTime.Now.Day.ToString("00");
+                        string timeStampHour = DateTime.Now.Hour.ToString("00");
+                        string timeStampMinutes = DateTime.Now.Minute.ToString("00");
+                        string timeStampSeconds = DateTime.Now.Second.ToString("00");
+
+                        string timeStamp = $"{timeStampMonth}{timeStampDay}{timeStampHour}{timeStampMinutes}{timeStampSeconds}";
+
+                        //Place to save file
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                         "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
+
+                        // for the db
+                        Console.WriteLine($"Apprentice Name: {FromForm.Username}");
+                        Console.WriteLine($"FileName: {timeStamp}{formFile.FileName}");
+
+                        // Assign name to be saved to the db
+                        string newName = $"{timeStamp}{formFile.FileName}";
+                        FromForm.ProfilePic = newName;
+
+
+                        filePaths.Add(filePath);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await formFile.CopyToAsync(stream);
+                            // #hash password
+                            PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                            FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
+                        }
+                    }
+                }
+
+                FromForm.AccountType = "Seller";
+
+
                 // Add to db
                 _context.Add(FromForm);
                 _context.SaveChanges();
