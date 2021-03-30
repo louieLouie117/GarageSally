@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Garage Sale</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -61,7 +60,7 @@
 
             const LoadData = () => {
                 alert("loading data...");
-                $('#userItems').load("/displayGarageSales #userItems", data => {
+                $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
                     data = JSON.parse(data);
                     console.log("in load", data);
                     RenderData(data);
@@ -72,6 +71,26 @@
                 console.log("user Data", data.data)
                 $.each(data.data, function (i, v) {
                     console.log(v)
+                    console.log("id:", v.garageSaleId);
+
+                    let garageItemId = v.garageSaleId;
+
+
+                    $(`<li id="${garageItemId}">
+
+                    <img src="~/img/Assets/postPlaceholder.png" alt="">
+                    <section>
+                        <p>${garageItemId}</p>
+                    </section>
+                    <aside>
+                        <div id="circleIcon"></div>
+                        <div id="circleIcon"></div>
+                        <div id="circleIcon"></div>
+                    </aside>
+                    </li>`).appendTo("#garageSaleList");
+
+
+
 
                 });
             };
