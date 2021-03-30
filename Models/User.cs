@@ -11,6 +11,8 @@ namespace UserLogin.Models
         [Key]
         public int UserId { get; set; }
 
+        public string AccountType { get; set; }
+
         // [Display(Name = "First Name")]
         // [Required(ErrorMessage = "First name cannot be empty")]
         // [MinLength(2, ErrorMessage = "First name is too short")]

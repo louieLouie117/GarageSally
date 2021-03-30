@@ -32,7 +32,7 @@
 
             </div>
 
-            <form asp-action="Redgister" asp-controller="Home" method="POST" enctype="multipart/form-data">
+            <form asp-action="registerSeller" asp-controller="Home" method="POST" enctype="multipart/form-data">
 
                 @* <span asp-validation-for="FirstName"></span>
                     <input asp-for="FirstName" placeholder="First Name">
@@ -102,6 +102,8 @@
 
                     <span asp-validation-for="City"></span>
                     <input asp-for="City" placeholder="City:">
+                    <input class="hidden" asp-for="AccountType">
+
 
 
                     <footer>

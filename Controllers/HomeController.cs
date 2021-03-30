@@ -127,9 +127,13 @@ namespace UserLogin.Controllers
         // -----------------------------------------------------------end
 
 
-        [HttpPost("postSale")]
-        public IActionResult PostSaleHandler(GarageSale FromForm)
+
+
+        [HttpPost("PostGarageSaleHandler")]
+        public IActionResult PostGarageSaleHandler(GarageSale FromForm)
         {
+
+            System.Console.WriteLine("you have reached the backend of post garage sale.");
 
             // JsonResult
             System.Console.WriteLine("test button was click");
@@ -143,9 +147,6 @@ namespace UserLogin.Controllers
 
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
-
-
-
             var Entry = new GarageSale
             {
                 UserId = UserIdInSession,
@@ -161,17 +162,29 @@ namespace UserLogin.Controllers
 
             System.Console.WriteLine($"Entry to be send to db {Entry}");
 
-
-
-
-
             _context.Add(Entry);
             _context.SaveChanges();
 
-            return Json(new { Status = "success", FromForm });
+            return Json(new { Status = "success" });
         }
 
 
+        [HttpGet("displayGarageSales")]
+
+        public JsonResult displayGarageSales()
+        {
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+
+            DashboardWrapper wMode = new DashboardWrapper();
+
+            List<GarageSale> garageSaleItems = _context.GarageSales
+            .Where(us => us.UserId == UserIdInSession)
+            .ToList();
+
+
+            return Json(new { data = garageSaleItems });
+
+        }
 
 
 
@@ -234,6 +247,85 @@ namespace UserLogin.Controllers
                         }
                     }
                 }
+
+
+                FromForm.AccountType = "Buyer";
+
+                // Add to db
+                _context.Add(FromForm);
+                _context.SaveChanges();
+                // Session
+                HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
+                // Redirect
+                Console.WriteLine("You may contine!");
+                return RedirectToAction("dashboard");
+            }
+            else
+            {
+                Console.WriteLine("Fix your erros!");
+                return View("index", wMod);
+            }
+
+        }
+
+        [HttpPost("registerSeller")]
+        public async Task<IActionResult> registerSeller(List<IFormFile> files, User FromForm)
+        {
+
+            DashboardWrapper wMod = new DashboardWrapper();
+
+            // Check if email is already in db
+            if (_context.Users.Any(u => u.Email == FromForm.Email))
+            {
+                ModelState.AddModelError("Email", "Email already in use!");
+            }
+            // Validations
+            if (ModelState.IsValid)
+            {
+
+                long size = files.Sum(f => f.Length);
+
+                System.Console.WriteLine("here is files:", files);
+                var filePaths = new List<string>();
+                foreach (var formFile in files)
+                {
+                    if (formFile.Length > 0)
+                    {
+                        // TimeStamp
+                        string timeStampMonth = DateTime.Now.Month.ToString("00");
+                        string timeStampDay = DateTime.Now.Day.ToString("00");
+                        string timeStampHour = DateTime.Now.Hour.ToString("00");
+                        string timeStampMinutes = DateTime.Now.Minute.ToString("00");
+                        string timeStampSeconds = DateTime.Now.Second.ToString("00");
+
+                        string timeStamp = $"{timeStampMonth}{timeStampDay}{timeStampHour}{timeStampMinutes}{timeStampSeconds}";
+
+                        //Place to save file
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                         "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
+
+                        // for the db
+                        Console.WriteLine($"Apprentice Name: {FromForm.Username}");
+                        Console.WriteLine($"FileName: {timeStamp}{formFile.FileName}");
+
+                        // Assign name to be saved to the db
+                        string newName = $"{timeStamp}{formFile.FileName}";
+                        FromForm.ProfilePic = newName;
+
+
+                        filePaths.Add(filePath);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await formFile.CopyToAsync(stream);
+                            // #hash password
+                            PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                            FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
+                        }
+                    }
+                }
+
+                FromForm.AccountType = "Seller";
+
 
                 // Add to db
                 _context.Add(FromForm);
