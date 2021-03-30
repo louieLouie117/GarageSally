@@ -1,3 +1,6 @@
+@using UserLogin.Models
+@model GarageSale
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +9,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Garage Sale</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#postForm').submit(function (event) {
+                event.preventDefault();
+                alert('button test ajax was click')
+
+                let streetnumber = $('#StreetNumber').val()
+                let streetname = $('#StreetName').val()
+                let city = $('#City').val()
+                let zipcode = $('#Zipcode').val()
+
+
+                var jsonData = {
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    zipcode: zipcode,
+                }
+
+
+
+                console.log(jsonData)
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PostSaleHandler", "Home")',
+                    data: jsonData,
+
+                })
+
+            })
+
+        })
+
+
+    </script>
 </head>
 
 <body>
 
-    <h1>Hello, from for postin a new Garage Sale</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore pariatur laudantium impedit ab vel ipsum, id rem
-        rerum! Illo earum tempore aliquid cumque, debitis odit ea sint tempora culpa ducimus?</p>
+    <h1>Post a garage sale</h1>
+
+    <div class="form-postContainer">
+        <main>
+            <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                <input asp-for='StreetNumber' type='text' placeholder='street #:'>
+                <input asp-for='StreetName' type='text' placeholder='Street Name: '>
+                <input asp-for='City' type='text' placeholder='City:'>
+                <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+
+                @* <button type="button" id="submitForm">test ajax</button> *@
+
+                <input type="submit" value="test ajax">
+            </form>
+
+
+        </main>
+
+    </div>
+
 
 
 </body>

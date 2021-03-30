@@ -9,18 +9,39 @@ body{
 /* placement of container on the gird */
 
 .profile-container{
-    background: whitesmoke;
+    display: grid;
+    background: white;
+    box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.501);
     grid-row: 1/2;
     grid-column: 1/2;
     height: 100vh;
+    width: 43vh;
     z-index: 100;
-    display: none;
+    align-content: flex-start;
+    margin-left: -1000px;
+    padding:30px;
 
 }
+
+.profile-container img{
+    width: 100px;
+    height: 100px;
+}
+
+.profile-container button{
+    width: 150px;
+    height: 50px;
+    color: #B936D2;
+    text-align: left;
+    
+}
+
+
 
 
 .menu-container button{
     color: white;
+
 
 }
 
@@ -197,9 +218,16 @@ body{
     
 }
 
+.form-postContainer main form{
+    display: grid;
+    background: red;
+}
+
 
 /* --------------------------------------------- All Garage Sales post */
 
 
-/* map container------------------------------------------ */
+/* from ------------------------------------------ */
+
+
 

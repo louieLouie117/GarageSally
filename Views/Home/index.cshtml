@@ -30,17 +30,23 @@
         <header>
             <h1>Garage Sally</h1>
             <picture>
+                <source media="(min-width: 1100px)" srcset="~/img/Assets/logoDesktop.png" />
                 <img src="~/img/Assets/logo.png" alt="">
             </picture>
 
-            <p>find, post, and share sales.</p>
+            <p>find, post, and share.</p>
 
             <footer>
-                <button>sign in</button>
+                <button onclick="ShowLogin()">sign in</button>
             </footer>
 
         </header>
-        <partial name="loginPartial" model="@Model.LoginUser" view-data="ViewData" />
+        <div class="login-container" id="logInState">
+
+            <button onclick="HideLogin()">Close</button>
+
+            <partial name="loginPartial" model="@Model.LoginUser" view-data="ViewData" />
+        </div>
 
         <main>
             <section class="freeAccount-container">
