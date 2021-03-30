@@ -147,9 +147,6 @@ namespace UserLogin.Controllers
 
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
-
-
-
             var Entry = new GarageSale
             {
                 UserId = UserIdInSession,
@@ -165,10 +162,6 @@ namespace UserLogin.Controllers
 
             System.Console.WriteLine($"Entry to be send to db {Entry}");
 
-
-
-
-
             _context.Add(Entry);
             _context.SaveChanges();
 
@@ -176,6 +169,22 @@ namespace UserLogin.Controllers
         }
 
 
+        [HttpGet("displayGarageSales")]
+
+        public JsonResult displayGarageSales()
+        {
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+
+            DashboardWrapper wMode = new DashboardWrapper();
+
+            List<GarageSale> garageSaleItems = _context.GarageSales
+            .Where(us => us.UserId == UserIdInSession)
+            .ToList();
+
+
+            return Json(new { data = garageSaleItems });
+
+        }
 
 
 

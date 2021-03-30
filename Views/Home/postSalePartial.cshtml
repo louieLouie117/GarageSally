@@ -46,15 +46,34 @@
 
             })
 
-             const SuccessStatus = (result) => {
+            const SuccessStatus = (result) => {
                 console.log("Success...", result);
-            
+                LoadData();
+
             };
             const ErrorStatus = (xhr, status, strErr) => {
                 console.log("There was an error!");
             };
             const CompleteStatus = (xhr, status) => {
                 console.log("Ajax has completed...");
+            };
+
+
+            const LoadData = () => {
+                alert("loading data...");
+                $('#userItems').load("/displayGarageSales #userItems", data => {
+                    data = JSON.parse(data);
+                    console.log("in load", data);
+                    RenderData(data);
+                    @* data = $.parseJSON(data); deprecated*@
+                });
+            };
+            const RenderData = (data) => {
+                console.log("user Data", data.data)
+                $.each(data.data, function (i, v) {
+                    console.log(v)
+
+                });
             };
 
         })
@@ -80,9 +99,12 @@
 
                 <input type="submit" value="test ajax">
             </form>
+            <button id="userItems">fetch data</button>
 
 
         </main>
+
+
 
     </div>
 
