@@ -13,6 +13,7 @@
 
 <body>
     <div class="profile-container" id="profile">
+        <button onclick="profile()"> &lt; back</button>
         <h1>Hello @ViewBag.ToDisplay.Username</h1>
         <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="">
 
@@ -37,7 +38,11 @@
             </li>
             }
             </ul> *@
+        <partial name="postSalePartial" />
+
     </div>
+
+
 
 </body>
 

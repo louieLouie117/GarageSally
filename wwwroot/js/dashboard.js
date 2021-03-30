@@ -8,12 +8,13 @@ const showMainMenu =(e) => {
         console.log(e);
         if (menu === "close") {     
         document.getElementById("mainMenu").style.height = "100vh";
-        document.getElementById("mainMenu").style.width = "45vh";
+        document.getElementById("mainMenu").style.width = "43vh";
         document.getElementById("mainMenu").style.margin = "0px";
         document.getElementById("mainMenu").style.borderRadius = "0";
-        document.getElementById("mainMenu").style.transition = "smooth";
+        document.getElementById("mainMenu").style.transform = "smooth";
         document.getElementById("mainMenu").style.transition = ".5s";
         document.getElementById("mainMenu").style.padding = "30px";
+        document.getElementById("mainMenu").style.boxShadow = "5px 0px 20px rgba(0, 0, 0, 0.501)";
         console.log("inside the if stament",menu);
         return (menu = "open");
 
@@ -23,9 +24,13 @@ const showMainMenu =(e) => {
         document.getElementById("mainMenu").style.width = "40px";
         document.getElementById("mainMenu").style.margin = "20px";
         document.getElementById("mainMenu").style.borderRadius = "40px";
-        document.getElementById("mainMenu").style.transition = "smooth";
+        document.getElementById("mainMenu").style.transform = "smooth";
         document.getElementById("mainMenu").style.transition = ".5s";
         document.getElementById("mainMenu").style.padding = "10px";
+        document.getElementById("mainMenu").style.boxShadow = "0px 0px 5px rgba(0, 0, 0, 0.734)";
+
+    
+
         return (menu = "close");
 
     }
@@ -38,16 +43,26 @@ let profilePage = "close"
 const profile = (e) =>{
 
     if (profilePage === "close") { 
-    document.getElementById("profile").style.display = "grid";
+    document.getElementById("profile").style.marginLeft = "0";
+    document.getElementById("profile").style.transform = "smooth";
+    document.getElementById("profile").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
     return (profilePage = "open")
 
     } else{
-    document.getElementById("profile").style.display = "none";
+    document.getElementById("profile").style.marginLeft = "-700px";
+    document.getElementById("profile").style.transform = "smooth";
+    document.getElementById("profile").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
     return (profilePage = "close");
     }
-Page
+// Page
 
 }
+
 
 
 
