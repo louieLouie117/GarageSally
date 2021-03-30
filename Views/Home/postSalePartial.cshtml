@@ -29,19 +29,33 @@
                     streetname: streetname,
                     city: city,
                     zipcode: zipcode,
+
+
                 }
-
-
 
                 console.log(jsonData)
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("PostSaleHandler", "Home")',
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
                     data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
 
                 })
 
             })
+
+             const SuccessStatus = (result) => {
+                console.log("Success...", result);
+            
+            };
+            const ErrorStatus = (xhr, status, strErr) => {
+                console.log("There was an error!");
+            };
+            const CompleteStatus = (xhr, status) => {
+                console.log("Ajax has completed...");
+            };
 
         })
 

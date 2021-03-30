@@ -127,9 +127,13 @@ namespace UserLogin.Controllers
         // -----------------------------------------------------------end
 
 
-        [HttpPost("postSale")]
-        public IActionResult PostSaleHandler(GarageSale FromForm)
+
+
+        [HttpPost("PostGarageSaleHandler")]
+        public IActionResult PostGarageSaleHandler(GarageSale FromForm)
         {
+
+            System.Console.WriteLine("you have reached the backend of post garage sale.");
 
             // JsonResult
             System.Console.WriteLine("test button was click");
@@ -168,7 +172,7 @@ namespace UserLogin.Controllers
             _context.Add(Entry);
             _context.SaveChanges();
 
-            return Json(new { Status = "success", FromForm });
+            return Json(new { Status = "success" });
         }
 
 
