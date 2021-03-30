@@ -18,9 +18,14 @@ body{
     width: 43vh;
     z-index: 100;
     align-content: flex-start;
-    margin-left: 0px;
+    margin-left: -1000px;
     padding:30px;
 
+}
+
+.profile-container img{
+    width: 100px;
+    height: 100px;
 }
 
 .profile-container button{
