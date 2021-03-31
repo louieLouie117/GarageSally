@@ -56,13 +56,16 @@ body{
 .map-container img {
     height: 97%;
     width: 100vw;
+    -webkit-filter: blur(8px);
+    z-index: 0;
 }
 
 .allGaragePost-container{
     grid-row: 1/2;
     grid-column: 1/2;
-    align-self: flex-end;
     /* background: rgba(0, 0, 0, 0.549); */
+    z-index: 0;
+    margin-top: 90px;
 
 }
 
@@ -150,7 +153,8 @@ body{
 .cardItems {
     display: grid;
     /* background: rgba(0, 0, 0, 0.2); */
-    height: auto;
+    height: 97vh;
+    overflow: scroll;
     margin: 0;
     padding: 0;
     /* box-shadow: -5px 10px 13px rgba(0, 0, 0, 0.377); */
@@ -161,6 +165,7 @@ body{
       font: 1em sans-serif;
   }
 
+/* Save for later use with maps
 .allGaragePost-container ul {
     display: flex;
     float: left;
@@ -169,9 +174,15 @@ body{
     scrollbar-width: none;
     padding: 0px;
     margin: 0px;
+} */
 
 
+.allGaragePost-container ul {
+    display: grid;
+    padding: 0px;
+    margin: 0px;
 }
+
 
 .allGaragePost-container ul li {
   /* border: 2px white solid; */
@@ -185,7 +196,9 @@ body{
   margin-bottom: 20px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.226);
   width: 320px;
+  height: 120px;
   justify-items: center;
+  justify-self: center;
   align-items: center;
 
 }
@@ -222,6 +235,21 @@ body{
 .form-postContainer main form{
     display: grid;
     background: red;
+}
+
+
+@media screen and (min-width: 750px){
+    .allGaragePost-container ul {
+        grid-template-columns: repeat(2, 1fr);    
+        }
+    }
+
+
+
+@media screen and (min-width: 1100px){
+.allGaragePost-container ul {
+    grid-template-columns: repeat(4, 1fr);    
+    }
 }
 
 

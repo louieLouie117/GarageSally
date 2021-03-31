@@ -24,6 +24,53 @@
         gtag('config', 'G-WGFK1GC4RE');
     </script>
 
+    <script>
+        $(document).ready(function () {
+
+            $.get("/displayGarageSales", data => {
+                RenderData(data);
+            });
+
+            const LoadData = () => {
+                alert("loading data...");
+                $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
+                    data = JSON.parse(data);
+                    console.log("in load", data);
+                    RenderData(data);
+                    @* data = $.parseJSON(data); deprecated*@
+                });
+            };
+            const RenderData = (data) => {
+                console.log("user Data", data.data)
+                $.each(data.data, function (i, v) {
+                    console.log(v)
+                    console.log("id:", v.garageSaleId);
+
+                    let garageItemId = v.garageSaleId;
+
+
+                    $(`<li id="${garageItemId}">
+
+                    <img src="~/img/Assets/postPlaceholder.png" alt="">
+                    <section>
+                        <p>${garageItemId}</p>
+                    </section>
+                    <aside>
+                        <div id="circleIcon"></div>
+                        <div id="circleIcon"></div>
+                        <div id="circleIcon"></div>
+                    </aside>
+                    </li>`).appendTo("#garageSaleList");
+
+
+
+
+                });
+            };
+
+        })
+    </script>
+
 </head>
 
 <body>
