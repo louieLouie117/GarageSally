@@ -36,7 +36,7 @@
                 console.log("user Data", data.data)
                 $.each(data.data, function (i, v) {
                     console.log(v)
-                    console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.zipcode);
+                    console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.state, v.zipcode);
 
                     let garageItemId = v.garageSaleId;
 
@@ -49,14 +49,14 @@
                             <p>${v.streetNumber} ${v.streetName} </p>
                             <p> ${v.city} ${v.zipcode}</p>
                         </main>
-                         <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, Washington, ${v.zipcode}" target="blank">
+                         <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank">
                         <button>Get Directions</button></a>
                     </section>
                     @* <aside>
-                            <div id="circleIcon"></div>
-                            <div id="circleIcon"></div>
-                            <div id="circleIcon"></div>
-                        </aside> *@
+                                        <div id="circleIcon"></div>
+                                        <div id="circleIcon"></div>
+                                        <div id="circleIcon"></div>
+                                    </aside> *@
                     </li>`).prependTo("#garageSaleList");
 
 

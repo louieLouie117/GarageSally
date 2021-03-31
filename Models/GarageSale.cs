@@ -21,7 +21,7 @@ namespace UserLogin.Models
         // [Required]
         public string City { get; set; }
 
-        // public string State { get; set; }
+        public string State { get; set; }
 
         // [Required]
         public int Zipcode { get; set; }
@@ -35,6 +35,10 @@ namespace UserLogin.Models
         public DateTime EndTime { get; set; }
 
         public string Image { get; set; }
+
+        public int VisitedCount { get; set; }
+
+        public int CheckInCount { get; set; }
 
         public int UserId { get; set; }
 
