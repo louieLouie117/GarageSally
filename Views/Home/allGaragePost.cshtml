@@ -45,18 +45,19 @@
 
                     @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
                     <section>
-                        <main>
+                        <address>
                             <p>${v.streetNumber} ${v.streetName} </p>
                             <p> ${v.city} ${v.zipcode}</p>
+                        </address>
+
+                        <main>
+                            <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
+                            <button>Check In</button>
+                            <p>visited 20</p>
+                            <p>check in 5</p>
                         </main>
-                         <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank">
-                        <button>Get Directions</button></a>
                     </section>
-                    @* <aside>
-                                        <div id="circleIcon"></div>
-                                        <div id="circleIcon"></div>
-                                        <div id="circleIcon"></div>
-                                    </aside> *@
+
                     </li>`).prependTo("#garageSaleList");
 
 
