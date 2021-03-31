@@ -44,6 +44,9 @@ namespace UserLogin.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("CheckInCount")
+                        .HasColumnType("int");
+
                     b.Property<string>("City")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -59,6 +62,9 @@ namespace UserLogin.Migrations
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("State")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("StreetName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -69,6 +75,9 @@ namespace UserLogin.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VisitedCount")
                         .HasColumnType("int");
 
                     b.Property<int>("Zipcode")
