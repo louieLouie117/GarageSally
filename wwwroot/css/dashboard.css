@@ -49,12 +49,12 @@ body{
 .map-container{
     grid-row: 1/2;
     grid-column: 1/2;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 
 .map-container img {
-    height: 97%;
+    /* height: 97%; */
     width: 100vw;
     -webkit-filter: blur(8px);
     z-index: 0;
@@ -92,7 +92,8 @@ body{
     /* margin-left: -500px; */
 
 }
-.menu-container h2, a{
+.menu-container h2, 
+.menu-container a{
     font: 1.4em sans-serif;
     color: white;
 }
@@ -161,9 +162,28 @@ body{
     width: auto;
 
   }
-  .cardItems li section p{
-      font: 1em sans-serif;
+
+  .cardItems section{
+      display: grid;
+      row-gap: 10px;
+      width: auto;
   }
+  .cardItems li section a button{
+      color: white;
+      background: #B936D2;
+      font: 1.2em sans-serif;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 20px;
+      width: 200px
+  }
+
+  .cardItems li section main p{
+      font: 1.3em sans-serif;
+      color: #B936D2;
+  }
+
+  
 
 /* Save for later use with maps
 .allGaragePost-container ul {
@@ -187,16 +207,15 @@ body{
 .allGaragePost-container ul li {
   /* border: 2px white solid; */
   display: grid;
-  grid-template-columns: 100px 180px 40px ;
+  grid-template-columns:  1fr ;
   grid-template-rows: auto;
   background: white;
-  margin-left: 20px;
   border-radius: 25px;
-  margin-top: 20px;
   margin-bottom: 20px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.226);
-  width: 320px;
+  width: 310px;
   height: 120px;
+  padding: 10px;
   justify-items: center;
   justify-self: center;
   align-items: center;
@@ -205,7 +224,7 @@ body{
 
 
 .allGaragePost-container ul li p {
-    width: 130px;
+    margin: 0;
 }
 
 .allGaragePost-container>picture img {
@@ -251,6 +270,20 @@ body{
     grid-template-columns: repeat(4, 1fr);    
     }
 }
+
+
+/* @media(screen-spanning: single-fold-vertical) {
+    .allGaragePost-container ul {
+        background: red;
+        grid-template-columns: repeat(2, 1fr) 150px repeat(2, 1fr);    
+        }
+ }
+
+ @media (screen-spanning: single-fold-vertical), (screen-spanning: single-fold-horizontal) {
+     ul  {
+       background-color: green;
+    }
+ } */
 
 
 /* --------------------------------------------- All Garage Sales post */

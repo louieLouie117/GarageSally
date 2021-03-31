@@ -75,19 +75,18 @@
 
                     let garageItemId = v.garageSaleId;
 
-
                     $(`<li id="${garageItemId}">
 
-                    <img src="~/img/Assets/postPlaceholder.png" alt="">
+                    @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
                     <section>
-                        <p>${garageItemId}</p>
+                        <a>${v.streetNumber} ${v.streetName} ${v.city} ${v.zipcode}</a>
                     </section>
                     <aside>
                         <div id="circleIcon"></div>
                         <div id="circleIcon"></div>
                         <div id="circleIcon"></div>
                     </aside>
-                    </li>`).appendTo("#garageSaleList");
+                    </li>`).prependTo("#garageSaleList");
 
 
 
@@ -112,6 +111,7 @@
                 <input asp-for='StreetNumber' type='text' placeholder='street #:'>
                 <input asp-for='StreetName' type='text' placeholder='Street Name: '>
                 <input asp-for='City' type='text' placeholder='City:'>
+                <input asp-for='State' type='text' placeholder='State:'>
                 <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
 
                 @* <button type="button" id="submitForm">test ajax</button> *@

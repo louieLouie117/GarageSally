@@ -16,6 +16,57 @@
 
         gtag('config', 'G-WGFK1GC4RE');
     </script>
+    <script>
+        $(document).ready(function () {
+
+            $.get("/displayGarageSales", data => {
+                RenderData(data);
+            });
+
+            const LoadData = () => {
+                alert("loading data...");
+                $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
+                    data = JSON.parse(data);
+                    console.log("in load", data);
+                    RenderData(data);
+                    @* data = $.parseJSON(data); deprecated*@
+                });
+            };
+            const RenderData = (data) => {
+                console.log("user Data", data.data)
+                $.each(data.data, function (i, v) {
+                    console.log(v)
+                    console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.zipcode);
+
+                    let garageItemId = v.garageSaleId;
+
+
+                    $(`<li id="${garageItemId}">
+
+                    @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
+                    <section>
+                        <main>
+                            <p>${v.streetNumber} ${v.streetName} </p>
+                            <p> ${v.city} ${v.zipcode}</p>
+                        </main>
+                         <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, Washington, ${v.zipcode}" target="blank">
+                        <button>Get Directions</button></a>
+                    </section>
+                    @* <aside>
+                            <div id="circleIcon"></div>
+                            <div id="circleIcon"></div>
+                            <div id="circleIcon"></div>
+                        </aside> *@
+                    </li>`).prependTo("#garageSaleList");
+
+
+
+
+                });
+            };
+
+        })
+    </script>
 
 </head>
 
@@ -23,17 +74,17 @@
     <div class="allGaragePost-container">
         <div class="cardItems">
             <ul id="garageSaleList">
-                <li>
+                @* <li>
                     <img src="~/img/Assets/postPlaceholder.png" alt="">
                     <section>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
                     </section>
                     <aside>
-                        <div id="circleIcon"></div>
-                        <div id="circleIcon"></div>
-                        <div id="circleIcon"></div>
+                    <div id="circleIcon"></div>
+                    <div id="circleIcon"></div>
+                    <div id="circleIcon"></div>
                     </aside>
-                </li>
+                    </li> *@
 
 
             </ul>
