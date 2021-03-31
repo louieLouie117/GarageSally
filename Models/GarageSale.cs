@@ -21,6 +21,8 @@ namespace UserLogin.Models
         // [Required]
         public string City { get; set; }
 
+        public string State { get; set; }
+
         // [Required]
         public int Zipcode { get; set; }
 

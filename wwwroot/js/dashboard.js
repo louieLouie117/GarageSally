@@ -7,7 +7,7 @@ const showMainMenu =(e) => {
 
         console.log(e);
         if (menu === "close") {     
-        document.getElementById("mainMenu").style.height = "100vh";
+        document.getElementById("mainMenu").style.height = "95vh";
         document.getElementById("mainMenu").style.width = "43vh";
         document.getElementById("mainMenu").style.margin = "0px";
         document.getElementById("mainMenu").style.borderRadius = "0";
