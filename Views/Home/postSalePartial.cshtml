@@ -20,6 +20,7 @@
                 let streetnumber = $('#StreetNumber').val()
                 let streetname = $('#StreetName').val()
                 let city = $('#City').val()
+                let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
 
 
@@ -27,6 +28,7 @@
                     streetnumber: streetnumber,
                     streetname: streetname,
                     city: city,
+                    state: state,
                     zipcode: zipcode,
 
 
@@ -111,7 +113,7 @@
                 <input asp-for='StreetNumber' type='text' placeholder='street #:'>
                 <input asp-for='StreetName' type='text' placeholder='Street Name: '>
                 <input asp-for='City' type='text' placeholder='City:'>
-                @* <input asp-for='State' type='text' placeholder='State:'> *@
+                <input asp-for='State' type='text' placeholder='State:'>
                 <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
 
                 @* <button type="button" id="submitForm">test ajax</button> *@

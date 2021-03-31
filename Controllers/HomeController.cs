@@ -153,6 +153,7 @@ namespace UserLogin.Controllers
                 StreetNumber = FromForm.StreetNumber,
                 StreetName = FromForm.StreetName,
                 City = FromForm.City,
+                State = FromForm.State,
                 Zipcode = FromForm.Zipcode,
                 Image = "placeholder.png",
                 StartTime = DateTime.Now,
