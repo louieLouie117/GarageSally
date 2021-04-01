@@ -64,6 +64,31 @@ const profile = (e) =>{
 }
 
 
+let postSaleEvent = "close"
+
+const postSalePartialHandler = (e) =>{
+
+    if (postSaleEvent === "close") { 
+    document.getElementById("postSalePartial").style.marginLeft = "0";
+    document.getElementById("postSalePartial").style.transform = "smooth";
+    document.getElementById("postSalePartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (postSaleEvent = "open")
+
+    } else{
+    document.getElementById("postSalePartial").style.marginLeft = "-700px";
+    document.getElementById("postSalePartial").style.transform = "smooth";
+    document.getElementById("postSalePartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (postSaleEvent = "close");
+    }
+// Page
+
+}
+
 
 
 

@@ -110,32 +110,37 @@
 
 <body>
 
-    <h1>Post a garage sale</h1>
+    <div class="postSale-container" id="postSalePartial">
 
-    <div class="form-postContainer">
-        <main>
-            <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
-                <input asp-for='StreetNumber' type='text' placeholder='street #:'>
-                <input asp-for='StreetName' type='text' placeholder='Street Name: '>
-                <input asp-for='City' type='text' placeholder='City:'>
-                <input asp-for='State' type='text' placeholder='State:'>
-                <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+        <button onclick="postSalePartialHandler()"> &lt; back</button>
 
-                @* <button type="button" id="submitForm">test ajax</button> *@
-
-                <input type="submit" value="test ajax">
-            </form>
-            <button id="userItems">fetch data</button>
+        <h1>Post a garage sale</h1>
 
 
-        </main>
+        <div class="form-postContainer">
+            <main>
+                <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
+                    asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <input asp-for='StreetNumber' type='text' placeholder='street #:'>
+                    <input asp-for='StreetName' type='text' placeholder='Street Name: '>
+                    <input asp-for='City' type='text' placeholder='City:'>
+                    <input asp-for='State' type='text' placeholder='State:'>
+                    <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+
+                    @* <button type="button" id="submitForm">test ajax</button> *@
+
+                    <input type="submit" value="test ajax">
+                </form>
+                <button id="userItems">fetch data</button>
 
 
+            </main>
+
+
+
+        </div>
 
     </div>
-
-
 
 </body>
 
