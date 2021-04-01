@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Garage Sale</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -21,6 +20,7 @@
                 let streetnumber = $('#StreetNumber').val()
                 let streetname = $('#StreetName').val()
                 let city = $('#City').val()
+                let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
 
 
@@ -28,20 +28,79 @@
                     streetnumber: streetnumber,
                     streetname: streetname,
                     city: city,
+                    state: state,
                     zipcode: zipcode,
+
+
                 }
-
-
 
                 console.log(jsonData)
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("PostSaleHandler", "Home")',
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
                     data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
 
                 })
 
             })
+
+            const SuccessStatus = (result) => {
+                console.log("Success...", result);
+                LoadData();
+
+            };
+            const ErrorStatus = (xhr, status, strErr) => {
+                console.log("There was an error!");
+            };
+            const CompleteStatus = (xhr, status) => {
+                console.log("Ajax has completed...");
+            };
+
+
+            const LoadData = () => {
+                alert("loading data...");
+                $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
+                    data = JSON.parse(data);
+                    console.log("in load", data);
+                    RenderData(data);
+                    @* data = $.parseJSON(data); deprecated*@
+                });
+            };
+            const RenderData = (data) => {
+                console.log("user Data", data.data)
+                $.each(data.data, function (i, v) {
+                    console.log(v)
+                    console.log("id:", v.garageSaleId);
+
+                    let garageItemId = v.garageSaleId;
+
+                    $(`<li id="${garageItemId}">
+
+                    @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
+                    <section>
+                        <address>
+                            <p>${v.streetNumber} ${v.streetName} </p>
+                            <p> ${v.city} ${v.zipcode}</p>
+                        </address>
+
+                        <main>
+                            <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
+                            <button>Check In</button>
+                            <p>visited 20</p>
+                            <p>check in 5</p>
+                        </main>
+                    </section>
+
+                    </li>`).prependTo("#garageSaleList");
+
+
+
+
+                });
+            };
 
         })
 
@@ -51,28 +110,37 @@
 
 <body>
 
-    <h1>Post a garage sale</h1>
+    <div class="postSale-container" id="postSalePartial">
 
-    <div class="form-postContainer">
-        <main>
-            <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
-                <input asp-for='StreetNumber' type='text' placeholder='street #:'>
-                <input asp-for='StreetName' type='text' placeholder='Street Name: '>
-                <input asp-for='City' type='text' placeholder='City:'>
-                <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+        <button onclick="postSalePartialHandler()"> &lt; back</button>
 
-                @* <button type="button" id="submitForm">test ajax</button> *@
-
-                <input type="submit" value="test ajax">
-            </form>
+        <h1>Post a garage sale</h1>
 
 
-        </main>
+        <div class="form-postContainer">
+            <main>
+                <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
+                    asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <input asp-for='StreetNumber' type='text' placeholder='street #:'>
+                    <input asp-for='StreetName' type='text' placeholder='Street Name: '>
+                    <input asp-for='City' type='text' placeholder='City:'>
+                    <input asp-for='State' type='text' placeholder='State:'>
+                    <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+
+                    @* <button type="button" id="submitForm">test ajax</button> *@
+
+                    <input type="submit" value="test ajax">
+                </form>
+                <button id="userItems">fetch data</button>
+
+
+            </main>
+
+
+
+        </div>
 
     </div>
-
-
 
 </body>
 

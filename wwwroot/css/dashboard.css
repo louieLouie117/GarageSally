@@ -8,14 +8,15 @@ body{
 
 /* placement of container on the gird */
 
-.profile-container{
+.profile-container, 
+.postSale-container{
     display: grid;
     background: white;
     box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.501);
     grid-row: 1/2;
     grid-column: 1/2;
     height: 100vh;
-    width: 43vh;
+    width: 37vh;
     z-index: 100;
     align-content: flex-start;
     margin-left: -1000px;
@@ -23,12 +24,18 @@ body{
 
 }
 
-.profile-container img{
-    width: 100px;
-    height: 100px;
+
+
+.profile-container img, 
+.postSale-container img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
-.profile-container button{
+.profile-container button, 
+.postSale-container button{
     width: 150px;
     height: 50px;
     color: #B936D2;
@@ -48,20 +55,23 @@ body{
 .map-container{
     grid-row: 1/2;
     grid-column: 1/2;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 
 .map-container img {
-    height: 97%;
+    /* height: 97%; */
     width: 100vw;
+    -webkit-filter: blur(8px);
+    z-index: 0;
 }
 
 .allGaragePost-container{
     grid-row: 1/2;
     grid-column: 1/2;
-    align-self: flex-end;
     /* background: rgba(0, 0, 0, 0.549); */
+    z-index: 0;
+    margin-top: 90px;
 
 }
 
@@ -88,7 +98,8 @@ body{
     /* margin-left: -500px; */
 
 }
-.menu-container h2, a{
+.menu-container h2, 
+.menu-container a{
     font: 1.4em sans-serif;
     color: white;
 }
@@ -137,6 +148,36 @@ body{
 }
 
 
+.menuList-container{
+    display: grid;
+    grid-template-rows: 70px;
+}
+
+.menuList-container header{
+    display: grid;
+    grid-template-columns: 70px 130px 1fr;
+    align-items: center;
+}
+
+.menuList-container header img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+}
+
+.menuList-container header h2{
+    justify-self: center;
+    cursor: pointer;
+}
+
+.menuList-container header button{
+    font: 1.3em sans-serif;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    border: solid white 2px;
+}
+
 
 /* All Garage Sales post--------------------------------------------- */
 
@@ -149,17 +190,52 @@ body{
 .cardItems {
     display: grid;
     /* background: rgba(0, 0, 0, 0.2); */
-    height: auto;
+    /* height: 97vh; */
+    overflow: scroll;
     margin: 0;
     padding: 0;
     /* box-shadow: -5px 10px 13px rgba(0, 0, 0, 0.377); */
     width: auto;
 
   }
-  .cardItems li section p{
-      font: 1em sans-serif;
+
+  .cardItems section{
+      display: grid;
+      row-gap: 10px;
+      width: auto;
+  }
+  .cardItems li section button{
+      color: white;
+      background: #B936D2;
+      font: 1.2em sans-serif;
+      cursor: pointer;
+      padding: 0  10px;
+      height: 40px;
+      border-radius: 10px;
+      width: auto;
   }
 
+  .cardItems li section main{
+      row-gap: 2px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 5px;
+      justify-items: center;
+  }
+
+  .cardItems li section main p{
+      font: 1em sans-serif;
+      color: rgb(177, 177, 177);
+  }
+
+  .cardItems li section address p{
+      font: 1.3em sans-serif;
+      color: #B936D2;
+  }
+
+  
+
+/* Save for later use with maps
 .allGaragePost-container ul {
     display: flex;
     float: left;
@@ -168,30 +244,37 @@ body{
     scrollbar-width: none;
     padding: 0px;
     margin: 0px;
+} */
 
 
+.allGaragePost-container ul {
+    display: grid;
+    padding: 0px;
+    margin: 0px;
 }
+
 
 .allGaragePost-container ul li {
   /* border: 2px white solid; */
   display: grid;
-  grid-template-columns: 100px 180px 40px ;
+  grid-template-columns:  1fr ;
   grid-template-rows: auto;
   background: white;
-  margin-left: 20px;
   border-radius: 25px;
-  margin-top: 20px;
   margin-bottom: 20px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.226);
-  width: 320px;
+  width: 310px;
+  height: 120px;
+  padding: 30px 10px;
   justify-items: center;
+  justify-self: center;
   align-items: center;
 
 }
 
 
 .allGaragePost-container ul li p {
-    width: 130px;
+    margin: 0;
 }
 
 .allGaragePost-container>picture img {
@@ -222,6 +305,35 @@ body{
     display: grid;
     background: red;
 }
+
+
+@media screen and (min-width: 750px){
+    .allGaragePost-container ul {
+        grid-template-columns: repeat(2, 1fr);    
+        }
+    }
+
+
+
+@media screen and (min-width: 1100px){
+.allGaragePost-container ul {
+    grid-template-columns: repeat(4, 1fr);    
+    }
+}
+
+
+/* @media(screen-spanning: single-fold-vertical) {
+    .allGaragePost-container ul {
+        background: red;
+        grid-template-columns: repeat(2, 1fr) 150px repeat(2, 1fr);    
+        }
+ }
+
+ @media (screen-spanning: single-fold-vertical), (screen-spanning: single-fold-horizontal) {
+     ul  {
+       background-color: green;
+    }
+ } */
 
 
 /* --------------------------------------------- All Garage Sales post */
