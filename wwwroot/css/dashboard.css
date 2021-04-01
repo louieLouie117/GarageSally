@@ -8,7 +8,8 @@ body{
 
 /* placement of container on the gird */
 
-.profile-container{
+.profile-container, 
+.postSale-container{
     display: grid;
     background: white;
     box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.501);
@@ -23,13 +24,17 @@ body{
 
 }
 
-.profile-container img{
+
+
+.profile-container img, 
+.postSale-container img{
     width: 70px;
     height: 70px;
     border-radius: 50px;
 }
 
-.profile-container button{
+.profile-container button, 
+.postSale-container button{
     width: 150px;
     height: 50px;
     color: #B936D2;
@@ -141,6 +146,36 @@ body{
     justify-self: flex-end;
 }
 
+
+.menuList-container{
+    display: grid;
+    grid-template-rows: 70px;
+}
+
+.menuList-container header{
+    display: grid;
+    grid-template-columns: 70px 130px 1fr;
+    align-items: center;
+}
+
+.menuList-container header img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+}
+
+.menuList-container header h2{
+    justify-self: center;
+    cursor: pointer;
+}
+
+.menuList-container header button{
+    font: 1.3em sans-serif;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    border: solid white 2px;
+}
 
 
 /* All Garage Sales post--------------------------------------------- */
