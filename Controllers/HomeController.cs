@@ -179,7 +179,7 @@ namespace UserLogin.Controllers
             DashboardWrapper wMode = new DashboardWrapper();
 
             List<GarageSale> garageSaleItems = _context.GarageSales
-            .Where(us => us.UserId == UserIdInSession)
+            // .Where(us => us.UserId == UserIdInSession)
             .ToList();
 
 

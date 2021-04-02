@@ -8,7 +8,7 @@ const showMainMenu =(e) => {
         console.log(e);
         if (menu === "close") {     
         document.getElementById("mainMenu").style.height = "95vh";
-        document.getElementById("mainMenu").style.width = "37vh";
+        document.getElementById("mainMenu").style.width = "42vh";
         document.getElementById("mainMenu").style.margin = "0px";
         document.getElementById("mainMenu").style.borderRadius = "0";
         document.getElementById("mainMenu").style.transform = "smooth";
@@ -63,6 +63,31 @@ const profile = (e) =>{
 
 }
 
+
+let postSaleEvent = "close"
+
+const postSalePartialHandler = (e) =>{
+
+    if (postSaleEvent === "close") { 
+    document.getElementById("postSalePartial").style.marginLeft = "0";
+    document.getElementById("postSalePartial").style.transform = "smooth";
+    document.getElementById("postSalePartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (postSaleEvent = "open")
+
+    } else{
+    document.getElementById("postSalePartial").style.marginLeft = "-700px";
+    document.getElementById("postSalePartial").style.transform = "smooth";
+    document.getElementById("postSalePartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (postSaleEvent = "close");
+    }
+// Page
+
+}
 
 
 
