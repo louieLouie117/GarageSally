@@ -111,34 +111,58 @@
 <body>
 
     <div class="postSale-container" id="postSalePartial">
-
         <button onclick="postSalePartialHandler()"> &lt; back</button>
 
-        <h1>Post a garage sale</h1>
 
+        <header>
+            <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+            <h2>@ViewBag.ToDisplay.Username</h2>
+        </header>
+
+
+        <aside>
+            <button>new sale</button>
+            <button>recent post</button>
+        </aside>
 
         <div class="form-postContainer">
-            <main>
-                <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
-                    asp-route-id="@ViewBag.ToDisplay.UserId">
-                    <input asp-for='StreetNumber' type='text' placeholder='street #:'>
-                    <input asp-for='StreetName' type='text' placeholder='Street Name: '>
-                    <input asp-for='City' type='text' placeholder='City:'>
-                    <input asp-for='State' type='text' placeholder='State:'>
-                    <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+            <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                <header>
+                    <h2 class="span2Columns">Date Time:</h2>
+                    <input class="span2Columns" type="date">
+                    <label>Start Time:</label>
+                    <input asp-for="StartTime" type="time">
+                    <label>End Time:</label>
+                    <input asp-for="EndTime" type="time">
+                </header>
+                <main>
+                    <h2>Location:</h2>
+                    <div class="locationHeader">
+                        <input asp-for='StreetNumber' type='text' placeholder='street #:'>
+                        <input asp-for='StreetName' type='text' placeholder='Street Name: '>
+                    </div>
+                    <div class="locationFooter">
+                        <input asp-for='City' type='text' placeholder='City:'>
+                        <input asp-for='State' type='text' placeholder='State:'>
+                        <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+                    </div>
+                </main>
 
-                    @* <button type="button" id="submitForm">test ajax</button> *@
+                @* <button type="button" id="submitForm">test ajax</button> *@
 
-                    <input type="submit" value="test ajax">
-                </form>
-                <button id="userItems">fetch data</button>
-
-
-            </main>
-
+                <input type="submit" value="Post Sale">
+            </form>
 
 
         </div>
+
+
+
+        <footer>
+            <img src="img/Assets/logoGray.png" alt="">
+            <p>v1.0</p>
+        </footer>
 
     </div>
 
