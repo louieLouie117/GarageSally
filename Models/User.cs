@@ -11,6 +11,8 @@ namespace UserLogin.Models
         [Key]
         public int UserId { get; set; }
 
+        // look into enum list of options
+
         public string AccountType { get; set; }
 
         // [Display(Name = "First Name")]
