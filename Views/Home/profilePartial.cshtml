@@ -17,6 +17,10 @@
         <h1>Hello @ViewBag.ToDisplay.FirstName</h1>
         <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="">
 
+        @* <partial name="BuyerProfilePartial" model="@Model.User" view-data="ViewData" />
+
+        <partial name="SellerProfilePartial" model="@Model.User" view-data="ViewData" /> *@
+
         @* <ul>
             <h2>All users with photo</h2>
             @foreach (var item in ViewBag.AllUsers)
