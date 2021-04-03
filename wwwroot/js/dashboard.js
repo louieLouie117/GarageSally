@@ -91,6 +91,33 @@ const postSalePartialHandler = (e) =>{
 
 
 
+let aboutGarageSallyEvent = "close"
+
+const aboutGarageSallyHandler = (e) =>{
+
+    if (aboutGarageSallyEvent === "close") { 
+    document.getElementById("aboutGarageSallyPartial").style.marginLeft = "0";
+    document.getElementById("aboutGarageSallyPartial").style.transform = "smooth";
+    document.getElementById("aboutGarageSallyPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (aboutGarageSallyEvent = "open")
+
+    } else{
+    document.getElementById("aboutGarageSallyPartial").style.marginLeft = "-700px";
+    document.getElementById("aboutGarageSallyPartial").style.transform = "smooth";
+    document.getElementById("aboutGarageSallyPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (aboutGarageSallyEvent = "close");
+    }
+// Page
+
+}
+
+
+
 
 
 
