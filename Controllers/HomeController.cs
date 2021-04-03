@@ -242,13 +242,12 @@ namespace UserLogin.Controllers
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await formFile.CopyToAsync(stream);
-                            // #hash password
-                            PasswordHasher<User> Hasher = new PasswordHasher<User>();
-                            FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
                         }
                     }
                 }
-
+                // #hash password
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
                 FromForm.AccountType = "Buyer";
 
