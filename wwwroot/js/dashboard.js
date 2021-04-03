@@ -170,6 +170,33 @@ const termsOfServiceHandler = (e) =>{
 
 
 
+let updatesSupportEvent = "close"
+
+const updatesSupportHandler = (e) =>{
+    alert("button was click")
+
+    if (updatesSupportEvent === "close") { 
+    document.getElementById("updatesSupportPartial").style.marginLeft = "0";
+    document.getElementById("updatesSupportPartial").style.transform = "smooth";
+    document.getElementById("updatesSupportPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (updatesSupportEvent = "open")
+
+    } else{
+    document.getElementById("updatesSupportPartial").style.marginLeft = "-700px";
+    document.getElementById("updatesSupportPartial").style.transform = "smooth";
+    document.getElementById("updatesSupportPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (updatesSupportEvent = "close");
+    }
+// Page
+
+}
+
+
 
 
 
