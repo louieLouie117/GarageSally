@@ -116,6 +116,32 @@ const aboutGarageSallyHandler = (e) =>{
 
 }
 
+let privacyPolicyEvent = "close"
+
+const privacyPolicyHandler = (e) =>{
+
+    if (privacyPolicyEvent === "close") { 
+    document.getElementById("privacyPolicyPartial").style.marginLeft = "0";
+    document.getElementById("privacyPolicyPartial").style.transform = "smooth";
+    document.getElementById("privacyPolicyPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (privacyPolicyEvent = "open")
+
+    } else{
+    document.getElementById("privacyPolicyPartial").style.marginLeft = "-700px";
+    document.getElementById("privacyPolicyPartial").style.transform = "smooth";
+    document.getElementById("privacyPolicyPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (privacyPolicyEvent = "close");
+    }
+// Page
+
+}
+
+
 
 
 

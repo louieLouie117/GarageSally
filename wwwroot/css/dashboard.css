@@ -19,7 +19,8 @@ input{
 
 .profile-container, 
 .postSale-container,
-.aboutGarageSally-container{
+.aboutGarageSally-container,
+.privacyPolicy-container{
     display: grid;
     row-gap: 10px;
     background: white;
@@ -41,7 +42,8 @@ input{
 
 .profile-container button, 
 .postSale-container button,
-.aboutGarageSally-container button{
+.aboutGarageSally-container button,
+.privacyPolicy-container button{
     width: 150px;
     height: 50px;
     color: #B936D2;
