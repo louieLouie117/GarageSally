@@ -18,7 +18,11 @@ input{
 /* placement of container on the gird */
 
 .profile-container, 
-.postSale-container{
+.postSale-container,
+.aboutGarageSally-container,
+.privacyPolicy-container,
+.termsOfService-container,
+.updatesSupport-container{
     display: grid;
     row-gap: 10px;
     background: white;
@@ -38,7 +42,18 @@ input{
 
 }
 
-
+.profile-container button, 
+.postSale-container button,
+.aboutGarageSally-container button,
+.privacyPolicy-container button,
+.termsOfService-container button,
+.updatesSupport-container button{
+    width: 150px;
+    height: 50px;
+    color: #B936D2;
+    text-align: left;
+    
+}
 
 
 
@@ -50,14 +65,7 @@ input{
     cursor: pointer;
 }
 
-.profile-container button, 
-.postSale-container button{
-    width: 150px;
-    height: 50px;
-    color: #B936D2;
-    text-align: left;
-    
-}
+
 
 
 
