@@ -143,6 +143,32 @@ const privacyPolicyHandler = (e) =>{
 
 
 
+let termsOfServiceEvent = "close"
+
+const termsOfServiceHandler = (e) =>{
+
+    if (termsOfServiceEvent === "close") { 
+    document.getElementById("termsOfServicePartial").style.marginLeft = "0";
+    document.getElementById("termsOfServicePartial").style.transform = "smooth";
+    document.getElementById("termsOfServicePartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (termsOfServiceEvent = "open")
+
+    } else{
+    document.getElementById("termsOfServicePartial").style.marginLeft = "-700px";
+    document.getElementById("termsOfServicePartial").style.transform = "smooth";
+    document.getElementById("termsOfServicePartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (termsOfServiceEvent = "close");
+    }
+// Page
+
+}
+
+
 
 
 
