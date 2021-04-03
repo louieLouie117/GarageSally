@@ -64,19 +64,19 @@ namespace UserLogin.Controllers
         public IActionResult dashboard()
         {
             // block pages is not in session
-            if (HttpContext.Session.GetInt32("UserId") == null)
-            {
-                return RedirectToAction("login");
+            // if (HttpContext.Session.GetInt32("UserId") == null)
+            // {
+            //     return RedirectToAction("login");
 
-            }
+            // }
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
-            // Filter db by User in Session 
+            // Filter db by User in Session
             User UserIndb = _context.Users
                 .FirstOrDefault(u => u.UserId == UserIdInSession);
             ViewBag.ToDisplay = UserIndb;
 
-            // filter db by user id 
+            // filter db by user id
             ViewBag.allUserLogs = _context.Users
                 .Where(ul => ul.UserId == UserIdInSession)
                 .ToList();
@@ -97,23 +97,23 @@ namespace UserLogin.Controllers
 
 
             // block pages is not in session
-            if (HttpContext.Session.GetInt32("UserId") == null)
-            {
-                return RedirectToAction("login");
-            }
+            // if (HttpContext.Session.GetInt32("UserId") == null)
+            // {
+            //     return RedirectToAction("login");
+            // }
 
             ViewBag.AllUsers = _context.Users.ToList();
 
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
 
-            // Filter db by User in Session 
+            // Filter db by User in Session
             User UserIndb = _context.Users
                 .FirstOrDefault(u => u.UserId == UserIdInSession);
             ViewBag.ToDisplay = UserIndb;
 
 
-            // filter db by section id 
+            // filter db by section id
             ViewBag.allUserLogs = _context.Users
                 .Where(ul => ul.UserId == UserIdInSession)
                 .ToList();
@@ -227,10 +227,10 @@ namespace UserLogin.Controllers
 
                         //Place to save file
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                         "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
+                        "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
 
                         // for the db
-                        Console.WriteLine($"Apprentice Name: {FromForm.Username}");
+                        Console.WriteLine($"Apprentice Name: {FromForm.FirstName}");
                         Console.WriteLine($"FileName: {timeStamp}{formFile.FileName}");
 
                         // Assign name to be saved to the db
@@ -303,10 +303,10 @@ namespace UserLogin.Controllers
 
                         //Place to save file
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                         "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
+                        "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
 
                         // for the db
-                        Console.WriteLine($"Apprentice Name: {FromForm.Username}");
+                        Console.WriteLine($"Apprentice Name: {FromForm.FirstName}");
                         Console.WriteLine($"FileName: {timeStamp}{formFile.FileName}");
 
                         // Assign name to be saved to the db
