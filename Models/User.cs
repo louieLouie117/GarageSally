@@ -39,6 +39,12 @@ namespace UserLogin.Models
         [MinLength(8, ErrorMessage = "Password must be 8 characters or longer!")]
         public string Password { get; set; }
 
+        // Will not be mapped to your users table!
+        [NotMapped]
+        [Compare("Password")]
+        [DataType(DataType.Password)]
+        public string Confirm { get; set; }
+
         [Display(Name = "Building Number")]
         // [Required]
         public int StreetNumber { get; set; }
@@ -64,12 +70,6 @@ namespace UserLogin.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
-
-        // Will not be mapped to your users table!
-        [NotMapped]
-        [Compare("Password")]
-        [DataType(DataType.Password)]
-        public string Confirm { get; set; }
 
         // Relationships
         [InverseProperty("Follower")]
