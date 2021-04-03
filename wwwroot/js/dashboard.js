@@ -91,6 +91,112 @@ const postSalePartialHandler = (e) =>{
 
 
 
+let aboutGarageSallyEvent = "close"
+
+const aboutGarageSallyHandler = (e) =>{
+
+    if (aboutGarageSallyEvent === "close") { 
+    document.getElementById("aboutGarageSallyPartial").style.marginLeft = "0";
+    document.getElementById("aboutGarageSallyPartial").style.transform = "smooth";
+    document.getElementById("aboutGarageSallyPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (aboutGarageSallyEvent = "open")
+
+    } else{
+    document.getElementById("aboutGarageSallyPartial").style.marginLeft = "-700px";
+    document.getElementById("aboutGarageSallyPartial").style.transform = "smooth";
+    document.getElementById("aboutGarageSallyPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (aboutGarageSallyEvent = "close");
+    }
+// Page
+
+}
+
+let privacyPolicyEvent = "close"
+
+const privacyPolicyHandler = (e) =>{
+
+    if (privacyPolicyEvent === "close") { 
+    document.getElementById("privacyPolicyPartial").style.marginLeft = "0";
+    document.getElementById("privacyPolicyPartial").style.transform = "smooth";
+    document.getElementById("privacyPolicyPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (privacyPolicyEvent = "open")
+
+    } else{
+    document.getElementById("privacyPolicyPartial").style.marginLeft = "-700px";
+    document.getElementById("privacyPolicyPartial").style.transform = "smooth";
+    document.getElementById("privacyPolicyPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (privacyPolicyEvent = "close");
+    }
+// Page
+
+}
+
+
+
+let termsOfServiceEvent = "close"
+
+const termsOfServiceHandler = (e) =>{
+
+    if (termsOfServiceEvent === "close") { 
+    document.getElementById("termsOfServicePartial").style.marginLeft = "0";
+    document.getElementById("termsOfServicePartial").style.transform = "smooth";
+    document.getElementById("termsOfServicePartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (termsOfServiceEvent = "open")
+
+    } else{
+    document.getElementById("termsOfServicePartial").style.marginLeft = "-700px";
+    document.getElementById("termsOfServicePartial").style.transform = "smooth";
+    document.getElementById("termsOfServicePartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (termsOfServiceEvent = "close");
+    }
+// Page
+
+}
+
+
+
+let updatesSupportEvent = "close"
+
+const updatesSupportHandler = (e) =>{
+    alert("button was click")
+
+    if (updatesSupportEvent === "close") { 
+    document.getElementById("updatesSupportPartial").style.marginLeft = "0";
+    document.getElementById("updatesSupportPartial").style.transform = "smooth";
+    document.getElementById("updatesSupportPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "-700px";
+
+
+    return (updatesSupportEvent = "open")
+
+    } else{
+    document.getElementById("updatesSupportPartial").style.marginLeft = "-700px";
+    document.getElementById("updatesSupportPartial").style.transform = "smooth";
+    document.getElementById("updatesSupportPartial").style.transition = "1s";
+    document.getElementById("mainMenu").style.marginLeft = "0";
+
+    return (updatesSupportEvent = "close");
+    }
+// Page
+
+}
+
+
 
 
 
