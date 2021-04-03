@@ -64,11 +64,11 @@ namespace UserLogin.Controllers
         public IActionResult dashboard()
         {
             // block pages is not in session
-            // if (HttpContext.Session.GetInt32("UserId") == null)
-            // {
-            //     return RedirectToAction("login");
+            if (HttpContext.Session.GetInt32("UserId") == null)
+            {
+                return RedirectToAction("login");
 
-            // }
+            }
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             // Filter db by User in Session
@@ -97,10 +97,10 @@ namespace UserLogin.Controllers
 
 
             // block pages is not in session
-            // if (HttpContext.Session.GetInt32("UserId") == null)
-            // {
-            //     return RedirectToAction("login");
-            // }
+            if (HttpContext.Session.GetInt32("UserId") == null)
+            {
+                return RedirectToAction("login");
+            }
 
             ViewBag.AllUsers = _context.Users.ToList();
 
