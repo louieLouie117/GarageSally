@@ -27,6 +27,8 @@ namespace UserLogin.Models
         public int Zipcode { get; set; }
 
         [Display(Name = "Start Time")]
+
+        public DateTime StartDate { get; set; }
         // [Required]
         public DateTime StartTime { get; set; }
 
