@@ -84,7 +84,7 @@ namespace UserLogin.Controllers
 
             DashboardWrapper wMod = new DashboardWrapper();
 
-
+            wMod.User = UserIndb;
 
             return View("dashboard", wMod);
         }
@@ -93,8 +93,6 @@ namespace UserLogin.Controllers
         [HttpGet("profile")]
         public IActionResult profilePartial()
         {
-
-
 
             // block pages is not in session
             if (HttpContext.Session.GetInt32("UserId") == null)
@@ -114,9 +112,9 @@ namespace UserLogin.Controllers
 
 
             // filter db by section id
-            ViewBag.allUserLogs = _context.Users
-                .Where(ul => ul.UserId == UserIdInSession)
-                .ToList();
+            // ViewBag.allUserLogs = _context.Users
+            //     .Where(ul => ul.UserId == UserIdInSession)
+            //     .ToList();
 
 
 
@@ -249,7 +247,8 @@ namespace UserLogin.Controllers
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
-                FromForm.AccountType = "Buyer";
+
+                FromForm.AccountType = AccountType.Buyer;
 
                 // Add to db
                 _context.Add(FromForm);
@@ -317,14 +316,14 @@ namespace UserLogin.Controllers
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await formFile.CopyToAsync(stream);
-                            // #hash password
-                            PasswordHasher<User> Hasher = new PasswordHasher<User>();
-                            FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
                         }
                     }
                 }
+                // #hash password
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
-                FromForm.AccountType = "Seller";
+                FromForm.AccountType = AccountType.Seller;
 
 
                 // Add to db
