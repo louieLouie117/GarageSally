@@ -315,7 +315,7 @@ input{
 
   .cardItems section{
       display: grid;
-      row-gap: 10px;
+      row-gap: 15px;
       width: auto;
   }
   .cardItems li section button{
@@ -342,9 +342,35 @@ input{
       color: rgb(177, 177, 177);
   }
 
+  .cardItems li section address{
+      display: grid;
+      justify-items: center;
+
+  }
+
   .cardItems li section address p{
-      font: 1.3em sans-serif;
+      font: 1.2em sans-serif;
+      color: black;
+
+  }
+
+  .cardItems li section header{
+      display: grid;
+      justify-items: center;
+  }
+
+
+  .cardItems li section header h1{
+      font: 1.5em sans-serif;
       color: #B936D2;
+      margin: 0;
+  }
+
+  .cardItems li section header h2{
+      font: 1em sans-serif;
+      color: grey;
+      margin: 0;
+
   }
 
   
