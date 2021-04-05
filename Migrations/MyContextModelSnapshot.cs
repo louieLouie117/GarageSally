@@ -59,6 +59,9 @@ namespace UserLogin.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime(6)");
 
