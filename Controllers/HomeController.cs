@@ -150,14 +150,19 @@ namespace UserLogin.Controllers
             var Entry = new GarageSale
             {
                 UserId = UserIdInSession,
+
+                StartDate = FromForm.StartDate,
+                StartTime = FromForm.StartTime,
+                EndTime = FromForm.EndTime,
+
                 StreetNumber = FromForm.StreetNumber,
                 StreetName = FromForm.StreetName,
                 City = FromForm.City,
                 State = FromForm.State,
                 Zipcode = FromForm.Zipcode,
-                Image = "placeholder.png",
-                StartTime = DateTime.Now,
-                EndTime = DateTime.Now
+
+                Image = "placeholder.png"
+
 
             };
 

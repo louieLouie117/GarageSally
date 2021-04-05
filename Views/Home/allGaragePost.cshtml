@@ -36,7 +36,31 @@
                 console.log("user Data", data.data)
                 $.each(data.data, function (i, v) {
                     console.log(v)
+                    console.log("Date Time:", v.startDate, v.startTime, v.endTime)
                     console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.state, v.zipcode);
+
+                    const TimeFormat = {
+                        hour12: true,
+                        hour: "numeric",
+                        minute: "numeric", seconds: "numeric"
+                    }
+
+                    const DateFormat = {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric"
+                    };
+
+                    let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
+                    let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
+                    let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
+
+
+
+                    console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted)
+
+
+
 
                     let garageItemId = v.garageSaleId;
 
@@ -45,10 +69,17 @@
 
                     @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
                     <section>
+                        <header>
+                            <h1>${dateFormated}</h1>
+                            <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
+                        </header>
+
+
                         <address>
                             <p>${v.streetNumber} ${v.streetName} </p>
                             <p> ${v.city} ${v.zipcode}</p>
                         </address>
+
 
                         <main>
                             <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
