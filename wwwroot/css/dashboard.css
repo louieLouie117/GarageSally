@@ -81,6 +81,8 @@ input{
 }
 
 .map-container{
+    position: fixed;
+    top: 0;
     display: grid;
     grid-row: 1/2;
     grid-column: 1/2;
@@ -91,7 +93,7 @@ input{
 .map-container img {
     height: 100%;
     width: 100vw;
-    -webkit-filter: blur(8px);
+    filter: blur(8px);
     z-index: 0;
 }
 
