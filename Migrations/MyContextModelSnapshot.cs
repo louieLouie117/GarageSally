@@ -129,8 +129,8 @@ namespace UserLogin.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("AccountType")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("AccountType")
+                        .HasColumnType("int");
 
                     b.Property<string>("City")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
