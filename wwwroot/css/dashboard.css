@@ -491,4 +491,13 @@ input{
 /* from ------------------------------------------ */
 
 
+.termsOfService-container,
+.privacyPolicy-container{
+    overflow: scroll;
+}
+
+.termsOfService-container :last-child,
+.privacyPolicy-container :last-child{
+    height: 100px;
+}
 
