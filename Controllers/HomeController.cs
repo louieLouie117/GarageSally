@@ -71,12 +71,12 @@ namespace UserLogin.Controllers
             }
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
-            // Filter db by User in Session 
+            // Filter db by User in Session
             User UserIndb = _context.Users
                 .FirstOrDefault(u => u.UserId == UserIdInSession);
             ViewBag.ToDisplay = UserIndb;
 
-            // filter db by user id 
+            // filter db by user id
             ViewBag.allUserLogs = _context.Users
                 .Where(ul => ul.UserId == UserIdInSession)
                 .ToList();
@@ -84,7 +84,7 @@ namespace UserLogin.Controllers
 
             DashboardWrapper wMod = new DashboardWrapper();
 
-
+            wMod.User = UserIndb;
 
             return View("dashboard", wMod);
         }
@@ -93,8 +93,6 @@ namespace UserLogin.Controllers
         [HttpGet("profile")]
         public IActionResult profilePartial()
         {
-
-
 
             // block pages is not in session
             if (HttpContext.Session.GetInt32("UserId") == null)
@@ -107,16 +105,16 @@ namespace UserLogin.Controllers
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
 
-            // Filter db by User in Session 
+            // Filter db by User in Session
             User UserIndb = _context.Users
                 .FirstOrDefault(u => u.UserId == UserIdInSession);
             ViewBag.ToDisplay = UserIndb;
 
 
-            // filter db by section id 
-            ViewBag.allUserLogs = _context.Users
-                .Where(ul => ul.UserId == UserIdInSession)
-                .ToList();
+            // filter db by section id
+            // ViewBag.allUserLogs = _context.Users
+            //     .Where(ul => ul.UserId == UserIdInSession)
+            //     .ToList();
 
 
 
@@ -127,9 +125,13 @@ namespace UserLogin.Controllers
         // -----------------------------------------------------------end
 
 
-        [HttpPost("postSale")]
-        public IActionResult PostSaleHandler(GarageSale FromForm)
+
+
+        [HttpPost("PostGarageSaleHandler")]
+        public IActionResult PostGarageSaleHandler(GarageSale FromForm)
         {
+
+            System.Console.WriteLine("you have reached the backend of post garage sale.");
 
             // JsonResult
             System.Console.WriteLine("test button was click");
@@ -143,35 +145,50 @@ namespace UserLogin.Controllers
 
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
-
-
-
             var Entry = new GarageSale
             {
                 UserId = UserIdInSession,
+
+                StartDate = FromForm.StartDate,
+                StartTime = FromForm.StartTime,
+                EndTime = FromForm.EndTime,
+
                 StreetNumber = FromForm.StreetNumber,
                 StreetName = FromForm.StreetName,
                 City = FromForm.City,
+                State = FromForm.State,
                 Zipcode = FromForm.Zipcode,
-                Image = "placeholder.png",
-                StartTime = DateTime.Now,
-                EndTime = DateTime.Now
+
+                Image = "placeholder.png"
+
 
             };
 
             System.Console.WriteLine($"Entry to be send to db {Entry}");
 
-
-
-
-
             _context.Add(Entry);
             _context.SaveChanges();
 
-            return Json(new { Status = "success", FromForm });
+            return Json(new { Status = "success" });
         }
 
 
+        [HttpGet("displayGarageSales")]
+
+        public JsonResult displayGarageSales()
+        {
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+
+            DashboardWrapper wMode = new DashboardWrapper();
+
+            List<GarageSale> garageSaleItems = _context.GarageSales
+            // .Where(us => us.UserId == UserIdInSession)
+            .ToList();
+
+
+            return Json(new { data = garageSaleItems });
+
+        }
 
 
 
@@ -213,10 +230,10 @@ namespace UserLogin.Controllers
 
                         //Place to save file
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                         "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
+                        "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
 
                         // for the db
-                        Console.WriteLine($"Apprentice Name: {FromForm.Username}");
+                        Console.WriteLine($"Apprentice Name: {FromForm.FirstName}");
                         Console.WriteLine($"FileName: {timeStamp}{formFile.FileName}");
 
                         // Assign name to be saved to the db
@@ -228,15 +245,15 @@ namespace UserLogin.Controllers
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await formFile.CopyToAsync(stream);
-                            // #hash password
-                            PasswordHasher<User> Hasher = new PasswordHasher<User>();
-                            FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
                         }
                     }
                 }
+                // #hash password
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
 
-                FromForm.AccountType = "Buyer";
+                FromForm.AccountType = AccountType.Buyer;
 
                 // Add to db
                 _context.Add(FromForm);
@@ -289,10 +306,10 @@ namespace UserLogin.Controllers
 
                         //Place to save file
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                         "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
+                        "wwwroot/img/uploads", $"{timeStamp}{formFile.FileName}");
 
                         // for the db
-                        Console.WriteLine($"Apprentice Name: {FromForm.Username}");
+                        Console.WriteLine($"Apprentice Name: {FromForm.FirstName}");
                         Console.WriteLine($"FileName: {timeStamp}{formFile.FileName}");
 
                         // Assign name to be saved to the db
@@ -304,14 +321,14 @@ namespace UserLogin.Controllers
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await formFile.CopyToAsync(stream);
-                            // #hash password
-                            PasswordHasher<User> Hasher = new PasswordHasher<User>();
-                            FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
                         }
                     }
                 }
+                // #hash password
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
-                FromForm.AccountType = "Seller";
+                FromForm.AccountType = AccountType.Seller;
 
 
                 // Add to db

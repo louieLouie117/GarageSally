@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="~/css/regLog.css">
-    <script src="~/js/loginReg.js" async=""></script>
+    @* <script src="~/js/loginReg.js" async=""></script> *@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
@@ -38,7 +38,7 @@
                     <input asp-for="FirstName" placeholder="First Name">
 
                     <span asp-validation-for="LastName"></span>
-                    <input asp-for="LastName" placeholder="Last Name"> *@
+                    <input asp-for="LastName" placeholder="Last Name">*@
 
                 <div class="section1-container" id="section1SellerReg">
                     <span asp-validation-for="Zipcode"></span>
@@ -72,8 +72,8 @@
 
 
                 <div class="section3-container" id="section3SellerReg">
-                    <span asp-validation-for="Username"></span>
-                    <input asp-for="Username" placeholder="Name">
+                    <span asp-validation-for="FirstName"></span>
+                    <input asp-for="FirstName" placeholder="Name">
 
                     <img src="~/img/Assets/placeholder.png" alt="">
                     <p>Incress discoverability by adding a photo to your profile.</p>

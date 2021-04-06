@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Garage Sale</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -18,30 +17,131 @@
                 event.preventDefault();
                 alert('button test ajax was click')
 
+
+                let startDate = $('#StartDate').val()
+                let startTime = $('#StartTime').val()
+                let endTime = $('#EndTime').val()
+
                 let streetnumber = $('#StreetNumber').val()
                 let streetname = $('#StreetName').val()
                 let city = $('#City').val()
+                let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
 
 
                 var jsonData = {
+
+                    startDate: startDate,
+                    startTime: startTime,
+                    endTime: endTime,
+
                     streetnumber: streetnumber,
                     streetname: streetname,
                     city: city,
+                    state: state,
                     zipcode: zipcode,
+
+
                 }
-
-
 
                 console.log(jsonData)
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("PostSaleHandler", "Home")',
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
                     data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
 
                 })
 
             })
+
+            const SuccessStatus = (result) => {
+                console.log("Success...", result);
+                LoadData();
+
+            };
+            const ErrorStatus = (xhr, status, strErr) => {
+                console.log("There was an error!");
+            };
+            const CompleteStatus = (xhr, status) => {
+                console.log("Ajax has completed...");
+            };
+
+
+            const LoadData = () => {
+                alert("loading data...");
+                $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
+                    data = JSON.parse(data);
+                    console.log("in load", data);
+                    RenderData(data);
+                    @* data = $.parseJSON(data); deprecated*@
+                });
+            };
+            const RenderData = (data) => {
+                console.log("user Data", data.data)
+                $.each(data.data, function (i, v) {
+                    console.log(v)
+                    console.log("id:", v.garageSaleId);
+
+                    const TimeFormat = {
+                        hour12: true,
+                        hour: "numeric",
+                        minute: "numeric", seconds: "numeric"
+                    }
+
+                    const DateFormat = {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric"
+                    };
+
+                    let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
+                    let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
+                    let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
+
+
+
+                    console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted)
+
+
+
+
+                    let garageItemId = v.garageSaleId;
+
+
+                    $(`<li id="${garageItemId}">
+
+                    @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
+                    <section>
+                        <header>
+                            <h1>${dateFormated}</h1>
+                            <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
+                        </header>
+
+
+                        <address>
+                            <p>${v.streetNumber} ${v.streetName} </p>
+                            <p> ${v.city} ${v.zipcode}</p>
+                        </address>
+
+
+                        <main>
+                            <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
+                            <button>Check In</button>
+                            <p>visited 20</p>
+                            <p>check in 5</p>
+                        </main>
+                    </section>
+
+                    </li>`).prependTo("#garageSaleList");
+
+
+
+
+                });
+            };
 
         })
 
@@ -51,28 +151,61 @@
 
 <body>
 
-    <h1>Post a garage sale</h1>
+    <div class="postSale-container" id="postSalePartial">
+        <button onclick="postSalePartialHandler()"> &lt; back</button>
 
-    <div class="form-postContainer">
-        <main>
+
+        <header>
+            <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+            <h2>@ViewBag.ToDisplay.FirstName</h2>
+        </header>
+
+
+        <aside>
+            <button>new sale</button>
+            <button>recent post</button>
+        </aside>
+
+        <div class="form-postContainer">
             <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
                 asp-route-id="@ViewBag.ToDisplay.UserId">
-                <input asp-for='StreetNumber' type='text' placeholder='street #:'>
-                <input asp-for='StreetName' type='text' placeholder='Street Name: '>
-                <input asp-for='City' type='text' placeholder='City:'>
-                <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+                <header>
+                    <h2 class="span2Columns">Date Time:</h2>
+                    <input class="span2Columns" asp-for="StartDate" type="date">
+                    <label>Start Time:</label>
+                    <input asp-for="StartTime" type="time">
+                    <label>End Time:</label>
+                    <input asp-for="EndTime" type="time">
+                </header>
+                <main>
+                    <h2>Location:</h2>
+                    <div class="locationHeader">
+                        <input asp-for='StreetNumber' type='text' placeholder='street #:'>
+                        <input asp-for='StreetName' type='text' placeholder='Street Name: '>
+                    </div>
+                    <div class="locationFooter">
+                        <input asp-for='City' type='text' placeholder='City:'>
+                        <input asp-for='State' type='text' placeholder='State:'>
+                        <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+                    </div>
+                </main>
 
                 @* <button type="button" id="submitForm">test ajax</button> *@
 
-                <input type="submit" value="test ajax">
+                <input type="submit" value="Post Sale">
             </form>
 
 
-        </main>
+        </div>
+
+
+
+        <footer>
+            <img src="img/Assets/logoGray.png" alt="">
+            <p>v1.0</p>
+        </footer>
 
     </div>
-
-
 
 </body>
 

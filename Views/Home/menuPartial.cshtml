@@ -10,7 +10,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-WGFK1GC4RE');
@@ -28,18 +28,30 @@
             <div class="menuIcon"></div>
         </div>
 
-        <div class="menuList-Container">
+        <div class="menuList-container">
 
 
-            <h2> <button onclick="profile()"> Profile </button></h2>
-            <h2> <button onclick="profile()"> New Post </button></h2>
-            <h2> <button onclick="profile()"> Settings </button></h2>
-            <h2> <button onclick="profile()"> Term of Service </button></h2>
-            <h2> <button onclick="profile()"> Privacy Policy </button></h2>
+            <header>
+                <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+                <h2 onclick="postSalePartialHandler()">Post a sale</h2>
+                <button onclick="postSalePartialHandler()">+</button>
 
+            </header>
 
+            <main>
+                <h2> <button onclick="profile()"> Profile </button></h2>
+                <h2> <button onclick="aboutGarageSallyHandler()"> About Garage Sally </button></h2>
+                <h2> <button onclick="termsOfServiceHandler()"> Term of Service </button></h2>
+                <h2> <button onclick="privacyPolicyHandler()"> Privacy Policy </button></h2>
+                <h2> <button onclick="updatesSupportHandler()"> Updates/Support</button></h2>
 
-            <a href="/logout">Logout</a>
+                <a href="/logout">Logout</a>
+            </main>
+
+            <footer>
+                <img src="img/Assets/logoWhite.png" alt="">
+                <p>v1.0</p>
+            </footer>
 
 
         </div>

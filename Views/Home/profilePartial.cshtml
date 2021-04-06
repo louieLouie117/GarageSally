@@ -1,5 +1,6 @@
 @using UserLogin.Models
-@model List<User>
+@* @model List<User> *@
+@model User
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,31 +15,17 @@
 <body>
     <div class="profile-container" id="profile">
         <button onclick="profile()"> &lt; back</button>
-        <h1>Hello @ViewBag.ToDisplay.Username</h1>
+        <h1>Hello @ViewBag.ToDisplay.FirstName</h1>
         <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="">
 
-        @* <ul>
-            <h2>All users with photo</h2>
-            @foreach (var item in ViewBag.AllUsers)
+        @if (Model.AccountType == 0)
             {
-            <li>
-            <img src="~/img/uploads/@(item.ProfilePic)" alt="">
-
-            <div>
-
-            <h2>@item.UserId</h2>
-            <p>@item.ProfilePic</p>
-            </div>
-
-            <header>
-            <a>edit</a>
-            <a>delete</a>
-            </header>
-
-            </li>
+                <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" />
             }
-            </ul> *@
-        <partial name="postSalePartial" />
+            else
+            {
+                <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" />
+            }
 
     </div>
 
