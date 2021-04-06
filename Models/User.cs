@@ -6,29 +6,30 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
+    public enum AccountType { Buyer, Seller }
     public class User
     {
         [Key]
         public int UserId { get; set; }
 
-        // look into enum list of options
+        // Value comes from enum defined above, enum type is referenced like a class
+        // Values are Zero indexed so base datatype is "int" in DB
+        public AccountType AccountType { get; set; }
 
-        public string AccountType { get; set; }
+        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "First name cannot be empty")]
+        [MinLength(2, ErrorMessage = "First name is too short")]
+        public string FirstName { get; set; }
 
-        // [Display(Name = "First Name")]
-        // [Required(ErrorMessage = "First name cannot be empty")]
-        // [MinLength(2, ErrorMessage = "First name is too short")]
-        // public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
+        [Required(ErrorMessage = "Last name cannot be empty")]
+        [MinLength(2, ErrorMessage = "Last name is too short")]
+        public string LastName { get; set; }
 
-        // [Display(Name = "Last Name")]
-        // [Required(ErrorMessage = "Last name cannot be empty")]
-        // [MinLength(2, ErrorMessage = "Last name is too short")]
-        // public string LastName { get; set; }
-
-        [Display(Name = "Username")]
-        [Required(ErrorMessage = "Username cannot be empty")]
-        [MinLength(2, ErrorMessage = "Username is too short")]
-        public string Username { get; set; }
+        // [Display(Name = "Username")]
+        // [Required(ErrorMessage = "Username cannot be empty")]
+        // [MinLength(2, ErrorMessage = "Username is too short")]
+        // public string Username { get; set; }
 
         [EmailAddress]
         [Required]
@@ -38,6 +39,12 @@ namespace UserLogin.Models
         [Required]
         [MinLength(8, ErrorMessage = "Password must be 8 characters or longer!")]
         public string Password { get; set; }
+
+        // Will not be mapped to your users table!
+        [NotMapped]
+        [Compare("Password")]
+        [DataType(DataType.Password)]
+        public string Confirm { get; set; }
 
         [Display(Name = "Building Number")]
         // [Required]
@@ -64,12 +71,6 @@ namespace UserLogin.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
-
-        // Will not be mapped to your users table!
-        [NotMapped]
-        [Compare("Password")]
-        [DataType(DataType.Password)]
-        public string Confirm { get; set; }
 
         // Relationships
         [InverseProperty("Follower")]
