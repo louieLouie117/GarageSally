@@ -253,7 +253,8 @@ namespace UserLogin.Controllers
                 FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
 
-                FromForm.AccountType = AccountType.Buyer;
+                // FromForm.AccountType = AccountType.Buyer;
+                FromForm.AccountType = "Buyer";
 
                 // Add to db
                 _context.Add(FromForm);
@@ -328,7 +329,8 @@ namespace UserLogin.Controllers
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
-                FromForm.AccountType = AccountType.Seller;
+                // FromForm.AccountType = AccountType.Seller;
+                FromForm.AccountType = "Seller";
 
 
                 // Add to db

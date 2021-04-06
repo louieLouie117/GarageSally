@@ -18,13 +18,13 @@
         <h1>Hello @ViewBag.ToDisplay.FirstName</h1>
         <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="">
 
-        @if (Model.AccountType == 0)
+        @if (Model.AccountType == "Buyer")
             {
-                <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" />
+            <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" />
             }
             else
             {
-                <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" />
+            <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" />
             }
 
     </div>
