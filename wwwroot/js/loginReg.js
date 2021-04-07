@@ -1,16 +1,14 @@
 // users form
-function Step1Reg(e) {
-    document.getElementById("section1Reg").style.display = "grid";
-    document.getElementById("section2Reg").style.display = "none";
-    document.getElementById("section3Reg").style.display = "none";
-    document.getElementById("section4Reg").style.display = "none";
-    document.getElementById("sectionHeading").innerText = "Start searching for free."
-    
-
+const Step1Reg = (e) => {
+	document.getElementById("section1Reg").style.display = "grid";
+	document.getElementById("section2Reg").style.display = "none";
+	document.getElementById("section3Reg").style.display = "none";
+	document.getElementById("section4Reg").style.display = "none";
+	document.getElementById("sectionHeading").innerText = "Start searching for free.";
 };
 
 
-const Step2Reg = () =>{
+const Step2Reg = (e) =>{
     document.getElementById("section1Reg").style.display = "none";
     document.getElementById("section2Reg").style.display = "grid";
     document.getElementById("section3Reg").style.display = "none";
@@ -21,7 +19,7 @@ const Step2Reg = () =>{
 }
 
 
-const Step3Reg = () =>{
+const Step3Reg = (e) =>{
     document.getElementById("section1Reg").style.display = "none";
     document.getElementById("section2Reg").style.display = "none";
     document.getElementById("section3Reg").style.display = "grid";
@@ -32,28 +30,25 @@ const Step3Reg = () =>{
 }
 
 
-function Step4Reg(e) {
-    document.getElementById("section1Reg").style.display = "none";
-    document.getElementById("section2Reg").style.display = "none";
-    document.getElementById("section3Reg").style.display = "none";
-    document.getElementById("section4Reg").style.display = "grid";
-    document.getElementById("sectionHeading").innerText = "Congratulation"
-
-
-    
+const Step4Reg = (e) => {
+	document.getElementById("section1Reg").style.display = "none";
+	document.getElementById("section2Reg").style.display = "none";
+	document.getElementById("section3Reg").style.display = "none";
+	document.getElementById("section4Reg").style.display = "grid";
+	document.getElementById("sectionHeading").innerText = "Congratulation";
 };
 
 
 
 
 // sellers form
-function Step1SellerReg(e) {
+const Step1SellerReg = (e) => {
     document.getElementById("section1SellerReg").style.display = "grid";
     document.getElementById("section2SellerReg").style.display = "none";
     document.getElementById("section3SellerReg").style.display = "none";
     document.getElementById("section4SellerReg").style.display = "none";
     document.getElementById("sellerHeading").innerText = "Check your area availability."
-    
+
 
 };
 
@@ -82,7 +77,7 @@ const Step3SellerReg = (e) =>{
 }
 
 
-function Step4SellerReg(e) {
+const Step4SellerReg = (e) => {
     document.getElementById("section1SellerReg").style.display = "none";
     document.getElementById("section2SellerReg").style.display = "none";
     document.getElementById("section3SellerReg").style.display = "none";
@@ -90,7 +85,7 @@ function Step4SellerReg(e) {
     document.getElementById("sellerHeading").innerText = "Last step."
 
 
-    
+
 };
 
 
@@ -98,7 +93,7 @@ function Step4SellerReg(e) {
 
 
 const ShowLogin = ()=>{
-    
+
     document.getElementById("logInState").style.marginTop = "0";
     document.getElementById("logInState").style.transition = "1s";
     document.getElementById("logInState").style.transform = "smooth";
@@ -107,7 +102,7 @@ const ShowLogin = ()=>{
 }
 
 const HideLogin = ()=>{
-    
+
     document.getElementById("logInState").style.marginTop = "-1500px";
     document.getElementById("logInState").style.transition = "1s";
     document.getElementById("logInState").style.transform = "smooth";
