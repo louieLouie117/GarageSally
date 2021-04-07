@@ -13,7 +13,8 @@ namespace UserLogin.Models
         public int UserId { get; set; }
 
         // Value comes from enum defined above, enum type is referenced like a class
-        // Values are Zero indexed so base datatype is "int" in DB
+        // Values are Zero indexed so base datatype is "int"
+        // mapped in DB as a "string"
         [Column(TypeName = "nvarchar(24)")]
         [EnumDataType(typeof(AccountType))]
         public AccountType AccountType { get; set; }
