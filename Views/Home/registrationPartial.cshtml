@@ -38,30 +38,6 @@
                 <h4 id="sectionHeading">Start searching for free.</h4>
 
             </div>
-            @* Needed for registration. Second form not working. *@
-            @* <form asp-action="Redgister" asp-controller="Home" method="post">
-                <label asp-for-validation="FirstName"></label>
-                <input asp-for="FirstName"></input>
-
-                <label asp-for-validation="LastName"></label>
-                <input asp-for="LastName"></input>
-
-                <label asp-for-validation="Email"></label>
-                <input asp-for="Email"></input>
-
-                <label asp-for-validation="Password"></label>
-                <input asp-for="Password"></input>
-
-                <label asp-for-validation="Confirm"></label>
-                <input asp-for="Confirm"></input>
-
-                <label asp-for-validation="Zipcode"></label>
-                <input asp-for="Zipcode"></input>
-
-                <button type="submit">Submit</button>
-
-            </form> *@
-
 
             <form asp-action="Redgister" asp-controller="Home" method="POST" enctype="multipart/form-data">
 
@@ -81,7 +57,6 @@
 
                     <span asp-validation-for="Confirm"></span>
                     <input asp-for="Confirm" placeholder="Confirm Password">
-                    <input class="hidden" asp-for="AccountType">
 
 
                     <footer>
@@ -96,7 +71,7 @@
 
                 <div class="section3-container" id="section3Reg">
                     <span asp-validation-for="FirstName"></span>
-                    <input asp-for="FirstName" placeholder="Name">
+                    <input asp-for="FirstName" placeholder="First name">
 
                     <img src="~/img/Assets/placeholder.png" alt="">
                     <p>Add a photo to your profile.</p>

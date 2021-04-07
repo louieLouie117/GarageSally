@@ -252,7 +252,6 @@ namespace UserLogin.Controllers
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
-
                 FromForm.AccountType = AccountType.Buyer;
 
                 // Add to db
@@ -266,7 +265,7 @@ namespace UserLogin.Controllers
             }
             else
             {
-                Console.WriteLine("Fix your erros!");
+                Console.WriteLine("Fix your errors!");
                 return View("index", wMod);
             }
 
@@ -342,7 +341,7 @@ namespace UserLogin.Controllers
             }
             else
             {
-                Console.WriteLine("Fix your erros!");
+                Console.WriteLine("Fix your errors!");
                 return View("index", wMod);
             }
 

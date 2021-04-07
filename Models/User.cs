@@ -6,23 +6,26 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
-    public enum AccountType { Buyer, Seller }
+    public enum AccountType { Buyer = 0, Seller = 1}
     public class User
     {
         [Key]
         public int UserId { get; set; }
 
         // Value comes from enum defined above, enum type is referenced like a class
-        // Values are Zero indexed so base datatype is "int" in DB
+        // Values are Zero indexed so base datatype is "int"
+        // mapped in DB as a "string"
+        [Column(TypeName = "nvarchar(24)")]
+        [EnumDataType(typeof(AccountType))]
         public AccountType AccountType { get; set; }
 
         [Display(Name = "First Name")]
-        [Required(ErrorMessage = "First name cannot be empty")]
+        // [Required(ErrorMessage = "First name cannot be empty")]
         [MinLength(2, ErrorMessage = "First name is too short")]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        [Required(ErrorMessage = "Last name cannot be empty")]
+        // [Required(ErrorMessage = "Last name cannot be empty")]
         [MinLength(2, ErrorMessage = "Last name is too short")]
         public string LastName { get; set; }
 
