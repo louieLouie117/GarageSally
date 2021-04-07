@@ -15,7 +15,7 @@
 *.userosscache
 *.sln.docstates
 /Migrations
-.MyContextModelSnapshot
+/Migrations.MyContextModelSnapshot
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
