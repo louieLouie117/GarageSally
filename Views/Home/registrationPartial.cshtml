@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="~/css/regLog.css">
-    <script src="~/js/loginReg.js" async=""></script>
+   <!--  <script src="~/js/loginReg.js" async=""></script>  -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
@@ -57,7 +57,6 @@
 
                     <span asp-validation-for="Confirm"></span>
                     <input asp-for="Confirm" placeholder="Confirm Password">
-                    <input class="hidden" asp-for="AccountType">
 
 
                     <footer>
@@ -71,8 +70,8 @@
 
 
                 <div class="section3-container" id="section3Reg">
-                    <span asp-validation-for="Username"></span>
-                    <input asp-for="Username" placeholder="Name">
+                    <span asp-validation-for="FirstName"></span>
+                    <input asp-for="FirstName" placeholder="First name">
 
                     <img src="~/img/Assets/placeholder.png" alt="">
                     <p>Add a photo to your profile.</p>

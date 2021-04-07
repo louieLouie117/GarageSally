@@ -17,6 +17,11 @@
                 event.preventDefault();
                 alert('button test ajax was click')
 
+
+                let startDate = $('#StartDate').val()
+                let startTime = $('#StartTime').val()
+                let endTime = $('#EndTime').val()
+
                 let streetnumber = $('#StreetNumber').val()
                 let streetname = $('#StreetName').val()
                 let city = $('#City').val()
@@ -25,6 +30,11 @@
 
 
                 var jsonData = {
+
+                    startDate: startDate,
+                    startTime: startTime,
+                    endTime: endTime,
+
                     streetnumber: streetnumber,
                     streetname: streetname,
                     city: city,
@@ -75,16 +85,47 @@
                     console.log(v)
                     console.log("id:", v.garageSaleId);
 
+                    const TimeFormat = {
+                        hour12: true,
+                        hour: "numeric",
+                        minute: "numeric", seconds: "numeric"
+                    }
+
+                    const DateFormat = {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric"
+                    };
+
+                    let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
+                    let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
+                    let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
+
+
+
+                    console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted)
+
+
+
+
                     let garageItemId = v.garageSaleId;
+
 
                     $(`<li id="${garageItemId}">
 
                     @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
                     <section>
+                        <header>
+                            <h1>${dateFormated}</h1>
+                            <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
+                        </header>
+
+
                         <address>
                             <p>${v.streetNumber} ${v.streetName} </p>
                             <p> ${v.city} ${v.zipcode}</p>
                         </address>
+
 
                         <main>
                             <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
@@ -116,7 +157,7 @@
 
         <header>
             <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
-            <h2>@ViewBag.ToDisplay.Username</h2>
+            <h2>@ViewBag.ToDisplay.FirstName</h2>
         </header>
 
 
@@ -130,7 +171,7 @@
                 asp-route-id="@ViewBag.ToDisplay.UserId">
                 <header>
                     <h2 class="span2Columns">Date Time:</h2>
-                    <input class="span2Columns" type="date">
+                    <input class="span2Columns" asp-for="StartDate" type="date">
                     <label>Start Time:</label>
                     <input asp-for="StartTime" type="time">
                     <label>End Time:</label>
