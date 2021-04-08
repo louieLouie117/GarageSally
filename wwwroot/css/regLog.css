@@ -160,6 +160,16 @@ input{
 .hidden{
     display: none;
 }
+.section3-container aside{
+    display: grid;
+    grid-template-columns: 100px auto;
+    column-gap: 5px;
+}
+
+.section3-container p{
+    color: #B936D2;
+}
+
 
 
 

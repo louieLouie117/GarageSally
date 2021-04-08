@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
-    public enum AccountType { Buyer = 0, Seller = 1}
+    public enum AccountType { Buyer = 0, Seller = 1 }
     public class User
     {
         [Key]
@@ -61,6 +61,8 @@ namespace UserLogin.Models
         // [Required]
         // [DefaultValue("n/a")]
         public string City { get; set; }
+
+        public string State { get; set; }
 
         // [Required]
         public int Zipcode { get; set; }

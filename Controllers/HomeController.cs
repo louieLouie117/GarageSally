@@ -196,7 +196,7 @@ namespace UserLogin.Controllers
 
 
         // Processing From data--------------------------------------------
-        [HttpPost("register")]
+        [HttpPost("registerBuyerWithImage")]
         public async Task<IActionResult> Redgister(List<IFormFile> files, User FromForm)
         {
 
@@ -268,6 +268,47 @@ namespace UserLogin.Controllers
                 Console.WriteLine("Fix your errors!");
                 return View("index", wMod);
             }
+
+        }
+
+        [HttpPost("register")]
+        public IActionResult Redgister(User FromForm)
+        {
+
+            DashboardWrapper wMod = new DashboardWrapper();
+
+            // Check if email is already in db
+            if (_context.Users.Any(u => u.Email == FromForm.Email))
+            {
+                ModelState.AddModelError("Email", "Email already in use!");
+            }
+            // Validations
+            if (ModelState.IsValid)
+            {
+                // #hash password
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
+            }
+            else
+            {
+                Console.WriteLine("Fix your errors!");
+                return View("index", wMod);
+            }
+
+
+
+            FromForm.ProfilePic = "placeholder.png";
+            FromForm.AccountType = AccountType.Buyer;
+
+            // Add to db
+            _context.Add(FromForm);
+            _context.SaveChanges();
+            // Session
+            HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
+            // Redirect
+            Console.WriteLine("You may contine!");
+            return RedirectToAction("dashboard");
+
 
         }
 
