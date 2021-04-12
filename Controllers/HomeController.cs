@@ -365,7 +365,7 @@ namespace UserLogin.Controllers
             if (ModelState.IsValid)
             {
                 // Check db email with from email
-                var userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
+                User userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
                 // No user in db
                 if (userInDb == null)
                 {
@@ -377,7 +377,7 @@ namespace UserLogin.Controllers
                 var result = hasher.VerifyHashedPassword(userSubmission, userInDb.Password, userSubmission.Password);
                 if (result == 0)
                 {
-                    // handle failure (this should be similar to how "existing email" is handled)
+                    Console.WriteLine("Password error");
                 }
                 // Set Session Instance
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
