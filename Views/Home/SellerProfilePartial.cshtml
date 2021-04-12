@@ -1,14 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Seller Profile</h1>
+@model User
 
 
-</body>
-</html>
+<div>
+
+    <form asp-action="UpdateProfile" asp-controller="Home">
+
+        <span asp-validation-for="FirstName"></span>
+        <input asp-for="FirstName" placeholder="First name" disabled>
+
+        <span asp-validation-for="LastName"></span>
+        <input asp-for="LastName" placeholder="Last name" disabled>
+
+        <span asp-validation-for="Email"></span>
+        <input asp-for="Email" placeholder="Email" disabled>
+
+        <span asp-validation-for="Password"></span>
+        <input asp-for="Password" placeholder="Password" disabled>
+
+        <span asp-validation-for="Confirm"></span>
+        <input asp-for="Confirm" placeholder="Confirm" disabled>
+
+        <span asp-validation-for="StreetNumber"></span>
+        <input asp-for="StreetNumber" placeholder="StreetNumber" disabled>
+
+        <span asp-validation-for="StreetName"></span>
+        <input asp-for="StreetName" placeholder="StreetName" disabled>
+
+        <span asp-validation-for="City"></span>
+        <input asp-for="City" placeholder="City" disabled>
+
+        <span asp-validation-for="Zipcode"></span>
+        <input asp-for="Zipcode" placeholder="Zipcode" disabled>
+
+    </form>
+
+</div>
