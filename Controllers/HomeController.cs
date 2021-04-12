@@ -52,7 +52,6 @@ namespace UserLogin.Controllers
         }
 
 
-
         [HttpGet("login")]
         public IActionResult login()
         {
@@ -124,9 +123,6 @@ namespace UserLogin.Controllers
 
         // -----------------------------------------------------------end
 
-
-
-
         [HttpPost("PostGarageSaleHandler")]
         public IActionResult PostGarageSaleHandler(GarageSale FromForm)
         {
@@ -161,7 +157,6 @@ namespace UserLogin.Controllers
 
                 Image = "placeholder.png"
 
-
             };
 
             System.Console.WriteLine($"Entry to be send to db {Entry}");
@@ -189,10 +184,6 @@ namespace UserLogin.Controllers
             return Json(new { data = garageSaleItems });
 
         }
-
-
-
-
 
 
         // Processing From data--------------------------------------------
@@ -347,7 +338,23 @@ namespace UserLogin.Controllers
 
         }
 
-        //Processing Registration Login-------------------------------------------------
+        [HttpPost("profile/update")]
+        public async Task<IActionResult> UpdateProfile(User FromForm)
+        {
+            int UserId = (int)HttpContext.Session.GetInt32("UserId");
+            if( await _context.Users.AnyAsync(u => u.UserId == UserId))
+            {
+                FromForm.UserId = UserId;
+                _context.Update(FromForm);
+                _context.Entry(FromForm).Property("CreatedAt").IsModified = false;
+                _context.SaveChanges();
+
+                return RedirectToAction("profile");
+            }
+            return RedirectToAction("profile");
+        }
+
+        //Processing Login-------------------------------------------------
         [HttpPost("login")]
         public IActionResult Login(LoginUser userSubmission)
         {
@@ -358,7 +365,7 @@ namespace UserLogin.Controllers
             if (ModelState.IsValid)
             {
                 // Check db email with from email
-                var userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
+                User userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
                 // No user in db
                 if (userInDb == null)
                 {
@@ -370,7 +377,7 @@ namespace UserLogin.Controllers
                 var result = hasher.VerifyHashedPassword(userSubmission, userInDb.Password, userSubmission.Password);
                 if (result == 0)
                 {
-                    // handle failure (this should be similar to how "existing email" is handled)
+                    Console.WriteLine("Password error");
                 }
                 // Set Session Instance
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
