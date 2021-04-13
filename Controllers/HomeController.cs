@@ -359,6 +359,7 @@ namespace UserLogin.Controllers
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
+                FromForm.ProfilePic = "placeholder.png";
                 FromForm.AccountType = AccountType.Seller;
 
 
@@ -383,7 +384,7 @@ namespace UserLogin.Controllers
         public async Task<IActionResult> UpdateProfile(User FromForm)
         {
             int UserId = (int)HttpContext.Session.GetInt32("UserId");
-            if( await _context.Users.AnyAsync(u => u.UserId == UserId))
+            if (await _context.Users.AnyAsync(u => u.UserId == UserId))
             {
                 FromForm.UserId = UserId;
                 _context.Update(FromForm);
