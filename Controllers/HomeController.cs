@@ -290,6 +290,8 @@ namespace UserLogin.Controllers
 
             FromForm.ProfilePic = "placeholder.png";
             FromForm.AccountType = AccountType.Buyer;
+            FromForm.SubscriptionStatus = SubscriptionStatus.Free;
+
 
             // Add to db
             _context.Add(FromForm);
@@ -361,6 +363,8 @@ namespace UserLogin.Controllers
 
                 FromForm.ProfilePic = "placeholder.png";
                 FromForm.AccountType = AccountType.Seller;
+
+                FromForm.SubscriptionStatus = SubscriptionStatus.Free;
 
 
                 // Add to db
