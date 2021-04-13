@@ -109,3 +109,14 @@ const HideLogin = ()=>{
 
 }
 
+
+
+const SelectedStateHandler =(e)=>{
+    let stateSelected = document.getElementById("SateSelectionList").value;
+
+    document.getElementById("UserState").value = stateSelected;
+
+    console.log(stateSelected);
+
+
+}

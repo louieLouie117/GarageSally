@@ -70,11 +70,11 @@
 
 
                 <div class="section3-container" id="section3Reg">
-                    <p>and finding garage sales in your area.</p>
+                    <p>finding garage sales in your area.</p>
 
                     <span asp-validation-for="FirstName"></span>
                     <input asp-for="FirstName" placeholder="First name:">
-                    <input asp-for="FirstName" placeholder="Last name:">
+                    <input class="hidden" sp-for="LastName" placeholder="Last name:">
 
 
                     @* <img src="~/img/Assets/placeholder.png" alt=""> *@
@@ -88,7 +88,9 @@
                         </footer> *@
                     <span asp-validation-for="Zipcode"></span>
                     <aside>
-                        <input asp-for="State" placeholder="State:">
+                        <partial name="_StateList" />
+
+                        <input class="hidden" asp-for="State" placeholder="State:" id="UserState">
                         <input asp-for="Zipcode" placeholder="Zipcode:">
                     </aside>
 
