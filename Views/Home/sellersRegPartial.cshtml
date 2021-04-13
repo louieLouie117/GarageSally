@@ -41,10 +41,15 @@
                     <input asp-for="LastName" placeholder="Last Name">*@
 
                 <div class="section1-container" id="section1SellerReg">
-                    <span asp-validation-for="Zipcode"></span>
-                    <input asp-for="Zipcode" placeholder="Zipcode">
+                    <aside>
+                        <partial name="_StateListSeller" />
+
+                        <span asp-validation-for="Zipcode"></span>
+                        <input asp-for="Zipcode" placeholder="Zipcode">
+                        <input asp-for="State" placeholder="State:" class="hidden" id="SellerState">
 
 
+                    </aside>
 
                     <button type="button" onclick="Step2SellerReg()">Next</button>
 
@@ -54,12 +59,12 @@
 
 
                     <span asp-validation-for="Email"></span>
-                    <input asp-for="Email" placeholder="Email">
-                    <span asp-validation-for="Password"></span>
-                    <input asp-for="Password" placeholder="Password">
+                    <span asp-validation-for="FirstName"></span>
+                    <input asp-for="FirstName" placeholder="First name">
 
-                    <span asp-validation-for="Confirm"></span>
-                    <input asp-for="Confirm" placeholder="Confirm Password">
+                    <input asp-for="Email" placeholder="Email">
+
+
 
                     <footer>
                         <button type="button" onclick="Step1SellerReg()">back</button>
@@ -72,25 +77,30 @@
 
 
                 <div class="section3-container" id="section3SellerReg">
-                    <span asp-validation-for="FirstName"></span>
-                    <input asp-for="FirstName" placeholder="First name">
+                    <span asp-validation-for="Password"></span>
+                    <input asp-for="Password" placeholder="Password">
 
-                    <img src="~/img/Assets/placeholder.png" alt="">
-                    <p>Incress discoverability by adding a photo to your profile.</p>
+                    <span asp-validation-for="Confirm"></span>
+                    <input asp-for="Confirm" placeholder="Confirm Password">
 
-                    <input asp-for="files" type="file" multiple>
+                    @* <img src="~/img/Assets/placeholder.png" alt="">
+                        <p>Incress discoverability by adding a photo to your profile.</p>
+
+                        <input asp-for="files" type="file" multiple> *@
 
 
                     <footer>
 
                         <button type="button" onclick="Step2SellerReg()">back</button>
-                        <button type="button" onclick="Step4SellerReg()">Next</button>
+                        <button type="submit">Create Account</button>
+
+                        @* <button type="button" onclick="Step4SellerReg()">Next</button> *@
 
                     </footer>
 
                 </div>
 
-                <div class="section4-container" id="section4SellerReg">
+                @* <div class="section4-container" id="section4SellerReg">
                     <p>Add the location of your garage sale.</p>
 
 
@@ -104,12 +114,11 @@
                     <input asp-for="City" placeholder="City:">
 
                     <footer>
-                        <button type="button" onclick="Step3SellerReg()">back</button>
+                    <button type="button" onclick="Step3SellerReg()">back</button>
 
-                        <button type="submit">Create Account</button>
 
                     </footer>
-                </div>
+                    </div> *@
 
 
                 @* <input class="btn" type="submit" value="submit"> *@

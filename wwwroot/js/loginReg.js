@@ -71,7 +71,7 @@ const Step3SellerReg = (e) =>{
     document.getElementById("section2SellerReg").style.display = "none";
     document.getElementById("section3SellerReg").style.display = "grid";
     document.getElementById("section4SellerReg").style.display = "none";
-    document.getElementById("sellerHeading").innerText = "Customize your profile."
+    document.getElementById("sellerHeading").innerText = "Create a password, login to your account in anytime."
 
 
 }
@@ -111,11 +111,19 @@ const HideLogin = ()=>{
 
 
 
-const SelectedStateHandler =(e)=>{
-    let stateSelected = document.getElementById("SateSelectionList").value;
+const BuyerStateHandler =(e)=>{
+    let stateSelected = document.getElementById("BuyerStateSelectionList").value;
 
-    document.getElementById("UserState").value = stateSelected;
+    document.getElementById("BuyerState").value = stateSelected;
+    console.log(stateSelected);
 
+
+}
+
+const SellerStateHandler =(e)=>{
+    let stateSelected = document.getElementById("SellerSateSelectionList").value;
+
+    document.getElementById("SellerState").value = stateSelected;
     console.log(stateSelected);
 
 
