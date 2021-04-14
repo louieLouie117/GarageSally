@@ -22,7 +22,6 @@
 
             $('#UserInfoEdit').submit(function (event) {
                 event.preventDefault();
-                alert('save change button was click')
 
 
                 let firstName = $('#FirstNameEdit').val()
@@ -151,6 +150,7 @@
 
 
                     `).prependTo("#UserInfoEdit");
+
                 });
             };
 
@@ -161,7 +161,6 @@
 
         const ShowSaveChangesBTN = (e) => {
 
-            console.log(e.target.value.length)
 
 
             if (SaveChangesBTNEvent === "close") {
