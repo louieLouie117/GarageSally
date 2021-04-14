@@ -265,7 +265,7 @@ namespace UserLogin.Controllers
                 FromForm.AccountType = AccountType.Buyer;
 
                 FromForm.LastName = "";
-                FromForm.StreetNumber = 1;
+                FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
 
@@ -316,7 +316,7 @@ namespace UserLogin.Controllers
             FromForm.SubscriptionStatus = SubscriptionStatus.Free;
 
             FromForm.LastName = "";
-            FromForm.StreetNumber = 1;
+            FromForm.StreetNumber = "";
             FromForm.StreetName = "";
             FromForm.City = "";
             FromForm.ProfilePic = "placeholder.png";
@@ -396,7 +396,7 @@ namespace UserLogin.Controllers
 
 
                 FromForm.LastName = "";
-                FromForm.StreetNumber = 1;
+                FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
                 FromForm.ProfilePic = "placeholder.png";
