@@ -15,7 +15,6 @@
 
             $('#postForm').submit(function (event) {
                 event.preventDefault();
-                alert('button test ajax was click')
 
 
                 let startDate = $('#StartDate').val()
@@ -71,7 +70,6 @@
 
 
             const LoadData = () => {
-                alert("loading data...");
                 $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
                     data = JSON.parse(data);
                     console.log("in load", data);
