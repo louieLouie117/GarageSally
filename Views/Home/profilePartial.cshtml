@@ -25,7 +25,61 @@
                 alert('save change button was click')
 
 
+                let firstName = $('#FirstNameEdit').val()
+                let lastName = $('#LastNameEdit').val()
+                let email = $('#EmailEdit').val()
+
+                let streetNumber = $('#StreetNumberEdit').val()
+                let streetName = $('#StreetNameEdit').val()
+                let city = $('#CityEdit').val()
+                let state = $('#StateEdit').val()
+                let zipcode = $('#ZipcodeEdit').val()
+
+
+
+                let jsonData = {
+
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+
+                    streetnumber: streetNumber,
+                    streetname: streetName,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+
+                }
+                console.log("user info Data", jsonData)
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateProfileHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+
+                })
+
+
             })
+
+
+            const SuccessStatus = (result) => {
+                console.log("Success...", result);
+
+                SaveChangesBTNEvent = "complete";
+                ShowSaveChangesBTN(event);
+
+
+            };
+            const ErrorStatus = (xhr, status, strErr) => {
+                console.log("There was an error!");
+            };
+            const CompleteStatus = (xhr, status) => {
+                console.log("Ajax has completed...");
+            };
 
 
 
@@ -48,33 +102,88 @@
                     `).prependTo("#UserInfo");
 
                     $(`
-                          <h3 class="span2Columns">Name and Email</h3>
+                          <h3 class="span2Columns">Name</h3>
 
-                                <input value="${v.firstName}" asp-for="FirstName" placeholder="First name:" >
-                                <input value="${v.lastName}" asp-for="LastName" placeholder="Last name:" >
+                                <input 
+                                value="${v.firstName}" 
+                                id="FirstNameEdit" placeholder="First name:" 
+                                onkeyup="ShowSaveChangesBTN(event)" >
 
-                                <input class="span2Columns" value="${v.email}" asp-for="Email" placeholder="Email" >
+                                <input 
+                                value="${v.lastName}" 
+                                id="LastNameEdit" 
+                                placeholder="Last name:" 
+                                onkeyup="ShowSaveChangesBTN(event)">
+
+                                @* <input class="span2Columns" value="${v.email}" id="EmailEdit" placeholder="Email" > *@
 
                                 <h3 class="span2Columns">Address</h3>
-                                <input value="${v.streetNumber}" asp-for="StreetNumber" placeholder="Street#:" >
-                                <input value="${v.streetName}" asp-for="StreetName" placeholder="Street Name:" >
+
+                                <input 
+                                type="number"
+                                value="${v.streetNumber}" 
+                                id="StreetNumberEdit" 
+                                placeholder="Street#:" 
+                                onkeyup="ShowSaveChangesBTN(event)">
+
+                                <input 
+                                value="${v.streetName}" 
+                                id="StreetNameEdit" 
+                                placeholder="Street Name:"
+                                onkeyup="ShowSaveChangesBTN(event)" >
 
                                 <footer class="span2Columns">
-                                    <input value="${v.city}" asp-for="City" placeholder="City:" >
-                                    <input value="${v.state}" asp-for="State" placeholder="State:" >
-                                    <input value="${v.zipcode}" asp-for="Zipcode" placeholder="Zipcode:" >
+                                    <input 
+                                    value="${v.city}" 
+                                    id="CityEdit" placeholder="City:" 
+                                    onkeyup="ShowSaveChangesBTN(event)">
+
+                                    <input 
+                                    value="${v.state}" 
+                                    id="StateEdit" placeholder="State:" 
+                                    onkeyup="ShowSaveChangesBTN(event)">
+
+                                    <input 
+                                    value="${v.zipcode}" 
+                                    id="ZipcodeEdit" placeholder="Zipcode:"
+                                    onkeyup="ShowSaveChangesBTN(event)">
                                 </footer>
-                                <button type="submit">Save Changes</button>   
 
 
-                    `).appendTo("#UserInfoEdit");
+                    `).prependTo("#UserInfoEdit");
                 });
             };
 
 
-
-
         })
+
+        let SaveChangesBTNEvent = "close"
+
+        const ShowSaveChangesBTN = (e) => {
+
+            console.log(e.target.value.length)
+
+
+            if (SaveChangesBTNEvent === "close") {
+                document.getElementById("SaveChangesBTN").style.display = "block";
+
+
+            } else {
+                document.getElementById("SaveChangesBTN").style.display = "none";
+
+
+            }
+
+            if (e.target.value.length <= 0) {
+                document.getElementById("SaveChangesBTN").style.display = "none";
+
+
+            }
+
+        }
+
+
+
 
     </script>
 
@@ -91,7 +200,11 @@
 
 
             <main>
-                <form id="UserInfoEdit" asp-action="UpdateProfile" asp-controller="Home"></form>
+                <form id="UserInfoEdit" asp-action="UpdateProfile" asp-controller="Home">
+
+                    <button class="hidden" id="SaveChangesBTN" type="submit">Save Changes</button>
+
+                </form>
 
             </main>
 

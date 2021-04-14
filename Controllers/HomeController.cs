@@ -39,7 +39,6 @@ namespace UserLogin.Controllers
         {
             return RedirectToAction("index");
         }
-        // -----------------------------------------------------------end
 
         // Rendering Pages in Views--------------------------------------------
         [HttpGet("")]
@@ -121,7 +120,8 @@ namespace UserLogin.Controllers
         }
 
 
-        // -----------------------------------------------------------end
+
+        // 
 
         [HttpPost("PostGarageSaleHandler")]
         public IActionResult PostGarageSaleHandler(GarageSale FromForm)
@@ -166,6 +166,44 @@ namespace UserLogin.Controllers
 
             return Json(new { Status = "success" });
         }
+
+
+
+
+
+        [HttpPost("UpdateProfileHandler")]
+
+        public IActionResult UpdateProfileHandler(User FromForm)
+        {
+            System.Console.WriteLine("you have reach the backend for updating the user info!");
+
+            System.Console.WriteLine(FromForm.LastName);
+
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+
+            User GetUser = _context.Users.FirstOrDefault(u => u.UserId == UserIdInSession);
+
+            GetUser.FirstName = FromForm.FirstName;
+            GetUser.LastName = FromForm.LastName;
+
+
+            GetUser.StreetNumber = FromForm.StreetNumber;
+            GetUser.StreetName = FromForm.StreetName;
+            GetUser.City = FromForm.City;
+            GetUser.State = FromForm.State;
+            GetUser.Zipcode = FromForm.Zipcode;
+
+
+
+            _context.SaveChanges();
+
+
+            return Json(new { Status = "Success" });
+        }
+
+
+
+
 
 
         [HttpGet("displayGarageSales")]
@@ -435,6 +473,13 @@ namespace UserLogin.Controllers
             }
             return RedirectToAction("profile");
         }
+
+
+
+
+
+
+
 
         //Processing Login-------------------------------------------------
         [HttpPost("login")]
