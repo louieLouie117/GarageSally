@@ -25,27 +25,43 @@
 
                     $(`
                         <header>
-                            <h1>Hello ${v.firstName}</h1>
                             <img src="/img/uploads/${v.profilePic}">
+                            <h1>Hello ${v.firstName}</h1>
+                            <button>Change Photo</button>
+                            <from class="span2Columns">
+                                <input type="file"/>
+                            </from>
+
                         </header>
                         <main>     
                             <form asp-action="UpdateProfile" asp-controller="Home">
+                                <h3 class="span2Columns" >Name and Email</h3>
+
                                 <input value="${v.firstName}" asp-for="FirstName" placeholder="First name:" >
                                 <input value="${v.lastName}" asp-for="LastName" placeholder="Last name:" >
-                                <input value="${v.email}" asp-for="Email" placeholder="Email" >
 
-                                <input value="${v.streetNumber}" asp-for="StreetNumber" placeholder="Street Number:" >
+                                <input class="span2Columns" value="${v.email}" asp-for="Email" placeholder="Email" >
+
+                                <h3 class="span2Columns" >Address</h3>
+                                <input value="${v.streetNumber}" asp-for="StreetNumber" placeholder="Street#:" >
                                 <input value="${v.streetName}" asp-for="StreetName" placeholder="Street Name:" >
-                                <input value="${v.city}" asp-for="City" placeholder="City:" >
-                                <input value="${v.state}" asp-for="State" placeholder="State:" >
-                                <input value="${v.zipcode}" asp-for="Zipcode" placeholder="Zipcode:" >
+
+                                <footer>
+                                    <input value="${v.city}" asp-for="City" placeholder="City:" >
+                                    <input value="${v.state}" asp-for="State" placeholder="State:" >
+                                    <input value="${v.zipcode}" asp-for="Zipcode" placeholder="Zipcode:" >
+                                </footer>
+
+
+
                             </form>
+                                <button>Save Changes</button>
+
                         </main>
 
-                        <footer></footer>
 
 
-                    `).prependTo("#UserInfo");
+                    `).appendTo("#UserInfo");
                 });
             };
 
@@ -54,21 +70,23 @@
 
 
 </head>
+<aside></aside>
+<address></address>
 
 <body>
     <div class="profile-container" id="profile">
         <button onclick="profile()"> &lt; back</button>
 
-        <div id="UserInfo"></div>
+        <div class="userInfo-container" id="UserInfo"></div>
 
 
         @if (Model.AccountType == 0)
         {
-            <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" />
+            @* <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" /> *@
         }
         else
         {
-            <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" />
+            @* <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" /> *@
         }
 
     </div>

@@ -5,6 +5,7 @@ body {
 
 h1,
 h2,
+h3,
 p {
 	margin: 0;
 }
@@ -17,6 +18,12 @@ input {
 	font: 1em sans-serif;
 	height: 35px;
 }
+
+.hidden{
+	display: none;
+}
+
+
 
 /* placement of container on the gird */
 
@@ -444,4 +451,57 @@ input {
 .termsOfService-container :last-child,
 .privacyPolicy-container :last-child {
 	height: 100px;
+}
+
+
+/* user info styles------------------------------- */
+.userInfo-container{
+	display: grid;
+	row-gap: 10px;
+	justify-content: center;
+
+}
+
+.userInfo-container header{
+	display: grid;
+	grid-template-columns: 130px 1fr;
+	align-items: center;
+	justify-items: center;
+
+}
+
+
+
+.userInfo-container header>button{
+	width: auto;
+}
+
+
+.userInfo-container main form{
+	display: grid;
+	grid-template-columns: 100px 1fr;
+	row-gap: 5px;
+	column-gap: 5px;
+}
+
+.userInfo-container main button{
+	background: #b936d2;
+	color: white;
+	font: 1em sans-serif;
+	text-align: center;
+	height: 40px;
+	border-radius: 10px;
+	margin-top: 5px;
+}
+
+.userInfo-container main form h3{
+	font: 1em sans-serif;
+	text-decoration: underline;
+}
+
+
+.userInfo-container main form footer{
+	display: grid;
+	grid-template-columns: 100px 50px 149px;
+	column-gap: 5px;
 }
