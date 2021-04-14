@@ -469,6 +469,10 @@ input {
 	justify-items: center;
 
 }
+.userInfo-container header h1{
+	font: 1.5em sans-serif;
+	justify-self: left;
+}
 
 
 

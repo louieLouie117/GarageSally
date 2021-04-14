@@ -18,6 +18,17 @@
             $.get("/DisplayUserProfile", data => {
                 RenderData(data);
             });
+
+
+            $('#UserInfoEdit').submit(function (event) {
+                event.preventDefault();
+                alert('save change button was click')
+
+
+            })
+
+
+
             const RenderData = (data) => {
                 console.log("user Data", data.data)
                 $.each(data.data, function (i, v) {
@@ -28,44 +39,43 @@
                             <img src="/img/uploads/${v.profilePic}">
                             <h1>Hello ${v.firstName}</h1>
                             <button>Change Photo</button>
-                            <from class="span2Columns">
-                                <input type="file"/>
+                            <from class="hidden span2Columns">
+                                <input type="file">
                             </from>
 
                         </header>
-                        <main>     
-                            <form asp-action="UpdateProfile" asp-controller="Home">
-                                <h3 class="span2Columns" >Name and Email</h3>
+
+                    `).prependTo("#UserInfo");
+
+                    $(`
+                          <h3 class="span2Columns">Name and Email</h3>
 
                                 <input value="${v.firstName}" asp-for="FirstName" placeholder="First name:" >
                                 <input value="${v.lastName}" asp-for="LastName" placeholder="Last name:" >
 
                                 <input class="span2Columns" value="${v.email}" asp-for="Email" placeholder="Email" >
 
-                                <h3 class="span2Columns" >Address</h3>
+                                <h3 class="span2Columns">Address</h3>
                                 <input value="${v.streetNumber}" asp-for="StreetNumber" placeholder="Street#:" >
                                 <input value="${v.streetName}" asp-for="StreetName" placeholder="Street Name:" >
 
-                                <footer>
+                                <footer class="span2Columns">
                                     <input value="${v.city}" asp-for="City" placeholder="City:" >
                                     <input value="${v.state}" asp-for="State" placeholder="State:" >
                                     <input value="${v.zipcode}" asp-for="Zipcode" placeholder="Zipcode:" >
                                 </footer>
+                                <button type="submit">Save Changes</button>   
 
 
-
-                            </form>
-                                <button>Save Changes</button>
-
-                        </main>
-
-
-
-                    `).appendTo("#UserInfo");
+                    `).appendTo("#UserInfoEdit");
                 });
             };
 
+
+
+
         })
+
     </script>
 
 
@@ -77,7 +87,17 @@
     <div class="profile-container" id="profile">
         <button onclick="profile()"> &lt; back</button>
 
-        <div class="userInfo-container" id="UserInfo"></div>
+        <div class="userInfo-container" id="UserInfo">
+
+
+            <main>
+                <form id="UserInfoEdit" asp-action="UpdateProfile" asp-controller="Home"></form>
+
+            </main>
+
+        </div>
+
+
 
 
         @if (Model.AccountType == 0)
