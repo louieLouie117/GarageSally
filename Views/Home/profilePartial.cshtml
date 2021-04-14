@@ -10,22 +10,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $.get("/DisplayUserProfile", data => {
+                RenderData(data);
+            });
+            const RenderData = (data) => {
+                console.log("user Data", data.data)
+                $.each(data.data, function (i, v) {
+                    console.log(v)
+
+                    $(`
+                        <header>
+                            <h1>Hello ${v.firstName}</h1>
+                            <img src="/img/uploads/${v.profilePic}">
+                        </header>
+                        <main>     
+                            <form asp-action="UpdateProfile" asp-controller="Home">
+                                <input value="${v.firstName}" asp-for="FirstName" placeholder="First name:" >
+                                <input value="${v.lastName}" asp-for="LastName" placeholder="Last name:" >
+                                <input value="${v.email}" asp-for="Email" placeholder="Email" >
+
+                                <input value="${v.streetNumber}" asp-for="StreetNumber" placeholder="Street Number:" >
+                                <input value="${v.streetName}" asp-for="StreetName" placeholder="Street Name:" >
+                                <input value="${v.city}" asp-for="City" placeholder="City:" >
+                                <input value="${v.state}" asp-for="State" placeholder="State:" >
+                                <input value="${v.zipcode}" asp-for="Zipcode" placeholder="Zipcode:" >
+                            </form>
+                        </main>
+
+                        <footer></footer>
+
+
+                    `).prependTo("#UserInfo");
+                });
+            };
+
+        })
+    </script>
+
+
 </head>
 
 <body>
     <div class="profile-container" id="profile">
         <button onclick="profile()"> &lt; back</button>
-        <h1>Hello @ViewBag.ToDisplay.FirstName</h1>
-        <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="">
+
+        <div id="UserInfo"></div>
+
 
         @if (Model.AccountType == 0)
-            {
-                <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" />
-            }
-            else
-            {
-                <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" />
-            }
+        {
+            <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" />
+        }
+        else
+        {
+            <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" />
+        }
 
     </div>
 
