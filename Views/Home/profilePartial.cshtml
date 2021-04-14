@@ -66,18 +66,17 @@
 
 
             const SuccessStatus = (result) => {
+                document.getElementById("SaveChangesBTN").style.display = "none";
                 console.log("Success...", result);
-
-                SaveChangesBTNEvent = "complete";
-                ShowSaveChangesBTN(event);
-
-
             };
+
+
             const ErrorStatus = (xhr, status, strErr) => {
                 console.log("There was an error!");
             };
             const CompleteStatus = (xhr, status) => {
                 console.log("Ajax has completed...");
+
             };
 
 
@@ -89,7 +88,7 @@
 
                     $(`
                             <img src="/img/uploads/${v.profilePic}">
-                            <h1>Hello ${v.firstName}</h1>
+                            <h1 id="UserNameText">Hello, ${v.firstName}</h1>
                             <button>Change Photo</button>
                             <from class="hidden span2Columns">
                                 <input type="file">
@@ -164,10 +163,14 @@
 
         const ShowSaveChangesBTN = (e) => {
 
+            console.log(e.target.id)
 
 
             if (SaveChangesBTNEvent === "close") {
                 document.getElementById("SaveChangesBTN").style.display = "block";
+                if (e.target.id === "FirstNameEdit") {
+                    document.getElementById("UserNameText").innerText = "Hello, " + e.target.value;
+                }
 
 
             } else {
