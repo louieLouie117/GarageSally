@@ -39,7 +39,6 @@ namespace UserLogin.Controllers
         {
             return RedirectToAction("index");
         }
-        // -----------------------------------------------------------end
 
         // Rendering Pages in Views--------------------------------------------
         [HttpGet("")]
@@ -121,9 +120,8 @@ namespace UserLogin.Controllers
         }
 
 
-        // -----------------------------------------------------------end
 
-
+        // 
 
         [HttpPost("PostGarageSaleHandler")]
         public IActionResult PostGarageSaleHandler(GarageSale FromForm)
@@ -187,7 +185,7 @@ namespace UserLogin.Controllers
 
             GetUser.FirstName = FromForm.FirstName;
             GetUser.LastName = FromForm.LastName;
-            GetUser.Email = FromForm.Email;
+
 
             GetUser.StreetNumber = FromForm.StreetNumber;
             GetUser.StreetName = FromForm.StreetName;
