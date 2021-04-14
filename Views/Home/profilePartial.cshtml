@@ -67,9 +67,7 @@
 
             const SuccessStatus = (result) => {
                 console.log("Success...", result);
-
-                SaveChangesBTNEvent = "complete";
-                ShowSaveChangesBTN(event);
+                document.getElementById("SaveChangesBTN").style.display = "none";
 
 
             };
@@ -78,6 +76,7 @@
             };
             const CompleteStatus = (xhr, status) => {
                 console.log("Ajax has completed...");
+
             };
 
 

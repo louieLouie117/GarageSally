@@ -491,6 +491,8 @@ input {
 .userInfo-container main form section{
 	display: grid;
 	grid-template-columns: 100px 1fr;
+	column-gap: 5px;
+	row-gap: 5px;
 }
 
 .userInfo-container main form section p{
