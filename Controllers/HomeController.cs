@@ -168,6 +168,16 @@ namespace UserLogin.Controllers
         }
 
 
+        [HttpPost("UpdateProfileHandler")]
+
+        public IActionResult UpdateProfileHandler(User FromForm)
+        {
+            System.Console.WriteLine("you have reach the backend for updating the user info!");
+
+            return Json(new { Status = "Success" });
+        }
+
+
         [HttpGet("displayGarageSales")]
 
         public JsonResult displayGarageSales()
@@ -435,6 +445,13 @@ namespace UserLogin.Controllers
             }
             return RedirectToAction("profile");
         }
+
+
+
+
+
+
+
 
         //Processing Login-------------------------------------------------
         [HttpPost("login")]

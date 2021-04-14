@@ -25,7 +25,58 @@
                 alert('save change button was click')
 
 
+                let firstName = $('#FirstNameEdit').val()
+                let lastName = $('#LastNameEdit').val()
+                let email = $('#EmailEdit').val()
+
+                let streetNumber = $('#StreetNumberEdit').val()
+                let streetName = $('#StreetNameEdit').val()
+                let city = $('#CityEdit').val()
+                let state = $('#StateEdit').val()
+                let zipcode = $('#ZipcodeEdit').val()
+
+
+
+                let jsonData = {
+
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+
+                    streetnumber: streetNumber,
+                    streetname: streetName,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+
+                }
+                console.log("user info Data", jsonData)
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateProfileHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+
+                })
+
+
             })
+
+
+            const SuccessStatus = (result) => {
+                console.log("Success...", result);
+                @* LoadData(); *@
+
+            };
+            const ErrorStatus = (xhr, status, strErr) => {
+                console.log("There was an error!");
+            };
+            const CompleteStatus = (xhr, status) => {
+                console.log("Ajax has completed...");
+            };
 
 
 
@@ -50,19 +101,19 @@
                     $(`
                           <h3 class="span2Columns">Name and Email</h3>
 
-                                <input value="${v.firstName}" asp-for="FirstName" placeholder="First name:" >
-                                <input value="${v.lastName}" asp-for="LastName" placeholder="Last name:" >
+                                <input value="${v.firstName}" id="FirstNameEdit" placeholder="First name:" >
+                                <input value="${v.lastName}" id="LastNameEdit" placeholder="Last name:" >
 
-                                <input class="span2Columns" value="${v.email}" asp-for="Email" placeholder="Email" >
+                                <input class="span2Columns" value="${v.email}" id="EmailEdit" placeholder="Email" >
 
                                 <h3 class="span2Columns">Address</h3>
-                                <input value="${v.streetNumber}" asp-for="StreetNumber" placeholder="Street#:" >
-                                <input value="${v.streetName}" asp-for="StreetName" placeholder="Street Name:" >
+                                <input value="${v.streetNumber}" id="StreetNumberEdit" placeholder="Street#:" >
+                                <input value="${v.streetName}" id="StreetNameEdit" placeholder="Street Name:" >
 
                                 <footer class="span2Columns">
-                                    <input value="${v.city}" asp-for="City" placeholder="City:" >
-                                    <input value="${v.state}" asp-for="State" placeholder="State:" >
-                                    <input value="${v.zipcode}" asp-for="Zipcode" placeholder="Zipcode:" >
+                                    <input value="${v.city}" id="CityEdit" placeholder="City:" >
+                                    <input value="${v.state}" id="StateEdit" placeholder="State:" >
+                                    <input value="${v.zipcode}" id="ZipcodeEdit" placeholder="Zipcode:" >
                                 </footer>
                                 <button type="submit">Save Changes</button>   
 
