@@ -88,7 +88,6 @@
                     console.log(v)
 
                     $(`
-                        <header>
                             <img src="/img/uploads/${v.profilePic}">
                             <h1>Hello ${v.firstName}</h1>
                             <button>Change Photo</button>
@@ -96,9 +95,8 @@
                                 <input type="file">
                             </from>
 
-                        </header>
 
-                    `).prependTo("#UserInfo");
+                    `).prependTo("#UserPhoto");
 
                     $(`
                           <h3 class="span2Columns">Name</h3>
@@ -115,6 +113,11 @@
                                 onkeyup="ShowSaveChangesBTN(event)">
 
                                 @* <input class="span2Columns" value="${v.email}" id="EmailEdit" placeholder="Email" > *@
+
+
+                    `).prependTo("#UserFormName");
+
+                    $(`
 
                                 <h3 class="span2Columns">Address</h3>
 
@@ -149,7 +152,7 @@
                                 </footer>
 
 
-                    `).prependTo("#UserInfoEdit");
+                    `).prependTo("#UserFormAddress");
 
                 });
             };
@@ -188,8 +191,6 @@
 
 
 </head>
-<aside></aside>
-<address></address>
 
 <body>
     <div class="profile-container" id="profile">
@@ -197,11 +198,32 @@
 
         <div class="userInfo-container" id="UserInfo">
 
+            <header id="UserPhoto"></header>
 
             <main>
                 <form id="UserInfoEdit" asp-action="UpdateProfile" asp-controller="Home">
+                    <section id="UserFormName"></section>
+
+
+
+                    @if (Model.AccountType == AccountType.Seller)
+                    {
+
+                        <section id="UserFormAddress"></section>
+
+                    }
 
                     <button class="hidden" id="SaveChangesBTN" type="submit">Save Changes</button>
+
+                    @if (Model.AccountType == AccountType.Buyer)
+                    {
+                        <section>
+                            <button>Upgrade Account</button>
+                            <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
+
+                        </section>
+
+                    }
 
                 </form>
 
@@ -212,14 +234,9 @@
 
 
 
-        @if (Model.AccountType == 0)
-        {
-            @* <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" /> *@
-        }
-        else
-        {
-            @* <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" /> *@
-        }
+        @* <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" /> *@
+
+        @* <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" /> *@
 
     </div>
 

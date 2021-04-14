@@ -483,10 +483,24 @@ input {
 
 .userInfo-container main form{
 	display: grid;
-	grid-template-columns: 100px 1fr;
+	/* grid-template-columns: 100px 1fr; */
 	row-gap: 5px;
 	column-gap: 5px;
 }
+
+.userInfo-container main form section{
+	display: grid;
+	grid-template-columns: 100px 1fr;
+}
+
+.userInfo-container main form section p{
+	font: 1.5em sans-serif;
+	color: #b936d2;
+	width: 300px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	line-height: 25px;
+}
+
 
 .userInfo-container main button{
 	background: #b936d2;
