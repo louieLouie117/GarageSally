@@ -185,6 +185,25 @@ namespace UserLogin.Controllers
 
         }
 
+        [HttpGet("DisplayUserProfile")]
+
+        public JsonResult DisplayUserProfile()
+        {
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+
+            DashboardWrapper wMode = new DashboardWrapper();
+
+            List<User> UserInfo = _context.Users
+            .Where(ul => ul.UserId == UserIdInSession)
+            .ToList();
+
+
+            return Json(new { data = UserInfo });
+
+        }
+
+
+
 
         // Processing From data--------------------------------------------
         [HttpPost("registerBuyerWithImage")]
@@ -245,6 +264,11 @@ namespace UserLogin.Controllers
 
                 FromForm.AccountType = AccountType.Buyer;
 
+                FromForm.LastName = "";
+                FromForm.StreetNumber = "";
+                FromForm.StreetName = "";
+                FromForm.City = "";
+
                 // Add to db
                 _context.Add(FromForm);
                 _context.SaveChanges();
@@ -288,9 +312,15 @@ namespace UserLogin.Controllers
 
 
 
-            FromForm.ProfilePic = "placeholder.png";
             FromForm.AccountType = AccountType.Buyer;
             FromForm.SubscriptionStatus = SubscriptionStatus.Free;
+
+            FromForm.LastName = "";
+            FromForm.StreetNumber = "";
+            FromForm.StreetName = "";
+            FromForm.City = "";
+            FromForm.ProfilePic = "placeholder.png";
+
 
 
             // Add to db
@@ -361,10 +391,16 @@ namespace UserLogin.Controllers
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
 
-                FromForm.ProfilePic = "placeholder.png";
                 FromForm.AccountType = AccountType.Seller;
-
                 FromForm.SubscriptionStatus = SubscriptionStatus.Free;
+
+
+                FromForm.LastName = "";
+                FromForm.StreetNumber = "";
+                FromForm.StreetName = "";
+                FromForm.City = "";
+                FromForm.ProfilePic = "placeholder.png";
+
 
 
                 // Add to db
