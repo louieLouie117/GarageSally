@@ -24,7 +24,7 @@ const Step3Reg = (e) =>{
     document.getElementById("section2Reg").style.display = "none";
     document.getElementById("section3Reg").style.display = "grid";
     document.getElementById("section4Reg").style.display = "none";
-    document.getElementById("sectionHeading").innerText = "Finding garage sales in your area."
+    document.getElementById("sectionHeading").innerText = "Finial Step."
 
 
 }
