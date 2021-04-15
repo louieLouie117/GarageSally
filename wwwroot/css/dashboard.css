@@ -63,7 +63,7 @@ input {
 	text-align: left;
 }
 
-.profile-container img,
+.profile-container>img,
 .postSale-container img {
 	width: 70px;
 	height: 70px;
@@ -204,12 +204,14 @@ input {
 }
 
 .menuList-container footer,
-.postSale-container footer {
+.postSale-container footer,
+.logoVersion footer {
 	display: grid;
 }
 
 .menuList-container footer img,
-.postSale-container footer img {
+.postSale-container footer img,
+.logoVersion footer img {
 	width: 300px;
 	height: auto;
 	margin: 0 auto;
@@ -222,7 +224,8 @@ input {
 	color: white;
 }
 
-.postSale-container footer p {
+.postSale-container footer p,
+.logoVersion footer p {
 	justify-self: flex-end;
 	color: gray;
 }
@@ -460,6 +463,10 @@ input {
 	row-gap: 10px;
 	justify-content: center;
 
+}
+
+.userInfo-container main form section:first-of-type{
+	padding-bottom: 25px;
 }
 
 .userInfo-container header{
