@@ -1,5 +1,5 @@
 @using UserLogin.Models
-@model GarageSale
+@model User
 
 <!DOCTYPE html>
 <html lang="en">
@@ -149,6 +149,7 @@
 
 <body>
 
+
     <div class="postSale-container" id="postSalePartial">
         <button onclick="postSalePartialHandler()"> &lt; back</button>
 
@@ -169,22 +170,22 @@
                 asp-route-id="@ViewBag.ToDisplay.UserId">
                 <header>
                     <h2 class="span2Columns">Date Time:</h2>
-                    <input class="span2Columns" asp-for="StartDate" type="date">
+                    <input class="span2Columns" id="StartDate" type="date">
                     <label>Start Time:</label>
-                    <input asp-for="StartTime" type="time">
+                    <input id="StartTime" type="time">
                     <label>End Time:</label>
-                    <input asp-for="EndTime" type="time">
+                    <input id="EndTime" type="time">
                 </header>
                 <main>
                     <h2>Location:</h2>
                     <div class="locationHeader">
-                        <input asp-for='StreetNumber' type='text' placeholder='street #:'>
-                        <input asp-for='StreetName' type='text' placeholder='Street Name: '>
+                        <input id='StreetNumber' type='text' placeholder='street #:'>
+                        <input id='StreetName' type='text' placeholder='Street Name: '>
                     </div>
                     <div class="locationFooter">
-                        <input asp-for='City' type='text' placeholder='City:'>
-                        <input asp-for='State' type='text' placeholder='State:'>
-                        <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
+                        <input id='City' type='text' placeholder='City:'>
+                        <input id='State' type='text' placeholder='State:'>
+                        <input id='Zipcode' type='text' placeholder='zipecode: '>
                     </div>
                 </main>
 
