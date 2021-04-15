@@ -118,7 +118,7 @@
 
                     $(`
 
-                                <h3 class="span2Columns">Address</h3>
+                                <h3 class="span2Columns">Garage Sale Default Address</h3>
 
                                 <input 
                                 type="number"
@@ -220,7 +220,7 @@
 
                     @if (Model.AccountType == AccountType.Buyer)
                     {
-                        <section>
+                        <section  class="Upgrade-container">
                             <button>Upgrade Account</button>
                             <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
 
@@ -229,12 +229,19 @@
                     }
 
                 </form>
+            
 
             </main>
 
+
         </div>
+        <div  class="logoVersion">
+             <footer>
+                <img src="img/Assets/logoGray.png" alt="">
+                <p>v1.0</p>
+            </footer>
 
-
+        </div> 
 
 
         @* <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" /> *@

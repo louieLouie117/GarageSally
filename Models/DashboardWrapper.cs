@@ -12,5 +12,6 @@ namespace UserLogin.Models
 
         public GarageSale GarageSale { get; set; }
 
+
     }
 }
