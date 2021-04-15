@@ -497,7 +497,8 @@ input {
 	row-gap: 5px;
 }
 
-.userInfo-container main form section p{
+.userInfo-container main form section p,
+.upgrade-container p{
 	font: 1.5em sans-serif;
 	color: #b936d2;
 	width: 300px;
@@ -506,7 +507,8 @@ input {
 }
 
 
-.userInfo-container main button{
+.userInfo-container main button, 
+.upgrade-container button{
 	background: #b936d2;
 	color: white;
 	font: 1em sans-serif;
@@ -527,3 +529,4 @@ input {
 	grid-template-columns: 100px 50px 149px;
 	column-gap: 5px;
 }
+
