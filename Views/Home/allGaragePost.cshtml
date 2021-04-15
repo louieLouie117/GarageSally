@@ -59,13 +59,17 @@
 
                     console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted)
 
+                    let Today = new Date().toLocaleDateString("en-US", DateFormat);
 
+                    console.log("HERE IS TODAYS DATE:", Today)
 
 
                     let garageItemId = v.garageSaleId;
 
-
-                    $(`<li id="${garageItemId}">
+                    if (dateFormated > Today) {
+                        console.log("this event has expired")
+                    } else {
+                        $(`<li id="${garageItemId}">
 
                     @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
                     <section>
@@ -90,6 +94,9 @@
                     </section>
 
                     </li>`).prependTo("#garageSaleList");
+
+                    }
+
 
 
 
