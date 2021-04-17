@@ -17,6 +17,7 @@
         gtag('config', 'G-WGFK1GC4RE');
     </script>
     <script>
+
         $(document).ready(function () {
 
             $.get("/displayGarageSales", data => {
@@ -27,17 +28,16 @@
                 alert("loading data...");
                 $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
                     data = JSON.parse(data);
-                    console.log("in load", data);
-                    RenderData(data);
+                    @* console.log("in load", data); *@
+                        RenderData(data);
                     @* data = $.parseJSON(data); deprecated*@
                 });
             };
             const RenderData = (data) => {
-                console.log("user Data", data.data)
                 $.each(data.data, function (i, v) {
-                    console.log(v)
-                    console.log("Date Time:", v.startDate, v.startTime, v.endTime)
-                    console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.state, v.zipcode);
+                    @* console.log(v) *@
+                        @* console.log("Date Time:", v.startDate, v.startTime, v.endTime) *@
+                        @* console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.state, v.zipcode); *@
 
                     const TimeFormat = {
                         hour12: true,
@@ -56,55 +56,51 @@
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
 
-
-                    console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted)
-
                     let Today = new Date().toLocaleDateString("en-US", DateFormat);
 
-                    console.log("HERE IS TODAYS DATE:", Today)
 
 
                     let garageItemId = v.garageSaleId;
 
-                    if (dateFormated > Today) {
-                        console.log("this event has expired")
-                    } else {
+                    @* if (dateFormated > Today) { *@
+                        @* console.log("this event has expired") *@
+                    @* } else { *@
+
+
                         $(`<li id="${garageItemId}">
-
                     @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
-                    <section>
-                        <header>
-                            <h1>${dateFormated}</h1>
-                            <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
-                        </header>
+                        <section>
+                            <header>
+                                <h1>${dateFormated}</h1>
+                                <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
+                            </header>
 
 
-                        <address>
-                            <p>${v.streetNumber} ${v.streetName} </p>
-                            <p> ${v.city} ${v.zipcode}</p>
-                        </address>
+                            <address>
+                                <p>${v.streetNumber} ${v.streetName} </p>
+                                <p> ${v.city}  ${v.state} ${v.zipcode}</p>
+                            </address>
 
 
-                        <main>
-                            <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
-                            <button>Check In</button>
-                            <p>visited 20</p>
-                            <p>check in 5</p>
-                        </main>
-                    </section>
+                            <main>
+                                <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
+                                <button>Check In</button>
+                                <p>visited 20</p>
+                                <p>check in 5</p>
+                            </main>
+                        </section>
 
                     </li>`).prependTo("#garageSaleList");
 
-                    }
-
-
-
-
+                    @* } *@
 
                 });
             };
 
         })
+
+
+
     </script>
 
 </head>

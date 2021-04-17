@@ -72,16 +72,15 @@
             const LoadData = () => {
                 $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
                     data = JSON.parse(data);
-                    console.log("in load", data);
-                    RenderData(data);
+                    @* console.log("in load", data); *@
+                        RenderData(data);
                     @* data = $.parseJSON(data); deprecated*@
                 });
             };
             const RenderData = (data) => {
-                console.log("user Data", data.data)
                 $.each(data.data, function (i, v) {
-                    console.log(v)
-                    console.log("id:", v.garageSaleId);
+                    @* console.log(v) *@
+                        @* console.log("id:", v.garageSaleId); *@
 
                     const TimeFormat = {
                         hour12: true,
@@ -101,19 +100,19 @@
 
 
 
-                    console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted)
+                    @* console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted) *@
 
 
-                    let Today = new Date().toLocaleDateString("en-US", DateFormat);
+                        let Today = new Date().toLocaleDateString("en-US", DateFormat);
 
-                    console.log("HERE IS TODAYS DATE:", Today)
+                    @* console.log("HERE IS TODAYS DATE:", Today) *@
 
 
-                    let garageItemId = v.garageSaleId;
+                        let garageItemId = v.garageSaleId;
 
-                    if (dateFormated > Today) {
-                        console.log("this event has expired")
-                    } else {
+                    @* if (dateFormated > Today) { *@
+                        @* console.log("this event has expired") *@
+                        @* } else { *@
                         $(`<li id="${garageItemId}">
 
                     @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
@@ -140,7 +139,7 @@
 
                     </li>`).prependTo("#garageSaleList");
 
-                    }
+                    @* } *@
 
 
 

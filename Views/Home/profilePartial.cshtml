@@ -49,7 +49,7 @@
                     zipcode: zipcode,
 
                 }
-                console.log("user info Data", jsonData)
+                @* console.log("user info Data", jsonData) *@
 
                 $.ajax({
                     type: "POST",
@@ -82,9 +82,9 @@
 
 
             const RenderData = (data) => {
-                console.log("user Data", data.data)
+                @* console.log("user Data", data.data) *@
                 $.each(data.data, function (i, v) {
-                    console.log(v)
+                    @* console.log(v) *@
 
                     $(`
                             <img src="/img/uploads/${v.profilePic}">
