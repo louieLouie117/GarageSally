@@ -58,7 +58,7 @@ namespace UserLogin.Models
 
         [Display(Name = "Building Number")]
         // [Required]
-        public int StreetNumber { get; set; }
+        public string StreetNumber { get; set; }
 
         // [DefaultValue("n/a")]
         [Display(Name = "Street Name")]

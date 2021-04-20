@@ -5,6 +5,7 @@ body {
 
 h1,
 h2,
+h3,
 p {
 	margin: 0;
 }
@@ -17,6 +18,12 @@ input {
 	font: 1em sans-serif;
 	height: 35px;
 }
+
+.hidden{
+	display: none;
+}
+
+
 
 /* placement of container on the gird */
 
@@ -56,7 +63,7 @@ input {
 	text-align: left;
 }
 
-.profile-container img,
+.profile-container>img,
 .postSale-container img {
 	width: 70px;
 	height: 70px;
@@ -197,12 +204,14 @@ input {
 }
 
 .menuList-container footer,
-.postSale-container footer {
+.postSale-container footer,
+.logoVersion footer {
 	display: grid;
 }
 
 .menuList-container footer img,
-.postSale-container footer img {
+.postSale-container footer img,
+.logoVersion footer img {
 	width: 300px;
 	height: auto;
 	margin: 0 auto;
@@ -215,7 +224,8 @@ input {
 	color: white;
 }
 
-.postSale-container footer p {
+.postSale-container footer p,
+.logoVersion footer p {
 	justify-self: flex-end;
 	color: gray;
 }
@@ -445,3 +455,85 @@ input {
 .privacyPolicy-container :last-child {
 	height: 100px;
 }
+
+
+/* user info styles------------------------------- */
+.userInfo-container{
+	display: grid;
+	row-gap: 10px;
+	justify-content: center;
+
+}
+
+.userInfo-container main form section:first-of-type{
+	padding-bottom: 25px;
+}
+
+.userInfo-container header{
+	display: grid;
+	grid-template-columns: 130px 1fr;
+	align-items: center;
+	justify-items: center;
+
+}
+.userInfo-container header h1{
+	font: 1.5em sans-serif;
+	justify-self: left;
+	max-width: 200px;
+	overflow: hidden;
+}
+
+
+
+.userInfo-container header>button{
+	width: auto;
+}
+
+
+.userInfo-container main form{
+	display: grid;
+	/* grid-template-columns: 100px 1fr; */
+	row-gap: 5px;
+	column-gap: 5px;
+}
+
+.userInfo-container main form section{
+	display: grid;
+	grid-template-columns: 100px 1fr;
+	column-gap: 5px;
+	row-gap: 5px;
+}
+
+.userInfo-container main form section p,
+.upgrade-container p{
+	font: 1.5em sans-serif;
+	color: #b936d2;
+	width: 300px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	line-height: 25px;
+}
+
+
+.userInfo-container main button, 
+.upgrade-container button{
+	background: #b936d2;
+	color: white;
+	font: 1em sans-serif;
+	text-align: center;
+	height: 40px;
+	border-radius: 10px;
+	margin-top: 5px;
+}
+
+.userInfo-container main form h3{
+	font: 1em sans-serif;
+	text-decoration: underline;
+}
+
+
+.userInfo-container main form footer{
+	display: grid;
+	grid-template-columns: 100px 50px 149px;
+	column-gap: 5px;
+}
+

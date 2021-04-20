@@ -1,5 +1,5 @@
 @using UserLogin.Models
-@model GarageSale
+@model User
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,6 @@
 
             $('#postForm').submit(function (event) {
                 event.preventDefault();
-                alert('button test ajax was click')
 
 
                 let startDate = $('#StartDate').val()
@@ -71,19 +70,17 @@
 
 
             const LoadData = () => {
-                alert("loading data...");
                 $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
                     data = JSON.parse(data);
-                    console.log("in load", data);
-                    RenderData(data);
+                    @* console.log("in load", data); *@
+                        RenderData(data);
                     @* data = $.parseJSON(data); deprecated*@
                 });
             };
             const RenderData = (data) => {
-                console.log("user Data", data.data)
                 $.each(data.data, function (i, v) {
-                    console.log(v)
-                    console.log("id:", v.garageSaleId);
+                    @* console.log(v) *@
+                        @* console.log("id:", v.garageSaleId); *@
 
                     const TimeFormat = {
                         hour12: true,
@@ -103,15 +100,20 @@
 
 
 
-                    console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted)
+                    @* console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted) *@
 
 
+                        let Today = new Date().toLocaleDateString("en-US", DateFormat);
+
+                    @* console.log("HERE IS TODAYS DATE:", Today) *@
 
 
-                    let garageItemId = v.garageSaleId;
+                        let garageItemId = v.garageSaleId;
 
-
-                    $(`<li id="${garageItemId}">
+                    @* if (dateFormated > Today) { *@
+                        @* console.log("this event has expired") *@
+                        @* } else { *@
+                        $(`<li id="${garageItemId}">
 
                     @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
                     <section>
@@ -137,6 +139,8 @@
 
                     </li>`).prependTo("#garageSaleList");
 
+                    @* } *@
+
 
 
 
@@ -155,57 +159,78 @@
         <button onclick="postSalePartialHandler()"> &lt; back</button>
 
 
-        <header>
-            <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
-            <h2>@ViewBag.ToDisplay.FirstName</h2>
-        </header>
+        @if (Model.AccountType == AccountType.Seller)
+        {
 
 
-        <aside>
-            <button>new sale</button>
-            <button>recent post</button>
-        </aside>
+            <header>
+                <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+                <h2>@ViewBag.ToDisplay.FirstName</h2>
+            </header>
 
-        <div class="form-postContainer">
-            <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
+
+            <aside>
+                <button>new sale</button>
+                <button>recent post</button>
+            </aside>
+
+            <div class="form-postContainer">
+                <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
                 asp-route-id="@ViewBag.ToDisplay.UserId">
-                <header>
-                    <h2 class="span2Columns">Date Time:</h2>
-                    <input class="span2Columns" asp-for="StartDate" type="date">
-                    <label>Start Time:</label>
-                    <input asp-for="StartTime" type="time">
-                    <label>End Time:</label>
-                    <input asp-for="EndTime" type="time">
-                </header>
-                <main>
-                    <h2>Location:</h2>
-                    <div class="locationHeader">
-                        <input asp-for='StreetNumber' type='text' placeholder='street #:'>
-                        <input asp-for='StreetName' type='text' placeholder='Street Name: '>
-                    </div>
-                    <div class="locationFooter">
-                        <input asp-for='City' type='text' placeholder='City:'>
-                        <input asp-for='State' type='text' placeholder='State:'>
-                        <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
-                    </div>
-                </main>
+                    <header>
+                        <h2 class="span2Columns">Date Time:</h2>
+                        <input class="span2Columns" id="StartDate" type="date">
+                        <label>Start Time:</label>
+                        <input id="StartTime" type="time">
+                        <label>End Time:</label>
+                        <input id="EndTime" type="time">
+                    </header>
+                    <main>
+                        <h2>Location:</h2>
+                        <div class="locationHeader">
+                            <input id='StreetNumber' type='text' placeholder='street #:'>
+                            <input id='StreetName' type='text' placeholder='Street Name: '>
+                        </div>
+                        <div class="locationFooter">
+                            <input id='City' type='text' placeholder='City:'>
+                            <input id='State' type='text' placeholder='State:'>
+                            <input id='Zipcode' type='text' placeholder='zipecode: '>
+                        </div>
+                    </main>
 
-                @* <button type="button" id="submitForm">test ajax</button> *@
+                    @* <button type="button" id="submitForm">test ajax</button> *@
 
-                <input type="submit" value="Post Sale">
-            </form>
-
-
-        </div>
+                    <input type="submit" value="Post Sale">
+                </form>
 
 
+            </div>
 
-        <footer>
-            <img src="img/Assets/logoGray.png" alt="">
-            <p>v1.0</p>
-        </footer>
+
+
+            <footer>
+                <img src="img/Assets/logoGray.png" alt="">
+                <p>v1.0</p>
+            </footer>
+
+        }
+
+
+        @if (Model.AccountType == AccountType.Buyer)
+        {
+            <section class="upgrade-container">
+                <button>Upgrade Account</button>
+                <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
+
+            </section>
+
+        }
 
     </div>
+
+
+
+
 
 </body>
 
