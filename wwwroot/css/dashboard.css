@@ -17,6 +17,7 @@ p {
 input {
 	font: 1em sans-serif;
 	height: 35px;
+	width: auto;
 }
 
 .hidden{
