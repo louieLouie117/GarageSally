@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="~/css/regLog.css">
-   <!--  <script src="~/js/loginReg.js" async=""></script>  -->
+    <!--  <script src="~/js/loginReg.js" async=""></script>  -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
@@ -45,7 +45,7 @@
                 <div class="section1-container" id="section1Reg">
 
                     <span asp-validation-for="Email"></span>
-                    <input asp-for="Email" placeholder="Email">
+                    <input asp-for="Email" placeholder="Email:">
 
                     <button type="button" onclick="Step2Reg()">Next</button>
 
@@ -53,10 +53,10 @@
 
                 <div class="section2-container" id="section2Reg">
                     <span asp-validation-for="Password"></span>
-                    <input asp-for="Password" placeholder="Password">
+                    <input asp-for="Password" placeholder="Password:">
 
                     <span asp-validation-for="Confirm"></span>
-                    <input asp-for="Confirm" placeholder="Confirm Password">
+                    <input asp-for="Confirm" placeholder="Confirm Password:">
 
 
                     <footer>
@@ -70,34 +70,42 @@
 
 
                 <div class="section3-container" id="section3Reg">
+                    <p>Find garage sales in your area.</p>
+
                     <span asp-validation-for="FirstName"></span>
-                    <input asp-for="FirstName" placeholder="First name">
-
-                    <img src="~/img/Assets/placeholder.png" alt="">
-                    <p>Add a photo to your profile.</p>
-
-                    <input asp-for="files" type="file" multiple>
+                    @* <input asp-for="FirstName" placeholder="First name:"> *@
+                    @* <input class="hidden" sp-for="LastName" placeholder="Last name:"> *@
 
 
-                    <footer>
+                    @* <img src="~/img/Assets/placeholder.png" alt=""> *@
+                    @* <p>Add a photo to your profile.</p> *@
+                    @* <input asp-for="files" type="file" multiple> *@
+
+                    @* <footer>
                         <button type="button" onclick="Step2Reg()">back</button>
                         <button type="button" onclick="Step4Reg()">Next</button>
 
-                    </footer>
-
-                </div>
-
-                <div class="section4-container" id="section4Reg">
-                    <p>Let's start finding garage sales in your area.</p>
+                        </footer> *@
                     <span asp-validation-for="Zipcode"></span>
-                    <input asp-for="Zipcode" placeholder="Zipcode">
+                    <aside>
+                        <partial name="_StateListBuyer" />
+
+                        <input class="hidden" asp-for="State" placeholder="State:" id="BuyerState">
+                        <input asp-for="Zipcode" placeholder="Zipcode:">
+                    </aside>
 
                     <footer>
-                        <button type="button" onclick="Step3Reg()">back</button>
+                        <button type="button" onclick="Step2Reg()">back</button>
 
                         <button type="submit">Get Started</button>
 
                     </footer>
+
+
+                </div>
+
+                <div class="section4-container" id="section4Reg">
+
                 </div>
 
 

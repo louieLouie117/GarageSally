@@ -24,7 +24,7 @@ const Step3Reg = (e) =>{
     document.getElementById("section2Reg").style.display = "none";
     document.getElementById("section3Reg").style.display = "grid";
     document.getElementById("section4Reg").style.display = "none";
-    document.getElementById("sectionHeading").innerText = "Customize your profile."
+    document.getElementById("sectionHeading").innerText = "Finial Step."
 
 
 }
@@ -58,7 +58,7 @@ const Step2SellerReg = (e) =>{
     document.getElementById("section2SellerReg").style.display = "grid";
     document.getElementById("section3SellerReg").style.display = "none";
     document.getElementById("section4SellerReg").style.display = "none";
-    document.getElementById("sellerHeading").innerText = "Congratulation, garageSally is available in your area, create your account."
+    document.getElementById("sellerHeading").innerText = "Congratulation, garageSally is available in your area, start your account."
 
     document.querySelector('#Redgister').innerHTML = "registerSeller"
 
@@ -71,7 +71,7 @@ const Step3SellerReg = (e) =>{
     document.getElementById("section2SellerReg").style.display = "none";
     document.getElementById("section3SellerReg").style.display = "grid";
     document.getElementById("section4SellerReg").style.display = "none";
-    document.getElementById("sellerHeading").innerText = "Customize your profile."
+    document.getElementById("sellerHeading").innerText = "Create a password, login to your account in anytime."
 
 
 }
@@ -109,3 +109,22 @@ const HideLogin = ()=>{
 
 }
 
+
+
+const BuyerStateHandler =(e)=>{
+    let stateSelected = document.getElementById("BuyerStateSelectionList").value;
+
+    document.getElementById("BuyerState").value = stateSelected;
+    console.log(stateSelected);
+
+
+}
+
+const SellerStateHandler =(e)=>{
+    let stateSelected = document.getElementById("SellerSateSelectionList").value;
+
+    document.getElementById("SellerState").value = stateSelected;
+    console.log(stateSelected);
+
+
+}
