@@ -51,20 +51,30 @@
                         day: "numeric"
                     };
 
+                    const CheckDateFormat = {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+
+                    };
+
                     let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
                     let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
 
-                    let Today = new Date().toLocaleDateString("en-US", DateFormat);
+                    let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
+                    let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
 
 
 
                     let garageItemId = v.garageSaleId;
 
-                    @* if (dateFormated > Today) { *@
-                        @* console.log("this event has expired") *@
-                    @* } else { *@
+                    if (checkDate < checkToday) {
+                        console.log("this event has expired")
+                        console.log(checkDate, "<", checkToday)
+
+                    } else {
 
 
                         $(`<li id="${garageItemId}">
@@ -92,7 +102,7 @@
 
                     </li>`).prependTo("#garageSaleList");
 
-                    @* } *@
+                    }
 
                 });
             };
