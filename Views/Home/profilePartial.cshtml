@@ -198,9 +198,9 @@
         <div class="userInfo-container" id="UserInfo">
 
             <header id="UserPhoto">
-                <button onclick="photoUploadNoticeHandler(event)">Change Photo</button>
+                <button onclick="popUpNoticeHandler(event)">Change Photo</button>
 
-                <aside class="photoUpload-container" id="photoUploadNotice">
+                <aside class="notice-container" id="photoUploadNotice">
                     <form>
                         <header>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda porro dolore laborum,
@@ -210,7 +210,7 @@
                             <input type="file">
                         </header>
                         <footer>
-                            <button type="button" onclick="photoUploadNoticeHandler(event)">Cancel</button>
+                            <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
                             <button type="button">Save</button>
                         </footer>
                     </form>
@@ -223,24 +223,12 @@
 
 
 
-                    @if (Model.AccountType == AccountType.Seller)
-                    {
+                    <section id="UserFormAddress"></section>
 
-                        <section id="UserFormAddress"></section>
-
-                    }
 
                     <button class="hidden" id="SaveChangesBTN" type="submit">Save Changes</button>
 
-                    @if (Model.AccountType == AccountType.Buyer)
-                    {
-                        <section class="Upgrade-container">
-                            <button>Upgrade Account</button>
-                            <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
 
-                        </section>
-
-                    }
 
                 </form>
 

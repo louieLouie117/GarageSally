@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Post Garage Sale</title>
 
     <script>
@@ -223,10 +224,38 @@
         @if (Model.AccountType == AccountType.Buyer)
         {
             <section class="upgrade-container">
-                <button>Upgrade Account</button>
+                <button onclick="popUpNoticeHandler(event)">Upgrade Account</button>
                 <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
 
             </section>
+
+            <aside class="notice-container" id="upgradeNotice">
+                <form>
+                    <header>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda porro dolore laborum,
+                            perferendis pariatur commodi. Facere fugiat qui eveniet suscipit incidunt molestias
+                            saepe
+                            deleniti inventore commodi. Rerum itaque mollitia quisquam.</p>
+                        <main>
+                            <h2>Location:</h2>
+                            <div class="locationHeader">
+                                <input id='StreetNumber' type='text' placeholder='street #:'>
+                                <input id='StreetName' type='text' placeholder='Street Name: '>
+                            </div>
+                            <div class="locationFooter">
+                                <input id='City' type='text' placeholder='City:'>
+                                <input id='State' type='text' placeholder='State:'>
+                                <input id='Zipcode' type='text' placeholder='zipecode: '>
+                            </div>
+                        </main>
+                    </header>
+
+                    <footer>
+                        <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
+                        <button type="button">Upgrade</button>
+                    </footer>
+                </form>
+            </aside>
 
         }
 

@@ -231,12 +231,12 @@ input {
 	color: gray;
 }
 
-.postSale-container aside {
+.postSale-container aside:first-child {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
 
-.postSale-container aside button {
+.postSale-container aside:first-child button {
 	font: 1.3em sans-serif;
 	text-align: center;
 	justify-self: center;
@@ -542,7 +542,7 @@ input {
 /* photo notice pop up */
 
 
-.photoUpload-container{
+.notice-container{
 	display: none;
 	background: rgba(0, 0, 0, 0.612);
 	position: fixed;
@@ -554,41 +554,41 @@ input {
 	align-content: center;
 }
 
-.photoUpload-container form{
+.notice-container form{
 	display: grid;
 	background: white;
 	max-width: 450px;
-	/* height: 450px; */
 	border-radius: 20px;
 	margin: 10px;
 
 }
 
 
-.photoUpload-container form header{
+.notice-container form header{
 	display: grid;
 	row-gap: 10px;
 	margin: 20px;
+	padding: 10px;
 }
 
-.photoUpload-container footer{
+.notice-container footer{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
 
-.photoUpload-container footer button{
+.notice-container footer button{
 	background: rgb(228, 228, 228);
 	text-align: center;
 	width: auto;
 }
 
-.photoUpload-container footer :first-child{
+.notice-container footer :first-child{
 	border-radius: 0 0 0 20px;
 	
 }
 
 
-.photoUpload-container footer :last-child{
+.notice-container footer :last-child{
 	border-radius: 0 0 20px 0;
 	background: #b936d2;
 	color: white;
