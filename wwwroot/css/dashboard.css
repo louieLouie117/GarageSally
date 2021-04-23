@@ -231,12 +231,12 @@ input {
 	color: gray;
 }
 
-.postSale-container aside {
+.postSale-container aside:first-child {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
 
-.postSale-container aside button {
+.postSale-container aside:first-child button {
 	font: 1.3em sans-serif;
 	text-align: center;
 	justify-self: center;

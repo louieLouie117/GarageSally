@@ -197,12 +197,23 @@ const updatesSupportHandler = (e) =>{
 }
 
 
-const photoUploadNoticeHandler = (e) => {
+const popUpNoticeHandler = (e) => {
     if(e.target.innerText === "Change Photo"){
         document.getElementById("photoUploadNotice").style.display = "grid";
-    }else{
-        document.getElementById("photoUploadNotice").style.display = "none";
     }
+
+    if(e.target.innerText === "Upgrade Account"){
+        document.getElementById("upgradeNotice").style.display = "grid";
+
+    }
+    
+    if(e.target.innerText === "Cancel"){
+        document.getElementById("photoUploadNotice").style.display = "none";
+        document.getElementById("upgradeNotice").style.display = "none";
+
+    }
+
+
 }
 
 
