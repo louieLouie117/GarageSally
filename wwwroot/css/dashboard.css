@@ -543,7 +543,7 @@ input {
 
 
 .photoUpload-container{
-	display: grid;
+	display: none;
 	background: rgba(0, 0, 0, 0.612);
 	position: fixed;
 	top: 0;
@@ -582,7 +582,7 @@ input {
 	width: auto;
 }
 
-.photoUpload-container footer  :first-child{
+.photoUpload-container footer :first-child{
 	border-radius: 0 0 0 20px;
 	
 }

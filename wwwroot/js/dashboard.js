@@ -197,6 +197,16 @@ const updatesSupportHandler = (e) =>{
 }
 
 
+const photoUploadNoticeHandler = (e) => {
+    if(e.target.innerText === "Change Photo"){
+        document.getElementById("photoUploadNotice").style.display = "grid";
+    }else{
+        document.getElementById("photoUploadNotice").style.display = "none";
+    }
+}
+
+
+
 
 
 
