@@ -198,9 +198,9 @@
         <div class="userInfo-container" id="UserInfo">
 
             <header id="UserPhoto">
-                <button>Change Photo</button>
+                <button onclick="photoUploadNoticeHandler(event)">Change Photo</button>
 
-                <aside class="photoUpload-container">
+                <aside class="photoUpload-container" id="photoUploadNotice">
                     <form>
                         <header>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda porro dolore laborum,
@@ -210,8 +210,8 @@
                             <input type="file">
                         </header>
                         <footer>
-                            <button>Cancel</button>
-                            <button>Save</button>
+                            <button type="button" onclick="photoUploadNoticeHandler(event)">Cancel</button>
+                            <button type="button">Save</button>
                         </footer>
                     </form>
                 </aside>
