@@ -149,6 +149,23 @@
 
                     `).prependTo("#UserFormAddress");
 
+                        $(`
+
+
+                     <h2>Location:</h2>
+                            <div class="locationHeader">
+                                <input value="${v.streetNumber}" id='StreetNumberUpgrade' type='text' placeholder='street #:'>
+                                <input value="${v.streetName}" id='StreetNameUpgrade' type='text' placeholder='Street Name: '>
+                            </div>
+                            <div class="locationFooter">
+                                <input value="${v.city}" id='CityUpgrade' type='text' placeholder='City:'>
+                                <input value="${v.state}" id='StateUpgrade' type='text' placeholder='State:'>
+                                <input value="${v.zipcode}" id='ZipcodeUpgrade' type='text' placeholder='zipecode: '>
+                            </div>
+
+                    `).prependTo("#noticeForm");
+
+
                     });
             };
 

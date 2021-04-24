@@ -204,6 +204,8 @@ const popUpNoticeHandler = (e) => {
 
     if(e.target.innerText === "Upgrade Account"){
         document.getElementById("upgradeNotice").style.display = "grid";
+        let zipcode = document.getElementById("ZipcodeEdit").value;
+        console.log("zipcode",zipcode);
 
     }
     
