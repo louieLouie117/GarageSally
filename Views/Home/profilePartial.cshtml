@@ -51,15 +51,15 @@
                 }
                 @* console.log("user info Data", jsonData) *@
 
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("UpdateProfileHandler", "Home")',
-                    data: jsonData,
-                    success: SuccessStatus,
-                    error: ErrorStatus,
-                    complete: CompleteStatus
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("UpdateProfileHandler", "Home")',
+                        data: jsonData,
+                        success: SuccessStatus,
+                        error: ErrorStatus,
+                        complete: CompleteStatus
 
-                })
+                    })
 
 
             })
@@ -83,21 +83,17 @@
 
             const RenderData = (data) => {
                 @* console.log("user Data", data.data) *@
-                $.each(data.data, function (i, v) {
-                    @* console.log(v) *@
+                    $.each(data.data, function (i, v) {
+                        @* console.log(v) *@
 
-                    $(`
+                            $(`
                             <img src="/img/uploads/${v.profilePic}">
                             <h1 id="UserNameText">Hello, ${v.firstName}</h1>
-                            <button>Change Photo</button>
-                            <from class="hidden span2Columns">
-                                <input type="file">
-                            </from>
 
 
                     `).prependTo("#UserPhoto");
 
-                    $(`
+                        $(`
                           <h3 class="span2Columns">Name</h3>
 
                                 <input 
@@ -116,7 +112,7 @@
 
                     `).prependTo("#UserFormName");
 
-                    $(`
+                        $(`
 
                                 <h3 class="span2Columns">Garage Sale Default Address</h3>
 
@@ -153,7 +149,7 @@
 
                     `).prependTo("#UserFormAddress");
 
-                });
+                    });
             };
 
 
@@ -201,7 +197,25 @@
 
         <div class="userInfo-container" id="UserInfo">
 
-            <header id="UserPhoto"></header>
+            <header id="UserPhoto">
+                <button onclick="popUpNoticeHandler(event)">Change Photo</button>
+
+                <aside class="notice-container" id="photoUploadNotice">
+                    <form>
+                        <header>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda porro dolore laborum,
+                                perferendis pariatur commodi. Facere fugiat qui eveniet suscipit incidunt molestias
+                                saepe
+                                deleniti inventore commodi. Rerum itaque mollitia quisquam.</p>
+                            <input type="file">
+                        </header>
+                        <footer>
+                            <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
+                            <button type="button">Save</button>
+                        </footer>
+                    </form>
+                </aside>
+            </header>
 
             <main>
                 <form id="UserInfoEdit" asp-action="UpdateProfile" asp-controller="Home">
@@ -209,39 +223,27 @@
 
 
 
-                    @if (Model.AccountType == AccountType.Seller)
-                    {
+                    <section id="UserFormAddress"></section>
 
-                        <section id="UserFormAddress"></section>
-
-                    }
 
                     <button class="hidden" id="SaveChangesBTN" type="submit">Save Changes</button>
 
-                    @if (Model.AccountType == AccountType.Buyer)
-                    {
-                        <section  class="Upgrade-container">
-                            <button>Upgrade Account</button>
-                            <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
 
-                        </section>
-
-                    }
 
                 </form>
-            
+
 
             </main>
 
 
         </div>
-        <div  class="logoVersion">
-             <footer>
+        <div class="logoVersion">
+            <footer>
                 <img src="img/Assets/logoGray.png" alt="">
                 <p>v1.0</p>
             </footer>
 
-        </div> 
+        </div>
 
 
         @* <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" /> *@

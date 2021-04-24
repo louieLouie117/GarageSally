@@ -211,11 +211,14 @@ namespace UserLogin.Controllers
         public JsonResult displayGarageSales()
         {
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+            string UserStateInSession = HttpContext.Session.GetString("UserState");
+            System.Console.WriteLine(UserStateInSession);
 
             DashboardWrapper wMode = new DashboardWrapper();
 
+
             List<GarageSale> garageSaleItems = _context.GarageSales
-            // .Where(us => us.UserId == UserIdInSession)
+            .Where(us => us.State == UserStateInSession)
             .ToList();
 
 
@@ -367,6 +370,8 @@ namespace UserLogin.Controllers
             _context.SaveChanges();
             // Session
             HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
+            HttpContext.Session.SetString("UserState", _context.Users.FirstOrDefault(i => i.State == FromForm.State).State);
+
             // Redirect
             Console.WriteLine("You may contine!");
             return RedirectToAction("dashboard");
@@ -447,6 +452,8 @@ namespace UserLogin.Controllers
                 _context.SaveChanges();
                 // Session
                 HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
+                HttpContext.Session.SetString("UserState", _context.Users.FirstOrDefault(i => i.State == FromForm.State).State);
+
                 // Redirect
                 Console.WriteLine("You may contine!");
                 return RedirectToAction("dashboard");
@@ -509,6 +516,7 @@ namespace UserLogin.Controllers
                 }
                 // Set Session Instance
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
+                HttpContext.Session.SetString("UserState", userInDb.State);
                 return RedirectToAction("dashboard");
             }
             return View("index", wMod);
