@@ -39,13 +39,29 @@
                     type: "POST",
                     url: '@Url.Action("UpgradeUserHandler", "Home")',
                     data: jsonData,
-                    success: SuccessStatus,
-                    error: ErrorStatus,
-                    complete: CompleteStatus
+                    success: SuccessStatusUpgrade,
+                    error: ErrorStatusUpgrade,
+                    complete: CompleteStatusUpgrade
 
                 })
 
             })
+
+
+            const SuccessStatusUpgrade = (result) => {
+                console.log("You have sucessfuly upgraded...", result);
+                LoadData();
+                location.reload();
+
+            };
+
+            const ErrorStatusUpgrade = (xhr, status, strErr) => {
+                console.log("There was an error when upgrading!");
+            };
+
+            const CompleteStatusUpgrade = (xhr, status) => {
+                console.log("Upgaded has completed...");
+            };
 
             $('#postForm').submit(function (event) {
                 event.preventDefault();
