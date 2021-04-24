@@ -249,6 +249,10 @@ input {
 	row-gap: 10px;
 }
 
+.form-postContainer form textarea {
+	height: 100px;
+}
+
 .form-postContainer form input {
 	font: 1em sans-serif;
 	height: 35px;

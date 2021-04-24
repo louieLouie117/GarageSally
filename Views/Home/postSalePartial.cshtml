@@ -71,6 +71,8 @@
                 let startTime = $('#StartTime').val()
                 let endTime = $('#EndTime').val()
 
+                let description = $('#Description').val()
+
                 let streetnumber = $('#StreetNumber').val()
                 let streetname = $('#StreetName').val()
                 let city = $('#City').val()
@@ -83,6 +85,8 @@
                     startDate: startDate,
                     startTime: startTime,
                     endTime: endTime,
+
+                    description: description,
 
                     streetnumber: streetnumber,
                     streetname: streetname,
@@ -222,8 +226,7 @@
                 </aside>
 
                 <div class="form-postContainer">
-                    <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'asp-route-id="@ViewBag.ToDisplay.UserId">
                         <header>
                             <h2 class="span2Columns">Date Time:</h2>
                             <input class="span2Columns" id="StartDate" type="date">
@@ -233,6 +236,8 @@
                             <input id="EndTime" type="time">
                         </header>
                         <main>
+                            <h2>Description:</h2>
+                            <textarea id="Description" placeholder="describe what you have for sale."></textarea>
                             <h2>Location:</h2>
                             <div class="locationHeader">
                                 <input id='StreetNumber' type='text' placeholder='street #:'>
