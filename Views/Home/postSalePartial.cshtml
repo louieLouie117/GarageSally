@@ -17,11 +17,13 @@
             $('#postFormUpgrade').submit(function (event) {
                 event.preventDefault();
 
-                let StreetNumber = document.getElementById("StreetNumberEdit").value;
-                let StreetName = document.getElementById("StreetNameEdit").value;
-                let City = document.getElementById("CityEdit").value;
-                let State = document.getElementById("StateEdit").value;
-                let Zipcode = document.getElementById("ZipcodeEdit").value;
+                let StreetNumber = document.getElementById("StreetNumberUpgrade").value;
+                let StreetName = document.getElementById("StreetNameUpgrade").value;
+                let City = document.getElementById("CityUpgrade").value;
+                let State = document.getElementById("StateUpgrade").value;
+                let Zipcode = document.getElementById("ZipcodeUpgrade").value;
+
+                console.log("address", StreetNumber, StreetName, City, State, Zipcode)
 
                 var jsonData = {
                     streetnumber: StreetNumber,
@@ -196,86 +198,86 @@
         {
 
 
-            <header>
-                <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
-                <h2>@ViewBag.ToDisplay.FirstName</h2>
-            </header>
+                <header>
+                    <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+                    <h2>@ViewBag.ToDisplay.FirstName</h2>
+                </header>
 
 
-            <aside>
-                <button>new sale</button>
-                <button>recent post</button>
-            </aside>
+                <aside>
+                    <button>new sale</button>
+                    <button>recent post</button>
+                </aside>
 
-            <div class="form-postContainer">
-                <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
+                <div class="form-postContainer">
+                    <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
                 asp-route-id="@ViewBag.ToDisplay.UserId">
-                    <header>
-                        <h2 class="span2Columns">Date Time:</h2>
-                        <input class="span2Columns" id="StartDate" type="date">
-                        <label>Start Time:</label>
-                        <input id="StartTime" type="time">
-                        <label>End Time:</label>
-                        <input id="EndTime" type="time">
-                    </header>
-                    <main>
-                        <h2>Location:</h2>
-                        <div class="locationHeader">
-                            <input id='StreetNumber' type='text' placeholder='street #:'>
-                            <input id='StreetName' type='text' placeholder='Street Name: '>
-                        </div>
-                        <div class="locationFooter">
-                            <input id='City' type='text' placeholder='City:'>
-                            <input id='State' type='text' placeholder='State:'>
-                            <input id='Zipcode' type='text' placeholder='zipecode: '>
-                        </div>
-                    </main>
+                        <header>
+                            <h2 class="span2Columns">Date Time:</h2>
+                            <input class="span2Columns" id="StartDate" type="date">
+                            <label>Start Time:</label>
+                            <input id="StartTime" type="time">
+                            <label>End Time:</label>
+                            <input id="EndTime" type="time">
+                        </header>
+                        <main>
+                            <h2>Location:</h2>
+                            <div class="locationHeader">
+                                <input id='StreetNumber' type='text' placeholder='street #:'>
+                                <input id='StreetName' type='text' placeholder='Street Name: '>
+                            </div>
+                            <div class="locationFooter">
+                                <input id='City' type='text' placeholder='City:'>
+                                <input id='State' type='text' placeholder='State:'>
+                                <input id='Zipcode' type='text' placeholder='zipecode: '>
+                            </div>
+                        </main>
 
                     @* <button type="button" id="submitForm">test ajax</button> *@
 
-                    <input type="submit" value="Post Sale">
-                </form>
+                        <input type="submit" value="Post Sale">
+                    </form>
 
 
-            </div>
+                </div>
 
 
 
-            <footer>
-                <img src="img/Assets/logoGray.png" alt="">
-                <p>v1.0</p>
-            </footer>
+                <footer>
+                    <img src="img/Assets/logoGray.png" alt="">
+                    <p>v1.0</p>
+                </footer>
 
         }
 
 
         @if (Model.AccountType == AccountType.Buyer)
         {
-            <section class="upgrade-container">
-                <button onclick="popUpNoticeHandler(event)">Upgrade Account</button>
-                <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
+                <section class="upgrade-container">
+                    <button onclick="popUpNoticeHandler(event)">Upgrade Account</button>
+                    <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
 
-            </section>
+                </section>
 
-            <aside class="notice-container" id="upgradeNotice">
-                <form id="postFormUpgrade">
-                    <header>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda porro dolore laborum,
-                            perferendis pariatur commodi. Facere fugiat qui eveniet suscipit incidunt molestias
-                            saepe
-                            deleniti inventore commodi. Rerum itaque mollitia quisquam.</p>
-                        <main id="noticeForm">
+                <aside class="notice-container" id="upgradeNotice">
+                    <form id="postFormUpgrade">
+                        <header>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda porro dolore laborum,
+                                perferendis pariatur commodi. Facere fugiat qui eveniet suscipit incidunt molestias
+                                saepe
+                                deleniti inventore commodi. Rerum itaque mollitia quisquam.</p>
+                            <main id="noticeForm">
 
 
-                        </main>
-                    </header>
+                            </main>
+                        </header>
 
-                    <footer>
-                        <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
-                        <button>Upgrade</button>
-                    </footer>
-                </form>
-            </aside>
+                        <footer>
+                            <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
+                            <button>Upgrade</button>
+                        </footer>
+                    </form>
+                </aside>
 
         }
 
