@@ -202,6 +202,18 @@ namespace UserLogin.Controllers
         }
 
 
+        [HttpPost("UpgradeUserHandler")]
+
+        public IActionResult UpgradeUserHandler(User FromForm)
+        {
+
+            System.Console.WriteLine("you have reach the backend of upgraded user");
+
+            return Json(new { Status = "Success" });
+
+
+        }
+
 
 
 

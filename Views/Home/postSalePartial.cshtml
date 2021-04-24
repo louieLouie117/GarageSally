@@ -17,21 +17,31 @@
             $('#postFormUpgrade').submit(function (event) {
                 event.preventDefault();
 
-                let StreetNumberUpgrade = document.getElementById("StreetNumberEdit").value;
-                let StreetNameUpgrade = document.getElementById("StreetNameEdit").value;
-                let CityUpgrade = document.getElementById("CityEdit").value;
-                let StateUpgrade = document.getElementById("StateEdit").value;
-                let ZipcodeUpgrade = document.getElementById("ZipcodeEdit").value;
+                let StreetNumber = document.getElementById("StreetNumberEdit").value;
+                let StreetName = document.getElementById("StreetNameEdit").value;
+                let City = document.getElementById("CityEdit").value;
+                let State = document.getElementById("StateEdit").value;
+                let Zipcode = document.getElementById("ZipcodeEdit").value;
 
                 var jsonData = {
-                    streetnumber: StreetNumberUpgrade,
-                    streetname: StreetNameUpgrade,
-                    city: CityUpgrade,
-                    state: StateUpgrade,
-                    zipcode: ZipcodeUpgrade,
+                    streetnumber: StreetNumber,
+                    streetname: StreetName,
+                    city: City,
+                    state: State,
+                    zipcode: Zipcode,
                 }
 
                 console.log("jsonData:", jsonData);
+
+                      $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpgradeUserHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+
+                })
 
             })
 
