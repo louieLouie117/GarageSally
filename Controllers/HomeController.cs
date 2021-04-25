@@ -149,6 +149,8 @@ namespace UserLogin.Controllers
                 StartTime = FromForm.StartTime,
                 EndTime = FromForm.EndTime,
 
+                Description = FromForm.Description,
+
                 StreetNumber = FromForm.StreetNumber,
                 StreetName = FromForm.StreetName,
                 City = FromForm.City,
