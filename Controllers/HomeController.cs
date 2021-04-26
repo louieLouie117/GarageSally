@@ -314,9 +314,11 @@ namespace UserLogin.Controllers
                     Console.WriteLine($"Apprentice Name: {FromForm.FirstName}");
                     Console.WriteLine($"FileName: {timeStamp}{formFile.FileName}");
 
+
+
                     // Assign name to be saved to the db
                     string newName = $"{timeStamp}{formFile.FileName}";
-                    FromForm.ProfilePic = newName;
+                    GetUser.ProfilePic = newName;
 
 
 
@@ -327,6 +329,7 @@ namespace UserLogin.Controllers
                     }
                 }
             }
+
 
 
             // Add to db
