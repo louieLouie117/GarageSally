@@ -20,6 +20,8 @@
             });
 
 
+
+
             $('#UserInfoEdit').submit(function (event) {
                 event.preventDefault();
 
@@ -218,17 +220,18 @@
                 <button onclick="popUpNoticeHandler(event)">Change Photo</button>
 
                 <aside class="notice-container" id="photoUploadNotice">
-                    <form>
+                    <form asp-action="ChangePhotoHandler" asp-controller="Home" method="POST"
+                        enctype="multipart/form-data">
                         <header>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda porro dolore laborum,
                                 perferendis pariatur commodi. Facere fugiat qui eveniet suscipit incidunt molestias
                                 saepe
                                 deleniti inventore commodi. Rerum itaque mollitia quisquam.</p>
-                            <input type="file">
+                            <input id="PhotoFile" type="file">
                         </header>
                         <footer>
                             <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
-                            <button type="button">Save</button>
+                            <button type="submit">Save</button>
                         </footer>
                     </form>
                 </aside>
