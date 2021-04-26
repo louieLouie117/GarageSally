@@ -249,6 +249,18 @@ input {
 	row-gap: 10px;
 }
 
+.form-postContainer form button{
+	background: #b936d2;
+	color: white;
+	font: 1.3em sans-serif;
+	text-align: center;
+	border-radius: 20px;
+}
+
+.form-postContainer form textarea {
+	height: 100px;
+}
+
 .form-postContainer form input {
 	font: 1em sans-serif;
 	height: 35px;
@@ -259,6 +271,7 @@ input {
 	grid-template-columns: 1fr 2fr;
 	row-gap: 10px;
 	align-items: center;
+	
 }
 
 .form-postContainer form h2 {
@@ -304,8 +317,10 @@ input {
 
 .cardItems section {
 	display: grid;
-	row-gap: 15px;
+	row-gap: 10px;
 	width: auto;
+
+
 }
 .cardItems li section button {
 	color: white;
@@ -323,7 +338,11 @@ input {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 5px;
-	justify-items: center;
+	align-items: center;
+	padding: 20px;
+	padding-top: 0;
+
+
 }
 
 .cardItems li section main p {
@@ -331,32 +350,55 @@ input {
 	color: rgb(177, 177, 177);
 }
 
-.cardItems li section address {
+.cardItems li section footer {
 	display: grid;
-	justify-items: center;
+	row-gap: 5px;
+	padding: 0 20px;
+	height: 100px;	
+	overflow: scroll;
+	align-content: flex-start;
 }
 
-.cardItems li section address p {
-	font: 1.2em sans-serif;
-	color: black;
+.cardItems li section footer h3{
+	font: 1.3em sans-serif;
+	color: rgb(45, 45, 45);
+
 }
+
+.cardItems li section footer p{
+	min-width: 270px;
+
+}
+
+
+
+.cardItems li section footer :last-child {
+	font: 1em sans-serif;
+}
+
 
 .cardItems li section header {
 	display: grid;
-	justify-items: center;
+	background: #b936d2;
+	padding: 20px;
+	border-radius:  20px 20px 0 0;
+	max-height: 50px;
+
 }
 
 .cardItems li section header h1 {
 	font: 1.5em sans-serif;
-	color: #b936d2;
+	color:white;
 	margin: 0;
 }
 
 .cardItems li section header h2 {
-	font: 1em sans-serif;
-	color: grey;
+	font: 1.1em sans-serif;
 	margin: 0;
+	color: white;
 }
+
+
 
 /* Save for later use with maps
 .allGaragePost-container ul {
@@ -386,10 +428,8 @@ input {
 	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.226);
 	width: 310px;
 	/* height: 120px; */
-	padding: 30px 10px;
 	justify-items: center;
 	justify-self: center;
-	align-items: center;
 }
 
 .allGaragePost-container ul li p {

@@ -149,6 +149,8 @@ namespace UserLogin.Controllers
                 StartTime = FromForm.StartTime,
                 EndTime = FromForm.EndTime,
 
+                Description = FromForm.Description,
+
                 StreetNumber = FromForm.StreetNumber,
                 StreetName = FromForm.StreetName,
                 City = FromForm.City,
@@ -201,6 +203,34 @@ namespace UserLogin.Controllers
             return Json(new { Status = "Success" });
         }
 
+
+        [HttpPost("UpgradeUserHandler")]
+
+        public IActionResult UpgradeUserHandler(User FromForm)
+        {
+
+            System.Console.WriteLine("you have reach the backend of upgraded user");
+
+
+
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+            User GetUser = _context.Users.FirstOrDefault(u => u.UserId == UserIdInSession);
+
+            GetUser.AccountType = AccountType.Seller;
+            GetUser.StreetNumber = FromForm.StreetNumber;
+            GetUser.StreetName = FromForm.StreetName;
+            GetUser.City = FromForm.City;
+            GetUser.State = FromForm.State;
+            GetUser.Zipcode = FromForm.Zipcode;
+
+
+
+            _context.SaveChanges();
+
+            return Json(new { Status = "Success" });
+
+
+        }
 
 
 
