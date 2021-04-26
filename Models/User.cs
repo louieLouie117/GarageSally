@@ -6,7 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
-    public enum AccountType { Buyer = 0, Seller = 1}
+    public enum AccountType { Buyer = 0, Seller = 1 }
+    public enum SubscriptionStatus { Free = 0, Active = 1, Suspended = 2, Canceled = 3 }
+
     public class User
     {
         [Key]
@@ -18,6 +20,11 @@ namespace UserLogin.Models
         [Column(TypeName = "nvarchar(24)")]
         [EnumDataType(typeof(AccountType))]
         public AccountType AccountType { get; set; }
+
+        [Column(TypeName = "nvarchar(24)")]
+        [EnumDataType(typeof(SubscriptionStatus))]
+        public SubscriptionStatus SubscriptionStatus { get; set; }
+
 
         [Display(Name = "First Name")]
         // [Required(ErrorMessage = "First name cannot be empty")]
@@ -51,7 +58,7 @@ namespace UserLogin.Models
 
         [Display(Name = "Building Number")]
         // [Required]
-        public int StreetNumber { get; set; }
+        public string StreetNumber { get; set; }
 
         // [DefaultValue("n/a")]
         [Display(Name = "Street Name")]
@@ -61,6 +68,8 @@ namespace UserLogin.Models
         // [Required]
         // [DefaultValue("n/a")]
         public string City { get; set; }
+
+        public string State { get; set; }
 
         // [Required]
         public int Zipcode { get; set; }
@@ -89,5 +98,9 @@ namespace UserLogin.Models
 
         [InverseProperty("Reviewed")]
         List<Review> UserReviews { get; set; } // list of Reviews left O2M
+
+        // One to One with Feeback
+        public int FeedbackId { get; set; }
+        public Feedback FeedbackMessage { get; set; }
     }
 }

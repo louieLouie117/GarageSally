@@ -5,6 +5,7 @@ body {
 
 h1,
 h2,
+h3,
 p {
 	margin: 0;
 }
@@ -16,7 +17,14 @@ p {
 input {
 	font: 1em sans-serif;
 	height: 35px;
+	width: auto;
 }
+
+.hidden{
+	display: none;
+}
+
+
 
 /* placement of container on the gird */
 
@@ -56,7 +64,7 @@ input {
 	text-align: left;
 }
 
-.profile-container img,
+.profile-container>img,
 .postSale-container img {
 	width: 70px;
 	height: 70px;
@@ -197,12 +205,14 @@ input {
 }
 
 .menuList-container footer,
-.postSale-container footer {
+.postSale-container footer,
+.logoVersion footer {
 	display: grid;
 }
 
 .menuList-container footer img,
-.postSale-container footer img {
+.postSale-container footer img,
+.logoVersion footer img {
 	width: 300px;
 	height: auto;
 	margin: 0 auto;
@@ -215,17 +225,18 @@ input {
 	color: white;
 }
 
-.postSale-container footer p {
+.postSale-container footer p,
+.logoVersion footer p {
 	justify-self: flex-end;
 	color: gray;
 }
 
-.postSale-container aside {
+.postSale-container aside:first-child {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
 
-.postSale-container aside button {
+.postSale-container aside:first-child button {
 	font: 1.3em sans-serif;
 	text-align: center;
 	justify-self: center;
@@ -238,6 +249,18 @@ input {
 	row-gap: 10px;
 }
 
+.form-postContainer form button{
+	background: #b936d2;
+	color: white;
+	font: 1.3em sans-serif;
+	text-align: center;
+	border-radius: 20px;
+}
+
+.form-postContainer form textarea {
+	height: 100px;
+}
+
 .form-postContainer form input {
 	font: 1em sans-serif;
 	height: 35px;
@@ -248,6 +271,7 @@ input {
 	grid-template-columns: 1fr 2fr;
 	row-gap: 10px;
 	align-items: center;
+	
 }
 
 .form-postContainer form h2 {
@@ -293,8 +317,10 @@ input {
 
 .cardItems section {
 	display: grid;
-	row-gap: 15px;
+	row-gap: 10px;
 	width: auto;
+
+
 }
 .cardItems li section button {
 	color: white;
@@ -312,7 +338,11 @@ input {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 5px;
-	justify-items: center;
+	align-items: center;
+	padding: 20px;
+	padding-top: 0;
+
+
 }
 
 .cardItems li section main p {
@@ -320,32 +350,55 @@ input {
 	color: rgb(177, 177, 177);
 }
 
-.cardItems li section address {
+.cardItems li section footer {
 	display: grid;
-	justify-items: center;
+	row-gap: 5px;
+	padding: 0 20px;
+	height: 100px;	
+	overflow: scroll;
+	align-content: flex-start;
 }
 
-.cardItems li section address p {
-	font: 1.2em sans-serif;
-	color: black;
+.cardItems li section footer h3{
+	font: 1.3em sans-serif;
+	color: rgb(45, 45, 45);
+
 }
+
+.cardItems li section footer p{
+	min-width: 270px;
+
+}
+
+
+
+.cardItems li section footer :last-child {
+	font: 1em sans-serif;
+}
+
 
 .cardItems li section header {
 	display: grid;
-	justify-items: center;
+	background: #b936d2;
+	padding: 20px;
+	border-radius:  20px 20px 0 0;
+	max-height: 50px;
+
 }
 
 .cardItems li section header h1 {
 	font: 1.5em sans-serif;
-	color: #b936d2;
+	color:white;
 	margin: 0;
 }
 
 .cardItems li section header h2 {
-	font: 1em sans-serif;
-	color: grey;
+	font: 1.1em sans-serif;
 	margin: 0;
+	color: white;
 }
+
+
 
 /* Save for later use with maps
 .allGaragePost-container ul {
@@ -375,10 +428,8 @@ input {
 	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.226);
 	width: 310px;
 	/* height: 120px; */
-	padding: 30px 10px;
 	justify-items: center;
 	justify-self: center;
-	align-items: center;
 }
 
 .allGaragePost-container ul li p {
@@ -444,4 +495,142 @@ input {
 .termsOfService-container :last-child,
 .privacyPolicy-container :last-child {
 	height: 100px;
+}
+
+
+/* user info styles------------------------------- */
+.userInfo-container{
+	display: grid;
+	row-gap: 10px;
+	justify-content: center;
+
+}
+
+.userInfo-container main form section:first-of-type{
+	padding-bottom: 25px;
+}
+
+.userInfo-container>header{
+	display: grid;
+	grid-template-columns: 130px 1fr;
+	align-items: center;
+	justify-items: center;
+
+}
+.userInfo-container header h1{
+	font: 1.5em sans-serif;
+	justify-self: left;
+	max-width: 200px;
+	overflow: hidden;
+}
+
+
+
+.userInfo-container header>button{
+	width: auto;
+}
+
+
+.userInfo-container main form{
+	display: grid;
+	/* grid-template-columns: 100px 1fr; */
+	row-gap: 5px;
+	column-gap: 5px;
+}
+
+.userInfo-container main form section{
+	display: grid;
+	grid-template-columns: 100px 1fr;
+	column-gap: 5px;
+	row-gap: 5px;
+}
+
+.userInfo-container main form section p,
+.upgrade-container p{
+	font: 1.5em sans-serif;
+	color: #b936d2;
+	width: 300px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	line-height: 25px;
+}
+
+
+.userInfo-container main button, 
+.upgrade-container button{
+	background: #b936d2;
+	color: white;
+	font: 1em sans-serif;
+	text-align: center;
+	height: 40px;
+	border-radius: 10px;
+	margin-top: 5px;
+}
+
+.userInfo-container main form h3{
+	font: 1em sans-serif;
+	text-decoration: underline;
+}
+
+
+.userInfo-container main form footer{
+	display: grid;
+	grid-template-columns: 100px 50px 149px;
+	column-gap: 5px;
+}
+
+
+/* photo notice pop up */
+
+
+.notice-container{
+	display: none;
+	background: rgba(0, 0, 0, 0.612);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	justify-content: center;
+	align-content: center;
+}
+
+.notice-container form{
+	display: grid;
+	background: white;
+	max-width: 450px;
+	border-radius: 20px;
+	margin: 10px;
+
+}
+
+
+.notice-container form header{
+	display: grid;
+	row-gap: 10px;
+	margin: 20px;
+	padding: 10px;
+}
+
+.notice-container footer{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.notice-container footer button{
+	background: rgb(228, 228, 228);
+	text-align: center;
+	width: auto;
+}
+
+.notice-container footer :first-child{
+	border-radius: 0 0 0 20px;
+	
+}
+
+
+.notice-container footer :last-child{
+	border-radius: 0 0 20px 0;
+	background: #b936d2;
+	color: white;
+	
 }

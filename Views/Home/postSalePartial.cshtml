@@ -1,5 +1,5 @@
 @using UserLogin.Models
-@model GarageSale
+@model User
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,19 +8,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Post Garage Sale</title>
 
     <script>
         $(document).ready(function () {
 
+            $('#postFormUpgrade').submit(function (event) {
+                event.preventDefault();
+
+                let StreetNumber = document.getElementById("StreetNumberUpgrade").value;
+                let StreetName = document.getElementById("StreetNameUpgrade").value;
+                let City = document.getElementById("CityUpgrade").value;
+                let State = document.getElementById("StateUpgrade").value;
+                let Zipcode = document.getElementById("ZipcodeUpgrade").value;
+
+                console.log("address", StreetNumber, StreetName, City, State, Zipcode)
+
+                var jsonData = {
+                    streetnumber: StreetNumber,
+                    streetname: StreetName,
+                    city: City,
+                    state: State,
+                    zipcode: Zipcode,
+                }
+
+                console.log("jsonData:", jsonData);
+
+                      $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpgradeUserHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatusUpgrade,
+                    error: ErrorStatusUpgrade,
+                    complete: CompleteStatusUpgrade
+
+                })
+
+            })
+
+
+            const SuccessStatusUpgrade = (result) => {
+                console.log("You have sucessfuly upgraded...", result);
+                LoadData();
+                location.reload();
+
+            };
+
+            const ErrorStatusUpgrade = (xhr, status, strErr) => {
+                console.log("There was an error when upgrading!");
+            };
+
+            const CompleteStatusUpgrade = (xhr, status) => {
+                console.log("Upgaded has completed...");
+            };
+
             $('#postForm').submit(function (event) {
                 event.preventDefault();
-                alert('button test ajax was click')
 
 
                 let startDate = $('#StartDate').val()
                 let startTime = $('#StartTime').val()
                 let endTime = $('#EndTime').val()
+
+                let description = $('#Description').val()
 
                 let streetnumber = $('#StreetNumber').val()
                 let streetname = $('#StreetName').val()
@@ -34,6 +85,8 @@
                     startDate: startDate,
                     startTime: startTime,
                     endTime: endTime,
+
+                    description: description,
 
                     streetnumber: streetnumber,
                     streetname: streetname,
@@ -71,21 +124,16 @@
 
 
             const LoadData = () => {
-                alert("loading data...");
                 $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
                     data = JSON.parse(data);
-                    console.log("in load", data);
                     RenderData(data);
-                    @* data = $.parseJSON(data); deprecated*@
                 });
             };
             const RenderData = (data) => {
-                console.log("user Data", data.data)
                 $.each(data.data, function (i, v) {
-                    console.log(v)
-                    console.log("id:", v.garageSaleId);
+                    @* console.log(v) *@
 
-                    const TimeFormat = {
+                        const TimeFormat = {
                         hour12: true,
                         hour: "numeric",
                         minute: "numeric", seconds: "numeric"
@@ -97,46 +145,53 @@
                         day: "numeric"
                     };
 
+                    const CheckDateFormat = {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+
+                    };
+
                     let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
                     let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
 
-
-                    console.log("Start Time:", startTimeFormatted, "EndTime:", endTimeFormatted)
-
+                    let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
+                    let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
 
 
 
                     let garageItemId = v.garageSaleId;
 
+                    if (checkDate < checkToday) {
+                        console.log("this event has expired")
 
-                    $(`<li id="${garageItemId}">
+                    } else {
 
-                    @* <img src="~/img/Assets/postPlaceholder.png" alt=""> *@
-                    <section>
-                        <header>
-                            <h1>${dateFormated}</h1>
-                            <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
-                        </header>
-
-
-                        <address>
-                            <p>${v.streetNumber} ${v.streetName} </p>
-                            <p> ${v.city} ${v.zipcode}</p>
-                        </address>
+                     $(`<li id="${garageItemId}">
+                        <section>
+                            <header>
+                                <h1>${dateFormated}</h1>
+                                <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
+                            </header>
 
 
-                        <main>
-                            <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
-                            <button>Check In</button>
-                            <p>visited 20</p>
-                            <p>check in 5</p>
-                        </main>
-                    </section>
+
+
+                              <footer>
+                                <h3> ${v.city} ${v.state}</h3>
+                                <p>${v.description}</p>
+                            </footer>
+
+                            <main>
+                                <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
+                                <p>20 people visted.</p>
+                            </main>
+                        </section>
 
                     </li>`).prependTo("#garageSaleList");
-
+                    }
 
 
 
@@ -155,57 +210,99 @@
         <button onclick="postSalePartialHandler()"> &lt; back</button>
 
 
-        <header>
-            <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
-            <h2>@ViewBag.ToDisplay.FirstName</h2>
-        </header>
+        @if (Model.AccountType == AccountType.Seller)
+        {
 
 
-        <aside>
-            <button>new sale</button>
-            <button>recent post</button>
-        </aside>
-
-        <div class="form-postContainer">
-            <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
                 <header>
-                    <h2 class="span2Columns">Date Time:</h2>
-                    <input class="span2Columns" asp-for="StartDate" type="date">
-                    <label>Start Time:</label>
-                    <input asp-for="StartTime" type="time">
-                    <label>End Time:</label>
-                    <input asp-for="EndTime" type="time">
+                    <img src="~/img/uploads/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+                    <h2>@ViewBag.ToDisplay.FirstName</h2>
                 </header>
-                <main>
-                    <h2>Location:</h2>
-                    <div class="locationHeader">
-                        <input asp-for='StreetNumber' type='text' placeholder='street #:'>
-                        <input asp-for='StreetName' type='text' placeholder='Street Name: '>
-                    </div>
-                    <div class="locationFooter">
-                        <input asp-for='City' type='text' placeholder='City:'>
-                        <input asp-for='State' type='text' placeholder='State:'>
-                        <input asp-for='Zipcode' type='text' placeholder='zipecode: '>
-                    </div>
-                </main>
-
-                @* <button type="button" id="submitForm">test ajax</button> *@
-
-                <input type="submit" value="Post Sale">
-            </form>
 
 
-        </div>
+                <aside>
+                    <button>new sale</button>
+                    <button>recent post</button>
+                </aside>
+
+                <div class="form-postContainer">
+                    <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'asp-route-id="@ViewBag.ToDisplay.UserId">
+                        <header>
+                            <h2 class="span2Columns">Date Time:</h2>
+                            <input class="span2Columns" id="StartDate" type="date">
+                            <label>Start Time:</label>
+                            <input id="StartTime" type="time">
+                            <label>End Time:</label>
+                            <input id="EndTime" type="time">
+                        </header>
+                        <main>
+                            <h2>Description:</h2>
+                            <textarea id="Description" placeholder="describe what you have for sale."></textarea>
+                            <h2>Location:</h2>
+                            <div class="locationHeader">
+                                <input id='StreetNumber' type='text' placeholder='street #:'>
+                                <input id='StreetName' type='text' placeholder='Street Name: '>
+                            </div>
+                            <div class="locationFooter">
+                                <input id='City' type='text' placeholder='City:'>
+                                <input id='State' type='text' placeholder='State:'>
+                                <input id='Zipcode' type='text' placeholder='zipecode: '>
+                            </div>
+                        </main>
+
+                    <button type="submit" id="submitForm">Post Sale</button>
+
+                        @* <input type="submit" value="Post Sale"> *@
+                    </form>
+
+
+                </div>
 
 
 
-        <footer>
-            <img src="img/Assets/logoGray.png" alt="">
-            <p>v1.0</p>
-        </footer>
+                <footer>
+                    <img src="img/Assets/logoGray.png" alt="">
+                    <p>v1.0</p>
+                </footer>
+
+        }
+
+
+        @if (Model.AccountType == AccountType.Buyer)
+        {
+                <section class="upgrade-container">
+                    <button onclick="popUpNoticeHandler(event)">Upgrade Account</button>
+                    <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
+
+                </section>
+
+                <aside class="notice-container" id="upgradeNotice">
+                    <form id="postFormUpgrade">
+                        <header>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda porro dolore laborum,
+                                perferendis pariatur commodi. Facere fugiat qui eveniet suscipit incidunt molestias
+                                saepe
+                                deleniti inventore commodi. Rerum itaque mollitia quisquam.</p>
+                            <main id="noticeForm">
+
+
+                            </main>
+                        </header>
+
+                        <footer>
+                            <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
+                            <button>Upgrade</button>
+                        </footer>
+                    </form>
+                </aside>
+
+        }
 
     </div>
+
+
+
+
 
 </body>
 
