@@ -99,8 +99,7 @@ namespace UserLogin.Models
         [InverseProperty("Reviewed")]
         List<Review> UserReviews { get; set; } // list of Reviews left O2M
 
-        // One to One with Feeback
-        public int FeedbackId { get; set; }
+        // One to One with Feedback (Only needs foreign key [an Id] on one side not both)
         public Feedback FeedbackMessage { get; set; }
     }
 }
