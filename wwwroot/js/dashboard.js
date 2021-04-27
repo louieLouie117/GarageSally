@@ -74,6 +74,20 @@ const postSalePartialHandler = (e) =>{
     document.getElementById("postSalePartial").style.transition = "1s";
     document.getElementById("mainMenu").style.marginLeft = "-700px";
 
+    let streetNumber = document.getElementById("StreetNumberEdit").value;
+    let streetName = document.getElementById("StreetNameEdit").value;
+    let city = document.getElementById("CityEdit").value;
+    let state = document.getElementById("StateEdit").value;
+    let zipcode = document.getElementById("ZipcodeEdit").value;
+
+
+    document.getElementById("StreetNumber").value = streetNumber;
+    document.getElementById("StreetName").value = streetName;
+    document.getElementById("City").value = city;
+    document.getElementById("State").value = state;
+    document.getElementById("Zipcode").value = zipcode;
+
+
 
     return (postSaleEvent = "open")
 
