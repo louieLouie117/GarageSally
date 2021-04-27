@@ -19,15 +19,5 @@ It has bee a month this my last log. We are now getting closer to deploying vers
 Friday April 23 2021
 Today I started version 1.6. There was a lot done for version 1.5 and you can review Trello for all the task that was completed. There were some very big wins in v1.5 that I would like to highlight. 
 
-1. Filtering the sales data by the user's state and expired sales. 
-2. Using Ajax for all communication to and from the backend. 
-3. Reusing code for a popup option. 
-4. Setting up enums for account types and subscription status.
-5. Rendering 
-6. Fully mobile and responsive.
-7. Using partial.
-8. Using Trello.
-9. Using why & how documentation.
-10. Using Activity notes.
-10. Google analytics set up.
-11. Norms and Values.
+Tuesday, April 27 2020
+Today we started version 1.7 and wanted to go over some highlights for version 1.6. In version 1.6 I was able to get the photo uploader handler working. I also add a description filled in the model. I notice how important for every garage sale to have a description when I went to a community garage sale. 
