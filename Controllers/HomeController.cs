@@ -185,16 +185,25 @@ namespace UserLogin.Controllers
 
             User GetUser = _context.Users.FirstOrDefault(u => u.UserId == UserIdInSession);
 
-            GetUser.FirstName = FromForm.FirstName;
-            GetUser.LastName = FromForm.LastName;
+            // string userZipcode = FromForm.Zipcode; do this after ching int to string
 
+            if (FromForm.FirstName == null) { GetUser.FirstName = ""; }
+            else { GetUser.FirstName = FromForm.FirstName; };
 
-            GetUser.StreetNumber = FromForm.StreetNumber;
-            GetUser.StreetName = FromForm.StreetName;
-            GetUser.City = FromForm.City;
-            GetUser.State = FromForm.State;
-            GetUser.Zipcode = FromForm.Zipcode;
+            if (FromForm.LastName == null) { GetUser.LastName = ""; }
+            else { GetUser.LastName = FromForm.LastName; };
 
+            if (FromForm.StreetNumber == null) { GetUser.StreetNumber = ""; }
+            else { GetUser.StreetNumber = FromForm.StreetNumber; };
+
+            if (FromForm.StreetName == null) { GetUser.StreetName = ""; }
+            else { GetUser.StreetName = FromForm.StreetName; };
+
+            if (FromForm.City == null) { GetUser.City = ""; }
+            else { GetUser.City = FromForm.City; };
+
+            if (FromForm.State == null) { GetUser.State = ""; }
+            else { GetUser.State = FromForm.State; };
 
 
             _context.SaveChanges();

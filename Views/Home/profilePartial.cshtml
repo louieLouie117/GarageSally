@@ -88,12 +88,21 @@
                     $.each(data.data, function (i, v) {
                         @* console.log(v) *@
 
+
+                    if (v.profilePic === "placeholder.png") {
                             $(`
-                            <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
-                            <h1 id="UserNameText">Hello, ${v.firstName}</h1>
+                        <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
+                        <h1 id="UserNameText">Hello, ${v.firstName}</h1>
+                        <button onclick="popUpNoticeHandler(event)">Change Photo</button>
+                        `).prependTo("#UserPhoto");
+                        } else {
 
+                            $(`
+                        <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
+                        <h1 id="UserNameText">Hello, ${v.firstName}</h1>
+                        `).prependTo("#UserPhoto");
+                        }
 
-                    `).prependTo("#UserPhoto");
 
                         $(`
                           <h3 class="span2Columns">Name</h3>
@@ -217,7 +226,6 @@
         <div class="userInfo-container" id="UserInfo">
 
             <header id="UserPhoto">
-                <button onclick="popUpNoticeHandler(event)">Change Photo</button>
 
                 <aside class="notice-container" id="photoUploadNotice">
                     <form asp-action="ChangePhotoHandler" asp-controller="Home" method="POST"

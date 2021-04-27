@@ -33,6 +33,9 @@ input {
 
 
 /* placement of container on the gird */
+.postSale-container{
+	overflow: scroll;
+}
 
 .profile-container,
 .postSale-container,
