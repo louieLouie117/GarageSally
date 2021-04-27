@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
-    public enum AccountType { Buyer = 0, Seller = 1 }
+    public enum AccountType { Buyer = 0, Seller = 1, Admin = 2 }
     public enum SubscriptionStatus { Free = 0, Active = 1, Suspended = 2, Canceled = 3 }
 
     public class User
