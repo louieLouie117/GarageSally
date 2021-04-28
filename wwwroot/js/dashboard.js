@@ -241,7 +241,7 @@ const profileNav =(e)=>{
         document.getElementById("recentPostOption").style.borderBottom = "#b936d2 solid 2px";    
         document.getElementById("newSaleOption").style.borderBottom = "none";
 
-
+        LoadUserPost();
 
     }else{
         document.getElementById("postForm").style.display = "grid";
