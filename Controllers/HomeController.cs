@@ -265,6 +265,26 @@ namespace UserLogin.Controllers
 
         }
 
+        [HttpGet("displayUserGarageSales")]
+
+        public JsonResult displayUserGarageSales()
+        {
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+            string UserStateInSession = HttpContext.Session.GetString("UserState");
+            System.Console.WriteLine(UserStateInSession);
+
+            DashboardWrapper wMode = new DashboardWrapper();
+
+
+            List<GarageSale> garageSaleItems = _context.GarageSales
+            .Where(us => us.UserId == UserIdInSession)
+            .ToList();
+
+
+            return Json(new { data = garageSaleItems });
+
+        }
+
         [HttpGet("DisplayUserProfile")]
 
         public JsonResult DisplayUserProfile()

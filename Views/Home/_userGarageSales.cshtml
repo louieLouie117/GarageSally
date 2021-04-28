@@ -1,46 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="~/css/dashboard.css">
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-WGFK1GC4RE');
-    </script>
-    <script>
-
         $(document).ready(function () {
 
-            $.get("/displayGarageSales", data => {
-                RenderData(data);
+            $('#userPostsList').load("/displayUserGarageSales #userPostsList", data => {
+                data = JSON.parse(data);
+                RenderUserPost(data);
             });
 
-
-            const LoadData = () => {
-                alert("loading data...");
-                $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
-                    data = JSON.parse(data);
-                    @* console.log("in load", data); *@
-                        RenderData(data);
-                    @* data = $.parseJSON(data); deprecated*@
-                });
-            };
-            const RenderData = (data) => {
+            const RenderUserPost = (data) => {
                 $.each(data.data, function (i, v) {
                     @* console.log(v) *@
-                        @* console.log("Date Time:", v.startDate, v.startTime, v.endTime) *@
-                        @* console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.state, v.zipcode); *@
 
-                    const TimeFormat = {
+                        const TimeFormat = {
                         hour12: true,
                         hour: "numeric",
                         minute: "numeric", seconds: "numeric"
@@ -75,8 +46,6 @@
                         console.log("this event has expired")
 
                     } else {
-
-
                         $(`<li id="${garageItemId}">
                         <section>
                             <header>
@@ -98,43 +67,27 @@
                             </main>
                         </section>
 
-                    </li>`).prependTo("#garageSaleList");
-
+                    </li>`).prependTo("#userPostsList");
                     }
+
+
 
                 });
             };
 
         })
-
-
-
     </script>
-
 </head>
 
-<body>
-    <div class="allGaragePost-container">
-        <div class="cardItems">
-            <ul id="garageSaleList">
-                @* <li>
-                    <img src="~/img/Assets/postPlaceholder.png" alt="">
-                    <section>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                    </section>
-                    <aside>
-                    <div id="circleIcon"></div>
-                    <div id="circleIcon"></div>
-                    <div id="circleIcon"></div>
-                    </aside>
-                    </li> *@
 
+<body>
+
+
+    <div id="usersGarageSalesPartial" class="userGarageSales grid-container">
+        <div class="cardItems">
+            <ul id="userPostsList">
 
             </ul>
-
         </div>
-
     </div>
 </body>
-
-</html>

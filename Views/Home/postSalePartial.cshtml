@@ -114,6 +114,7 @@
                 console.log("Success...", result);
                 LoadData();
 
+
             };
             const ErrorStatus = (xhr, status, strErr) => {
                 console.log("There was an error!");
@@ -129,6 +130,16 @@
                     RenderData(data);
                 });
             };
+
+            const LoadUserPost = () => {
+                alert("button was click");
+                $('#userPostsList').load("/displayGarageSales #userPostsList", data => {
+                    data = JSON.parse(data);
+                    RenderData(data);
+                });
+
+            };
+
             const RenderData = (data) => {
                 $.each(data.data, function (i, v) {
                     @* console.log(v) *@
@@ -191,12 +202,17 @@
                         </section>
 
                     </li>`).prependTo("#garageSaleList");
+
+            
                     }
 
 
 
                 });
             };
+
+
+
 
         })
 
@@ -221,8 +237,8 @@
 
 
                 <aside>
-                    <button>new sale</button>
-                    <button>recent post</button>
+                    <button id="newSaleOption" onclick="profileNav(event)">new sale</button>
+                    <button id="recentPostOption" onclick="profileNav(event)" >recent post</button>
                 </aside>
 
                 <div class="form-postContainer">
@@ -258,6 +274,7 @@
 
                 </div>
 
+                <partial name="_userGarageSales" />
 
 
                 <footer>
@@ -298,10 +315,12 @@
 
         }
 
+
+
+
     </div>
 
-
-
+  
 
 
 </body>
