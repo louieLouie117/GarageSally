@@ -232,6 +232,25 @@ const popUpNoticeHandler = (e) => {
 
 }
 
+const profileNav =(e)=>{
+    console.log(e.target.innerText)
+
+    if(e.target.innerText === "recent post"){
+        document.getElementById("postForm").style.display = "none";
+        document.getElementById("usersGarageSalesPartial").style.display = "grid";
+        document.getElementById("recentPostOption").style.borderBottom = "#b936d2 solid 2px";    
+        document.getElementById("newSaleOption").style.borderBottom = "none";
+
+
+
+    }else{
+        document.getElementById("postForm").style.display = "grid";
+        document.getElementById("usersGarageSalesPartial").style.display = "none";
+        document.getElementById("newSaleOption").style.borderBottom = "#b936d2 solid 2px";    
+        document.getElementById("recentPostOption").style.borderBottom = "none";
+    }
+}
+
 
 
 

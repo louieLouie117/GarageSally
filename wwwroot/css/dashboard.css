@@ -3,6 +3,11 @@ body {
 	margin: 0 auto;
 }
 
+.grid-container{
+	display: grid;
+}
+
+
 h1,
 h2,
 h3,
@@ -240,6 +245,19 @@ input {
 	color: gray;
 }
 
+.postSale-container aside button{
+	text-align: center;
+	padding-bottom: 5px;
+	height: auto;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	outline: none;
+}
+
+.postSale-container aside button:first-of-type{
+	border-bottom: #b936d2 solid 2px;
+}
+
 .postSale-container aside:first-child {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -256,6 +274,7 @@ input {
 .form-postContainer form {
 	display: grid;
 	row-gap: 10px;
+	margin-top: 10px;
 }
 
 .form-postContainer form button{
@@ -642,4 +661,10 @@ input {
 	background: #b936d2;
 	color: white;
 	
+}
+
+.usersGarageSales{
+	display: none;
+	background: gold;
+	max-width: 21em;
 }

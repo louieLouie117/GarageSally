@@ -221,8 +221,8 @@
 
 
                 <aside>
-                    <button>new sale</button>
-                    <button>recent post</button>
+                    <button id="newSaleOption" onclick="profileNav(event)">new sale</button>
+                    <button id="recentPostOption" onclick="profileNav(event)" >recent post</button>
                 </aside>
 
                 <div class="form-postContainer">
@@ -258,6 +258,7 @@
 
                 </div>
 
+                <partial name="_userGarageSales" />
 
 
                 <footer>
@@ -298,10 +299,12 @@
 
         }
 
+
+
+
     </div>
 
-
-
+  
 
 
 </body>
