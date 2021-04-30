@@ -7,6 +7,8 @@
                 RenderUserPost(data);
             });
 
+
+
             const RenderUserPost = (data) => {
                 $.each(data.data, function (i, v) {
                     @* console.log(v) *@
@@ -53,29 +55,57 @@
                                 <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
                             </header>
 
-
-
-
                               <footer>
                                 <h3> ${v.city} ${v.state}</h3>
                                 <p>${v.description}</p>
                             </footer>
 
                             <main>
-                                <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
-                                <p>20 people visted.</p>
+                                 <a><button id="${garageItemId}" onclick="DeleteSaleHandler(event)">Delete</button></a>
+                                <p>Edit</p>
                             </main>
                         </section>
 
                     </li>`).prependTo("#userPostsList");
                     }
 
-
-
                 });
             };
 
         })
+
+        const DeleteSaleHandler = (e) => {
+
+            let editItem = e.target.id;
+
+            var jsonData = {
+                garageSaleId: editItem,
+            }
+            console.log(jsonData)
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteSaleHandler", "Home")',
+                data: jsonData,
+                success: SuccessStatus,
+                error: ErrorStatus,
+                complete: CompleteStatus
+
+            })
+
+
+        }
+
+
+        const SuccessStatus = (result) => {
+            console.log("Success...", result);
+        };
+        const ErrorStatus = (xhr, status, strErr) => {
+            console.log("There was an error!");
+        };
+        const CompleteStatus = (xhr, status) => {
+            console.log("Ajax has completed...");
+        };
     </script>
 </head>
 

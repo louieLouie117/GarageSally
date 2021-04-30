@@ -206,7 +206,7 @@
 
                             <main>
                                 <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
-                                <p>20 people visted.</p>
+                                @* <p>20 people visted.</p> *@
                             </main>
                         </section>
 
@@ -221,7 +221,7 @@
             };
 
 
-    const RenderUserPost = (data) => {
+         const RenderUserPost = (data) => {
                 $.each(data.data, function (i, v) {
                     @* console.log(v) *@
 
@@ -267,17 +267,14 @@
                                 <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
                             </header>
 
-
-
-
                               <footer>
                                 <h3> ${v.city} ${v.state}</h3>
                                 <p>${v.description}</p>
                             </footer>
 
                             <main>
-                                <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
-                                <p>20 people visted.</p>
+                                <a><button id="${garageItemId}">Delete</button></a>
+                                <p>Edit</p>
                             </main>
                         </section>
 

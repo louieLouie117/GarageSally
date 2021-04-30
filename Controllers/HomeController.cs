@@ -170,6 +170,17 @@ namespace UserLogin.Controllers
         }
 
 
+        [HttpPost("DeleteSaleHandler")]
+        public IActionResult DeleteSaleHandler(GarageSale FromForm)
+        {
+
+            System.Console.WriteLine("reached the backend to delete sale");
+
+
+            return Json(new { Status = "success deleteing" });
+        }
+
+
 
 
 
