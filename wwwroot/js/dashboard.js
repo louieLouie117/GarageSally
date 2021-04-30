@@ -235,13 +235,12 @@ const popUpNoticeHandler = (e) => {
 const profileNav =(e)=>{
     console.log(e.target.innerText)
 
-    if(e.target.innerText === "recent post"){
+    if(e.target.innerText === "your post"){
         document.getElementById("postForm").style.display = "none";
         document.getElementById("usersGarageSalesPartial").style.display = "grid";
         document.getElementById("recentPostOption").style.borderBottom = "#b936d2 solid 2px";    
         document.getElementById("newSaleOption").style.borderBottom = "none";
 
-        LoadUserPost();
 
     }else{
         document.getElementById("postForm").style.display = "grid";

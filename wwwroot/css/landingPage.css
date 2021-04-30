@@ -116,6 +116,22 @@ h1,h2,h3,p{
 }
 
 
+.info-container h4{
+    font: 1.7em sans-serif;
+    padding:  0;
+    padding-left: 10px;
+    margin: 0;
+}
+
+.info-container p{
+font: 1.7em sans-serif;
+margin-top: 20px;
+
+}
+
+
+
+
 /* Desktop version */
 
 @media screen and (min-width: 1100px){
@@ -198,6 +214,7 @@ h1,h2,h3,p{
         height: auto;
         padding-top: 150px;
     }
+
 
     .userReg-container{
         margin-top: -200px;
