@@ -231,13 +231,13 @@
                     <form asp-action="ChangePhotoHandler" asp-controller="Home" method="POST"
                         enctype="multipart/form-data">
                         <header>
-                            <p>You can personalize your account by adding a photo. </p>
-                            <p>The current version only supports one photo per user.</p>
+                            <p>Photo upload is currently unable.</p>
+                            @* <p>The current version only supports one photo per user.</p> *@
                             <input asp-for="files" type="file" multiple>
                         </header>
                         <footer>
-                            <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
-                            <button type="submit">Save</button>
+                            <button type="button" onclick="popUpNoticeHandler(event)"></button>
+                            <button type="button">Cancel</button>
                         </footer>
                     </form>
                 </aside>
