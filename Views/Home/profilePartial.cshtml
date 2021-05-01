@@ -91,14 +91,14 @@
 
                     if (v.profilePic === "placeholder.png") {
                             $(`
-                        <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
+                        <img class="userPicSmall" src="/img/Assets/${v.profilePic}">
                         <h1 id="UserNameText">Hello, ${v.firstName}</h1>
                         <button onclick="popUpNoticeHandler(event)">Change Photo</button>
                         `).prependTo("#UserPhoto");
                         } else {
 
                             $(`
-                        <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
+                        <img class="userPicSmall" src="/img/Assets/${v.profilePic}">
                         <h1 id="UserNameText">Hello, ${v.firstName}</h1>
                         `).prependTo("#UserPhoto");
                         }
@@ -231,13 +231,13 @@
                     <form asp-action="ChangePhotoHandler" asp-controller="Home" method="POST"
                         enctype="multipart/form-data">
                         <header>
-                            <p>You can personalize your account by adding a photo. </p>
-                            <p>The current version only supports one photo per user.</p>
-                            <input asp-for="files" type="file" multiple>
+                            <p>Photo upload is currently unable. </p>
+                            @* <p>The current version only supports one photo per user.</p> *@
+                            @* <input asp-for="files" type="file" multiple> *@
                         </header>
                         <footer>
+                            <button type="button" onclick="popUpNoticeHandler(event)"></button>
                             <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
-                            <button type="submit">Save</button>
                         </footer>
                     </form>
                 </aside>
