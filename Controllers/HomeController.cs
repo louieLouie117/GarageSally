@@ -31,7 +31,7 @@ namespace UserLogin.Controllers
         [HttpGet("signin")]
         public IActionResult gotoSignin()
         {
-            return RedirectToAction("login");
+            return RedirectToAction("index");
         }
 
         [HttpGet("registration")]
@@ -64,7 +64,7 @@ namespace UserLogin.Controllers
             // block pages is not in session
             if (HttpContext.Session.GetInt32("UserId") == null)
             {
-                return RedirectToAction("login");
+                return RedirectToAction("index");
 
             }
 
@@ -95,7 +95,7 @@ namespace UserLogin.Controllers
             // block pages is not in session
             if (HttpContext.Session.GetInt32("UserId") == null)
             {
-                return RedirectToAction("login");
+                return RedirectToAction("index");
             }
 
             ViewBag.AllUsers = _context.Users.ToList();
