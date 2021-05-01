@@ -24,8 +24,8 @@
                 RenderData(data);
             });
 
+
             const LoadData = () => {
-                alert("loading data...");
                 $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
                     data = JSON.parse(data);
                     @* console.log("in load", data); *@
@@ -93,7 +93,7 @@
 
                             <main>
                                 <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
-                                <p>20 people visted.</p>
+                                @* <p>20 people visted.</p> *@
                             </main>
                         </section>
 

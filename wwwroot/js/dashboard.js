@@ -68,7 +68,16 @@ let postSaleEvent = "close"
 
 const postSalePartialHandler = (e) =>{
 
-    if (postSaleEvent === "close") { 
+    if(e.target.innerText === "< back"){
+        document.getElementById("postSalePartial").style.marginLeft = "-700px";
+        document.getElementById("postSalePartial").style.transform = "smooth";
+        document.getElementById("postSalePartial").style.transition = "1s";
+        document.getElementById("mainMenu").style.marginLeft = "0";
+    
+        return (postSaleEvent = "close");
+        }
+
+    if (e.target.innerText === "Post a sale" || "+") { 
     document.getElementById("postSalePartial").style.marginLeft = "0";
     document.getElementById("postSalePartial").style.transform = "smooth";
     document.getElementById("postSalePartial").style.transition = "1s";
@@ -91,15 +100,8 @@ const postSalePartialHandler = (e) =>{
 
     return (postSaleEvent = "open")
 
-    } else{
-    document.getElementById("postSalePartial").style.marginLeft = "-700px";
-    document.getElementById("postSalePartial").style.transform = "smooth";
-    document.getElementById("postSalePartial").style.transition = "1s";
-    document.getElementById("mainMenu").style.marginLeft = "0";
+    } 
 
-    return (postSaleEvent = "close");
-    }
-// Page
 
 }
 
@@ -230,6 +232,24 @@ const popUpNoticeHandler = (e) => {
     }
 
 
+}
+
+const profileNav =(e)=>{
+    console.log(e.target.innerText)
+
+    if(e.target.innerText === "your post"){
+        document.getElementById("postForm").style.display = "none";
+        document.getElementById("usersGarageSalesPartial").style.display = "grid";
+        document.getElementById("recentPostOption").style.borderBottom = "#b936d2 solid 2px";    
+        document.getElementById("newSaleOption").style.borderBottom = "none";
+
+
+    }else{
+        document.getElementById("postForm").style.display = "grid";
+        document.getElementById("usersGarageSalesPartial").style.display = "none";
+        document.getElementById("newSaleOption").style.borderBottom = "#b936d2 solid 2px";    
+        document.getElementById("recentPostOption").style.borderBottom = "none";
+    }
 }
 
 

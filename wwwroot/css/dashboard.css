@@ -3,11 +3,20 @@ body {
 	margin: 0 auto;
 }
 
+.grid-container{
+	display: grid;
+}
+
+
 h1,
 h2,
 h3,
 p {
 	margin: 0;
+}
+
+h1{
+	font: 2em sans-serif;
 }
 
 .span2Columns {
@@ -240,6 +249,19 @@ input {
 	color: gray;
 }
 
+.postSale-container>aside>button{
+	text-align: center;
+	padding-bottom: 5px;
+	height: auto;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	outline: none;
+}
+
+.postSale-container aside button:first-of-type{
+	border-bottom: #b936d2 solid 2px;
+}
+
 .postSale-container aside:first-child {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -256,6 +278,7 @@ input {
 .form-postContainer form {
 	display: grid;
 	row-gap: 10px;
+	margin-top: 10px;
 }
 
 .form-postContainer form button{
@@ -620,6 +643,11 @@ input {
 	padding: 10px;
 }
 
+.notice-container form header p{
+	font: 1.7em sans-serif;
+	color: gray;
+}
+
 .notice-container footer{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -642,4 +670,59 @@ input {
 	background: #b936d2;
 	color: white;
 	
+}
+
+.userGarageSales{
+	display: none;
+	row-gap: 20px;
+	width: 20.6em;
+}
+
+.userGarageSales ul {
+	display: grid;
+	row-gap: 20px;
+	padding-bottom: 50px;
+}
+
+.userGarageSales ul li{
+	box-shadow: 0px 5px 10px rgb(0 0 0 / 23%);
+	border-radius: 25px;
+	width: 95%;
+	justify-self: center;
+
+	
+}
+
+/* aboutGarageSally */
+
+.aboutGarageSally-container{
+	display: grid;
+	max-width: 27em;
+	overflow: scroll;
+}
+
+.aboutGarageSally-container h1{
+	justify-self: center;
+}
+
+.aboutGarageSally-container header{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	column-gap: 5px;
+	align-items: center;
+}
+
+.aboutGarageSally-container header h2{
+	font: 1.5em sans-serif;
+}
+
+.aboutGarageSally-container main{
+	display: grid;
+	row-gap: 25px;
+	padding-bottom: 150px;
+
+}
+
+.aboutGarageSally-container main p{
+	font: 1.7em sans-serif;
 }

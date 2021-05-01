@@ -31,7 +31,7 @@ namespace UserLogin.Controllers
         [HttpGet("signin")]
         public IActionResult gotoSignin()
         {
-            return RedirectToAction("login");
+            return RedirectToAction("index");
         }
 
         [HttpGet("registration")]
@@ -64,7 +64,7 @@ namespace UserLogin.Controllers
             // block pages is not in session
             if (HttpContext.Session.GetInt32("UserId") == null)
             {
-                return RedirectToAction("login");
+                return RedirectToAction("index");
 
             }
 
@@ -95,7 +95,7 @@ namespace UserLogin.Controllers
             // block pages is not in session
             if (HttpContext.Session.GetInt32("UserId") == null)
             {
-                return RedirectToAction("login");
+                return RedirectToAction("index");
             }
 
             ViewBag.AllUsers = _context.Users.ToList();
@@ -167,6 +167,23 @@ namespace UserLogin.Controllers
             _context.SaveChanges();
 
             return Json(new { Status = "success" });
+        }
+
+
+        [HttpPost("DeleteSaleHandler")]
+        public IActionResult DeleteSaleHandler(GarageSale FromForm)
+        {
+
+            System.Console.WriteLine("reached the backend to delete sale");
+            System.Console.WriteLine($"Item to delete: {FromForm.GarageSaleId}");
+
+            GarageSale GetSale = _context.GarageSales.SingleOrDefault(l => l.GarageSaleId == FromForm.GarageSaleId);
+
+
+            _context.GarageSales.Remove(GetSale);
+            _context.SaveChanges();
+
+            return Json(new { Status = "success deleteing" });
         }
 
 
@@ -258,6 +275,26 @@ namespace UserLogin.Controllers
 
             List<GarageSale> garageSaleItems = _context.GarageSales
             .Where(us => us.State == UserStateInSession)
+            .ToList();
+
+
+            return Json(new { data = garageSaleItems });
+
+        }
+
+        [HttpGet("displayUserGarageSales")]
+
+        public JsonResult displayUserGarageSales()
+        {
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+            string UserStateInSession = HttpContext.Session.GetString("UserState");
+            System.Console.WriteLine(UserStateInSession);
+
+            DashboardWrapper wMode = new DashboardWrapper();
+
+
+            List<GarageSale> garageSaleItems = _context.GarageSales
+            .Where(us => us.UserId == UserIdInSession)
             .ToList();
 
 

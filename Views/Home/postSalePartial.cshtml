@@ -112,7 +112,17 @@
 
             const SuccessStatus = (result) => {
                 console.log("Success...", result);
+                
+            $('#userPostsList').load("/displayUserGarageSales #userPostsList", data => {
+                data = JSON.parse(data);
+                RenderUserPost(data);
+            });
+                document.getElementById("postForm").style.display = "none";
+                document.getElementById("usersGarageSalesPartial").style.display = "grid";
+                document.getElementById("recentPostOption").style.borderBottom = "#b936d2 solid 2px";    
+                document.getElementById("newSaleOption").style.borderBottom = "none";
                 LoadData();
+
 
             };
             const ErrorStatus = (xhr, status, strErr) => {
@@ -129,6 +139,16 @@
                     RenderData(data);
                 });
             };
+
+            const LoadUserPost = () => {
+                alert("button was click");
+                $('#userPostsList').load("/displayGarageSales #userPostsList", data => {
+                    data = JSON.parse(data);
+                    RenderData(data);
+                });
+
+            };
+
             const RenderData = (data) => {
                 $.each(data.data, function (i, v) {
                     @* console.log(v) *@
@@ -186,17 +206,86 @@
 
                             <main>
                                 <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
-                                <p>20 people visted.</p>
+                                @* <p>20 people visted.</p> *@
                             </main>
                         </section>
 
                     </li>`).prependTo("#garageSaleList");
+
+            
                     }
 
 
 
                 });
             };
+
+
+         const RenderUserPost = (data) => {
+                $.each(data.data, function (i, v) {
+                    @* console.log(v) *@
+
+                        const TimeFormat = {
+                        hour12: true,
+                        hour: "numeric",
+                        minute: "numeric", seconds: "numeric"
+                    }
+
+                    const DateFormat = {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric"
+                    };
+
+                    const CheckDateFormat = {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+
+                    };
+
+                    let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
+                    let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
+                    let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
+
+
+                    let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
+                    let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
+
+
+
+                    let garageItemId = v.garageSaleId;
+
+                    if (checkDate < checkToday) {
+                        console.log("this event has expired")
+
+                    } else {
+                        $(`<li id="${garageItemId}">
+                        <section>
+                            <header>
+                                <h1>${dateFormated}</h1>
+                                <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
+                            </header>
+
+                              <footer>
+                                <h3> ${v.city} ${v.state}</h3>
+                                <p>${v.description}</p>
+                            </footer>
+
+                            <main>
+                                 <a><button id="${garageItemId}" onclick="DeleteSaleHandler(event)">Delete</button></a>
+                                @* <p>Edit</p> *@
+                            </main>
+                        </section>
+
+                    </li>`).prependTo("#userPostsList");
+                    }
+
+
+
+                });
+            };
+
 
         })
 
@@ -207,7 +296,7 @@
 <body>
 
     <div class="postSale-container" id="postSalePartial">
-        <button onclick="postSalePartialHandler()"> &lt; back</button>
+        <button onclick="postSalePartialHandler(event)"> &lt; back</button>
 
 
         @if (Model.AccountType == AccountType.Seller)
@@ -221,8 +310,8 @@
 
 
                 <aside>
-                    <button>new sale</button>
-                    <button>recent post</button>
+                    <button id="newSaleOption" onclick="profileNav(event)">new sale</button>
+                    <button id="recentPostOption" onclick="profileNav(event)" >your post</button>
                 </aside>
 
                 <div class="form-postContainer">
@@ -237,7 +326,7 @@
                         </header>
                         <main>
                             <h2>Description:</h2>
-                            <textarea id="Description" placeholder="describe what you have for sale."></textarea>
+                            <textarea id="Description" placeholder="describe what you have for sale." maxlength="250"></textarea>
                             <h2>Location:</h2>
                             <div class="locationHeader">
                                 <input id='StreetNumber' type='text' placeholder='street #:'>
@@ -258,6 +347,7 @@
 
                 </div>
 
+                <partial name="_userGarageSales" />
 
 
                 <footer>
@@ -279,10 +369,9 @@
                 <aside class="notice-container" id="upgradeNotice">
                     <form id="postFormUpgrade">
                         <header>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda porro dolore laborum,
-                                perferendis pariatur commodi. Facere fugiat qui eveniet suscipit incidunt molestias
-                                saepe
-                                deleniti inventore commodi. Rerum itaque mollitia quisquam.</p>
+                            <p>Thank for upgrading!</p>
+                            <p>Please confirm your address for posting garage sales.</p>
+
                             <main id="noticeForm">
 
 
@@ -298,10 +387,12 @@
 
         }
 
+
+
+
     </div>
 
-
-
+  
 
 
 </body>
