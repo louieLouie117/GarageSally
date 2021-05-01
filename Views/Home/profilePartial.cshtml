@@ -231,9 +231,9 @@
                     <form asp-action="ChangePhotoHandler" asp-controller="Home" method="POST"
                         enctype="multipart/form-data">
                         <header>
-                            <p>Photo upload is currently unable.</p>
+                            <p>Photo upload is currently unavailable.</p>
                             @* <p>The current version only supports one photo per user.</p> *@
-                            <input asp-for="files" type="file" multiple>
+                            @* <input asp-for="files" type="file" multiple> *@
                         </header>
                         <footer>
                             <button type="button" onclick="popUpNoticeHandler(event)"></button>
