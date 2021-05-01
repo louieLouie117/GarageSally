@@ -15,6 +15,10 @@ p {
 	margin: 0;
 }
 
+h1{
+	font: 2em sans-serif;
+}
+
 .span2Columns {
 	grid-column: 1/3;
 }
@@ -689,3 +693,35 @@ input {
 	
 }
 
+/* aboutGarageSally */
+
+.aboutGarageSally-container{
+	display: grid;
+	max-width: 27em;
+	overflow: scroll;
+}
+
+.aboutGarageSally-container h1{
+	justify-self: center;
+}
+
+.aboutGarageSally-container header{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	align-items: center;
+}
+
+.aboutGarageSally-container header h2{
+	font: 1.7em sans-serif;
+}
+
+.aboutGarageSally-container main{
+	display: grid;
+	row-gap: 25px;
+	padding-bottom: 150px;
+
+}
+
+.aboutGarageSally-container main p{
+	font: 1.7em sans-serif;
+}
