@@ -708,11 +708,12 @@ input {
 .aboutGarageSally-container header{
 	display: grid;
 	grid-template-columns: 1fr 2fr;
+	column-gap: 5px;
 	align-items: center;
 }
 
 .aboutGarageSally-container header h2{
-	font: 1.7em sans-serif;
+	font: 1.5em sans-serif;
 }
 
 .aboutGarageSally-container main{
