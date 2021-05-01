@@ -26,7 +26,6 @@
 
 
             const LoadData = () => {
-                alert("loading data...");
                 $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
                     data = JSON.parse(data);
                     @* console.log("in load", data); *@
