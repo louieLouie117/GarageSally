@@ -29,7 +29,7 @@ namespace UserLogin.Models
         // Adddress------------------------------
         [Display(Name = "Building Number")]
         // [Required]
-        public int StreetNumber { get; set; }
+        public string StreetNumber { get; set; }
 
         [Display(Name = "Street Name")]
         // [Required]
@@ -48,8 +48,6 @@ namespace UserLogin.Models
         public string Image { get; set; }
 
         public int VisitedCount { get; set; }
-
-        public int CheckInCount { get; set; }
 
         public int UserId { get; set; }
 
