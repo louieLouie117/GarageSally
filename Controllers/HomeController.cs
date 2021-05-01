@@ -170,6 +170,23 @@ namespace UserLogin.Controllers
         }
 
 
+        [HttpPost("DeleteSaleHandler")]
+        public IActionResult DeleteSaleHandler(GarageSale FromForm)
+        {
+
+            System.Console.WriteLine("reached the backend to delete sale");
+            System.Console.WriteLine($"Item to delete: {FromForm.GarageSaleId}");
+
+            GarageSale GetSale = _context.GarageSales.SingleOrDefault(l => l.GarageSaleId == FromForm.GarageSaleId);
+
+
+            _context.GarageSales.Remove(GetSale);
+            _context.SaveChanges();
+
+            return Json(new { Status = "success deleteing" });
+        }
+
+
 
 
 

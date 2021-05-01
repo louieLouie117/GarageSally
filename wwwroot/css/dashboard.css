@@ -245,7 +245,7 @@ input {
 	color: gray;
 }
 
-.postSale-container aside button{
+.postSale-container>aside>button{
 	text-align: center;
 	padding-bottom: 5px;
 	height: auto;
@@ -637,6 +637,11 @@ input {
 	row-gap: 10px;
 	margin: 20px;
 	padding: 10px;
+}
+
+.notice-container form header p{
+	font: 1.7em sans-serif;
+	color: gray;
 }
 
 .notice-container footer{
