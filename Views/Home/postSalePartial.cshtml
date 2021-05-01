@@ -273,7 +273,7 @@
                             </footer>
 
                             <main>
-                                <a><button id="${garageItemId}">Delete</button></a>
+                                 <a><button id="${garageItemId}" onclick="DeleteSaleHandler(event)">Delete</button></a>
                                 <p>Edit</p>
                             </main>
                         </section>
@@ -326,7 +326,7 @@
                         </header>
                         <main>
                             <h2>Description:</h2>
-                            <textarea id="Description" placeholder="describe what you have for sale."></textarea>
+                            <textarea id="Description" placeholder="describe what you have for sale." maxlength="250"></textarea>
                             <h2>Location:</h2>
                             <div class="locationHeader">
                                 <input id='StreetNumber' type='text' placeholder='street #:'>
