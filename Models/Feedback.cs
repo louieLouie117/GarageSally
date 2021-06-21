@@ -1,6 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
@@ -11,8 +9,8 @@ namespace UserLogin.Models
 
         public string Description { get; set; }
 
-        // One to One with User
-        public int UserId { get; set; }
+        // Relationships
+        public int UserId { get; set; } // O2O with User
         public User FeedbackAuthor { get; set; }
     }
 }

@@ -1,11 +1,7 @@
-
 @model User
 
-
 <div>
-
     <form asp-action="UpdateProfile" asp-controller="Home">
-
         <span asp-validation-for="FirstName"></span>
         <input asp-for="FirstName" placeholder="First name" disabled>
 
@@ -23,7 +19,5 @@
 
         <span asp-validation-for="Zipcode"></span>
         <input asp-for="Zipcode" placeholder="Zipcode" disabled>
-
     </form>
-
 </div>

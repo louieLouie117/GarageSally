@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
@@ -14,7 +11,7 @@ namespace UserLogin.Models
 
         public int FollowingId { get; set; }
 
-        //Relationships
+        //Middle table: Relationships
         public User Follower { get; set; }
         public User Following {get; set; }
     }

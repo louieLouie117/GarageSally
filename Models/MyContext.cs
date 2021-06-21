@@ -10,7 +10,7 @@ namespace UserLogin.Models
         public DbSet<GarageSale> GarageSales { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
-        // Middle table
+        // Middle tables
         public DbSet<UserList> UserLists { get; set; }
         public DbSet<GarageList>  GarageLists { get; set; }
     }

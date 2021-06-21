@@ -1,6 +1,5 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
@@ -14,15 +13,16 @@ namespace UserLogin.Models
 
         public string Comment { get; set; }
 
-        public int ReviewerId { get; set;} // Reviewer
+        public int ReviewerId { get; set;}
 
-        public int ReviewedId { get; set;} // Reviewed
+        public int ReviewedId { get; set;}
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         //Relationships
-        public User Reviewer { get; set; } // matches Reviews in User O2M
-        public User Reviewed { get; set;} // matches UserReviews in User O2M
+        public User Reviewer { get; set; } // O2M with User Reviews
+        public User Reviewed { get; set;} // O2M with User UserReviews
     }
 }

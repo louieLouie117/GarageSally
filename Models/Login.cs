@@ -1,11 +1,9 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace UserLogin.Models
 {
     public class LoginUser
     {
-        // No other fields!
         public int UserId { get; set; }
 
         [Required]
@@ -16,6 +14,3 @@ namespace UserLogin.Models
         public string Password { get; set; }
     }
 }
-
-
-

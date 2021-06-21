@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
     public enum AccountType { Buyer = 0, Seller = 1, Admin = 2 }
+
     public enum SubscriptionStatus { Free = 0, Active = 1, Suspended = 2, Canceled = 3 }
 
     public class User
@@ -14,9 +14,6 @@ namespace UserLogin.Models
         [Key]
         public int UserId { get; set; }
 
-        // Value comes from enum defined above, enum type is referenced like a class
-        // Values are Zero indexed so base datatype is "int"
-        // mapped in DB as a "string"
         [Column(TypeName = "nvarchar(24)")]
         [EnumDataType(typeof(AccountType))]
         public AccountType AccountType { get; set; }
@@ -27,12 +24,10 @@ namespace UserLogin.Models
 
 
         [Display(Name = "First Name")]
-        // [Required(ErrorMessage = "First name cannot be empty")]
         [MinLength(2, ErrorMessage = "First name is too short")]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        // [Required(ErrorMessage = "Last name cannot be empty")]
         [MinLength(2, ErrorMessage = "Last name is too short")]
         public string LastName { get; set; }
 
@@ -50,28 +45,21 @@ namespace UserLogin.Models
         [MinLength(8, ErrorMessage = "Password must be 8 characters or longer!")]
         public string Password { get; set; }
 
-        // Will not be mapped to your users table!
         [NotMapped]
         [Compare("Password")]
         [DataType(DataType.Password)]
         public string Confirm { get; set; }
 
         [Display(Name = "Building Number")]
-        // [Required]
         public string StreetNumber { get; set; }
 
-        // [DefaultValue("n/a")]
         [Display(Name = "Street Name")]
-        // [Required]
         public string StreetName { get; set; }
 
-        // [Required]
-        // [DefaultValue("n/a")]
         public string City { get; set; }
 
         public string State { get; set; }
 
-        // [Required]
         public int Zipcode { get; set; }
 
         [Display(Name = "Profile Picture")]
@@ -80,26 +68,26 @@ namespace UserLogin.Models
         [NotMapped]
         public IFormFile files { get; set; }
 
-
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         // Relationships
         [InverseProperty("Follower")]
-        List<UserList> Following { get; set; } // who the user is following M2M (other end of vvv)
+        List<UserList> Following { get; set; } //M2M with List<UserList> Followers
 
         [InverseProperty("Following")]
-        List<UserList> Followers { get; set; } // who is following the user M2M (other end of ^^^)
-        List<GarageList> Favorites { get; set; } // matches list of FavedBy in GarageSale M2M FIX!!!!
-        List<GarageSale> GarageSales { get; set; } //matches Creator in GarageSale O2M
+        List<UserList> Followers { get; set; } // M2M with List<UserList> Following
+
+        List<GarageList> Favorites { get; set; } // M2M with GarageSale FavedBy
+        List<GarageSale> GarageSales { get; set; } // O2M with GarageSale Creator
 
         [InverseProperty("Reviewer")]
-        List<Review> Reviews { get; set; } // list of Reviews made O2M
+        List<Review> Reviews { get; set; } // O2M with Reviews, given
 
         [InverseProperty("Reviewed")]
-        List<Review> UserReviews { get; set; } // list of Reviews left O2M
+        List<Review> UserReviews { get; set; } // O2M with Reviews, received
 
-        // One to One with Feedback (Only needs foreign key [an Id] on one side not both)
-        public Feedback FeedbackMessage { get; set; }
+        public Feedback FeedbackMessage { get; set; }  // O2O with Feedback
     }
 }

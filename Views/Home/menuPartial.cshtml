@@ -12,14 +12,11 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-WGFK1GC4RE');
     </script>
-
 </head>
 
 <body>
-
     <div class="menu-container" id="mainMenu">
 
         <div class="menuIcon-container" onclick="showMainMenu()">
@@ -29,13 +26,10 @@
         </div>
 
         <div class="menuList-container">
-
-
             <header>
                 <img src="~/img/Assets/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
                 <h2 onclick="postSalePartialHandler(event)">Post a sale</h2>
                 <button onclick="postSalePartialHandler(event)">+</button>
-
             </header>
 
             <main>
@@ -44,7 +38,6 @@
                 <h2> <button onclick="privacyPolicyHandler(event)"> Privacy Policy </button></h2>
                 <h2> <button onclick="termsOfServiceHandler(event)"> Term of Service </button></h2>
                 @* <h2> <button onclick="updatesSupportHandler(event)"> Updates/Support</button></h2> *@
-
                 <a href="/logout">Logout</a>
             </main>
 
@@ -52,15 +45,9 @@
                 <img src="img/Assets/logoWhite.png" alt="">
                 <p>v1.0</p>
             </footer>
-
-
         </div>
 
-
     </div>
-
-
-
 </body>
 
 </html>

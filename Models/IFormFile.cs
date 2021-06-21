@@ -13,9 +13,5 @@ namespace UserLogin.Models
         string FileName { get; set; }
         Stream OpenReadStream();
         void CopyTo(Stream target);
-        // Task CopyToAsync(Stream target, CancellationToken cancellationToken = null);
-
     }
-
-
 }

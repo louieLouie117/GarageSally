@@ -22,22 +22,14 @@
 </head>
 
 <body>
-
-
-
-
     <div class="form-container">
         <h3>Welcome back</h3>
 
         <form asp-action="Login" asp-controller="Home">
-
             <a href="/registration">Registration</a>
-
             <span asp-validation-for="Email"></span>
             <input asp-for="Email" placeholder="Email">
             <input asp-for="Password" placeholder="Password">
-
-
             <button type="submit">log in</button>
             @* <input class="btn" type="submit" value="submit"> *@
         </form>

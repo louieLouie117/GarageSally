@@ -7,12 +7,9 @@
                 RenderUserPost(data);
             });
 
-
-
             const RenderUserPost = (data) => {
                 $.each(data.data, function (i, v) {
                     @* console.log(v) *@
-
                         const TimeFormat = {
                         hour12: true,
                         hour: "numeric",
@@ -29,24 +26,19 @@
                         year: "numeric",
                         month: "long",
                         day: "numeric"
-
                     };
 
                     let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
                     let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
-
                     let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
                     let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
-
-
 
                     let garageItemId = v.garageSaleId;
 
                     if (checkDate < checkToday) {
                         console.log("this event has expired")
-
                     } else {
                         $(`<li id="${garageItemId}">
                         <section>
@@ -65,24 +57,18 @@
                                 @* <p>Edit</p> *@
                             </main>
                         </section>
-
                     </li>`).prependTo("#userPostsList");
                     }
-
                 });
             };
-
         })
 
         const DeleteSaleHandler = (e) => {
-
             let editItem = e.target.id;
-
             var jsonData = {
                 garageSaleId: editItem,
             }
             console.log(jsonData)
-
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("DeleteSaleHandler", "Home")',
@@ -90,12 +76,8 @@
                 success: SuccessStatus,
                 error: ErrorStatus,
                 complete: CompleteStatus
-
             })
-
-
         }
-
 
         const SuccessStatus = (result) => {
             console.log("Success...", result);
@@ -104,7 +86,6 @@
                 RenderUserPostAfterDeleting(data);
             });
             LoadData();
-
         };
         const ErrorStatus = (xhr, status, strErr) => {
             console.log("There was an error!");
@@ -113,45 +94,35 @@
             console.log("Ajax has completed...");
         };
 
-
         const RenderUserPostAfterDeleting = (data) => {
             $.each(data.data, function (i, v) {
                 @* console.log(v) *@
-
                         const TimeFormat = {
                     hour12: true,
                     hour: "numeric",
                     minute: "numeric", seconds: "numeric"
                 }
-
                 const DateFormat = {
                     weekday: "long",
                     month: "long",
                     day: "numeric"
                 };
-
                 const CheckDateFormat = {
                     year: "numeric",
                     month: "long",
                     day: "numeric"
-
                 };
 
                 let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
                 let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
                 let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
-
-
                 let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
                 let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
-
-
 
                 let garageItemId = v.garageSaleId;
 
                 if (checkDate < checkToday) {
                     console.log("this event has expired")
-
                 } else {
                     $(`<li id="${garageItemId}">
                         <section>
@@ -173,11 +144,8 @@
 
                     </li>`).prependTo("#userPostsList");
                 }
-
             });
-
         };
-
 
         const LoadData = () => {
             $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
@@ -192,53 +160,39 @@
                 @* console.log(v) *@
                     @* console.log("Date Time:", v.startDate, v.startTime, v.endTime) *@
                     @* console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.state, v.zipcode); *@
-
                     const TimeFormat = {
                     hour12: true,
                     hour: "numeric",
                     minute: "numeric", seconds: "numeric"
                 }
-
                 const DateFormat = {
                     weekday: "long",
                     month: "long",
                     day: "numeric"
                 };
-
                 const CheckDateFormat = {
                     year: "numeric",
                     month: "long",
                     day: "numeric"
-
                 };
 
                 let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
                 let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
                 let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
-
-
                 let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
                 let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
-
-
 
                 let garageItemId = v.garageSaleId;
 
                 if (checkDate < checkToday) {
                     console.log("this event has expired")
-
                 } else {
-
-
                     $(`<li id="${garageItemId}">
                         <section>
                             <header>
                                 <h1>${dateFormated}</h1>
                                 <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
                             </header>
-
-
-
 
                               <footer>
                                 <h3> ${v.city} ${v.state}</h3>
@@ -252,22 +206,16 @@
                         </section>
 
                     </li>`).prependTo("#garageSaleList");
-
                 }
-
             });
         };
     </script>
 </head>
 
-
 <body>
-
-
     <div id="usersGarageSalesPartial" class="userGarageSales grid-container">
         <div class="cardItems">
             <ul id="userPostsList">
-
             </ul>
         </div>
     </div>
