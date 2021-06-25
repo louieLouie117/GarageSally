@@ -653,6 +653,7 @@ namespace UserLogin.Controllers
                 if (result == 0)
                 {
                     Console.WriteLine("Password error");
+                    return View("index", wMod);
                 }
                 // Set Session Instance
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
