@@ -24,7 +24,7 @@ const Step3Reg = (e) =>{
     document.getElementById("section2Reg").style.display = "none";
     document.getElementById("section3Reg").style.display = "grid";
     document.getElementById("section4Reg").style.display = "none";
-    document.getElementById("sectionHeading").innerText = "Finial Step."
+    document.getElementById("sectionHeading").innerText = "Final Step."
 
 
 }
@@ -58,7 +58,7 @@ const Step2SellerReg = (e) =>{
     document.getElementById("section2SellerReg").style.display = "grid";
     document.getElementById("section3SellerReg").style.display = "none";
     document.getElementById("section4SellerReg").style.display = "none";
-    document.getElementById("sellerHeading").innerText = "Congratulation, garageSally is available in your area, start your account."
+    document.getElementById("sellerHeading").innerText = "Congratulation, Garage Sally is available in your area, start your account."
 
     document.querySelector('#Redgister').innerHTML = "registerSeller"
 
