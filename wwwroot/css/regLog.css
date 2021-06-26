@@ -96,22 +96,30 @@ input{
 
 .section1-container aside{
     display: grid;
-    column-gap: 5px;
-    grid-template-columns: 100px 1fr;
+    row-gap: 5px;
+    /* column-gap: 5px; */
+    /* grid-template-columns: 100px 1fr; */
 }
-
+/* 
 .section1-container aside span{
     grid-column: 1/3;
     grid-row: 1/2;
-}
+} */
 
+#SellerSateSelectionList,
+#BuyerStateSelectionList{
+    height: 45px;
+    font: 1em sans-serif;
+}
 
 
 .section4-container, .section2-container, .section3-container{
     display: none;
     row-gap: 5px;
 
+    
 }
+
 
 .section4-container footer,
 .section3-container footer,
@@ -175,14 +183,19 @@ input{
 }
 .section3-container aside{
     display: grid;
-    grid-template-columns: 100px auto;
-    column-gap: 5px;
+    row-gap: 5px;
+    /* grid-template-columns: 100px auto; */
+    /* column-gap: 5px; */
 }
 
 .section3-container p{
     color: #B936D2;
 }
 
+
+label{
+    color: black;
+}
 
 
 
