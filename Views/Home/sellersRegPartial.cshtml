@@ -42,11 +42,13 @@
 
                 <div class="section1-container" id="section1SellerReg">
                     <aside>
+                        <label for="State">Select your State</label>
                         <partial name="_StateListSeller" />
+                        <input asp-for="State" value="AL" placeholder="State:" class="hidden" id="SellerState">
 
+                        <label class="hidden" for="Zipcode">Zipcode</label>
                         <span asp-validation-for="Zipcode"></span>
                         <input asp-for="Zipcode" placeholder="Zipcode:">
-                        <input asp-for="State" placeholder="State:" class="hidden" id="SellerState">
 
 
                     </aside>
@@ -57,12 +59,13 @@
 
                 <div class="section2-container" id="section2SellerReg">
 
-
+                    <label class="hidden" for="Email">Email</label>
                     <span asp-validation-for="Email"></span>
+                    <input asp-for="Email" placeholder="Email:">
+
                     @* <span asp-validation-for="FirstName"></span> *@
                     @* <input asp-for="FirstName" placeholder="First name:"> *@
 
-                    <input asp-for="Email" placeholder="Email:">
 
 
 
@@ -77,9 +80,11 @@
 
 
                 <div class="section3-container" id="section3SellerReg">
+                    <label class="hidden" for="Password">Password</label>
                     <span asp-validation-for="Password"></span>
                     <input asp-for="Password" placeholder="Password:">
 
+                    <label class="hidden" for="Confirm">Confirm Password</label>
                     <span asp-validation-for="Confirm"></span>
                     <input asp-for="Confirm" placeholder="Confirm Password:">
 
