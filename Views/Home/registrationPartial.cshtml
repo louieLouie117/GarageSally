@@ -37,14 +37,18 @@
             <form asp-action="Redgister" asp-controller="Home" method="POST" enctype="multipart/form-data">
                 <div class="section1-container" id="section1Reg">
                     <span asp-validation-for="Email"></span>
+                    <label class="hidden" for="email">email</label>
                     <input asp-for="Email" placeholder="Email:">
 
                     <button type="button" onclick="Step2Reg()">Next</button>
                 </div>
 
                 <div class="section2-container" id="section2Reg">
+                    <label class="hidden" for="Password">Password</label>
                     <span asp-validation-for="Password"></span>
                     <input asp-for="Password" placeholder="Password:">
+
+                    <label class="hidden" for="Confirm">Confirm Password</label>
                     <span asp-validation-for="Confirm"></span>
                     <input asp-for="Confirm" placeholder="Confirm Password:">
 
@@ -56,7 +60,8 @@
 
                 <div class="section3-container" id="section3Reg">
                     <p>Find garage sales in your area.</p>
-                    <span asp-validation-for="FirstName"></span>
+
+                    @* <span asp-validation-for="FirstName"></span> *@
                     @* <input asp-for="FirstName" placeholder="First name:"> *@
                     @* <input class="hidden" sp-for="LastName" placeholder="Last name:"> *@
 
@@ -68,10 +73,14 @@
                         <button type="button" onclick="Step2Reg()">back</button>
                         <button type="button" onclick="Step4Reg()">Next</button>
                         </footer> *@
-                    <span asp-validation-for="Zipcode"></span>
+
                     <aside>
+                        <label for="State">Select your State</label>
                         <partial name="_StateListBuyer" />
-                        <input class="hidden" asp-for="State" placeholder="State:" id="BuyerState">
+                        <input asp-for="State" value="AL" class="hidden" placeholder="State:" id="BuyerState">
+
+                        <label class="hidden" for="Zipcode">zip code</label>
+                        <span asp-validation-for="Zipcode"></span>
                         <input asp-for="Zipcode" placeholder="Zipcode:">
                     </aside>
 

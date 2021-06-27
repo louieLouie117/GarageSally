@@ -483,6 +483,7 @@ namespace UserLogin.Controllers
                     // Still need these for debugging? Console.Writelines should be removed
                     // something else should happer here besides a WriteLine
                     Console.WriteLine("Password error");
+                    return View("index", wMod);
                 }
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
                 HttpContext.Session.SetString("UserState", userInDb.State);
