@@ -613,6 +613,10 @@ input {
 
 /* photo notice pop up */
 
+#noticeForm{
+	display: grid;
+	row-gap: 5px;
+}
 
 .notice-container{
 	display: none;
