@@ -28,17 +28,19 @@
 
     <div class="landingPage-container">
         <header>
+
+            <main>
+                <button id="SignInBTN" onclick="ShowLogin()">sign in</button>
+            </main>
             <h1>Garage Sally</h1>
             <picture>
                 <source media="(min-width: 1100px)" srcset="~/img/Assets/logoDesktop.png" />
-                <img src="~/img/Assets/logo.png" alt="">
+                <img src="~/img/Assets/logoDesktop.png" alt="">
             </picture>
 
             <p>find, post, and share.</p>
 
-            <footer>
-                <button onclick="ShowLogin()">sign in</button>
-            </footer>
+
 
         </header>
         <div class="login-container" id="logInState">
@@ -52,11 +54,17 @@
             <section class="freeAccount-container">
                 <div class="info-container">
                     <div>
-                        <h2>Search for free.</h2>
-                        <h4>Find a garage sale near you.</h4>
+                        <h2>Garage Sales.</h2>
+                        <h4>Post and find garage sales.</h4>
                     </div>
+                    <p>Are you tired of having
+                        garage sales and no one showing up?</p>
 
-                    <p>Do you drive around for hours trying to find garage sales in your area? </p>
+                    <p>Do you drive around for hours trying to find garage sales in your area?</p>
+
+
+
+
                 </div>
 
                 <picture>
@@ -65,7 +73,7 @@
                 </picture>
 
                 <aside>
-                    <h3>Start searching and find garage sales near you.</h3>
+                    <h3>Start posting and finding garage sales near you.</h3>
                     <div class="userReg-container">
                         <partial name="registrationPartial" model="@Model.User" view-data="ViewData" />
                     </div>
@@ -74,39 +82,39 @@
 
             </section>
 
-            <section>
-                @* <partial name="allGaragePost" /> *@
+            @* <section>
+                <partial name="allGaragePost" />
 
-            </section>
+                </section> *@
 
 
-            <section class="sellersAccount-container">
+            @* <section class="sellersAccount-container" id="SellerAccount">
                 <div class="info-container">
-                    <div>
-                        <h2>Post garage sales.</h2>
-                        <h4>Get discovered.</h4>
+                <div>
+                <h2>Post garage sales.</h2>
+                <h4>Get discovered.</h4>
 
-                    </div>
+                </div>
 
-                    <p>People love garage sales, but do not like driving for hours trying to find them. Help people do
-                        what they love post your garage sale today.</p>
+                <p>People love garage sales, but do not like driving for hours trying to find them. Help people do
+                what they love post your garage sale today.</p>
                 </div>
 
                 <aside>
-                    <h3>Create a sellers account and get discovered.</h3>
+                <h3>Create a sellers account and get discovered.</h3>
 
-                    <div class="sellersForm">
-                        <partial name="sellersRegPartial" model="@Model.User" view-data="ViewData" />
-                    </div>
+                <div class="sellersForm">
+                <partial name="sellersRegPartial" model="@Model.User" view-data="ViewData" />
+                </div>
                 </aside>
 
                 <picture>
-                    <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
-                    <img src="~/img/Assets/mapSmall.png" alt="">
+                <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
+                <img src="~/img/Assets/mapSmall.png" alt="">
                 </picture>
 
 
-            </section>
+                </section> *@
         </main>
 
 
