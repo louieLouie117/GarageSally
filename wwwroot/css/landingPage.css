@@ -49,12 +49,12 @@ h1,h2,h3,p{
     background: white;
     border: none;
     height: 40px;
-    width: 120px;
     border-radius: 5px;
     color:#B936D2;
-    font: 1.7em sans-serif;
+    font: 1.3em sans-serif;
     text-decoration: underline;
     justify-self: flex-end;
+    width: 140px;
 }
 
 .landingPage-container>main{
