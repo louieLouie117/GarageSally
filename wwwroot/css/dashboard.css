@@ -138,10 +138,14 @@ input {
 	/* border: solid 2px white; */
 	/* margin-left: -500px; */
 }
+
+
+
 .menu-container h2,
 .menu-container a {
 	font: 1.4em sans-serif;
 	color: white;
+	cursor: pointer;
 }
 
 .menuIcon-container {
@@ -185,42 +189,59 @@ input {
 
 .menuList-container {
 	display: grid;
-	grid-template-rows: 70px;
+	margin-top: 20px;
+	overflow: scroll;
 }
-
-.menuList-container header,
-.postSale-container > header {
-	display: grid;
-	grid-template-columns: 70px 130px 1fr;
-	align-items: center;
-}
-
-.menuList-container header img,
-.postSale-container > header img {
-	height: 70px;
-	width: 70px;
-	border-radius: 50px;
-}
-
-.menuList-container header h2,
-.postSale-container > header h2 {
-	justify-self: center;
-	cursor: pointer;
-}
-
-.menuList-container > header button {
-	font: 1.3em sans-serif;
-	width: 35px;
-	height: 35px;
-	border-radius: 10px;
-	border: solid white 2px;
-}
-
 .menu-container main {
 	display: grid;
 	row-gap: 3px;
-	align-items: center;
+	align-items: flex-start;
 }
+
+.menuList-container main ul{
+	display: grid;
+	row-gap: 20px;
+}
+
+.menu-container main ul p{
+	font: 1em sans-serif;
+	text-decoration: underline;
+	color: white;
+}
+
+
+.menuList-container main ul li {
+	display: grid;
+	grid-template-columns: 70px 1fr;
+	align-items: center;
+
+}
+
+
+
+.menuList-container main ul li img{
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
+}
+
+.menuList-container main ul li button {
+	font: 2em sans-serif;
+	width: 49px;
+	height: 49px;
+	border-radius: 10px;
+	border: solid white 1px;
+}
+
+.menuList-container aside{
+	padding-top: 20px;
+}
+
+.menuList-container aside ul {
+	display: grid;
+	row-gap: 10px;
+}
+
 
 .menuList-container footer,
 .postSale-container footer,
@@ -231,7 +252,7 @@ input {
 .menuList-container footer img,
 .postSale-container footer img,
 .logoVersion footer img {
-	width: 300px;
+	width: 220px;
 	height: auto;
 	margin: 0 auto;
 	justify-self: center;
