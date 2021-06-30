@@ -186,19 +186,20 @@ const termsOfServiceHandler = (e) =>{
 
 
 
-let updatesSupportEvent = "close"
+let salesHistoryEvent = "close"
 
-const updatesSupportHandler = (e) =>{
-    alert("button was click")
+const SalesHistoryHandler = (e) =>{
 
-    if (updatesSupportEvent === "close") { 
+    if (salesHistoryEvent === "close") { 
     document.getElementById("updatesSupportPartial").style.marginLeft = "0";
     document.getElementById("updatesSupportPartial").style.transform = "smooth";
     document.getElementById("updatesSupportPartial").style.transition = "1s";
     document.getElementById("mainMenu").style.marginLeft = "-700px";
 
+    document.getElementById("usersGarageSalesPartial").style.display = "grid";
 
-    return (updatesSupportEvent = "open")
+
+    return (salesHistoryEvent = "open")
 
     } else{
     document.getElementById("updatesSupportPartial").style.marginLeft = "-700px";
@@ -206,7 +207,7 @@ const updatesSupportHandler = (e) =>{
     document.getElementById("updatesSupportPartial").style.transition = "1s";
     document.getElementById("mainMenu").style.marginLeft = "0";
 
-    return (updatesSupportEvent = "close");
+    return (salesHistoryEvent = "close");
     }
 // Page
 
@@ -255,7 +256,9 @@ const profileNav =(e)=>{
 
 
 
-
+const ComingSoonNotice = (e) => {
+    alert("This feature will be coming in a later version of Garage Sally. Please check back.");
+}
 
 
 

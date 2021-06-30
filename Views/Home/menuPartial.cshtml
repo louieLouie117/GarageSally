@@ -30,23 +30,67 @@
 
         <div class="menuList-container">
 
-
-            <header>
-                <img src="~/img/Assets/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
-                <h2 onclick="postSalePartialHandler(event)">Post a sale</h2>
-                <button onclick="postSalePartialHandler(event)">+</button>
-
-            </header>
-
             <main>
-                <h2> <button onclick="profile(event)"> Profile </button></h2>
-                <h2> <button onclick="aboutGarageSallyHandler(event)"> About Garage Sally </button></h2>
-                <h2> <button onclick="privacyPolicyHandler(event)"> Privacy Policy </button></h2>
-                <h2> <button onclick="termsOfServiceHandler(event)"> Term of Service </button></h2>
-                @* <h2> <button onclick="updatesSupportHandler(event)"> Updates/Support</button></h2> *@
+                <ul>
+                    <li>
+                        <img src="~/img/Assets/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+                        <h2 onclick="profile()">Profile</h2>
+                    </li>
 
-                <a href="/logout">Logout</a>
+                    <li>
+                        <button onclick="postSalePartialHandler(event)">+</button>
+
+                        <h2 onclick="postSalePartialHandler(event)">Post a sale</h2>
+
+                    </li>
+                    <li>
+                        <img src="~/img/Assets/iconHistory.png" alt="">
+                        <h2 onclick="SalesHistoryHandler(event)">Sales History</h2>
+                    </li>
+                    <p>Coming soon...</p>
+
+                    <li>
+                        <img src="~/img/Assets/iconFavorites.png" alt="" onclick="ComingSoonNotice(event)">
+                        <h2 onclick="ComingSoonNotice(event)">Favorites</h2>
+                    </li>
+                    <li>
+                        <img src="~/img/Assets/iconFilter.png" alt="" onclick="ComingSoonNotice(event)">
+
+                        <h2 onclick="ComingSoonNotice(event)">Filter/Search</h2>
+                    </li>
+                    <a href="/logout">Logout</a>
+
+
+                </ul>
+
+
+
             </main>
+
+            <aside>
+                <ul>
+
+                    <li>
+                        <h2> <button onclick="aboutGarageSallyHandler(event)"> About Garage Sally </button></h2>
+
+
+                    </li>
+                    <li>
+                        <h2> <button onclick="privacyPolicyHandler(event)"> Privacy Policy </button></h2>
+
+                    </li>
+                    <li>
+                        <h2> <button onclick="termsOfServiceHandler(event)"> Term of Service </button></h2>
+
+                    </li>
+
+                </ul>
+
+            </aside>
+
+
+
+
 
             <footer>
                 <img src="img/Assets/logoWhite.png" alt="">
