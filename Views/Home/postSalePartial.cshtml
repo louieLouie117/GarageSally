@@ -117,10 +117,7 @@
                     data = JSON.parse(data);
                     RenderUserPost(data);
                 });
-                document.getElementById("postForm").style.display = "none";
-                document.getElementById("usersGarageSalesPartial").style.display = "grid";
-                document.getElementById("recentPostOption").style.borderBottom = "#b936d2 solid 2px";
-                document.getElementById("newSaleOption").style.borderBottom = "none";
+                SalesHistoryHandler();
                 LoadData();
 
 
@@ -311,7 +308,7 @@
 
             <aside>
                 <button id="newSaleOption" onclick="profileNav(event)">new sale</button>
-                <button id="recentPostOption" onclick="profileNav(event)">your post</button>
+                @* <button id="recentPostOption" onclick="profileNav(event)">your post</button> *@
             </aside>
 
             <div class="form-postContainer">
