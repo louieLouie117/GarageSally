@@ -150,8 +150,8 @@
                 let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
 
-                let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
-                let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
+                let checkDate = new Date(v.startDate)
+                let checkToday = new Date()
 
 
 
@@ -225,8 +225,8 @@
                 let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
 
-                let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
-                let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
+                let checkDate = new Date(v.startDate)
+                let checkToday = new Date()
 
 
 
@@ -272,7 +272,8 @@
     <div class="updatesSupport-container" id="updatesSupportPartial">
         <button onclick="SalesHistoryHandler()"> &lt; back</button>
 
-        <h1>Sales History</h1>
+        <h2>Sales History</h2>
+        <button onclick="postSalePartialHandler(event)">+ Another garage sale</button>
 
         <div id="usersGarageSalesPartial" class="userGarageSales grid-container">
             <div class="cardItems">

@@ -97,7 +97,6 @@
 
                 }
 
-                console.log(jsonData)
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("PostGarageSaleHandler", "Home")',
@@ -127,6 +126,9 @@
             };
             const CompleteStatus = (xhr, status) => {
                 console.log("Ajax has completed...");
+                document.getElementById("postSalePartial").style.marginLeft = "-700px";
+                document.getElementById("postSalePartial").style.transform = "smooth";
+                document.getElementById("postSalePartial").style.transition = "1s";
             };
 
 
@@ -174,8 +176,8 @@
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
 
-                    let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
-                    let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
+                    let checkDate = new Date(v.startDate)
+                    let checkToday = new Date()
 
 
 
@@ -305,17 +307,14 @@
                 <h2>@ViewBag.ToDisplay.FirstName</h2>
             </header>
 
+            <h2>Post a new garage sale.</h2>
 
-            <aside>
-                <button id="newSaleOption" onclick="profileNav(event)">new sale</button>
-                @* <button id="recentPostOption" onclick="profileNav(event)">your post</button> *@
-            </aside>
 
             <div class="form-postContainer">
                 <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
                 asp-route-id="@ViewBag.ToDisplay.UserId">
                     <header>
-                        <h2 class="span2Columns">Date Time:</h2>
+                        <h2 class="span2Columns">Date & Time:</h2>
                         <input class="span2Columns" id="StartDate" type="date">
                         <label>Start Time:</label>
                         <input id="StartTime" type="time">
