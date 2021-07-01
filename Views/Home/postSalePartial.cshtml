@@ -97,7 +97,6 @@
 
                 }
 
-                console.log(jsonData)
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("PostGarageSaleHandler", "Home")',
@@ -174,8 +173,8 @@
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
 
-                    let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
-                    let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
+                    let checkDate = new Date(v.startDate)
+                    let checkToday = new Date()
 
 
 

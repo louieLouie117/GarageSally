@@ -68,6 +68,7 @@ input {
 	align-content: flex-start;
 	margin-left: -1000px;
 	padding: 20px;
+	overflow: scroll;
 }
 
 .profile-container button,
