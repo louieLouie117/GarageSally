@@ -68,11 +68,25 @@ let postSaleEvent = "close"
 
 const postSalePartialHandler = (e) =>{
 
+
+    if(e.target.innerText === "+ Another garage sale"){
+        document.getElementById("postSalePartial").style.marginLeft = "0";
+        document.getElementById("postSalePartial").style.transform = "smooth";
+        document.getElementById("postSalePartial").style.transition = "1s";
+        document.getElementById("mainMenu").style.marginLeft = "-700px";
+        document.getElementById("updatesSupportPartial").style.marginLeft = "-700px";
+        document.getElementById("updatesSupportPartial").style.transform = "smooth";
+        document.getElementById("updatesSupportPartial").style.transition = "1s";
+        document.getElementById("mainMenu").style.marginLeft = "0";
+
+    };
+
     if(e.target.innerText === "< back"){
         document.getElementById("postSalePartial").style.marginLeft = "-700px";
         document.getElementById("postSalePartial").style.transform = "smooth";
         document.getElementById("postSalePartial").style.transition = "1s";
         document.getElementById("mainMenu").style.marginLeft = "0";
+        
     
         return (postSaleEvent = "close");
         }
@@ -96,11 +110,12 @@ const postSalePartialHandler = (e) =>{
     document.getElementById("State").value = state;
     document.getElementById("Zipcode").value = zipcode;
 
-
-
     return (postSaleEvent = "open")
 
     } 
+
+
+    
 
 
 }
