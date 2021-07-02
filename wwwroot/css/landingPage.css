@@ -12,7 +12,14 @@ h1,h2,h3,p{
 
 .landingPage-container{
     display: grid;
-    padding-top: 40px;
+
+}
+.landingPage-container>header picture img{
+    width: 300px;
+}
+
+.landingPage-container>header p{
+    font: 1.7em sans-serif;
 
 }
 
@@ -20,40 +27,45 @@ h1,h2,h3,p{
     display: none;
 }
 
+
+
 .landingPage-container>header{
     display: grid;
     justify-items: center;
     z-index: 10;
+    row-gap: 20px;
 }
 
-.landingPage-container>header footer{
+.landingPage-container>header main{
     display: grid;
     column-gap: 10px;
     padding-top: 20px;
-
+    width: 100%;
 }
 
 
-.landingPage-container>header footer button{
+
+.landingPage-container>header main button{
     background: white;
     border: none;
     height: 40px;
-    width: 120px;
     border-radius: 5px;
     color:#B936D2;
     font: 1.3em sans-serif;
     text-decoration: underline;
+    justify-self: flex-end;
+    width: 140px;
 }
 
 .landingPage-container>main{
     display: grid;
-
+  
 }
 
-.landingPage-container>main section{
+.landingPage-container>main>section{
     display: grid;
     justify-content: center;
-    padding-top: 40px;
+    padding-top: 20px;
     row-gap: 20px;
 
 
@@ -77,13 +89,8 @@ h1,h2,h3,p{
 .landingPage-container>main section h2{
     font: 2.3em sans-serif;
     color: #B936D2;
-    padding: 0 10px;
 }
 
-.landingPage-container>main section p{
-    padding: 0 10px;
-
-}
 
 
 
@@ -115,17 +122,22 @@ h1,h2,h3,p{
 
 }
 
+.info-container{
+    display: grid;
+    row-gap: 20px;
+    padding: 0 30px;
+    align-content: center;
+}
+
 
 .info-container h4{
     font: 1.7em sans-serif;
     padding:  0;
-    padding-left: 10px;
     margin: 0;
 }
 
 .info-container p{
 font: 1.7em sans-serif;
-margin-top: 20px;
 
 }
 
@@ -142,6 +154,11 @@ margin-top: 20px;
     body main{
         row-gap: 70px;
 
+    }
+    .landingPage-container>main{
+        display: grid;
+        margin-top: 100px;
+    
     }
 
 
@@ -160,18 +177,18 @@ margin-top: 20px;
         padding-left: 5%;
     }
 
+   
+
     .landingPage-container>header p{
-        font: 1.7em sans-serif;
         padding-top: 10px;
         font-family: cursive;
     }
 
-    .landingPage-container>header footer{
+    .landingPage-container>header main{
         grid-column: 2/3;
         grid-row: 1/3;
         justify-self: right;
         margin-right: 150px;
-
     
     }
 
@@ -212,7 +229,7 @@ margin-top: 20px;
         align-content: center;
         position: relative;
         height: auto;
-        padding-top: 150px;
+        /* padding-top: 150px; */
     }
 
 
@@ -226,6 +243,7 @@ margin-top: 20px;
         grid-template-columns: 1fr 1fr 450px;
         align-items: flex-start;
         height: auto;
+        background: red;
     }
 
     .sellersAccount-container>picture{

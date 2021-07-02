@@ -77,7 +77,6 @@
                     state: state,
                     zipcode: zipcode,
                 }
-                console.log(jsonData)
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("PostGarageSaleHandler", "Home")',
@@ -89,17 +88,12 @@
             })
             const SuccessStatus = (result) => {
                 console.log("Success...", result);
-                $('#userPostsList').load(
-                    "/displayUserGarageSales #userPostsList",
-                    data => {
-                        data = JSON.parse(data);
-                        RenderUserPost(data);
-                    }
-                );
-                document.getElementById("postForm").style.display = "none";
-                document.getElementById("usersGarageSalesPartial").style.display = "grid";
-                document.getElementById("recentPostOption").style.borderBottom = "#b936d2 solid 2px";
-                document.getElementById("newSaleOption").style.borderBottom = "none";
+
+                $('#userPostsList').load("/displayUserGarageSales #userPostsList", data => {
+                    data = JSON.parse(data);
+                    RenderUserPost(data);
+                });
+                SalesHistoryHandler();
                 LoadData();
             };
             const ErrorStatus = (xhr, status, strErr) => {
@@ -107,6 +101,9 @@
             };
             const CompleteStatus = (xhr, status) => {
                 console.log("Ajax has completed...");
+                document.getElementById("postSalePartial").style.marginLeft = "-700px";
+                document.getElementById("postSalePartial").style.transform = "smooth";
+                document.getElementById("postSalePartial").style.transition = "1s";
             };
 
             const LoadData = () => {
@@ -152,15 +149,16 @@
                     let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
                     let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
-                    let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
-                    let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
+
+                    let checkDate = new Date(v.startDate)
+                    let checkToday = new Date()
 
                     let garageItemId = v.garageSaleId;
 
                     if (checkDate < checkToday) {
                         console.log("this event has expired")
                     } else {
-                     $(`<li id="${garageItemId}">
+                        $(`<li id="${garageItemId}">
                         <section>
                             <header>
                                 <h1>${dateFormated}</h1>
@@ -236,8 +234,6 @@
                 });
             };
         })
-
-
     </script>
 </head>
 
@@ -247,53 +243,53 @@
 
         @if (Model.AccountType == AccountType.Seller)
         {
-                <header>
-                    <img src="~/img/Assets/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
-                    <h2>@ViewBag.ToDisplay.FirstName</h2>
-                </header>
+            <header>
+                <img src="~/img/Assets/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+                <h2>@ViewBag.ToDisplay.FirstName</h2>
+            </header>
 
-                <aside>
-                    <button id="newSaleOption" onclick="profileNav(event)">new sale</button>
-                    <button id="recentPostOption" onclick="profileNav(event)" >your post</button>
-                </aside>
+            <h2>Post a new garage sale.</h2>
 
-                <div class="form-postContainer">
-                    <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'asp-route-id="@ViewBag.ToDisplay.UserId">
-                        <header>
-                            <h2 class="span2Columns">Date Time:</h2>
-                            <input class="span2Columns" id="StartDate" type="date">
-                            <label>Start Time:</label>
-                            <input id="StartTime" type="time">
-                            <label>End Time:</label>
-                            <input id="EndTime" type="time">
-                        </header>
-                        <main>
-                            <h2>Description:</h2>
-                            <textarea id="Description" placeholder="describe what you have for sale." maxlength="250"></textarea>
-                            <h2>Location:</h2>
-                            <div class="locationHeader">
-                                <input id='StreetNumber' type='text' placeholder='street #:'>
-                                <input id='StreetName' type='text' placeholder='Street Name: '>
-                            </div>
-                            <div class="locationFooter">
-                                <input id='City' type='text' placeholder='City:'>
-                                <input id='State' type='text' placeholder='State:'>
-                                <input id='Zipcode' type='text' placeholder='zipecode: '>
-                            </div>
-                        </main>
+            <div class="form-postContainer">
+                <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <header>
+                        <h2 class="span2Columns">Date & Time:</h2>
+                        <input class="span2Columns" id="StartDate" type="date">
+                        <label>Start Time:</label>
+                        <input id="StartTime" type="time">
+                        <label>End Time:</label>
+                        <input id="EndTime" type="time">
+                    </header>
+                    <main>
+                        <h2>Description:</h2>
+                        <textarea id="Description" placeholder="describe what you have for sale."
+                        maxlength="250"></textarea>
+                        <h2>Location:</h2>
+                        <div class="locationHeader">
+                            <input id='StreetNumber' type='text' placeholder='street #:'>
+                            <input id='StreetName' type='text' placeholder='Street Name: '>
+                        </div>
+                        <div class="locationFooter">
+                            <input id='City' type='text' placeholder='City:'>
+                            <input id='State' type='text' placeholder='State:'>
+                            <input id='Zipcode' type='text' placeholder='zipecode: '>
+                        </div>
+                    </main>
 
                     <button type="submit" id="submitForm">Post Sale</button>
 
-                        @* <input type="submit" value="Post Sale"> *@
-                    </form>
-                </div>
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+            </div>
 
-                <partial name="_userGarageSales" />
+            <partial name="_userGarageSales" />
 
-                <footer>
-                    <img src="img/Assets/logoGray.png" alt="">
-                    <p>v1.0</p>
-                </footer>
+            <footer>
+                <img src="img/Assets/logoGray.png" alt="">
+                <p>v1.0</p>
+            </footer>
+
         }
         @if (Model.AccountType == AccountType.Buyer)
         {
@@ -305,10 +301,11 @@
             <aside class="notice-container" id="upgradeNotice">
                 <form id="postFormUpgrade">
                     <header>
-                        <p>Thank for upgrading!</p>
-                        <p>Please confirm your address for posting garage sales.</p>
+                        <p>Upgrading.</p>
+                        <p>Please add your address for posting garage sales.</p>
 
                         <main id="noticeForm">
+
                         </main>
                     </header>
 

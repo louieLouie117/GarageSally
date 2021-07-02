@@ -38,9 +38,9 @@ input{
     display: grid;
     background: white;
     width: 320px;
-    height: auto;
+    height: 350px;
     box-shadow: 0 0 5px #6621795d;
-    padding: 40px;
+    padding: 30px;
     padding-bottom: 80px;
     margin: 0 auto;
     z-index: 2;
@@ -52,6 +52,10 @@ input{
 .form-container form{
     display: grid;
     row-gap: 5px;
+}
+
+#SignInHeight{
+    height: 200px;
 }
 
 

@@ -54,8 +54,9 @@
                     let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
                     let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
-                    let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
-                    let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
+
+                    let checkDate = new Date(v.startDate)
+                    let checkToday = new Date()
 
                     let garageItemId = v.garageSaleId;
 

@@ -6,13 +6,282 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Updates and Support</title>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#userPostsList').load("/displayUserGarageSales #userPostsList", data => {
+                data = JSON.parse(data);
+                RenderUserPost(data);
+            });
+
+
+
+            const RenderUserPost = (data) => {
+                $.each(data.data, function (i, v) {
+                    @* console.log(v) *@
+
+                        const TimeFormat = {
+                        hour12: true,
+                        hour: "numeric",
+                        minute: "numeric", seconds: "numeric"
+                    }
+
+                    const DateFormat = {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric"
+                    };
+
+                    const CheckDateFormat = {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+
+                    };
+
+                    let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
+                    let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
+                    let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
+
+
+                    let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
+                    let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
+
+
+
+                    let garageItemId = v.garageSaleId;
+
+                    if (checkDate < checkToday) {
+                        console.log("this event has expired")
+
+                    } else {
+                        $(`<li id="${garageItemId}">
+                        <section>
+                            <header>
+                                <h1>${dateFormated}</h1>
+                                <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
+                            </header>
+
+                              <footer>
+                                <h3> ${v.city} ${v.state}</h3>
+                                <p>${v.description}</p>
+                            </footer>
+
+                            <main>
+                                 <a><button id="${garageItemId}" onclick="DeleteSaleHandler(event)">Delete</button></a>
+                                @* <p>Edit</p> *@
+                            </main>
+                        </section>
+
+                    </li>`).prependTo("#userPostsList");
+                    }
+
+                });
+            };
+
+        })
+
+        const DeleteSaleHandler = (e) => {
+
+            let editItem = e.target.id;
+
+            var jsonData = {
+                garageSaleId: editItem,
+            }
+            console.log(jsonData)
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteSaleHandler", "Home")',
+                data: jsonData,
+                success: SuccessStatus,
+                error: ErrorStatus,
+                complete: CompleteStatus
+
+            })
+
+
+        }
+
+
+        const SuccessStatus = (result) => {
+            console.log("Success...", result);
+            $('#userPostsList').load("/displayUserGarageSales #userPostsList", data => {
+                data = JSON.parse(data);
+                RenderUserPostAfterDeleting(data);
+            });
+            LoadData();
+
+        };
+        const ErrorStatus = (xhr, status, strErr) => {
+            console.log("There was an error!");
+        };
+        const CompleteStatus = (xhr, status) => {
+            console.log("Ajax has completed...");
+        };
+
+
+        const RenderUserPostAfterDeleting = (data) => {
+            $.each(data.data, function (i, v) {
+                @* console.log(v) *@
+
+                        const TimeFormat = {
+                    hour12: true,
+                    hour: "numeric",
+                    minute: "numeric", seconds: "numeric"
+                }
+
+                const DateFormat = {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric"
+                };
+
+                const CheckDateFormat = {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+
+                };
+
+                let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
+                let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
+                let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
+
+
+                let checkDate = new Date(v.startDate)
+                let checkToday = new Date()
+
+
+
+                let garageItemId = v.garageSaleId;
+
+                if (checkDate < checkToday) {
+                    console.log("this event has expired")
+
+                } else {
+                    $(`<li id="${garageItemId}">
+                        <section>
+                            <header>
+                                <h1>${dateFormated}</h1>
+                                <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
+                            </header>
+
+                              <footer>
+                                <h3> ${v.city} ${v.state}</h3>
+                                <p>${v.description}</p>
+                            </footer>
+
+                            <main>
+                                 <a><button id="${garageItemId}" onclick="DeleteSaleHandler(event)">Delete</button></a>
+                                @* <p>Edit</p> *@
+                            </main>
+                        </section>
+
+                    </li>`).prependTo("#userPostsList");
+                }
+
+            });
+
+        };
+
+
+        const LoadData = () => {
+            $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
+                data = JSON.parse(data);
+                @* console.log("in load", data); *@
+                    RenderData(data);
+                @* data = $.parseJSON(data); deprecated*@
+                });
+        };
+        const RenderData = (data) => {
+            $.each(data.data, function (i, v) {
+                @* console.log(v) *@
+                    @* console.log("Date Time:", v.startDate, v.startTime, v.endTime) *@
+                    @* console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.state, v.zipcode); *@
+
+                    const TimeFormat = {
+                    hour12: true,
+                    hour: "numeric",
+                    minute: "numeric", seconds: "numeric"
+                }
+
+                const DateFormat = {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric"
+                };
+
+                const CheckDateFormat = {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+
+                };
+
+                let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
+                let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
+                let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
+
+
+                let checkDate = new Date(v.startDate)
+                let checkToday = new Date()
+
+
+
+                let garageItemId = v.garageSaleId;
+
+                if (checkDate < checkToday) {
+                    console.log("this event has expired")
+
+                } else {
+
+
+                    $(`<li id="${garageItemId}">
+                        <section>
+                            <header>
+                                <h1>${dateFormated}</h1>
+                                <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
+                            </header>
+
+
+
+
+                              <footer>
+                                <h3> ${v.city} ${v.state}</h3>
+                                <p>${v.description}</p>
+                            </footer>
+
+                            <main>
+                                <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
+                                @* <p>20 people visted.</p> *@
+                            </main>
+                        </section>
+
+                    </li>`).prependTo("#garageSaleList");
+
+                }
+
+            });
+        };
+    </script>
 </head>
 
 <body>
     <div class="updatesSupport-container" id="updatesSupportPartial">
-        <button onclick="updatesSupportHandler()"> &lt; back</button>
+        <button onclick="SalesHistoryHandler()"> &lt; back</button>
 
-        <h1>Updates and Support</h1>
+        <h2>Sales History</h2>
+        <button onclick="postSalePartialHandler(event)">+ Another garage sale</button>
+
+        <div id="usersGarageSalesPartial" class="userGarageSales grid-container">
+            <div class="cardItems">
+                <ul id="userPostsList">
+
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 
