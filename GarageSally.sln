@@ -5,7 +5,7 @@
 
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLogin", "GarageSally\UserLogin.csproj", "{BFFE487D-4CD1-4E9E-88F9-512BA49CD382}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLogin", "GarageSally.App\UserLogin.csproj", "{BFFE487D-4CD1-4E9E-88F9-512BA49CD382}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageSally.Tests", "GarageSally.Tests\GarageSally.Tests.csproj", "{4074C2BF-D26F-484B-879F-AEE8CEE098FA}"
 EndProject
