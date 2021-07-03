@@ -116,8 +116,16 @@
                     data = JSON.parse(data);
                     RenderUserPost(data);
                 });
-                SalesHistoryHandler();
                 LoadData();
+
+                document.getElementById("postSalePartial").style.marginLeft = "-700px";
+                document.getElementById("postSalePartial").style.transform = "smooth";
+                document.getElementById("postSalePartial").style.transition = "1s";
+
+                document.getElementById("updatesSupportPartial").style.marginLeft = "0";
+                document.getElementById("updatesSupportPartial").style.transform = "smooth";
+                document.getElementById("updatesSupportPartial").style.transition = "1s";
+                document.getElementById("usersGarageSalesPartial").style.display = "grid";
 
 
             };
@@ -126,9 +134,6 @@
             };
             const CompleteStatus = (xhr, status) => {
                 console.log("Ajax has completed...");
-                document.getElementById("postSalePartial").style.marginLeft = "-700px";
-                document.getElementById("postSalePartial").style.transform = "smooth";
-                document.getElementById("postSalePartial").style.transition = "1s";
             };
 
 
@@ -176,8 +181,9 @@
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
 
-                    let checkDate = new Date(v.startDate)
-                    let checkToday = new Date()
+                    let checkDate = new Date(v.startDate);
+                    let checkToday = new Date();
+                    checkToday.setDate(02);
 
 
 
@@ -247,19 +253,10 @@
                     let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
-
-                    let checkDate = new Date(v.startDate).toLocaleDateString("en-US", CheckDateFormat);
-                    let checkToday = new Date().toLocaleDateString("en-US", CheckDateFormat);
-
-
-
                     let garageItemId = v.garageSaleId;
 
-                    if (checkDate < checkToday) {
-                        console.log("this event has expired")
 
-                    } else {
-                        $(`<li id="${garageItemId}">
+                    $(`<li id="${garageItemId}">
                         <section>
                             <header>
                                 <h1>${dateFormated}</h1>
@@ -278,7 +275,7 @@
                         </section>
 
                     </li>`).prependTo("#userPostsList");
-                    }
+
 
 
 
