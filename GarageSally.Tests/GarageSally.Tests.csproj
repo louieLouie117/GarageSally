@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GarageSally\UserLogin.csproj" />
+    <ProjectReference Include="..\GarageSally.App\UserLogin.csproj" />
   </ItemGroup>
 
 </Project>
