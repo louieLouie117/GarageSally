@@ -36,12 +36,11 @@
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
                     let checkDate = new Date(v.startDate);
                     let checkToday = new Date();
-                    checkToday.setDate(-1);
+
+
+
                     let garageItemId = v.garageSaleId;
-                    if (checkDate < checkToday) {
-                        console.log("this event has expired")
-                    } else {
-                        $(`<li id="${garageItemId}">
+                    $(`<li id="${garageItemId}">
                         <section>
                             <header>
                                 <h1>${dateFormated}</h1>
@@ -57,7 +56,6 @@
                             </main>
                         </section>
                     </li>`).prependTo("#userPostsList");
-                    }
                 });
             };
         })
@@ -163,8 +161,11 @@
                 let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
                 let checkDate = new Date(v.startDate);
                 let checkToday = new Date();
-                checkToday.setDate(02);
+
+                checkToday.setDate(checkToday.getDate() - 1);
+
                 let garageItemId = v.garageSaleId;
+
                 if (checkDate < checkToday) {
                     console.log("this event has expired")
                 } else {

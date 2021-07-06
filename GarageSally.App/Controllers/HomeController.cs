@@ -142,42 +142,48 @@ namespace UserLogin.Controllers
             if (FromForm.FirstName == null)
             {
                 GetUser.FirstName = "";
-            } else
+            }
+            else
             {
                 GetUser.FirstName = FromForm.FirstName;
             }
             if (FromForm.LastName == null)
             {
                 GetUser.LastName = "";
-            } else
+            }
+            else
             {
                 GetUser.LastName = FromForm.LastName;
             }
             if (FromForm.StreetNumber == null)
             {
                 GetUser.StreetNumber = "";
-            } else
+            }
+            else
             {
                 GetUser.StreetNumber = FromForm.StreetNumber;
             }
             if (FromForm.StreetName == null)
             {
                 GetUser.StreetName = "";
-            } else
+            }
+            else
             {
                 GetUser.StreetName = FromForm.StreetName;
             }
             if (FromForm.City == null)
             {
                 GetUser.City = "";
-            } else
+            }
+            else
             {
                 GetUser.City = FromForm.City;
             }
             if (FromForm.State == null)
             {
                 GetUser.State = "";
-            } else
+            }
+            else
             {
                 GetUser.State = FromForm.State;
             }
@@ -212,6 +218,7 @@ namespace UserLogin.Controllers
             DashboardWrapper wMode = new DashboardWrapper();
             List<GarageSale> garageSaleItems = _context.GarageSales
             .Where(us => us.State == UserStateInSession)
+            .OrderByDescending(d => d.StartDate)
             .ToList();
             return Json(new { data = garageSaleItems });
         }
@@ -226,6 +233,7 @@ namespace UserLogin.Controllers
             DashboardWrapper wMode = new DashboardWrapper();
             List<GarageSale> garageSaleItems = _context.GarageSales
             .Where(us => us.UserId == UserIdInSession)
+            .OrderByDescending(d => d.StartDate)
             .ToList();
             return Json(new { data = garageSaleItems });
         }

@@ -58,7 +58,7 @@
 
                     let checkDate = new Date(v.startDate);
                     let checkToday = new Date();
-                    checkToday.setDate(02);
+                    checkToday.setDate(checkToday.getDate() - 1);
 
                     console.log(checkToday)
 
