@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/landingPage.css">
     <script src="~/js/loginReg.js" async=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
     <title>Garage Sally</title>
     <meta name="author" content="Garage Sally">
@@ -48,6 +50,9 @@
 
 
         </header>
+
+        <partial name="_homeSearch" />
+
         <div class="login-container" id="logInState">
 
             <button onclick="HideLogin()">Close</button>
@@ -66,9 +71,6 @@
                         garage sales and no one showing up?</p>
 
                     <p>Do you drive around for hours trying to find garage sales in your area?</p>
-
-
-
 
                 </div>
 

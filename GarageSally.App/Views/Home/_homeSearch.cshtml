@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        $(document).ready(function () {
+
+
+            $('#SearchFormHandler').submit(function (event) {
+                event.preventDefault();
+                if (!navigator.geolocation) {
+                    alert(`Your browser doesn't support Geolocation`);
+                }
+                document.querySelector("#IndexSearchResults").style.display = "grid";
+
+                let City = document.querySelector("#HomeSearch").value
+                let Zipcode = document.querySelector("#HomeSearch").value
+
+                var jsonData = {
+                    city: City,
+                    zipcode: Zipcode,
+                }
+
+                console.log(jsonData);
+
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("HomeSearchHandler", "Home")',
+                    data: jsonData,
+                    @* success: SuccessStatus, *@
+                    @* error: ErrorStatus, *@
+                    @* complete: CompleteStatus *@
+                })
+
+        })
+        })
+
+    </script>
+</head>
+
+<body>
+
+    <div class="search-container" id="searchPartial">
+
+        <header>
+            <form id="SearchFormHandler">
+                <input type="text" name="" id="HomeSearch" placeholder="City ST or Zip Code">
+                <button>Search</button>
+            </form>
+
+
+        </header>
+
+        <main id="IndexSearchResults">
+            <h3>Search resutls</h3>
+            <ul id="HomeSearchResults">
+                <li>Tes</li>
+                <li>Test</li>
+                <li>Test</li>
+                <li>Test</li>
+                <li>Test</li>
+                <li>Test</li>
+                <li>Test</li>
+                <li>Test</li>
+                <li>Test</li>
+                <li>Test</li>
+
+            </ul>
+
+        </main>
+
+    </div>
+
+
+
+</body>
+
+</html>

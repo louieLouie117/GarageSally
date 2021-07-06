@@ -238,6 +238,33 @@ namespace UserLogin.Controllers
             return Json(new { data = garageSaleItems });
         }
 
+
+        [HttpGet("HomeSearchHandler")]
+        public JsonResult HomeSearchHandler(User Data)
+
+        {
+            System.Console.WriteLine("you have reached the backend");
+            System.Console.WriteLine($"Data {Data.Zipcode}");
+            System.Console.WriteLine($"Data {Data.City}");
+
+
+            List<GarageSale> SearchResults = _context.GarageSales
+              .Where(r => r.Zipcode == Data.Zipcode)
+              .OrderByDescending(d => d.StartDate)
+              .ToList();
+
+
+
+
+            return Json(new { data = SearchResults });
+
+
+        }
+
+
+
+
+
         [HttpGet("DisplayUserProfile")]
         public JsonResult DisplayUserProfile()
         {

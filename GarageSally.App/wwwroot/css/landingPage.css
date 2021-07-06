@@ -12,6 +12,7 @@ h1,h2,h3,p{
 
 .landingPage-container{
     display: grid;
+    row-gap: 10px;
 
 }
 .landingPage-container>header picture img{
@@ -282,4 +283,51 @@ font: 1.7em sans-serif;
 
   
   
+}
+
+.search-container{
+    display: grid;
+    width: 100vw;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-container header form{
+    display: grid;
+    grid-template-columns: 1fr 70px;
+    max-width: 360px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.search-container header form  input{
+    height: 40px;
+    font: 1em sans-serif;
+    padding-left: 15px;
+    border-radius: 10px 0 0 10px;
+    border: solid 2px rgb(188, 188, 188);
+    border-right: none;
+    /* box-shadow: 0 0  5px rgba(0, 0, 0, 0.432); */
+}
+
+.search-container header form button{
+    background: #B936D2;
+    color: white;
+    font: 1em sans-serif;
+    border: solid 1px #B936D2;
+    border-radius: 0 10px 10px  0;
+
+
+}
+
+
+#IndexSearchResults{
+    display: none;
+}
+
+
+
+@media screen and (min-width: 1100px){
+
+    
 }
