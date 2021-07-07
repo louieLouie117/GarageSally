@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-WGFK1GC4RE');
+    </script>
+</head>
+
+<body>
+    <div class="menu-container" id="mainMenu">
+
+        <div class="menuIcon-container" onclick="showMainMenu()">
+            <div class="menuIcon"></div>
+            <div class="menuIcon"></div>
+            <div class="menuIcon"></div>
+        </div>
+
+        <div class="menuList-container">
+            <main>
+                <ul>
+                    <li>
+                        <img src="~/img/Assets/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+                        <h2 onclick="profile()">Profile</h2>
+                    </li>
+
+                    <li>
+                        <button onclick="postSalePartialHandler(event)">+</button>
+
+                        <h2 onclick="postSalePartialHandler(event)">Post a sale</h2>
+                    </li>
+                    <li>
+                        <img src="~/img/Assets/iconHistory.png" alt="">
+                        <h2 onclick="SalesHistoryHandler(event)">Sales History</h2>
+                    </li>
+                        <p>Coming soon...</p>
+                    <li>
+                        <img src="~/img/Assets/iconFavorites.png" alt="" onclick="ComingSoonNotice(event)">
+                        <h2 onclick="ComingSoonNotice(event)">Favorites</h2>
+                    </li>
+                    <li>
+                        <img src="~/img/Assets/iconFilter.png" alt="" onclick="ComingSoonNotice(event)">
+
+                        <h2 onclick="ComingSoonNotice(event)">Filter/Search</h2>
+                    </li>
+                    <a href="/logout">Logout</a>
+                </ul>
+            </main>
+
+            <aside>
+                <ul>
+
+                    <li>
+                        <h2> <button onclick="aboutGarageSallyHandler(event)"> About Garage Sally </button></h2>
+
+
+                    </li>
+                    <li>
+                        <h2> <button onclick="privacyPolicyHandler(event)"> Privacy Policy </button></h2>
+
+                    </li>
+                    <li>
+                        <h2> <button onclick="termsOfServiceHandler(event)"> Term of Service </button></h2>
+
+                    </li>
+
+                </ul>
+
+            </aside>
+
+            <footer>
+                <img src="img/Assets/logoWhite.png" alt="">
+                <p>v1.0</p>
+            </footer>
+        </div>
+
+    </div>
+</body>
+
+</html>
