@@ -1,0 +1,286 @@
+@using UserLogin.Models
+@* @model List<User> *@
+@model User
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $.get("/DisplayUserProfile", data => {
+                RenderData(data);
+            });
+
+
+
+
+            $('#UserInfoEdit').submit(function (event) {
+                event.preventDefault();
+
+
+                let firstName = $('#FirstNameEdit').val()
+                let lastName = $('#LastNameEdit').val()
+                let email = $('#EmailEdit').val()
+
+                let streetNumber = $('#StreetNumberEdit').val()
+                let streetName = $('#StreetNameEdit').val()
+                let city = $('#CityEdit').val()
+                let state = $('#StateEdit').val()
+                let zipcode = $('#ZipcodeEdit').val()
+
+
+
+                let jsonData = {
+
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+
+                    streetnumber: streetNumber,
+                    streetname: streetName,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+
+                }
+                @* console.log("user info Data", jsonData) *@
+
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("UpdateProfileHandler", "Home")',
+                        data: jsonData,
+                        success: SuccessStatus,
+                        error: ErrorStatus,
+                        complete: CompleteStatus
+
+                    })
+
+
+            })
+
+
+            const SuccessStatus = (result) => {
+                document.getElementById("SaveChangesBTN").style.display = "none";
+                console.log("Success...", result);
+            };
+
+
+            const ErrorStatus = (xhr, status, strErr) => {
+                console.log("There was an error!");
+            };
+            const CompleteStatus = (xhr, status) => {
+                console.log("Ajax has completed...");
+
+            };
+
+
+
+            const RenderData = (data) => {
+                @* console.log("user Data", data.data) *@
+                    $.each(data.data, function (i, v) {
+                        @* console.log(v) *@
+
+
+                    if (v.profilePic === "placeholder.png") {
+                            $(`
+                        <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
+                        <h1 id="UserNameText">Hello, ${v.firstName}</h1>
+                        <button onclick="popUpNoticeHandler(event)">Change Photo</button>
+                        `).prependTo("#UserPhoto");
+                        } else {
+
+                            $(`
+                        <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
+                        <h1 id="UserNameText">Hello, ${v.firstName}</h1>
+                        `).prependTo("#UserPhoto");
+                        }
+
+
+                        $(`
+                          <h3 class="span2Columns">Name</h3>
+
+                                <input 
+                                value="${v.firstName}" 
+                                id="FirstNameEdit" placeholder="First name:" 
+                                onkeyup="ShowSaveChangesBTN(event)" >
+
+                                <input 
+                                value="${v.lastName}" 
+                                id="LastNameEdit" 
+                                placeholder="Last name:" 
+                                onkeyup="ShowSaveChangesBTN(event)">
+
+                                @* <input class="span2Columns" value="${v.email}" id="EmailEdit" placeholder="Email" > *@
+
+
+                    `).prependTo("#UserFormName");
+
+                        $(`
+
+                                <h3 class="span2Columns">Garage Sale Default Address</h3>
+
+                                <input 
+                                type="number"
+                                value="${v.streetNumber}" 
+                                id="StreetNumberEdit" 
+                                placeholder="Street#:" 
+                                onkeyup="ShowSaveChangesBTN(event)">
+
+                                <input 
+                                value="${v.streetName}" 
+                                id="StreetNameEdit" 
+                                placeholder="Street Name:"
+                                onkeyup="ShowSaveChangesBTN(event)" >
+
+                                <footer class="span2Columns">
+                                    <input 
+                                    value="${v.city}" 
+                                    id="CityEdit" placeholder="City:" 
+                                    onkeyup="ShowSaveChangesBTN(event)">
+
+                                    <input 
+                                    value="${v.state}" 
+                                    id="StateEdit" placeholder="State:" 
+                                    onkeyup="ShowSaveChangesBTN(event)">
+
+                                    <input 
+                                    value="${v.zipcode}" 
+                                    id="ZipcodeEdit" placeholder="Zipcode:"
+                                    onkeyup="ShowSaveChangesBTN(event)">
+                                </footer>
+
+
+                    `).prependTo("#UserFormAddress");
+
+                        $(`
+
+
+                     <h2>Location:</h2>
+                            <div class="locationHeader">
+                                <input value="${v.streetNumber}" id='StreetNumberUpgrade' type='text' placeholder='street #:'>
+                                <input value="${v.streetName}" id='StreetNameUpgrade' type='text' placeholder='Street Name: '>
+                            </div>
+                            <div class="locationFooter">
+                                <input value="${v.city}" id='CityUpgrade' type='text' placeholder='City:'>
+                                <input value="${v.state}" id='StateUpgrade' type='text' placeholder='State:'>
+                                <input value="${v.zipcode}" id='ZipcodeUpgrade' type='text' placeholder='zipecode: '>
+                            </div>
+
+                    `).prependTo("#noticeForm");
+
+
+                    });
+            };
+
+
+        })
+
+        let SaveChangesBTNEvent = "close"
+
+        const ShowSaveChangesBTN = (e) => {
+
+            console.log(e.target.id)
+
+
+            if (SaveChangesBTNEvent === "close") {
+                document.getElementById("SaveChangesBTN").style.display = "block";
+                if (e.target.id === "FirstNameEdit") {
+                    document.getElementById("UserNameText").innerText = "Hello, " + e.target.value;
+                }
+
+
+            } else {
+                document.getElementById("SaveChangesBTN").style.display = "none";
+
+
+            }
+
+            if (e.target.value.length <= 0) {
+                document.getElementById("SaveChangesBTN").style.display = "none";
+
+
+            }
+
+        }
+
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <div class="profile-container" id="profile">
+        <button onclick="profile()"> &lt; back</button>
+
+        <div class="userInfo-container" id="UserInfo">
+
+            <header id="UserPhoto">
+
+                <aside class="notice-container" id="photoUploadNotice">
+                    <form asp-action="ChangePhotoHandler" asp-controller="Home" method="POST"
+                        enctype="multipart/form-data">
+                        <header>
+                            <p>Photo upload is currently unavailable.</p>
+                            @* <p>The current version only supports one photo per user.</p> *@
+                            @* <input asp-for="files" type="file" multiple> *@
+                        </header>
+                        <footer>
+                            <button type="button" onclick="popUpNoticeHandler(event)"></button>
+                            <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
+                        </footer>
+                    </form>
+                </aside>
+            </header>
+
+            <main>
+                <form id="UserInfoEdit" asp-action="UpdateProfile" asp-controller="Home">
+                    <button class="hidden" id="SaveChangesBTN" type="submit">Save Changes</button>
+
+                    <section id="UserFormName"></section>
+
+
+
+                    <section id="UserFormAddress"></section>
+
+
+
+
+
+                </form>
+
+
+            </main>
+
+
+        </div>
+        <div class="logoVersion">
+            <footer>
+                <img src="img/Assets/logoGray.png" alt="">
+                <p>v1.0</p>
+            </footer>
+
+        </div>
+
+
+        @* <partial name="BuyerProfilePartial" model="@Model" view-data="ViewData" /> *@
+
+        @* <partial name="SellerProfilePartial" model="@Model" view-data="ViewData" /> *@
+
+    </div>
+
+
+
+</body>
+
+</html>
