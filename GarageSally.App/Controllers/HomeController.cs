@@ -256,7 +256,7 @@ namespace UserLogin.Controllers
 
 
 
-            return Json(new { data = SearchResults });
+            return Json(new { SearchData = SearchResults });
 
 
         }
