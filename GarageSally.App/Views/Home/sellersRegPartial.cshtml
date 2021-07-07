@@ -1,0 +1,105 @@
+@using UserLogin.Models
+@model User
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="~/css/regLog.css">
+    @* <script src="~/js/loginReg.js" async=""></script> *@
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-WGFK1GC4RE');
+    </script>
+</head>
+
+<body>
+    <div class="regLog-container">
+
+        <div class="form-container">
+            <div class="regHeader_container">
+                <h4 id="sellerHeading">Check your area availability.</h4>
+            </div>
+
+            <form asp-action="registerSeller" asp-controller="Home" method="POST" enctype="multipart/form-data">
+                @* <span asp-validation-for="FirstName"></span>
+                    <input asp-for="FirstName" placeholder="First Name">
+
+                    <span asp-validation-for="LastName"></span>
+                    <input asp-for="LastName" placeholder="Last Name">*@
+                <div class="section1-container" id="section1SellerReg">
+                    <aside>
+                        <label for="State">Select your State</label>
+                        <partial name="_StateListSeller" />
+                        <input asp-for="State" value="AL" placeholder="State:" class="hidden" id="SellerState">
+
+                        <label class="hidden" for="Zipcode">Zipcode</label>
+                        <span asp-validation-for="Zipcode"></span>
+                        <input asp-for="Zipcode" placeholder="Zipcode:">
+
+
+                    </aside>
+                    <button type="button" onclick="Step2SellerReg()">Next</button>
+                </div>
+
+                <div class="section2-container" id="section2SellerReg">
+
+                    <label class="hidden" for="Email">Email</label>
+                    <span asp-validation-for="Email"></span>
+                    <input asp-for="Email" placeholder="Email:">
+
+                    <footer>
+                        <button type="button" onclick="Step1SellerReg()">back</button>
+                        <button type="button" onclick="Step3SellerReg()">Next</button>
+                    </footer>
+                </div>
+
+                <div class="section3-container" id="section3SellerReg">
+                    <label class="hidden" for="Password">Password</label>
+                    <span asp-validation-for="Password"></span>
+                    <input asp-for="Password" placeholder="Password:">
+
+                    <label class="hidden" for="Confirm">Confirm Password</label>
+                    <span asp-validation-for="Confirm"></span>
+                    <input asp-for="Confirm" placeholder="Confirm Password:">
+                    @* <img src="~/img/Assets/placeholder.png" alt="">
+                        <p>Incress discoverability by adding a photo to your profile.</p>
+                        <input asp-for="files" type="file" multiple> *@
+
+                    <footer>
+                        <button type="button" onclick="Step2SellerReg()">back</button>
+                        <button type="submit">Create Account</button>
+                        @* <button type="button" onclick="Step4SellerReg()">Next</button> *@
+                    </footer>
+                </div>
+
+                <div class="section4-container" id="section4SellerReg">
+                    @* <p>Add the location of your garage sale.</p>
+                        <span asp-validation-for="StreetNumber"></span>
+                        <input asp-for="StreetNumber" placeholder="Street #:">
+                        <span asp-validation-for="StreetName"></span>
+                        <input asp-for="StreetName" placeholder="Street Name:">
+                        <span asp-validation-for="City"></span>
+                        <input asp-for="City" placeholder="City:">
+
+                        <footer>
+                            <button type="button" onclick="Step3SellerReg()">back</button>
+                        </footer> *@
+                </div>
+
+                @* <input class="btn" type="submit" value="submit"> *@
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
