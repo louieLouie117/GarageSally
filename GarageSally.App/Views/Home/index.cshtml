@@ -1,0 +1,125 @@
+@using UserLogin.Models
+@model DashboardWrapper
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/landingPage.css">
+    <script src="~/js/loginReg.js" async=""></script>
+
+    <title>Garage Sally</title>
+    <meta name="author" content="Garage Sally">
+    <meta name="description"
+        content="Garage Sally helps people post and find garage sales. Create a free account and start posting and finding garage sales.">
+    <meta name="keywords"
+        content="garage sales, garage, sales, garage sales near me, garage sales app, garage sales website, Garage Sally">
+    <link rel="shortcut icon" type="imgage/png" href="~/img/Assets/favIcon.png" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WGFK1GC4RE');
+    </script>
+</head>
+
+<body>
+    <div class="landingPage-container">
+        <header>
+
+            <main>
+                <button id="SignInBTN" onclick="ShowLogin()">sign in</button>
+            </main>
+            <h1>Garage Sally</h1>
+            <picture>
+                <source media="(min-width: 1100px)" srcset="~/img/Assets/logoDesktop.png" />
+                <img src="~/img/Assets/logoDesktop.png" alt="">
+            </picture>
+
+            <p>find, post, and share.</p>
+
+
+
+        </header>
+        <div class="login-container" id="logInState">
+
+            <button onclick="HideLogin()">Close</button>
+
+            <partial name="loginPartial" model="@Model.LoginUser" view-data="ViewData" />
+        </div>
+
+        <main>
+            <section class="freeAccount-container">
+                <div class="info-container">
+                    <div>
+                        <h2>Garage Sales.</h2>
+                        <h4>Post and find garage sales.</h4>
+                    </div>
+                    <p>Are you tired of having
+                        garage sales and no one showing up?</p>
+
+                    <p>Do you drive around for hours trying to find garage sales in your area?</p>
+
+
+
+
+                </div>
+
+                <picture>
+                    <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
+                    <img src="~/img/Assets/mapSmall.png" alt="">
+                </picture>
+
+                <aside>
+                    <h3>Start posting and finding garage sales near you.</h3>
+                    <div class="userReg-container">
+                        <partial name="registrationPartial" model="@Model.User" view-data="ViewData" />
+                    </div>
+                </aside>
+            </section>
+
+            @* <section>
+                <partial name="allGaragePost" />
+
+                </section> *@
+
+
+            @* <section class="sellersAccount-container" id="SellerAccount">
+                <div class="info-container">
+                <div>
+                <h2>Post garage sales.</h2>
+                <h4>Get discovered.</h4>
+
+                </div>
+
+                <p>People love garage sales, but do not like driving for hours trying to find them. Help people do
+                what they love post your garage sale today.</p>
+                </div>
+
+                <aside>
+                <h3>Create a sellers account and get discovered.</h3>
+
+                <div class="sellersForm">
+                <partial name="sellersRegPartial" model="@Model.User" view-data="ViewData" />
+                </div>
+                </aside>
+
+                <picture>
+                <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
+                <img src="~/img/Assets/mapSmall.png" alt="">
+                </picture>
+
+                </section> *@
+        </main>
+
+    </div>
+</body>
+
+</html>
