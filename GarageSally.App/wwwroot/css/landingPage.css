@@ -174,8 +174,7 @@ font: 1.7em sans-serif;
 
     .landingPage-container>header{
         justify-content: left;
-        grid-template-columns: 1fr 2fr;
-        padding-left: 5%;
+        grid-template-columns: 1fr 4fr;
     }
 
    
@@ -289,27 +288,63 @@ font: 1.7em sans-serif;
     display: grid;
     width: 100vw;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 0;
 
 }
+
+.search-container header{
+    display: grid;
+    row-gap: 10px;
+    
+}
+
+.search-container header aside{
+    margin-left: 10px;
+}
+
+.search-container header aside button{
+    font: 1.2em sans-serif;
+    background: white;
+    border: none;
+
+}
+
+
+.search-container header aside button:first-of-type{
+    color: #B936D2;
+}
+
+
+
+
+
 
 .search-container header form{
     display: grid;
     grid-template-columns: 1fr 70px;
-    max-width: 360px;
-    justify-content: center;
-    margin: 0 auto;
+    max-width: 370px;
 }
 
-.search-container header form  input{
+
+.search-container header form  input:last-of-type{
+    border: solid 2px rgb(188, 188, 188);
+    font: 1em sans-serif;
+    padding-left: 15px;
+
+}
+
+.search-container header form  input:first-of-type{
     height: 40px;
     font: 1em sans-serif;
     padding-left: 15px;
     border-radius: 10px 0 0 10px;
     border: solid 2px rgb(188, 188, 188);
     border-right: none;
+    background: white   ;
     /* box-shadow: 0 0  5px rgba(0, 0, 0, 0.432); */
 }
+
+
 
 .search-container header form button{
     background: #B936D2;
@@ -327,6 +362,17 @@ font: 1.7em sans-serif;
     height: 100vh;
     overflow: scroll;
 }
+
+
+
+
+
+#SearchCityForm{
+    display: none;
+    grid-template-columns: 1fr 80px 70px;
+
+}
+
 
 
 

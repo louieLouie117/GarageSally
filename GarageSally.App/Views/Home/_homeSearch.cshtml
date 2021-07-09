@@ -10,18 +10,20 @@
         $(document).ready(function () {
 
 
-            $('#SearchFormHandler').submit(function (event) {
+            $('#SearchZipCode').submit(function (event) {
                 event.preventDefault();
                 if (!navigator.geolocation) {
                     alert(`Your browser doesn't support Geolocation`);
                 }
                 document.querySelector("#IndexSearchResults").style.display = "grid";
 
-                let City = document.querySelector("#HomeSearch").value
-                let Zipcode = document.querySelector("#HomeSearch").value
+                let Zipcode = document.querySelector("#ZipCodeValue").value
+
+                console.log("search", typeof Zipcode)
+
+
 
                 var jsonData = {
-                    city: City,
                     zipcode: Zipcode,
                 }
 
@@ -29,7 +31,53 @@
 
                 $.ajax({
                     type: "GET",
-                    url: '@Url.Action("HomeSearchHandler", "Home")',
+                    url: '@Url.Action("SearchZipCodeHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatusZipcode,
+                    error: ErrorStatusZipcode,
+                    complete: CompleteStatusZipcode
+                })
+
+            })
+
+            const SuccessStatusZipcode = (result) => {
+                console.log("You have sucessfuly searched...");
+                LoadSearchZipecode();
+            };
+            const ErrorStatusZipcode = (xhr, status, strErr) => {
+                console.log("There was an error when searching!");
+            };
+            const CompleteStatusZipcode = (xhr, status) => {
+                console.log("Search has completed...");
+            };
+
+
+            $('#SearchCityForm').submit(function (event) {
+                event.preventDefault();
+                if (!navigator.geolocation) {
+                    alert(`Your browser doesn't support Geolocation`);
+                }
+                document.querySelector("#IndexSearchResults").style.display = "grid";
+
+                let City = document.querySelector("#CitySearch").value
+                let State = document.querySelector("#StateSearch").value
+
+
+                console.log("search", typeof Zipcode)
+
+
+
+                var jsonData = {
+                    city: City,
+                    state: State,
+
+                }
+
+                console.log(jsonData);
+
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("SearchCityHandler", "Home")',
                     data: jsonData,
                     success: SuccessStatus,
                     error: ErrorStatus,
@@ -39,7 +87,6 @@
             })
             const SuccessStatus = (result) => {
                 console.log("You have sucessfuly searched...");
-                LoadSearch();
             };
             const ErrorStatus = (xhr, status, strErr) => {
                 console.log("There was an error when searching!");
@@ -51,16 +98,15 @@
 
         })
 
-        const LoadSearch = () => {
-            $('#HomeSearchResults').get("/HomeSearchHandler #HomeSearchResults", data => {
+        const LoadSearchZipecode = () => {
+
+            $('#HomeSearchResults').load("/SearchResults #HomeSearchResults", data => {
                 data = JSON.parse(data);
                 RenderSearch(data);
                 console.log("search data", data)
             });
         };
-        @* $.get("/HomeSearchHandler", data => {
-                RenderSearch(data);
-                }); *@
+
 
         const RenderSearch = (data) => {
             $.each(data.data, function (i, v) {
@@ -120,28 +166,31 @@
 
     <div class="search-container" id="searchPartial">
 
+
         <header>
-            <form id="SearchFormHandler">
-                <input type="text" name="" id="HomeSearch" placeholder="City ST or Zip Code">
+
+
+            <form id="SearchCityForm">
+                <input type="text" name="" id="CitySearch" placeholder="City">
+                <input type="text" name="" id="StateSearch" placeholder="State">
+
                 <button>Search</button>
             </form>
 
+            <form id="SearchZipCode">
+                <input type="number" name="" id="ZipCodeValue" placeholder="zip code">
+                <button>Search</button>
+            </form>
 
+            <aside>
+                <button id="zipcodeBTN" onclick="SearchTypeHandler(event)">zip code</button>
+                <button id="cityBTN" onclick="SearchTypeHandler(event)">city</button>
+
+            </aside>
         </header>
 
         <main id="IndexSearchResults">
-            <h3>Search resutls</h3>
             <ul id="HomeSearchResults">
-                <li>Tes</li>
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
 
             </ul>
 

@@ -239,27 +239,76 @@ namespace UserLogin.Controllers
         }
 
 
-        [HttpGet("HomeSearchHandler")]
-        public JsonResult HomeSearchHandler(User Data)
+        [HttpGet("SearchZipCodeHandler")]
+        public JsonResult SearchZipCodeHandler(GarageSale Data)
 
         {
-            System.Console.WriteLine("you have reached the backend");
+            System.Console.WriteLine("you have reached the backend of zip code");
+
             System.Console.WriteLine($"Data {Data.Zipcode}");
-            System.Console.WriteLine($"Data {Data.City}");
 
+            HttpContext.Session.SetInt32("SearchZipCode", Data.Zipcode);
 
-            List<GarageSale> SearchResults = _context.GarageSales
-              .Where(r => r.Zipcode == Data.Zipcode)
-              .OrderByDescending(d => d.StartDate)
-              .ToList();
+            return Json(new { status = "session success" });
 
-
-
-
-            return Json(new { SearchData = SearchResults });
 
 
         }
+
+
+        [HttpGet("SearchCityHandler")]
+        public JsonResult SearchCityHandler(GarageSale Data)
+
+        {
+            System.Console.WriteLine("you have reached the backend of city");
+
+            System.Console.WriteLine($"City: {Data.City}");
+            System.Console.WriteLine($"State: {Data.State}");
+
+
+            HttpContext.Session.SetString("SearchCity", Data.City);
+            HttpContext.Session.SetString("SearchState", Data.State);
+
+
+            return Json(new { status = "session success" });
+
+
+
+        }
+
+        [HttpGet("SearchResults")]
+        public JsonResult SearchResults()
+        {
+
+            int SearchZipCodeInSession = (int)HttpContext.Session.GetInt32("SearchZipCode");
+
+            System.Console.WriteLine("seesion zip code", SearchZipCodeInSession);
+
+            List<GarageSale> SearchResults = _context.GarageSales
+            .Where(r => r.Zipcode == SearchZipCodeInSession)
+            .OrderByDescending(d => d.StartDate)
+            .ToList();
+
+            return Json(new { Data = SearchResults });
+
+        }
+        [HttpGet("SearchCityResults")]
+        public JsonResult SearchCityResults()
+        {
+
+            int SearchZipCodeInSession = (int)HttpContext.Session.GetInt32("SearchZipCode");
+
+            System.Console.WriteLine("seesion zip code", SearchZipCodeInSession);
+
+            List<GarageSale> SearchResults = _context.GarageSales
+            .Where(r => r.Zipcode == SearchZipCodeInSession)
+            .OrderByDescending(d => d.StartDate)
+            .ToList();
+
+            return Json(new { Data = SearchResults });
+
+        }
+
 
 
 
