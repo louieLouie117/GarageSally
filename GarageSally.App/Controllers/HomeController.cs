@@ -238,6 +238,90 @@ namespace UserLogin.Controllers
             return Json(new { data = garageSaleItems });
         }
 
+
+        [HttpGet("SearchZipCodeHandler")]
+        public JsonResult SearchZipCodeHandler(GarageSale Data)
+
+        {
+            System.Console.WriteLine("you have reached the backend of zip code");
+
+            System.Console.WriteLine($"Data {Data.Zipcode}");
+
+            HttpContext.Session.SetInt32("SearchZipCode", Data.Zipcode);
+
+            return Json(new { status = "session success" });
+
+
+
+        }
+
+        [HttpGet("SearchResultsZipcode")]
+        public JsonResult SearchResultsZipcode()
+        {
+
+            int SearchZipCodeInSession = (int)HttpContext.Session.GetInt32("SearchZipCode");
+
+            System.Console.WriteLine("seesion zip code", SearchZipCodeInSession);
+
+            List<GarageSale> SearchResults = _context.GarageSales
+            .Where(r => r.Zipcode == SearchZipCodeInSession)
+            .OrderByDescending(d => d.StartDate)
+            .ToList();
+
+            return Json(new { Data = SearchResults });
+
+        }
+
+
+        [HttpGet("SearchCityHandler")]
+        public JsonResult SearchCityHandler(GarageSale Data)
+
+        {
+            System.Console.WriteLine("you have reached the backend of city");
+
+            System.Console.WriteLine($"City: {Data.City}");
+            System.Console.WriteLine($"State: {Data.State}");
+
+
+            HttpContext.Session.SetString("SearchCity", Data.City);
+            HttpContext.Session.SetString("SearchState", Data.State);
+
+
+            return Json(new { status = "session success" });
+
+
+
+        }
+
+
+        [HttpGet("SearchCityResults")]
+        public JsonResult SearchCityResults()
+        {
+
+            string SearchCityInSession = HttpContext.Session.GetString("SearchCity");
+            string SearchStateInSession = HttpContext.Session.GetString("SearchState");
+
+
+            System.Console.WriteLine("seesion zip code", SearchCityInSession);
+
+            List<GarageSale> CitySearchResults = _context.GarageSales
+            .Where(c => c.City == SearchCityInSession)
+            .Where(s => s.State == SearchStateInSession)
+            .OrderByDescending(d => d.StartDate)
+            .ToList();
+
+            return Json(new { Data = CitySearchResults });
+
+        }
+
+
+
+
+
+
+
+
+
         [HttpGet("DisplayUserProfile")]
         public JsonResult DisplayUserProfile()
         {
