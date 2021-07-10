@@ -9,7 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/landingPage.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+
     <script src="~/js/loginReg.js" async=""></script>
+    <script src="~/js/landingPage.js" async=""></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
     <title>Garage Sally</title>
     <meta name="author" content="Garage Sally">
@@ -43,11 +50,14 @@
                 <img src="~/img/Assets/logoDesktop.png" alt="">
             </picture>
 
-            <p>find, post, and share.</p>
+            <p>find garage sales near you!</p>
 
 
 
         </header>
+
+        <partial name="_homeSearch" />
+
         <div class="login-container" id="logInState">
 
             <button onclick="HideLogin()">Close</button>
@@ -56,67 +66,58 @@
         </div>
 
         <main>
-            <section class="freeAccount-container">
+
+            <section class="freeAccount-container" id="FreeAccount">
+
                 <div class="info-container">
                     <div>
-                        <h2>Garage Sales.</h2>
-                        <h4>Post and find garage sales.</h4>
+                        <h4>Already have an account?</h4>
                     </div>
-                    <p>Are you tired of having
-                        garage sales and no one showing up?</p>
-
-                    <p>Do you drive around for hours trying to find garage sales in your area?</p>
-
-
-
+                    <button onclick="SignBackInHandler(event)">sign in</button>
 
                 </div>
 
-                <picture>
+                @* <picture>
                     <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
                     <img src="~/img/Assets/mapSmall.png" alt="">
-                </picture>
+                    </picture> *@
 
                 <aside>
-                    <h3>Start posting and finding garage sales near you.</h3>
+                    <h3>Get access to directions, register for a free account.</h3>
                     <div class="userReg-container">
                         <partial name="registrationPartial" model="@Model.User" view-data="ViewData" />
                     </div>
                 </aside>
             </section>
 
-            @* <section>
-                <partial name="allGaragePost" />
-
-                </section> *@
 
 
-            @* <section class="sellersAccount-container" id="SellerAccount">
+            <section class="sellersAccount-container" id="SellerAccount">
                 <div class="info-container">
-                <div>
-                <h2>Post garage sales.</h2>
-                <h4>Get discovered.</h4>
+                    <div>
+                        <h2>Having a sale of your own?</h2>
+                        <h4>List it here for free!</h4>
 
-                </div>
+                    </div>
 
-                <p>People love garage sales, but do not like driving for hours trying to find them. Help people do
-                what they love post your garage sale today.</p>
+                    <p>People love garage sales but do not like driving for hours trying to find them. Help build a
+                        community and list your sale for free today.</p>
                 </div>
 
                 <aside>
-                <h3>Create a sellers account and get discovered.</h3>
+                    <h3>Start a free seller account and get discovered.</h3>
 
-                <div class="sellersForm">
-                <partial name="sellersRegPartial" model="@Model.User" view-data="ViewData" />
-                </div>
+                    <div class="sellersForm">
+                        <partial name="sellersRegPartial" model="@Model.User" view-data="ViewData" />
+                    </div>
                 </aside>
 
                 <picture>
-                <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
-                <img src="~/img/Assets/mapSmall.png" alt="">
+                    <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
+                    <img src="~/img/Assets/mapSmall.png" alt="">
                 </picture>
 
-                </section> *@
+            </section>
         </main>
 
     </div>

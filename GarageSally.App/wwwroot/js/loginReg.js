@@ -125,9 +125,13 @@ const BuyerStateHandler =(e)=>{
 
 const SellerStateHandler =(e)=>{
     let stateSelected = document.getElementById("SellerSateSelectionList").value;
+    document.getElementById("logInState").style.transition = "1s";
+    document.getElementById("logInState").style.transform = "smooth";
 
     document.getElementById("SellerState").value = stateSelected;
     console.log(stateSelected);
 
 
 }
+
+
