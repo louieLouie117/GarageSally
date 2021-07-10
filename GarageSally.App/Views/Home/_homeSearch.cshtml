@@ -103,7 +103,8 @@
                                 <p>${v.description}</p>
                             </footer>
                             <main>
-                                <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
+                               <button onclick="SignInDirectionsHandler(event)">Directions</button>
+
                                 @* <p>20 people visted.</p> *@
                             </main>
                         </section>
@@ -209,7 +210,7 @@
                                 <p>${v.description}</p>
                             </footer>
                             <main>
-                                <a href="http://maps.google.com/?q=${v.streetNumber} ${v.streetName}, ${v.state}, ${v.zipcode}" target="blank"><button>Directions</button></a>
+                               <button onclick="SignInDirectionsHandler(event)">Directions</button>
                                 @* <p>20 people visted.</p> *@
                             </main>
                         </section>
@@ -256,10 +257,13 @@
         </header>
 
         <main id="IndexSearchResults">
-            <ul id="HomeSearchResults">
+            <div class="allGaragePost-container">
+                <div class="cardItems">
+                    <ul id="HomeSearchResults">
 
-            </ul>
-
+                    </ul>
+                </div>
+            </div>
         </main>
 
     </div>
