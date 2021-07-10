@@ -21,5 +21,18 @@ const SearchTypeHandler =(e)=>{
 }
 
 const SignInDirectionsHandler = () =>{
-    alert("sign in to get directions");
+    document.querySelector("#FreeAccount").style.left ="0%"
+    document.querySelector("#FreeAccount").style.transition = "1s";
+    document.querySelector("#FreeAccount").style.transform = "smooth";
+
+}
+
+
+const SignBackInHandler = (e) =>{
+    document.querySelector("#FreeAccount").style.left ="-1000%"
+    document.querySelector("#FreeAccount").style.transition = "1s";
+    document.querySelector("#FreeAccount").style.transform = "smooth";
+    document.getElementById("logInState").style.marginTop = "0";
+    document.getElementById("logInState").style.transition = "1s";
+    document.getElementById("logInState").style.transform = "smooth";
 }

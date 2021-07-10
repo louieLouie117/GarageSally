@@ -66,26 +66,24 @@
         </div>
 
         <main>
+
             <section class="freeAccount-container" id="FreeAccount">
+
                 <div class="info-container">
                     <div>
-                        <h2>Garage Sales.</h2>
-                        <h4>Post and find garage sales.</h4>
+                        <h4>Already have an account?</h4>
                     </div>
-                    <p>Are you tired of having
-                        garage sales and no one showing up?</p>
-
-                    <p>Do you drive around for hours trying to find garage sales in your area?</p>
+                    <button onclick="SignBackInHandler(event)">sign in</button>
 
                 </div>
 
-                <picture>
+                @* <picture>
                     <source media="(min-width: 1100px)" srcset="/img/Assets/mapLarge.png" />
                     <img src="~/img/Assets/mapSmall.png" alt="">
-                </picture>
+                    </picture> *@
 
                 <aside>
-                    <h3>Start posting and finding garage sales near you.</h3>
+                    <h3>Get access to directions, register for a free account.</h3>
                     <div class="userReg-container">
                         <partial name="registrationPartial" model="@Model.User" view-data="ViewData" />
                     </div>
@@ -107,7 +105,7 @@
                 </div>
 
                 <aside>
-                    <h3>Create a free sellers account and get discovered.</h3>
+                    <h3>Start a free seller account and get discovered.</h3>
 
                     <div class="sellersForm">
                         <partial name="sellersRegPartial" model="@Model.User" view-data="ViewData" />
