@@ -64,7 +64,7 @@
 
                               <footer>
                                 <h3></h3>
-                                <p> There are no garage sales in ${zipcode} zip code   <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listing in your state.</p>
+                                <p> There are no garage sales in ${zipcode} zip code   <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listings in your state.</p>
                             </footer>
                             <main>
                                <button onclick="SignInDirectionsHandler(event)"> register</button>
@@ -186,13 +186,15 @@
                     data = JSON.parse(data);
                     if (data.data.length === 0) {
                         let city = document.querySelector("#CitySearch").value;
+                        let state = document.querySelector("#StateSearch").value;
+
 
                         console.log("no garage sales in this zip code.")
                         $(`<li >
                         <section>
 
                               <footer>
-                                <p> There are no garage sales in city of ${city} <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listing in your state.</p>
+                                <p> There are no garage sales in city of ${city} ${state}  <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listings in your state.</p>
                             </footer>
                             <main>
                                <button onclick="SignInDirectionsHandler(event)"> register</button>

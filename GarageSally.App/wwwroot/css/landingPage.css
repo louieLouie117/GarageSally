@@ -374,6 +374,13 @@ h1,h2,h3,p{
 }
 
 
+.search-container header form select{
+    border: solid 2px rgb(188, 188, 188);
+    background: white;
+
+
+}
+
 
 .search-container header form button{
     background: #B936D2;
@@ -388,7 +395,7 @@ h1,h2,h3,p{
 
 #IndexSearchResults{
     display: none;
-    height: 100vh;
+    height: auto;
     overflow: scroll;
 }
 

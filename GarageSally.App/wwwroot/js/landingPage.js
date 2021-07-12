@@ -60,7 +60,7 @@ const SignBackInHandler = (e) =>{
 const SearchStateHandler = (e) =>{
      
 
-       let stateSelected = document.querySelector("#SearchSateSelectionList").value;
+       let stateSelected = document.querySelector("#SearchSateSelectionList").va;
     document.getElementById("logInState").style.transition = "1s";
     document.getElementById("logInState").style.transform = "smooth";
 

@@ -566,7 +566,9 @@ namespace UserLogin.Controllers
                 if (userInDb == null)
                 {
                     ModelState.AddModelError("Email", "Invalid Email/Password");
-                    return View("login");
+                    // return View("login");
+                    return RedirectToAction("index");
+
                 }
                 var hasher = new PasswordHasher<LoginUser>();
                 var result = hasher.VerifyHashedPassword(userSubmission, userInDb.Password, userSubmission.Password);
