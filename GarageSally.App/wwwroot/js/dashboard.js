@@ -241,7 +241,7 @@ const popUpNoticeHandler = (e) => {
 
     }
     
-    if(e.target.innerText === "Cancel"){
+    if(e.target.innerText === "Close"){
         document.getElementById("photoUploadNotice").style.display = "none";
         document.getElementById("upgradeNotice").style.display = "none";
 

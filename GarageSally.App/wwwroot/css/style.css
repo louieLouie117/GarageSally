@@ -89,6 +89,7 @@ ul {
 	color: rgb(177, 177, 177);
 }
 
+
 .cardItems li section footer {
 	display: grid;
 	row-gap: 5px;
@@ -109,6 +110,15 @@ ul {
 
 }
 
+
+
+.cardItems li section footer p button{
+	font: 1em sans-serif;
+	color: #b936d2;
+	padding: 0;
+	text-decoration: underline;
+	background: none;
+}
 
 
 .cardItems li section footer :last-child {

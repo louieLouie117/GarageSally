@@ -156,6 +156,8 @@ input {
 	width: 40px;
 	border-radius: 10px;
 	background: white;
+	cursor: pointer;
+
 }
 
 .showMenu-container {

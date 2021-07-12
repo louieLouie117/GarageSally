@@ -37,14 +37,14 @@
                     zipcode: zipcode,
                 }
                 @* console.log("user info Data", jsonData) *@
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("UpdateProfileHandler", "Home")',
-                    data: jsonData,
-                    success: SuccessStatus,
-                    error: ErrorStatus,
-                    complete: CompleteStatus
-                })
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("UpdateProfileHandler", "Home")',
+                        data: jsonData,
+                        success: SuccessStatus,
+                        error: ErrorStatus,
+                        complete: CompleteStatus
+                    })
             })
             const SuccessStatus = (result) => {
                 document.getElementById("SaveChangesBTN").style.display = "none";
@@ -59,21 +59,21 @@
 
             const RenderData = (data) => {
                 @* console.log("user Data", data.data) *@
-                $.each(data.data, function (i, v) {
-                    @* console.log(v) *@
+                    $.each(data.data, function (i, v) {
+                        @* console.log(v) *@
                     if (v.profilePic === "placeholder.png") {
                             $(`
                         <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
                         <h1 id="UserNameText">Hello, ${v.firstName}</h1>
                         <button onclick="popUpNoticeHandler(event)">Change Photo</button>
                         `).prependTo("#UserPhoto");
-                    } else {
-                        $(`
+                        } else {
+                            $(`
                         <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
                         <h1 id="UserNameText">Hello, ${v.firstName}</h1>
                         `).prependTo("#UserPhoto");
-                    }
-                    $(`
+                        }
+                        $(`
                         <h3 class="span2Columns">Name</h3>
 
                         <input
@@ -89,7 +89,7 @@
 
                         @* <input class="span2Columns" value="${v.email}" id="EmailEdit" placeholder="Email" > *@
                     `).prependTo("#UserFormName");
-                    $(`
+                        $(`
                         <h3 class="span2Columns">Garage Sale Default Address</h3>
 
                         <input
@@ -122,7 +122,7 @@
                             onkeyup="ShowSaveChangesBTN(event)">
                         </footer>
                     `).prependTo("#UserFormAddress");
-                    $(`
+                        $(`
                         <h2>Location:</h2>
                         <div class="locationHeader">
                             <input value="${v.streetNumber}" id='StreetNumberUpgrade' type='text' placeholder='street #:'>
@@ -134,7 +134,7 @@
                             <input value="${v.zipcode}" id='ZipcodeUpgrade' type='text' placeholder='zipecode: '>
                         </div>
                     `).prependTo("#noticeForm");
-                });
+                    });
             };
         })
 
@@ -174,7 +174,7 @@
                         </header>
                         <footer>
                             <button type="button" onclick="popUpNoticeHandler(event)"></button>
-                            <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
+                            <button type="button" onclick="popUpNoticeHandler(event)">Close</button>
                         </footer>
                     </form>
                 </aside>

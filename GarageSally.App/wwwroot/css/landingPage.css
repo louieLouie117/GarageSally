@@ -89,6 +89,8 @@ h1,h2,h3,p{
 .landingPage-container>main section h2{
     font: 3.3em sans-serif;
     color: #B936D2;
+    line-height: 45px;
+
 }
 
 
@@ -140,10 +142,13 @@ h1,h2,h3,p{
 }
 
 
+
 .info-container h4{
     font: 1.7em sans-serif;
     padding:  0;
     margin: 0;
+    padding-top: 20px;
+
 }
 
 .info-container button:first-of-type{
@@ -369,6 +374,13 @@ h1,h2,h3,p{
 }
 
 
+.search-container header form select{
+    border: solid 2px rgb(188, 188, 188);
+    background: white;
+
+
+}
+
 
 .search-container header form button{
     background: #B936D2;
@@ -383,7 +395,7 @@ h1,h2,h3,p{
 
 #IndexSearchResults{
     display: none;
-    height: 100vh;
+    height: auto;
     overflow: scroll;
 }
 
