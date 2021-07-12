@@ -64,7 +64,7 @@
 
                               <footer>
                                 <h3></h3>
-                                <p> There are no garage sales in ${zipcode} zip code   <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listing in your state!</p>
+                                <p> There are no garage sales in ${zipcode} zip code   <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listing in your state.</p>
                             </footer>
                             <main>
                                <button onclick="SignInDirectionsHandler(event)"> register</button>
@@ -192,7 +192,7 @@
                         <section>
 
                               <footer>
-                                <p> There are no garage sales in city of ${city} <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listing in your state!</p>
+                                <p> There are no garage sales in city of ${city} <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listing in your state.</p>
                             </footer>
                             <main>
                                <button onclick="SignInDirectionsHandler(event)"> register</button>
@@ -281,7 +281,9 @@
 
             <form id="SearchCityForm">
                 <input type="text" name="" id="CitySearch" placeholder="City">
-                <input type="text" name="" id="StateSearch" placeholder="State">
+                <partial name="_StateListSearch" />
+
+                <input type="text" name="" id="StateSearch" placeholder="State" value="AL" class="hidden">
 
                 <button>Search</button>
             </form>
