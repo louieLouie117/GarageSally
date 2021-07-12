@@ -24,6 +24,7 @@
 <body>
     <div class="form-container" id="SignInHeight">
         <h3>Welcome back</h3>
+        <button onclick="SignInDirectionsHandler(event)">Register as a new user.</button>
 
         <form asp-action="Login" asp-controller="Home">
             <span asp-validation-for="Email"></span>
