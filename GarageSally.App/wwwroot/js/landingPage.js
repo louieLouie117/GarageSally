@@ -20,10 +20,30 @@ const SearchTypeHandler =(e)=>{
 
 }
 
-const SignInDirectionsHandler = () =>{
-    document.querySelector("#FreeAccount").style.left ="0%"
-    document.querySelector("#FreeAccount").style.transition = "1s";
-    document.querySelector("#FreeAccount").style.transform = "smooth";
+const SignInDirectionsHandler = (e) =>{
+
+  
+    if(e.target.innerText === "register"){
+        document.querySelector("#FreeAccount").style.left ="0%"
+        document.querySelector("#FreeAccount").style.transition = "1s";
+        document.querySelector("#FreeAccount").style.transform = "smooth";
+        document.querySelector("#regNewUserHeading").innerText = "Create a free account and find garage sales in your state."
+    }
+
+    if(e.target.innerText === "Directions"){
+        document.querySelector("#FreeAccount").style.left ="0%"
+        document.querySelector("#FreeAccount").style.transition = "1s";
+        document.querySelector("#FreeAccount").style.transform = "smooth";
+        document.querySelector("#regNewUserHeading").innerText = "Register for a free account and get access to directions."
+        
+    }
+    if(e.target.innerText === "Register as a new user."){
+        document.querySelector("#FreeAccount").style.left ="0%"
+        document.querySelector("#FreeAccount").style.transition = "1s";
+        document.querySelector("#FreeAccount").style.transform = "smooth";
+        document.querySelector("#regNewUserHeading").innerText = "Become a new member of Garage Sally community."
+
+    }
 
 }
 

@@ -172,6 +172,15 @@ input{
     grid-row: 1/2;
     grid-column: 1/2;
 }
+
+.form-container>button:first-of-type{
+    background: none;
+    color: #B936D2;
+    text-decoration: underline;
+    text-align: left;
+
+
+}
 .login-container>button{
     grid-row: 1/2;
     grid-column: 1/2;

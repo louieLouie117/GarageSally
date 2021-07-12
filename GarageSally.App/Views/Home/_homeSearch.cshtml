@@ -56,10 +56,31 @@
 
                 $('#HomeSearchResults').load("/SearchResultsZipcode #HomeSearchResults", data => {
                     data = JSON.parse(data);
+                    if (data.data.length === 0) {
+                        let zipcode = document.querySelector("#ZipCodeValue").value;
+                        console.log("no garage sales in this zip code.")
+                        $(`<li >
+                        <section>
+
+                              <footer>
+                                <h3></h3>
+                                <p> There are no garage sales in ${zipcode} zip code   <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listing in your state!</p>
+                            </footer>
+                            <main>
+                               <button onclick="SignInDirectionsHandler(event)"> register</button>
+
+
+                                @* <p>20 people visted.</p> *@
+                            </main>
+                        </section>
+                    </li>`).prependTo("#HomeSearchResults");
+                        return
+                    }
                     RenderZipcodeSearch(data);
-                    console.log("search data", data)
+
                 });
             };
+
 
 
             const RenderZipcodeSearch = (data) => {
@@ -163,8 +184,28 @@
 
                 $('#HomeSearchResults').load("/SearchCityResults #HomeSearchResults", data => {
                     data = JSON.parse(data);
+                    if (data.data.length === 0) {
+                        let city = document.querySelector("#CitySearch").value;
+
+                        console.log("no garage sales in this zip code.")
+                        $(`<li >
+                        <section>
+
+                              <footer>
+                                <p> There are no garage sales in city of ${city} <button onclick="ShowLogin()">sign in</button> or register for a free account to see all listing in your state!</p>
+                            </footer>
+                            <main>
+                               <button onclick="SignInDirectionsHandler(event)"> register</button>
+
+
+                                @* <p>20 people visted.</p> *@
+                            </main>
+                        </section>
+                    </li>`).prependTo("#HomeSearchResults");
+                        return
+                    }
                     RenderSearchCity(data);
-                    console.log("search data", data)
+
                 });
             };
 
@@ -230,6 +271,7 @@
 </head>
 
 <body>
+
 
     <div class="search-container" id="searchPartial">
 
