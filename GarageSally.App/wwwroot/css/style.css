@@ -94,10 +94,12 @@ ul {
 	display: grid;
 	row-gap: 5px;
 	padding: 0 20px;
-	height: 100px;	
+	height: 130px;	
 	overflow: scroll;
 	align-content: flex-start;
+	padding-top: 20px;
 }
+
 
 .cardItems li section footer h3{
 	font: 1.3em sans-serif;
