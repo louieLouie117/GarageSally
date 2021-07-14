@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+    <meta property="og:url" content="http://www.garagesally.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Garage Sally" />
+    <meta property="og:description" content="Post,find and share garage sales" />
+    <meta property="og:image" content="~/img/Assets/mapDesktopPlaceholder.png" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -20,11 +26,57 @@
         $(document).ready(function () {
             $.get("/displayGarageSales", data => {
                 RenderData(data);
+                if (data.data.length === 0) {
+                    console.log("no garage sales in this zip code.")
+                    $(`<li >
+                        <section>
+
+                              <footer>
+                                <p>You are the first person to discover Garage Sally in your state :) there are currently no garage sales listed. Follow us on social media to see what state we are currently marketing in.</p>
+                            </footer>
+                            <main>
+
+                            <a  href="https://www.linkedin.com/company/garagesally" target="blank">
+                               <button> follow </button>
+                               </a>
+                            </main>
+                        </section>
+                    </li>
+
+                        <li >
+                        <section>
+
+                              <footer>
+                                <p>Help build a garage sales community by telling your neighbors, friends, and family about Garage Sally.</p>
+                            </footer>
+                            <main>
+                               <button onclick="popUpNoticeHandler(event)">share</button>
+                            </main>
+                        </section>
+                    </li>
+
+                      <li >
+                        <section>
+
+                              <footer>
+                                <p> Be the first to post a garage sale.</p>
+                            </footer>
+                            <main>
+                               <button onclick="popUpNoticeHandler(event)">post</button>
+                            </main>
+                        </section>
+                    </li>
+
+
+                    `).prependTo("#garageSaleList");
+                    return
+                }
             });
 
             const LoadData = () => {
                 $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
                     data = JSON.parse(data);
+
                     @* console.log("in load", data); *@
                         RenderData(data);
                     @* data = $.parseJSON(data); deprecated*@

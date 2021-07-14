@@ -246,7 +246,19 @@ const popUpNoticeHandler = (e) => {
         document.getElementById("upgradeNotice").style.display = "none";
 
     }
+    if(e.target.innerText === "share"){
+    alert("Please copy and share this message on your favorite social media? I just found this free website www.garagesally.com to post, find, and share garage sales in our community. ");
 
+    }
+
+    if(e.target.innerText === "post"){
+        document.getElementById("postSalePartial").style.marginLeft = "0";
+        document.getElementById("postSalePartial").style.transform = "smooth";
+        document.getElementById("postSalePartial").style.transition = "1s";
+        document.getElementById("mainMenu").style.marginLeft = "-700px";
+        
+
+    }
 
 }
 
