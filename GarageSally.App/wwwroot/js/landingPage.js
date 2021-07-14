@@ -45,6 +45,10 @@ const SignInDirectionsHandler = (e) =>{
 
     }
 
+    if(e.target.innerText === "share"){
+        alert("Please copy and share this message on your favorite social media? I just found this free website www.garagesally.com to post, find, and share garage sales in our community. ");
+    }
+
 }
 
 
@@ -58,9 +62,7 @@ const SignBackInHandler = (e) =>{
 }
 
 const SearchStateHandler = (e) =>{
-     
-
-       let stateSelected = document.querySelector("#SearchSateSelectionList").va;
+    let stateSelected = document.querySelector("#SearchSateSelectionList").value;
     document.getElementById("logInState").style.transition = "1s";
     document.getElementById("logInState").style.transform = "smooth";
 
