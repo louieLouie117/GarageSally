@@ -149,6 +149,7 @@ input {
 	border-radius: 40px;
 	align-content: center;
 	justify-self: left;
+	cursor: pointer;
 }
 
 .menuIcon {
