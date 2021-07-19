@@ -587,6 +587,7 @@ input {
 	background: white;
 	display: grid;
 	grid-template-columns: 70px auto;
+	column-gap: 10px;
 }
 
 
