@@ -355,13 +355,14 @@
                     RenderUserPost(data);
                 });
                 LoadData();
-                @* document.getElementById("postSalePartial").style.marginLeft = "-700px";
-                        document.getElementById("postSalePartial").style.transform = "smooth";
-                        document.getElementById("postSalePartial").style.transition = "1s";
-                        document.getElementById("updatesSupportPartial").style.marginLeft = "0";
-                        document.getElementById("updatesSupportPartial").style.transform = "smooth";
-                        document.getElementById("updatesSupportPartial").style.transition = "1s";
-                        document.getElementById("usersGarageSalesPartial").style.display = "grid"; *@
+                document.querySelector("#NewPostForm").style.display = "none";
+                document.querySelector("#multiDayPost").style.display = "grid";
+                document.querySelector("#PostSaleTitle1").innerText = "Your sale has been listed."
+                document.querySelector("#PostSaleTitle2").innerText = "Post on others dates and increase your sales."
+
+
+
+
             };
             const ErrorStatus = (xhr, status, strErr) => {
                 console.log("There was an error!");
@@ -487,9 +488,11 @@
                 <h2>@ViewBag.ToDisplay.FirstName</h2>
             </header>
 
-            <h2>Post a new garage sale.</h2>
+            <h2 id="PostSaleTitle1">Post a new garage sale.</h2>
+            <h3 id="PostSaleTitle2">Get discovered.</h3>
 
-            <div class="form-postContainer">
+
+            <div class="form-postContainer" id="NewPostForm">
                 <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
                 asp-route-id="@ViewBag.ToDisplay.UserId">
                     <header>
@@ -523,65 +526,69 @@
                     @* <input type="submit" value="Post Sale"> *@
                 </form>
 
-                <div id="multiDayPost">
-                    <form id="OneDayAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                    asp-route-id="@ViewBag.ToDisplay.UserId">
-                        <input id="1DayFromDateSelected" type="text" disabled>
-                        <button type="submit" id="submitForm">+</button>
 
-                        @* <input type="submit" value="Post Sale"> *@
-                    </form>
+            </div>
 
-                    <form id="TwoDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                    asp-route-id="@ViewBag.ToDisplay.UserId">
-                        <input id="2DayFromDateSelected" type="text" disabled>
-                        <button type="submit" id="submitForm">+</button>
+            <div id="multiDayPost">
+                <form id="OneDayAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="1DayFromDateSelected" type="text" disabled>
 
-                        @* <input type="submit" value="Post Sale"> *@
-                    </form>
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
 
-                    <form id="ThreeDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                    asp-route-id="@ViewBag.ToDisplay.UserId">
-                        <input id="3DayFromDateSelected" type="text" disabled>
-                        <button type="submit" id="submitForm">+</button>
+                <form id="TwoDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="2DayFromDateSelected" type="text" disabled>
 
-                        @* <input type="submit" value="Post Sale"> *@
-                    </form>
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
 
-                    <form id="FourDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                    asp-route-id="@ViewBag.ToDisplay.UserId">
-                        <input id="4DayFromDateSelected" type="text" disabled>
-                        <button type="submit" id="submitForm">+</button>
+                <form id="ThreeDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="3DayFromDateSelected" type="text" disabled>
 
-                        @* <input type="submit" value="Post Sale"> *@
-                    </form>
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
 
-                    <form id="FiveDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                    asp-route-id="@ViewBag.ToDisplay.UserId">
-                        <input id="5DayFromDateSelected" type="text" disabled>
-                        <button type="submit" id="submitForm">+</button>
+                <form id="FourDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="4DayFromDateSelected" type="text" disabled>
 
-                        @* <input type="submit" value="Post Sale"> *@
-                    </form>
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
 
-                    <form id="SixDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                    asp-route-id="@ViewBag.ToDisplay.UserId">
-                        <input id="6DayFromDateSelected" type="text" disabled>
-                        <button type="submit" id="submitForm">+</button>
+                <form id="FiveDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="5DayFromDateSelected" type="text" disabled>
 
-                        @* <input type="submit" value="Post Sale"> *@
-                    </form>
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
 
-                    <form id="SevenDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                    asp-route-id="@ViewBag.ToDisplay.UserId">
-                        <input id="7DayFromDateSelected" type="text" disabled>
-                        <button type="submit" id="submitForm">+</button>
+                <form id="SixDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="6DayFromDateSelected" type="text" disabled>
 
-                        @* <input type="submit" value="Post Sale"> *@
-                    </form>
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+
+                <form id="SevenDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="7DayFromDateSelected" type="text" disabled>
+
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+
+                <button onclick="DateSelectedHandler(event)">Done</button>
 
 
-                </div>
             </div>
 
 

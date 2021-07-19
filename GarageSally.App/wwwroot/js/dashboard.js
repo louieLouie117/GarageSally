@@ -65,52 +65,64 @@ const profile = (e) =>{
 
 
 const DateSelectedHandler = (e) =>{
+    if(e.target.innerText === "Done"){
+        document.querySelector("#multiDayPost").style.display = "none";
+        document.querySelector("#NewPostForm").style.display = "grid";
+        document.getElementById("postSalePartial").style.marginLeft = "-700px";
+        document.getElementById("postSalePartial").style.transform = "smooth";
+        document.getElementById("postSalePartial").style.transition = "1s";
+        document.getElementById("updatesSupportPartial").style.marginLeft = "0";
+        document.getElementById("updatesSupportPartial").style.transform = "smooth";
+        document.getElementById("updatesSupportPartial").style.transition = "1s";
+        document.getElementById("usersGarageSalesPartial").style.display = "grid";
+        document.querySelector("#PostSaleTitle1").innerText = "List your garage sale."
+        document.querySelector("#PostSaleTitle2").innerText = "Get discovered."
+    }else{
+        const DateFormat = {
+            weekday: "long",
+            month: "long",
+            day: "numeric"
+        };
+      
+      let OneDayAfter =  new Date(e.target.value)
+      OneDayAfter.setDate(OneDayAfter.getDate() + 2);
     
-    const DateFormat = {
-        weekday: "long",
-        month: "long",
-        day: "numeric"
-    };
-  
-  let OneDayAfter =  new Date(e.target.value)
-  OneDayAfter.setDate(OneDayAfter.getDate() + 2);
-
-
-  let TwoDaysAfter =  new Date(e.target.value)
-  TwoDaysAfter.setDate(TwoDaysAfter.getDate() + 3);
-
-  let ThreeDaysAfter =  new Date(e.target.value)
-  ThreeDaysAfter.setDate(ThreeDaysAfter.getDate() + 4);
-
-  let FourDaysAfter =  new Date(e.target.value)
-  FourDaysAfter.setDate(FourDaysAfter.getDate() + 5);
-
-  let FiveDaysAfter =  new Date(e.target.value)
-  FiveDaysAfter.setDate(FiveDaysAfter.getDate() + 6);
-
-  let SixDaysAfter =  new Date(e.target.value)
-  SixDaysAfter.setDate(SixDaysAfter.getDate() + 7);
-
-  let SevenDaysAfter =  new Date(e.target.value)
-  SevenDaysAfter.setDate(SevenDaysAfter.getDate() + 8);
-
-
-
-    document.getElementById("1DayFromDateSelected").value = OneDayAfter.toLocaleDateString("en-US", DateFormat);
-    document.getElementById("2DayFromDateSelected").value = TwoDaysAfter.toLocaleDateString("en-US", DateFormat);
-    document.getElementById("3DayFromDateSelected").value = ThreeDaysAfter.toLocaleDateString("en-US", DateFormat);
-    document.getElementById("4DayFromDateSelected").value = FourDaysAfter.toLocaleDateString("en-US", DateFormat);
-    document.getElementById("5DayFromDateSelected").value = FiveDaysAfter.toLocaleDateString("en-US", DateFormat);
-    document.getElementById("6DayFromDateSelected").value = SixDaysAfter.toLocaleDateString("en-US", DateFormat);
-    document.getElementById("7DayFromDateSelected").value = SevenDaysAfter.toLocaleDateString("en-US", DateFormat);
-
-
-    console.log(OneDayAfter)
-
-
+    
+      let TwoDaysAfter =  new Date(e.target.value)
+      TwoDaysAfter.setDate(TwoDaysAfter.getDate() + 3);
+    
+      let ThreeDaysAfter =  new Date(e.target.value)
+      ThreeDaysAfter.setDate(ThreeDaysAfter.getDate() + 4);
+    
+      let FourDaysAfter =  new Date(e.target.value)
+      FourDaysAfter.setDate(FourDaysAfter.getDate() + 5);
+    
+      let FiveDaysAfter =  new Date(e.target.value)
+      FiveDaysAfter.setDate(FiveDaysAfter.getDate() + 6);
+    
+      let SixDaysAfter =  new Date(e.target.value)
+      SixDaysAfter.setDate(SixDaysAfter.getDate() + 7);
+    
+      let SevenDaysAfter =  new Date(e.target.value)
+      SevenDaysAfter.setDate(SevenDaysAfter.getDate() + 8);
     
     
     
+        document.getElementById("1DayFromDateSelected").value = OneDayAfter.toLocaleDateString("en-US", DateFormat);
+        document.getElementById("2DayFromDateSelected").value = TwoDaysAfter.toLocaleDateString("en-US", DateFormat);
+        document.getElementById("3DayFromDateSelected").value = ThreeDaysAfter.toLocaleDateString("en-US", DateFormat);
+        document.getElementById("4DayFromDateSelected").value = FourDaysAfter.toLocaleDateString("en-US", DateFormat);
+        document.getElementById("5DayFromDateSelected").value = FiveDaysAfter.toLocaleDateString("en-US", DateFormat);
+        document.getElementById("6DayFromDateSelected").value = SixDaysAfter.toLocaleDateString("en-US", DateFormat);
+        document.getElementById("7DayFromDateSelected").value = SevenDaysAfter.toLocaleDateString("en-US", DateFormat);
+    
+    
+        console.log(OneDayAfter)
+    
+    
+        
+
+    }   
     
    
 }

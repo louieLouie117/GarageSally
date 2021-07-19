@@ -568,7 +568,7 @@ input {
 
 /* multi form */
 #multiDayPost{
-	display: grid;
+	display: none;
 	row-gap: 10px;
 
 }
@@ -576,19 +576,23 @@ input {
 
 #multiDayPost form{
 	display: grid;
-	grid-template-columns: auto 50px;
+	grid-template-columns:  50px auto;
 	column-gap: 10px;
 
 }
 #multiDayPost form input{
 	background: white;
 	border: none;
-	text-align: right;
-	font: 1em sans-serif;
+	text-align: left;
+	font: 1.5em sans-serif;
 }
 
 #multiDayPost form button{
 	width: 40px;
 	height: 40px;
+	background: #b936d2;
+	font: 1.5em sans-serif;
+	color: white;
+	text-align: center;
 
 }
