@@ -564,3 +564,101 @@ input {
 .aboutGarageSally-container main p{
 	font: 1.7em sans-serif;
 }
+
+
+/* multi form */
+#multiDayPost{
+	display: none;
+	height: 70vh;
+	row-gap: 10px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	align-content: flex-start;
+	padding-bottom: 20px;
+
+}
+#multiDayPost>p{
+	padding-right: 10px;
+	font: 1.3em sans-serif;
+	width: 320px;
+}
+
+#multiDayPost>header{
+	display: grid;
+	column-gap: 10px;
+}
+
+#multiDayPost>header>main{
+	background: white;
+	display: grid;
+	grid-template-columns: 70px auto;
+	column-gap: 10px;
+}
+
+
+#multiDayPost>header button:first-of-type{
+	width: 70px;
+	background: #b936d2;
+	color: white;
+	text-align: center;
+	font: 1.3em sans-serif;
+
+
+}
+
+
+
+
+
+#multiDayPost form{
+	display: grid;
+	grid-template-columns:  50px auto;
+	column-gap: 10px;
+
+}
+#multiDayPost form input{
+	background: white;
+	border: none;
+	text-align: left;
+	font: 1.5em sans-serif;
+}
+
+#multiDayPost form button{
+	width: 40px;
+	height: 40px;
+	background: #b936d2;
+	font: 1.5em sans-serif;
+	color: white;
+	text-align: center;
+
+}
+
+#OneDayAfterForm{
+	margin-left: -120%;
+}
+
+#TwoDaysAfterForm{
+	margin-left: -220%;
+}
+
+#ThreeDaysAfterForm{
+	margin-left: -330%;
+
+}
+
+#FourDaysAfterForm{
+	margin-left: -440%;
+
+}
+#FiveDaysAfterForm{
+	margin-left: -550%;
+
+}
+#SixDaysAfterForm{
+	margin-left: -660%;
+
+}
+#SevenDaysAfterForm{
+	margin-left: -770%;
+
+}
