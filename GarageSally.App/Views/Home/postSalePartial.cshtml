@@ -20,7 +20,7 @@
                 let City = document.getElementById("CityUpgrade").value;
                 let State = document.getElementById("StateUpgrade").value;
                 let Zipcode = document.getElementById("ZipcodeUpgrade").value;
-                console.log("address", StreetNumber, StreetName, City, State, Zipcode)
+                @* console.log("address", StreetNumber, StreetName, City, State, Zipcode) *@
                 var jsonData = {
                     streetnumber: StreetNumber,
                     streetname: StreetName,
@@ -52,6 +52,8 @@
             $('#postForm').submit(function (event) {
                 event.preventDefault();
                 let startDate = $('#StartDate').val()
+                console.log("Start date:", startDate)
+
                 let startTime = $('#StartTime').val()
                 let endTime = $('#EndTime').val()
                 let description = $('#Description').val()
@@ -60,6 +62,46 @@
                 let city = $('#City').val()
                 let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
+
+                console.log(startDate);
+
+                var jsonData = {
+                    startDate: startDate,
+                    startTime: startTime,
+                    endTime: endTime,
+                    description: description,
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+                })
+            })
+            $('#OneDayAfterForm').submit(function (event) {
+                event.preventDefault();
+                alert("one day after date slected ");
+
+                let startDate = $('#1DayFromDateSelected').val()
+
+                let startTime = $('#StartTime').val()
+                let endTime = $('#EndTime').val()
+                let description = $('#Description').val()
+                let streetnumber = $('#StreetNumber').val()
+                let streetname = $('#StreetName').val()
+                let city = $('#City').val()
+                let state = $('#State').val()
+                let zipcode = $('#Zipcode').val()
+
+                console.log(startDate);
+
                 var jsonData = {
                     startDate: startDate,
                     startTime: startTime,
@@ -226,7 +268,9 @@
                 asp-route-id="@ViewBag.ToDisplay.UserId">
                     <header>
                         <h2 class="span2Columns">Date & Time:</h2>
-                        <input class="span2Columns" id="StartDate" type="date">
+                        <input class="span2Columns" id="StartDate" type="date" onchange="DateSelectedHandler(event)">
+
+
                         <label>Start Time:</label>
                         <input id="StartTime" type="time">
                         <label>End Time:</label>
@@ -249,9 +293,26 @@
                     </main>
 
                     <button type="submit" id="submitForm">Post Sale</button>
+
                     @* <input type="submit" value="Post Sale"> *@
                 </form>
+
+                <div id="multiDayPost">
+                    <form id="OneDayAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                    asp-route-id="@ViewBag.ToDisplay.UserId">
+                        <input id="1DayFromDateSelected" type="text">
+                        <button type="submit" id="submitForm">+</button>
+
+                        @* <input type="submit" value="Post Sale"> *@
+                    </form>
+                    <input id="2DayFromDateSelected" type="text">
+                    <input id="3DayFromDateSelected" type="text">
+                    <input id="4DayFromDateSelected" type="text">
+
+
+                </div>
             </div>
+
 
             <partial name="_userSales" />
 

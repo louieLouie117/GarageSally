@@ -564,3 +564,22 @@ input {
 .aboutGarageSally-container main p{
 	font: 1.7em sans-serif;
 }
+
+
+/* multi form */
+#multiDayPost{
+	display: grid;
+}
+
+
+#multiDayPost form{
+	display: grid;
+	grid-template-columns: auto 50px;
+
+}
+
+#multiDayPost form button{
+	width: 40px;
+	height: 40px;
+
+}

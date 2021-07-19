@@ -64,6 +64,47 @@ const profile = (e) =>{
 }
 
 
+const DateSelectedHandler = (e) =>{
+    
+    const DateFormat = {
+        weekday: "long",
+        month: "long",
+        day: "numeric"
+    };
+  
+  let OneDayAfter =  new Date(e.target.value)
+  OneDayAfter.setDate(OneDayAfter.getDate() + 2);
+
+
+  let TwoDaysAfter =  new Date(e.target.value)
+  TwoDaysAfter.setDate(TwoDaysAfter.getDate() + 3);
+
+  let ThreeDaysAfter =  new Date(e.target.value)
+  ThreeDaysAfter.setDate(ThreeDaysAfter.getDate() + 4);
+
+  let FourDaysAfter =  new Date(e.target.value)
+  FourDaysAfter.setDate(FourDaysAfter.getDate() + 5);
+
+
+
+    document.getElementById("1DayFromDateSelected").value = OneDayAfter.toLocaleDateString("en-US", DateFormat);;
+    document.getElementById("2DayFromDateSelected").value = TwoDaysAfter;
+    document.getElementById("3DayFromDateSelected").value = ThreeDaysAfter;
+    document.getElementById("4DayFromDateSelected").value = FourDaysAfter;
+
+    console.log(OneDayAfter)
+
+
+    
+    
+    
+    
+   
+}
+
+
+
+
 let postSaleEvent = "close"
 
 const postSalePartialHandler = (e) =>{
