@@ -569,7 +569,12 @@ input {
 /* multi form */
 #multiDayPost{
 	display: none;
+	height: 70vh;
 	row-gap: 10px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	align-content: flex-start;
+	padding-bottom: 20px;
 
 }
 #multiDayPost>p{
