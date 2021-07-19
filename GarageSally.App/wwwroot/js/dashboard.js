@@ -85,12 +85,25 @@ const DateSelectedHandler = (e) =>{
   let FourDaysAfter =  new Date(e.target.value)
   FourDaysAfter.setDate(FourDaysAfter.getDate() + 5);
 
+  let FiveDaysAfter =  new Date(e.target.value)
+  FiveDaysAfter.setDate(FiveDaysAfter.getDate() + 6);
+
+  let SixDaysAfter =  new Date(e.target.value)
+  SixDaysAfter.setDate(SixDaysAfter.getDate() + 7);
+
+  let SevenDaysAfter =  new Date(e.target.value)
+  SevenDaysAfter.setDate(SevenDaysAfter.getDate() + 8);
 
 
-    document.getElementById("1DayFromDateSelected").value = OneDayAfter.toLocaleDateString("en-US", DateFormat);;
-    document.getElementById("2DayFromDateSelected").value = TwoDaysAfter;
-    document.getElementById("3DayFromDateSelected").value = ThreeDaysAfter;
-    document.getElementById("4DayFromDateSelected").value = FourDaysAfter;
+
+    document.getElementById("1DayFromDateSelected").value = OneDayAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("2DayFromDateSelected").value = TwoDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("3DayFromDateSelected").value = ThreeDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("4DayFromDateSelected").value = FourDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("5DayFromDateSelected").value = FiveDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("6DayFromDateSelected").value = SixDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("7DayFromDateSelected").value = SevenDaysAfter.toLocaleDateString("en-US", DateFormat);
+
 
     console.log(OneDayAfter)
 

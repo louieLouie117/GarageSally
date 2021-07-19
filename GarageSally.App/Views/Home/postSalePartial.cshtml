@@ -122,6 +122,232 @@
                     complete: CompleteStatus
                 })
             })
+
+            $('#TwoDaysAfterForm').submit(function (event) {
+                event.preventDefault();
+                alert("one day after date slected ");
+
+                let startDate = $('#2DayFromDateSelected').val()
+
+                let startTime = $('#StartTime').val()
+                let endTime = $('#EndTime').val()
+                let description = $('#Description').val()
+                let streetnumber = $('#StreetNumber').val()
+                let streetname = $('#StreetName').val()
+                let city = $('#City').val()
+                let state = $('#State').val()
+                let zipcode = $('#Zipcode').val()
+
+                console.log(startDate);
+
+                var jsonData = {
+                    startDate: startDate,
+                    startTime: startTime,
+                    endTime: endTime,
+                    description: description,
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+                })
+            })
+
+            $('#ThreeDaysAfterForm').submit(function (event) {
+                event.preventDefault();
+                alert("one day after date slected ");
+
+                let startDate = $('#3DayFromDateSelected').val()
+
+                let startTime = $('#StartTime').val()
+                let endTime = $('#EndTime').val()
+                let description = $('#Description').val()
+                let streetnumber = $('#StreetNumber').val()
+                let streetname = $('#StreetName').val()
+                let city = $('#City').val()
+                let state = $('#State').val()
+                let zipcode = $('#Zipcode').val()
+
+                console.log(startDate);
+
+                var jsonData = {
+                    startDate: startDate,
+                    startTime: startTime,
+                    endTime: endTime,
+                    description: description,
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+                })
+            })
+
+            $('#FourDaysAfterForm').submit(function (event) {
+                event.preventDefault();
+                alert("one day after date slected ");
+
+                let startDate = $('#4DayFromDateSelected').val()
+
+                let startTime = $('#StartTime').val()
+                let endTime = $('#EndTime').val()
+                let description = $('#Description').val()
+                let streetnumber = $('#StreetNumber').val()
+                let streetname = $('#StreetName').val()
+                let city = $('#City').val()
+                let state = $('#State').val()
+                let zipcode = $('#Zipcode').val()
+
+                console.log(startDate);
+
+                var jsonData = {
+                    startDate: startDate,
+                    startTime: startTime,
+                    endTime: endTime,
+                    description: description,
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+                })
+            })
+            $('#FiveDaysAfterForm').submit(function (event) {
+                event.preventDefault();
+                alert("one day after date slected ");
+
+                let startDate = $('#5DayFromDateSelected').val()
+
+                let startTime = $('#StartTime').val()
+                let endTime = $('#EndTime').val()
+                let description = $('#Description').val()
+                let streetnumber = $('#StreetNumber').val()
+                let streetname = $('#StreetName').val()
+                let city = $('#City').val()
+                let state = $('#State').val()
+                let zipcode = $('#Zipcode').val()
+
+                console.log(startDate);
+
+                var jsonData = {
+                    startDate: startDate,
+                    startTime: startTime,
+                    endTime: endTime,
+                    description: description,
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+                })
+            })
+
+            $('#SixDaysAfterForm').submit(function (event) {
+                event.preventDefault();
+                alert("one day after date slected ");
+
+                let startDate = $('#6DayFromDateSelected').val()
+
+                let startTime = $('#StartTime').val()
+                let endTime = $('#EndTime').val()
+                let description = $('#Description').val()
+                let streetnumber = $('#StreetNumber').val()
+                let streetname = $('#StreetName').val()
+                let city = $('#City').val()
+                let state = $('#State').val()
+                let zipcode = $('#Zipcode').val()
+
+                console.log(startDate);
+
+                var jsonData = {
+                    startDate: startDate,
+                    startTime: startTime,
+                    endTime: endTime,
+                    description: description,
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+                })
+            })
+            $('#SevenDaysAfterForm').submit(function (event) {
+                event.preventDefault();
+                alert("one day after date slected ");
+
+                let startDate = $('#7DayFromDateSelected').val()
+
+                let startTime = $('#StartTime').val()
+                let endTime = $('#EndTime').val()
+                let description = $('#Description').val()
+                let streetnumber = $('#StreetNumber').val()
+                let streetname = $('#StreetName').val()
+                let city = $('#City').val()
+                let state = $('#State').val()
+                let zipcode = $('#Zipcode').val()
+
+                console.log(startDate);
+
+                var jsonData = {
+                    startDate: startDate,
+                    startTime: startTime,
+                    endTime: endTime,
+                    description: description,
+                    streetnumber: streetnumber,
+                    streetname: streetname,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PostGarageSaleHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+                })
+            })
             const SuccessStatus = (result) => {
                 console.log("Success...", result);
                 $('#userPostsList').load("/displayUserGarageSales #userPostsList", data => {
@@ -129,13 +355,13 @@
                     RenderUserPost(data);
                 });
                 LoadData();
-                document.getElementById("postSalePartial").style.marginLeft = "-700px";
-                document.getElementById("postSalePartial").style.transform = "smooth";
-                document.getElementById("postSalePartial").style.transition = "1s";
-                document.getElementById("updatesSupportPartial").style.marginLeft = "0";
-                document.getElementById("updatesSupportPartial").style.transform = "smooth";
-                document.getElementById("updatesSupportPartial").style.transition = "1s";
-                document.getElementById("usersGarageSalesPartial").style.display = "grid";
+                @* document.getElementById("postSalePartial").style.marginLeft = "-700px";
+                        document.getElementById("postSalePartial").style.transform = "smooth";
+                        document.getElementById("postSalePartial").style.transition = "1s";
+                        document.getElementById("updatesSupportPartial").style.marginLeft = "0";
+                        document.getElementById("updatesSupportPartial").style.transform = "smooth";
+                        document.getElementById("updatesSupportPartial").style.transition = "1s";
+                        document.getElementById("usersGarageSalesPartial").style.display = "grid"; *@
             };
             const ErrorStatus = (xhr, status, strErr) => {
                 console.log("There was an error!");
@@ -300,14 +526,59 @@
                 <div id="multiDayPost">
                     <form id="OneDayAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
                     asp-route-id="@ViewBag.ToDisplay.UserId">
-                        <input id="1DayFromDateSelected" type="text">
+                        <input id="1DayFromDateSelected" type="text" disabled>
                         <button type="submit" id="submitForm">+</button>
 
                         @* <input type="submit" value="Post Sale"> *@
                     </form>
-                    <input id="2DayFromDateSelected" type="text">
-                    <input id="3DayFromDateSelected" type="text">
-                    <input id="4DayFromDateSelected" type="text">
+
+                    <form id="TwoDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                    asp-route-id="@ViewBag.ToDisplay.UserId">
+                        <input id="2DayFromDateSelected" type="text" disabled>
+                        <button type="submit" id="submitForm">+</button>
+
+                        @* <input type="submit" value="Post Sale"> *@
+                    </form>
+
+                    <form id="ThreeDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                    asp-route-id="@ViewBag.ToDisplay.UserId">
+                        <input id="3DayFromDateSelected" type="text" disabled>
+                        <button type="submit" id="submitForm">+</button>
+
+                        @* <input type="submit" value="Post Sale"> *@
+                    </form>
+
+                    <form id="FourDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                    asp-route-id="@ViewBag.ToDisplay.UserId">
+                        <input id="4DayFromDateSelected" type="text" disabled>
+                        <button type="submit" id="submitForm">+</button>
+
+                        @* <input type="submit" value="Post Sale"> *@
+                    </form>
+
+                    <form id="FiveDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                    asp-route-id="@ViewBag.ToDisplay.UserId">
+                        <input id="5DayFromDateSelected" type="text" disabled>
+                        <button type="submit" id="submitForm">+</button>
+
+                        @* <input type="submit" value="Post Sale"> *@
+                    </form>
+
+                    <form id="SixDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                    asp-route-id="@ViewBag.ToDisplay.UserId">
+                        <input id="6DayFromDateSelected" type="text" disabled>
+                        <button type="submit" id="submitForm">+</button>
+
+                        @* <input type="submit" value="Post Sale"> *@
+                    </form>
+
+                    <form id="SevenDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                    asp-route-id="@ViewBag.ToDisplay.UserId">
+                        <input id="7DayFromDateSelected" type="text" disabled>
+                        <button type="submit" id="submitForm">+</button>
+
+                        @* <input type="submit" value="Post Sale"> *@
+                    </form>
 
 
                 </div>
