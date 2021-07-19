@@ -572,6 +572,36 @@ input {
 	row-gap: 10px;
 
 }
+#multiDayPost>p{
+	padding-right: 10px;
+	font: 1.3em sans-serif;
+	width: 320px;
+}
+
+#multiDayPost>header{
+	display: grid;
+	column-gap: 10px;
+}
+
+#multiDayPost>header>main{
+	background: white;
+	display: grid;
+	grid-template-columns: 70px auto;
+}
+
+
+#multiDayPost>header button:first-of-type{
+	width: 70px;
+	background: #b936d2;
+	color: white;
+	text-align: center;
+	font: 1.3em sans-serif;
+
+
+}
+
+
+
 
 
 #multiDayPost form{
@@ -594,5 +624,35 @@ input {
 	font: 1.5em sans-serif;
 	color: white;
 	text-align: center;
+
+}
+
+#OneDayAfterForm{
+	margin-left: -120%;
+}
+
+#TwoDaysAfterForm{
+	margin-left: -220%;
+}
+
+#ThreeDaysAfterForm{
+	margin-left: -330%;
+
+}
+
+#FourDaysAfterForm{
+	margin-left: -440%;
+
+}
+#FiveDaysAfterForm{
+	margin-left: -550%;
+
+}
+#SixDaysAfterForm{
+	margin-left: -660%;
+
+}
+#SevenDaysAfterForm{
+	margin-left: -770%;
 
 }

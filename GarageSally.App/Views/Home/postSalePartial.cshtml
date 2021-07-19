@@ -51,6 +51,7 @@
             };
             $('#postForm').submit(function (event) {
                 event.preventDefault();
+
                 let startDate = $('#StartDate').val()
                 console.log("Start date:", startDate)
 
@@ -87,7 +88,11 @@
             })
             $('#OneDayAfterForm').submit(function (event) {
                 event.preventDefault();
-                alert("one day after date slected ");
+
+                document.querySelector("#OneDayAfterForm").style.marginLeft = "-100%";
+                document.getElementById("OneDayAfterForm").style.transform = "smooth";
+                document.getElementById("OneDayAfterForm").style.transition = "1s";
+
 
                 let startDate = $('#1DayFromDateSelected').val()
 
@@ -121,11 +126,17 @@
                     error: ErrorStatus,
                     complete: CompleteStatus
                 })
+
+
+
             })
 
             $('#TwoDaysAfterForm').submit(function (event) {
                 event.preventDefault();
-                alert("one day after date slected ");
+
+                document.querySelector("#TwoDaysAfterForm").style.marginLeft = "-100%";
+                document.getElementById("TwoDaysAfterForm").style.transform = "smooth";
+                document.getElementById("TwoDaysAfterForm").style.transition = "1s";
 
                 let startDate = $('#2DayFromDateSelected').val()
 
@@ -163,7 +174,10 @@
 
             $('#ThreeDaysAfterForm').submit(function (event) {
                 event.preventDefault();
-                alert("one day after date slected ");
+
+                document.querySelector("#ThreeDaysAfterForm").style.marginLeft = "-100%";
+                document.getElementById("ThreeDaysAfterForm").style.transform = "smooth";
+                document.getElementById("ThreeDaysAfterForm").style.transition = "1s";
 
                 let startDate = $('#3DayFromDateSelected').val()
 
@@ -201,7 +215,9 @@
 
             $('#FourDaysAfterForm').submit(function (event) {
                 event.preventDefault();
-                alert("one day after date slected ");
+                document.querySelector("#FourDaysAfterForm").style.marginLeft = "-100%";
+                document.getElementById("FourDaysAfterForm").style.transform = "smooth";
+                document.getElementById("FourDaysAfterForm").style.transition = "1s";
 
                 let startDate = $('#4DayFromDateSelected').val()
 
@@ -238,7 +254,9 @@
             })
             $('#FiveDaysAfterForm').submit(function (event) {
                 event.preventDefault();
-                alert("one day after date slected ");
+                document.querySelector("#FiveDaysAfterForm").style.marginLeft = "-100%";
+                document.getElementById("FiveDaysAfterForm").style.transform = "smooth";
+                document.getElementById("FiveDaysAfterForm").style.transition = "1s";
 
                 let startDate = $('#5DayFromDateSelected').val()
 
@@ -276,7 +294,9 @@
 
             $('#SixDaysAfterForm').submit(function (event) {
                 event.preventDefault();
-                alert("one day after date slected ");
+                document.querySelector("#SixDaysAfterForm").style.marginLeft = "-100%";
+                document.getElementById("SixDaysAfterForm").style.transform = "smooth";
+                document.getElementById("SixDaysAfterForm").style.transition = "1s";
 
                 let startDate = $('#6DayFromDateSelected').val()
 
@@ -313,7 +333,9 @@
             })
             $('#SevenDaysAfterForm').submit(function (event) {
                 event.preventDefault();
-                alert("one day after date slected ");
+                document.querySelector("#SevenDaysAfterForm").style.marginLeft = "-100%";
+                document.getElementById("SevenDaysAfterForm").style.transform = "smooth";
+                document.getElementById("SevenDaysAfterForm").style.transition = "1s";
 
                 let startDate = $('#7DayFromDateSelected').val()
 
@@ -355,10 +377,9 @@
                     RenderUserPost(data);
                 });
                 LoadData();
-                document.querySelector("#NewPostForm").style.display = "none";
-                document.querySelector("#multiDayPost").style.display = "grid";
-                document.querySelector("#PostSaleTitle1").innerText = "Your sale has been listed."
-                document.querySelector("#PostSaleTitle2").innerText = "Post on others dates and increase your sales."
+                document.querySelector("#multiDayPost").style.display = "grid"
+                document.querySelector("#NewPostForm").style.display = "none"
+                document.querySelector("#PostSaleTitle1").innerText = "Your sale is now listed. Would you like to list your sale on other dates?"
 
 
 
@@ -488,8 +509,6 @@
                 <h2>@ViewBag.ToDisplay.FirstName</h2>
             </header>
 
-            <h2 id="PostSaleTitle1">Post a new garage sale.</h2>
-            <h3 id="PostSaleTitle2">Get discovered.</h3>
 
 
             <div class="form-postContainer" id="NewPostForm">
@@ -529,7 +548,19 @@
 
             </div>
 
+
             <div id="multiDayPost">
+                <p id="PostSaleTitle1"></p>
+
+                <header id="ListSaleDate">
+
+                    <main>
+                        <button onclick="PostToOtherDates(event)">Yes</button>
+                        <button onclick="PostToOtherDates(event)">No, thank you</button>
+                    </main>
+                </header>
+
+
                 <form id="OneDayAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
                 asp-route-id="@ViewBag.ToDisplay.UserId">
                     <button type="submit" id="submitForm">+</button>
@@ -586,7 +617,8 @@
                     @* <input type="submit" value="Post Sale"> *@
                 </form>
 
-                <button onclick="DateSelectedHandler(event)">Done</button>
+                <button onclick="PostToOtherDates(event)">Done</button>
+
 
 
             </div>

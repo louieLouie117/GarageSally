@@ -65,8 +65,55 @@ const profile = (e) =>{
 
 
 const DateSelectedHandler = (e) =>{
-    if(e.target.innerText === "Done"){
-        document.querySelector("#multiDayPost").style.display = "none";
+
+    const DateFormat = {
+        weekday: "long",
+        month: "long",
+        day: "numeric"
+    };
+  
+  let OneDayAfter =  new Date(e.target.value)
+  OneDayAfter.setDate(OneDayAfter.getDate() + 2);
+
+  let TwoDaysAfter =  new Date(e.target.value)
+  TwoDaysAfter.setDate(TwoDaysAfter.getDate() + 3);
+
+  let ThreeDaysAfter =  new Date(e.target.value)
+  ThreeDaysAfter.setDate(ThreeDaysAfter.getDate() + 4);
+
+  let FourDaysAfter =  new Date(e.target.value)
+  FourDaysAfter.setDate(FourDaysAfter.getDate() + 5);
+
+  let FiveDaysAfter =  new Date(e.target.value)
+  FiveDaysAfter.setDate(FiveDaysAfter.getDate() + 6);
+
+  let SixDaysAfter =  new Date(e.target.value)
+  SixDaysAfter.setDate(SixDaysAfter.getDate() + 7);
+
+  let SevenDaysAfter =  new Date(e.target.value)
+  SevenDaysAfter.setDate(SevenDaysAfter.getDate() + 8);
+
+
+
+    document.getElementById("1DayFromDateSelected").value = OneDayAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("2DayFromDateSelected").value = TwoDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("3DayFromDateSelected").value = ThreeDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("4DayFromDateSelected").value = FourDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("5DayFromDateSelected").value = FiveDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("6DayFromDateSelected").value = SixDaysAfter.toLocaleDateString("en-US", DateFormat);
+    document.getElementById("7DayFromDateSelected").value = SevenDaysAfter.toLocaleDateString("en-US", DateFormat);
+    console.log(OneDayAfter)
+
+
+}
+
+
+const PostToOtherDates =(e) =>{
+
+    if(e.target.innerText === "No, thank you" || e.target.innerText === "Done"  ){
+
+        document.querySelector("#ListSaleDate").style.display = "grid";
+        document.querySelector("#multiDayPost").style.display = "none"
         document.querySelector("#NewPostForm").style.display = "grid";
         document.getElementById("postSalePartial").style.marginLeft = "-700px";
         document.getElementById("postSalePartial").style.transform = "smooth";
@@ -76,51 +123,80 @@ const DateSelectedHandler = (e) =>{
         document.getElementById("updatesSupportPartial").style.transition = "1s";
         document.getElementById("usersGarageSalesPartial").style.display = "grid";
         document.querySelector("#PostSaleTitle1").innerText = "List your garage sale."
-        document.querySelector("#PostSaleTitle2").innerText = "Get discovered."
-    }else{
-        const DateFormat = {
-            weekday: "long",
-            month: "long",
-            day: "numeric"
-        };
-      
-      let OneDayAfter =  new Date(e.target.value)
-      OneDayAfter.setDate(OneDayAfter.getDate() + 2);
+
+        
+        document.querySelector("#OneDayAfterForm").style.marginLeft = "-100%";
+        document.getElementById("OneDayAfterForm").style.transform = "smooth";
+        document.getElementById("OneDayAfterForm").style.transition = "1s";
+
+        document.querySelector("#TwoDaysAfterForm").style.marginLeft = "-220%";
+        document.getElementById("TwoDaysAfterForm").style.transform = "smooth";
+        document.getElementById("TwoDaysAfterForm").style.transition = "1.2s";
+
+        document.querySelector("#ThreeDaysAfterForm").style.marginLeft = "-330%";
+        document.getElementById("ThreeDaysAfterForm").style.transform = "smooth";
+        document.getElementById("ThreeDaysAfterForm").style.transition = "1.3s";
+
+
+        document.querySelector("#FourDaysAfterForm").style.marginLeft = "-440%";
+        document.getElementById("FourDaysAfterForm").style.transform = "smooth";
+        document.getElementById("FourDaysAfterForm").style.transition = "1.4s";
+
+
+        document.querySelector("#FiveDaysAfterForm").style.marginLeft = "-550%";
+        document.getElementById("FiveDaysAfterForm").style.transform = "smooth";
+        document.getElementById("FiveDaysAfterForm").style.transition = "1.5s";
+
+        document.querySelector("#SixDaysAfterForm").style.marginLeft = "-660%";
+        document.getElementById("SixDaysAfterForm").style.transform = "smooth";
+        document.getElementById("SixDaysAfterForm").style.transition = "1.6s";
+
+
+        document.querySelector("#SevenDaysAfterForm").style.marginLeft = "-770%";
+        document.getElementById("SevenDaysAfterForm").style.transform = "smooth";
+        document.getElementById("SevenDaysAfterForm").style.transition = "1.7s";
+
+
+
+    }
     
-    
-      let TwoDaysAfter =  new Date(e.target.value)
-      TwoDaysAfter.setDate(TwoDaysAfter.getDate() + 3);
-    
-      let ThreeDaysAfter =  new Date(e.target.value)
-      ThreeDaysAfter.setDate(ThreeDaysAfter.getDate() + 4);
-    
-      let FourDaysAfter =  new Date(e.target.value)
-      FourDaysAfter.setDate(FourDaysAfter.getDate() + 5);
-    
-      let FiveDaysAfter =  new Date(e.target.value)
-      FiveDaysAfter.setDate(FiveDaysAfter.getDate() + 6);
-    
-      let SixDaysAfter =  new Date(e.target.value)
-      SixDaysAfter.setDate(SixDaysAfter.getDate() + 7);
-    
-      let SevenDaysAfter =  new Date(e.target.value)
-      SevenDaysAfter.setDate(SevenDaysAfter.getDate() + 8);
-    
-    
-    
-        document.getElementById("1DayFromDateSelected").value = OneDayAfter.toLocaleDateString("en-US", DateFormat);
-        document.getElementById("2DayFromDateSelected").value = TwoDaysAfter.toLocaleDateString("en-US", DateFormat);
-        document.getElementById("3DayFromDateSelected").value = ThreeDaysAfter.toLocaleDateString("en-US", DateFormat);
-        document.getElementById("4DayFromDateSelected").value = FourDaysAfter.toLocaleDateString("en-US", DateFormat);
-        document.getElementById("5DayFromDateSelected").value = FiveDaysAfter.toLocaleDateString("en-US", DateFormat);
-        document.getElementById("6DayFromDateSelected").value = SixDaysAfter.toLocaleDateString("en-US", DateFormat);
-        document.getElementById("7DayFromDateSelected").value = SevenDaysAfter.toLocaleDateString("en-US", DateFormat);
-    
-    
-        console.log(OneDayAfter)
-    
+    if(e.target.innerText === "Yes"){  
+
+        
+        document.querySelector("#OneDayAfterForm").style.marginLeft = "0%";
+        document.getElementById("OneDayAfterForm").style.transform = "smooth";
+        document.getElementById("OneDayAfterForm").style.transition = "1s";
+
+        document.querySelector("#TwoDaysAfterForm").style.marginLeft = "0%";
+        document.getElementById("TwoDaysAfterForm").style.transform = "smooth";
+        document.getElementById("TwoDaysAfterForm").style.transition = "1.2s";
+
+        document.querySelector("#ThreeDaysAfterForm").style.marginLeft = "0%";
+        document.getElementById("ThreeDaysAfterForm").style.transform = "smooth";
+        document.getElementById("ThreeDaysAfterForm").style.transition = "1.3s";
+
+
+        document.querySelector("#FourDaysAfterForm").style.marginLeft = "0%";
+        document.getElementById("FourDaysAfterForm").style.transform = "smooth";
+        document.getElementById("FourDaysAfterForm").style.transition = "1.4s";
+
+
+        document.querySelector("#FiveDaysAfterForm").style.marginLeft = "0%";
+        document.getElementById("FiveDaysAfterForm").style.transform = "smooth";
+        document.getElementById("FiveDaysAfterForm").style.transition = "1.5s";
+
+        document.querySelector("#SixDaysAfterForm").style.marginLeft = "0%";
+        document.getElementById("SixDaysAfterForm").style.transform = "smooth";
+        document.getElementById("SixDaysAfterForm").style.transition = "1.6s";
+
+
+        document.querySelector("#SevenDaysAfterForm").style.marginLeft = "0%";
+        document.getElementById("SevenDaysAfterForm").style.transform = "smooth";
+        document.getElementById("SevenDaysAfterForm").style.transition = "1.7s";
     
         
+        document.querySelector("#ListSaleDate").style.display = "none";
+        document.querySelector("#PostSaleTitle1").innerText = "+ add to other days."
 
     }   
     
