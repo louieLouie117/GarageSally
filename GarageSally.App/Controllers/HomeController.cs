@@ -556,18 +556,56 @@ namespace UserLogin.Controllers
         }
 
         //Processing Login-------------------------------------------------
+        // [HttpPost("login")]
+        // public IActionResult Login(LoginUser userSubmission)
+        // {
+        //     DashboardWrapper wMod = new DashboardWrapper();
+        //     if (ModelState.IsValid)
+        //     {
+        //         User userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
+        //         if (userInDb == null)
+        //         {
+        //             ModelState.AddModelError("Email", "Invalid Email/Password");
+        //             // return View("login");
+        //             return RedirectToAction("index");
+
+        //         }
+        //         var hasher = new PasswordHasher<LoginUser>();
+        //         var result = hasher.VerifyHashedPassword(userSubmission, userInDb.Password, userSubmission.Password);
+        //         if (result == 0)
+        //         {
+        //             // Still need these for debugging? Console.Writelines should be removed
+        //             // something else should happer here besides a WriteLine
+        //             Console.WriteLine("Password error");
+        //             return View("index", wMod);
+        //         }
+        //         HttpContext.Session.SetInt32("UserId", userInDb.UserId);
+        //         HttpContext.Session.SetString("UserState", userInDb.State);
+        //         return RedirectToAction("dashboard");
+        //     }
+        //     return View("index", wMod);
+        // }
+
         [HttpPost("login")]
-        public IActionResult Login(LoginUser userSubmission)
+        public JsonResult Login(LoginUser userSubmission)
         {
+
+            System.Console.WriteLine("you reach the backend!!");
+            System.Console.WriteLine($"email {userSubmission.Email}");
+            System.Console.WriteLine($"password {userSubmission.Password}");
+
             DashboardWrapper wMod = new DashboardWrapper();
+
             if (ModelState.IsValid)
             {
                 User userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
                 if (userInDb == null)
                 {
+                    Console.WriteLine($"email error");
+
                     ModelState.AddModelError("Email", "Invalid Email/Password");
-                    // return View("login");
-                    return RedirectToAction("index");
+                    return Json(new { Status = false });
+
 
                 }
                 var hasher = new PasswordHasher<LoginUser>();
@@ -577,14 +615,27 @@ namespace UserLogin.Controllers
                     // Still need these for debugging? Console.Writelines should be removed
                     // something else should happer here besides a WriteLine
                     Console.WriteLine("Password error");
-                    return View("index", wMod);
+                    return Json(new { Status = false });
+
+
                 }
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
                 HttpContext.Session.SetString("UserState", userInDb.State);
-                return RedirectToAction("dashboard");
+                Console.WriteLine("Success user is register");
+
+                return Json(new { Status = true });
+
             }
-            return View("index", wMod);
+            return Json(new { Status = false });
+
         }
+
+        [HttpGet("SendToDashboard")]
+        public IActionResult SendToDashboard()
+        {
+            return RedirectToAction("dashboard");
+        }
+
 
         [HttpGet("logout")]
         public IActionResult logout()
