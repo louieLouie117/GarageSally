@@ -604,7 +604,8 @@ namespace UserLogin.Controllers
                     Console.WriteLine($"email error");
 
                     ModelState.AddModelError("Email", "Invalid Email/Password");
-                    return Json(new { Status = "false email error" });
+                    var ErrorString = "email error";
+                    return Json(new { Status = false, result = ErrorString });
 
 
                 }
