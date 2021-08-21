@@ -46,12 +46,16 @@
             })
 
             const SuccessStatusLogin = (result) => {
-                console.log("You have sucessfuly sign in...", result);
-                window.location.href = '@Url.Action("SendToDashboard", "Home")'
+                if (result.status === true) {
+                    window.location.href = '@Url.Action("SendToDashboard", "Home")'
+
+                } else {
+                    console.log("You do not have access..", result);
+
+                }
             };
             const ErrorStatusLogin = (xhr, status, strErr, result) => {
                 console.log("There was an error when upgrading!", result);
-                result.preventDefault()
 
             };
             const CompleteStatusLogin = (xhr, status) => {
