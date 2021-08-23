@@ -1,0 +1,112 @@
+@using UserLogin.Models
+@model LoginUser
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="~/css/regLog.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WGFK1GC4RE');
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#LoginAjax").submit(e => {
+                e.preventDefault();
+
+                let loginEmail = $("#LoginEmail").val();
+                let loginPassword = $("#LoginPassword").val();
+
+                let jsonData = {
+                    email: loginEmail,
+                    password: loginPassword
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Login", "Home")',
+                    data: jsonData,
+                    success: SuccessStatusLogin,
+                    error: ErrorStatusLogin,
+                    complete: CompleteStatusLogin
+
+                })
+            })
+
+            const SuccessStatusLogin = (result) => {
+
+                if (result.status === "Access Granted") {
+                    window.location.href = '@Url.Action("SendToDashboard", "Home")'
+                }
+
+                if (result.status === "email error") {
+                    console.log("email error", result.status);
+                    document.querySelector('#emailError').innerText = "email error";
+                }
+
+                if (result.status === "password error") {
+                    console.log("password error", result.status);
+                    document.querySelector('#passwordError').innerText = "password error";
+                }
+
+                if (result.status === false && document.querySelector('#LoginEmail').value === "") {
+                    console.log("email can not be empty!", result)
+                    document.querySelector('#emailError').innerText = "email can not be empty";
+                }
+
+                if (result.status === false && document.querySelector('#LoginPassword').value === "") {
+                    console.log("email can not be empty!", result)
+                    document.querySelector('#passwordError').innerText = "password can not be empty";
+                }
+
+            };
+
+            const ErrorStatusLogin = (xhr, status, strErr, result) => {
+                console.log("There was an error when upgrading!", result);
+
+            };
+            const CompleteStatusLogin = (xhr, status) => {
+                console.log("Upgaded has completed...");
+            };
+
+        })
+    </script>
+
+</head>
+
+<body>
+    <div class="form-container" id="SignInHeight">
+        <h3>Welcome back</h3>
+
+        <form id="LoginAjax" asp-controller="Home">
+            <span asp-validation-for="Email"></span>
+            <label for="LoginEmail" id="emailError"></label>
+            <input id="LoginEmail" placeholder="email" onclick="SignInErrorHandler(event)">
+
+            <label for="LoginEmail" id="passwordError" type="email"></label>
+            <input id="LoginPassword" placeholder="password" type="password" onclick="SignInErrorHandler(event)">
+            <button type="submit">log in</button>
+            @* <input class="btn" type="submit" value="submit"> *@
+        </form>
+        <button onclick="SignInDirectionsHandler(event)">Register as a new user.</button>
+
+    </div>
+    @* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#B936D2" fill-opacity="1"
+        d="M0,96L60,117.3C120,139,240,181,360,165.3C480,149,600,75,720,48C840,21,960,43,1080,90.7C1200,139,1320,213,1380,250.7L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+        </path>
+        </svg> *@
+</body>
+
+</html>
