@@ -604,8 +604,7 @@ namespace UserLogin.Controllers
                     Console.WriteLine($"email error");
 
                     ModelState.AddModelError("Email", "Invalid Email/Password");
-                    var ErrorString = "email error";
-                    return Json(new { Status = false, result = ErrorString });
+                    return Json(new { Status = "email error" });
 
 
                 }
@@ -616,8 +615,7 @@ namespace UserLogin.Controllers
                     // Still need these for debugging? Console.Writelines should be removed
                     // something else should happer here besides a WriteLine
                     Console.WriteLine("Password error");
-                    var ErrorString = "password error";
-                    return Json(new { Status = false, result = ErrorString });
+                    return Json(new { Status = "password error" });
 
 
                 }
@@ -625,7 +623,7 @@ namespace UserLogin.Controllers
                 HttpContext.Session.SetString("UserState", userInDb.State);
                 Console.WriteLine("Success user is register");
 
-                return Json(new { Status = true });
+                return Json(new { Status = "Access Granted" });
 
             }
             Console.WriteLine("No access");

@@ -23,7 +23,6 @@
     <script>
         $(document).ready(function () {
             $("#LoginAjax").submit(e => {
-                alert("button was click ");
                 e.preventDefault();
 
                 let loginEmail = $("#LoginEmail").val();
@@ -46,14 +45,33 @@
             })
 
             const SuccessStatusLogin = (result) => {
-                if (result.status === true) {
+
+                if (result.status === "Access Granted") {
                     window.location.href = '@Url.Action("SendToDashboard", "Home")'
-
-                } else {
-                    console.log("You do not have access..", result.result);
-
                 }
+
+                if (result.status === "email error") {
+                    console.log("email error", result.status);
+                    document.querySelector('#emailError').innerText = "email error";
+                }
+
+                if (result.status === "password error") {
+                    console.log("password error", result.status);
+                    document.querySelector('#passwordError').innerText = "password error";
+                }
+
+                if (result.status === false && document.querySelector('#LoginEmail').value === "") {
+                    console.log("email can not be empty!", result)
+                    document.querySelector('#emailError').innerText = "email can not be empty";
+                }
+
+                if (result.status === false && document.querySelector('#LoginPassword').value === "") {
+                    console.log("email can not be empty!", result)
+                    document.querySelector('#passwordError').innerText = "password can not be empty";
+                }
+
             };
+
             const ErrorStatusLogin = (xhr, status, strErr, result) => {
                 console.log("There was an error when upgrading!", result);
 
@@ -73,8 +91,11 @@
 
         <form id="LoginAjax" asp-controller="Home">
             <span asp-validation-for="Email"></span>
-            <input id="LoginEmail" placeholder="Email">
-            <input id="LoginPassword" placeholder="Password" type="password">
+            <label for="LoginEmail" id="emailError"></label>
+            <input id="LoginEmail" placeholder="email" onclick="SignInErrorHandler(event)">
+
+            <label for="LoginEmail" id="passwordError" type="email"></label>
+            <input id="LoginPassword" placeholder="password" type="password" onclick="SignInErrorHandler(event)">
             <button type="submit">log in</button>
             @* <input class="btn" type="submit" value="submit"> *@
         </form>
