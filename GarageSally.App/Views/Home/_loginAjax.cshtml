@@ -53,21 +53,29 @@
                 if (result.status === "email error") {
                     console.log("email error", result.status);
                     document.querySelector('#emailError').innerText = "email error";
+                    document.querySelector('#LoginEmail').style.borderColor = "rgb(232, 30, 30)";
+
                 }
 
                 if (result.status === "password error") {
                     console.log("password error", result.status);
                     document.querySelector('#passwordError').innerText = "password error";
+                    document.querySelector('#LoginPassword').style.borderColor = "rgb(232, 30, 30)";
+
                 }
 
                 if (result.status === false && document.querySelector('#LoginEmail').value === "") {
                     console.log("email can not be empty!", result)
                     document.querySelector('#emailError').innerText = "email can not be empty";
+                    document.querySelector('#LoginEmail').style.borderColor = "rgb(232, 30, 30)";
+
                 }
 
                 if (result.status === false && document.querySelector('#LoginPassword').value === "") {
                     console.log("email can not be empty!", result)
                     document.querySelector('#passwordError').innerText = "password can not be empty";
+                    document.querySelector('#LoginPassword').style.borderColor = "rgb(232, 30, 30)";
+
                 }
 
             };

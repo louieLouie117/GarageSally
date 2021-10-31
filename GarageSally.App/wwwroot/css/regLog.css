@@ -15,8 +15,14 @@ button{
 
 input{
     color: black;
+    border: solid 1px black;
+    
 }
 
+
+input:focus{
+	outline: none;
+}
 
 
  ::-webkit-scrollbar {
@@ -57,7 +63,7 @@ input{
 
 .form-container form>label{
     font: 1.1em sans-serif;
-    color: rgb(203, 0, 0);
+    color: rgb(232, 30, 30);
 }
 
 #SignInHeight{

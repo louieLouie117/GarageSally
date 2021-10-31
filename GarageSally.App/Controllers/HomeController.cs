@@ -461,6 +461,7 @@ namespace UserLogin.Controllers
                 Console.WriteLine("Fix your errors!");
                 return View("index", wMod);
             }
+
             FromForm.AccountType = AccountType.Buyer;
             FromForm.SubscriptionStatus = SubscriptionStatus.Free;
             FromForm.FirstName = "";
@@ -539,6 +540,9 @@ namespace UserLogin.Controllers
                 return View("index", wMod);
             }
         }
+
+
+
 
         [HttpPost("profile/update")]
         public async Task<IActionResult> UpdateProfile(User FromForm)
