@@ -197,49 +197,37 @@ h1,h2,h3,p{
 
     }
 
+    .landingPage-container>header main{
+        grid-template-columns: 1fr 130px;
     
-.freeAccount-container{
+    }
+    
+    .freeAccount-container{
  
     padding-top: 120px;
    
-}
+    }
     .landingPage-container>main{
         display: grid;
         margin-top: 100px;
     
     }
 
-
-
     .landingPage-container>main section aside h3{
         font-size: 3em;
 
     }
-
-
-
-
-
-   
 
     .landingPage-container>header p{
         padding-top: 10px;
         font-family: cursive;
     }
 
-
-
-
     .freeAccount-container{
         align-items: center;
         display: grid;
         grid-template-columns: 450px 1fr 1fr;
-
-
-
     }
-
- 
 
     .freeAccount-container>aside{
         margin-top: 0;
@@ -250,8 +238,6 @@ h1,h2,h3,p{
         align-items: center;
         height: 450px;
         box-shadow: -3px 0px 3px rgba(0, 0, 0, 0.179);
-
-
 
     }
 
@@ -458,7 +444,7 @@ h1,h2,h3,p{
     display: flex;
     column-gap: 200px;
     justify-content: center;
-    margin: 120px 0;
+    margin: 50px 0;
 }
     
 }

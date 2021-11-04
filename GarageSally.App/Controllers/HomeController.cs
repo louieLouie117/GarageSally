@@ -223,6 +223,19 @@ namespace UserLogin.Controllers
             return Json(new { data = garageSaleItems });
         }
 
+
+
+        [HttpGet("ListedGarageSaleCount")]
+        public JsonResult ListedGarageSaleCount()
+        {
+            // Still need these for debugging? Console.Writelines should be removed
+            DashboardWrapper wMode = new DashboardWrapper();
+            List<GarageSale> garageSaleItems = _context.GarageSales
+            .ToList();
+            return Json(new { data = garageSaleItems.Count });
+        }
+
+
         [HttpGet("displayUserGarageSales")]
         public JsonResult displayUserGarageSales()
         {
