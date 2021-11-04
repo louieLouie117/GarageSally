@@ -37,13 +37,15 @@ const SignInDirectionsHandler = (e) =>{
         document.querySelector("#regNewUserHeading").innerText = "Register for a free account and get access to directions."
         
     }
-    if(e.target.innerText === "Register as a new user."){
+    if(e.target.innerText === "Register as a new user."  || e.target.innerText == "sign up"){
         document.querySelector("#FreeAccount").style.left ="0%"
         document.querySelector("#FreeAccount").style.transition = "1s";
         document.querySelector("#FreeAccount").style.transform = "smooth";
         document.querySelector("#regNewUserHeading").innerText = "Become a new member of Garage Sally community."
 
     }
+
+    
 
     if(e.target.innerText === "share"){
         alert("Please copy and share this message on your favorite social media? I just found this free website www.garagesally.com to post, find, and share garage sales in our community. ");

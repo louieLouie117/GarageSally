@@ -223,6 +223,19 @@ namespace UserLogin.Controllers
             return Json(new { data = garageSaleItems });
         }
 
+
+
+        [HttpGet("ListedGarageSaleCount")]
+        public JsonResult ListedGarageSaleCount()
+        {
+            // Still need these for debugging? Console.Writelines should be removed
+            DashboardWrapper wMode = new DashboardWrapper();
+            List<GarageSale> garageSaleItems = _context.GarageSales
+            .ToList();
+            return Json(new { data = garageSaleItems.Count });
+        }
+
+
         [HttpGet("displayUserGarageSales")]
         public JsonResult displayUserGarageSales()
         {
@@ -461,6 +474,7 @@ namespace UserLogin.Controllers
                 Console.WriteLine("Fix your errors!");
                 return View("index", wMod);
             }
+
             FromForm.AccountType = AccountType.Buyer;
             FromForm.SubscriptionStatus = SubscriptionStatus.Free;
             FromForm.FirstName = "";
@@ -539,6 +553,9 @@ namespace UserLogin.Controllers
                 return View("index", wMod);
             }
         }
+
+
+
 
         [HttpPost("profile/update")]
         public async Task<IActionResult> UpdateProfile(User FromForm)
