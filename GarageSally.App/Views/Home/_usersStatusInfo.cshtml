@@ -9,17 +9,30 @@
 
     <script>
         $(document).ready(function () {
+
+            $.get("/SellerCount", data => {
+                $(`<section>
+                        <h2>Seller on garage sally</h2>
+                        <p>${data.data}</p>
+                        </section>`).appendTo("#GargeSaleData");
+            });
+
             $.get("/ListedGarageSaleCount", data => {
 
                 $(`<section>
-                    <h2>Sales Listed</h2>
+                    <h2>Listed garage sales.</h2>
                     <p>${data.data}</p>
                 </section>`).prependTo("#GargeSaleData");
             });
 
-            const RenderListedSales = (data) => {
-                $.each(data.data, function (i, v) { })
-            }
+            $.get("/BuyersCount", data => {
+
+                $(`<section>
+                    <h2>People using garage sally</h2>
+                    <p>${data.data}</p>
+                </section>`).appendTo("#GargeSaleData");
+            });
+
         })
     </script>
 
@@ -31,18 +44,6 @@
 
     <footer>
         <div class="userStatus-container" id="GargeSaleData">
-
-
-            <section>
-                <h2>Sellers</h2>
-                <p>150</p>
-            </section>
-
-            <section>
-                <h2>Peopel looking for garage sales</h2>
-                <p>150</p>
-            </section>
-
 
         </div>
     </footer>

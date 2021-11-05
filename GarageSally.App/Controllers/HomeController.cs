@@ -228,12 +228,33 @@ namespace UserLogin.Controllers
         [HttpGet("ListedGarageSaleCount")]
         public JsonResult ListedGarageSaleCount()
         {
-            // Still need these for debugging? Console.Writelines should be removed
-            DashboardWrapper wMode = new DashboardWrapper();
             List<GarageSale> garageSaleItems = _context.GarageSales
             .ToList();
             return Json(new { data = garageSaleItems.Count });
         }
+
+
+        [HttpGet("SellerCount")]
+        public JsonResult SellerCount()
+        {
+            List<User> sellerCount = _context.Users
+            .Where(us => us.AccountType == AccountType.Seller)
+            .ToList();
+            return Json(new { data = sellerCount.Count });
+        }
+
+
+        [HttpGet("BuyersCount")]
+        public JsonResult BuyersCount()
+        {
+            List<User> BuyersCount = _context.Users
+            .Where(us => us.AccountType == AccountType.Buyer)
+            .ToList();
+            return Json(new { data = BuyersCount.Count });
+        }
+
+
+
 
 
         [HttpGet("displayUserGarageSales")]
