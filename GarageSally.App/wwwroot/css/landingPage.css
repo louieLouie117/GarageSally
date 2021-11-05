@@ -423,24 +423,23 @@ h1,h2,h3,p{
 
 .userStatus-container section{
     display: grid;
-    row-gap: 30px;
+    row-gap: 10px;
     justify-items: center;
 }
 
 
 .userStatus-container section h2{
-    font: 2em sans-serif;
+    font: 1.9em sans-serif;
 }
 
 
 
 .userStatus-container section p{
-    font: 3em sans-serif;
-    border: solid black 1px;
+    font: 3.1em sans-serif;
     padding: 20px;
     border-radius: 100px;
     height: 50px;
-    width: 50px;
+    width: 250px;
     text-align: center;
     background: #B936D2;
     color: white;
