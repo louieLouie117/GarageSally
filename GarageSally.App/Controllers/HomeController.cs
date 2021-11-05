@@ -248,7 +248,7 @@ namespace UserLogin.Controllers
         public JsonResult BuyersCount()
         {
             List<User> BuyersCount = _context.Users
-            .Where(us => us.AccountType == AccountType.Buyer)
+            // .Where(us => us.AccountType == AccountType.Buyer)
             .ToList();
             return Json(new { data = BuyersCount.Count });
         }
