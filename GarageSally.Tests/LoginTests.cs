@@ -5,13 +5,13 @@ using UserLogin.Models;
 
 namespace GarageSally.Tests
 {
-    public class UserTests
+    public class LoginTests
     {
-        private readonly LoginUser _loginUser;
+        private readonly LoginUser _LoginUser;
 
-        public UserTests()
+        public LoginTests()
         {
-            _loginUser = new LoginUser();
+            _LoginUser = new LoginUser();
         }
 
         [Fact]

@@ -135,3 +135,11 @@ const SellerStateHandler =(e)=>{
 }
 
 
+const SignInErrorHandler = (e) =>{
+    document.querySelector('#passwordError').innerText = "";
+    document.querySelector('#emailError').innerText = "";
+
+}
+
+
+

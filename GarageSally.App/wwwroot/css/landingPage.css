@@ -15,6 +15,9 @@ h1,h2,h3,p{
     row-gap: 10px;
 
 }
+
+
+
 .landingPage-container>header picture img{
     width: 300px;
 }
@@ -39,10 +42,13 @@ h1,h2,h3,p{
 
 .landingPage-container>header main{
     display: grid;
+    grid-template-columns: 1fr 100px;
     column-gap: 10px;
     padding-top: 20px;
     width: 100%;
+    justify-items: flex-end;
 }
+
 
 
 
@@ -51,11 +57,18 @@ h1,h2,h3,p{
     border: none;
     height: 40px;
     border-radius: 5px;
-    color:#B936D2;
-    font: 1.3em sans-serif;
+    color: #B936D2;
+    font: 1.2em sans-serif;
     text-decoration: underline;
-    justify-self: flex-end;
-    width: 140px;
+    padding: 10px;
+}
+
+.landingPage-container>header main button:last-of-type {
+    justify-self: flex-start;
+    background: #B936D2;
+    text-decoration: none;
+    color: white;
+    border-radius: 100px;
 }
 
 .landingPage-container>main{
@@ -65,6 +78,7 @@ h1,h2,h3,p{
 
 .landingPage-container>main>section{
     display: grid;
+    height: 100%;
     justify-content: center;
     row-gap: 20px;
 
@@ -88,7 +102,7 @@ h1,h2,h3,p{
 
 .landingPage-container>main section h2{
     font: 3.3em sans-serif;
-    color: #B936D2;
+    color: black;
     line-height: 45px;
 
 }
@@ -183,49 +197,37 @@ h1,h2,h3,p{
 
     }
 
+    .landingPage-container>header main{
+        grid-template-columns: 1fr 130px;
     
-.freeAccount-container{
+    }
+    
+    .freeAccount-container{
  
     padding-top: 120px;
    
-}
+    }
     .landingPage-container>main{
         display: grid;
         margin-top: 100px;
     
     }
 
-
-
     .landingPage-container>main section aside h3{
         font-size: 3em;
 
     }
-
-
-
-
-
-   
 
     .landingPage-container>header p{
         padding-top: 10px;
         font-family: cursive;
     }
 
-
-
-
     .freeAccount-container{
         align-items: center;
         display: grid;
         grid-template-columns: 450px 1fr 1fr;
-
-
-
     }
-
- 
 
     .freeAccount-container>aside{
         margin-top: 0;
@@ -236,8 +238,6 @@ h1,h2,h3,p{
         align-items: center;
         height: 450px;
         box-shadow: -3px 0px 3px rgba(0, 0, 0, 0.179);
-
-
 
     }
 
@@ -411,8 +411,51 @@ h1,h2,h3,p{
 
 
 
+/* User status and information */
+
+.userStatus-container{
+    display: grid;
+    row-gap: 70px;
+    justify-items: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.userStatus-container section{
+    display: grid;
+    row-gap: 30px;
+    justify-items: center;
+}
+
+
+.userStatus-container section h2{
+    font: 2em sans-serif;
+}
+
+
+
+.userStatus-container section p{
+    font: 3em sans-serif;
+    border: solid black 1px;
+    padding: 20px;
+    border-radius: 100px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    background: #B936D2;
+    color: white;
+
+}
 
 @media screen and (min-width: 1100px){
 
+.userStatus-container{
+    display: flex;
+    column-gap: 200px;
+    justify-content: center;
+    margin: 50px 0;
+}
     
 }
+
+

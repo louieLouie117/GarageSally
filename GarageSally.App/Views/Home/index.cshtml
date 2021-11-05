@@ -42,7 +42,9 @@
         <header>
 
             <main>
+                <button id="SignInBTN" onclick="SignInDirectionsHandler(event)">sign up</button>
                 <button id="SignInBTN" onclick="ShowLogin()">sign in</button>
+
             </main>
             <h1>Garage Sally</h1>
             <picture>
@@ -63,8 +65,9 @@
 
             <button onclick="HideLogin()">Close</button>
 
-            <partial name="loginPartial" model="@Model.LoginUser" view-data="ViewData" />
+            <partial name="_loginAjax" model="@Model.LoginUser" view-data="ViewData" />
         </div>
+
 
         <main>
 
@@ -121,6 +124,12 @@
 
             </section>
         </main>
+
+        <partial name="_usersStatusInfo" view-data="ViewData" />
+
+
+
+
 
     </div>
 </body>

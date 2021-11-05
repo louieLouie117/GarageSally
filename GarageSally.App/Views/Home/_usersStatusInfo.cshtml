@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <script>
+        $(document).ready(function () {
+
+            $.get("/SellerCount", data => {
+                $(`<section>
+                        <h2>Seller on garage sally</h2>
+                        <p>${data.data}</p>
+                        </section>`).appendTo("#GargeSaleData");
+            });
+
+            $.get("/ListedGarageSaleCount", data => {
+
+                $(`<section>
+                    <h2>Listed garage sales.</h2>
+                    <p>${data.data}</p>
+                </section>`).prependTo("#GargeSaleData");
+            });
+
+            $.get("/BuyersCount", data => {
+
+                $(`<section>
+                    <h2>People using garage sally</h2>
+                    <p>${data.data}</p>
+                </section>`).appendTo("#GargeSaleData");
+            });
+
+        })
+    </script>
+
+
+</head>
+
+
+<body>
+
+    <footer>
+        <div class="userStatus-container" id="GargeSaleData">
+
+        </div>
+    </footer>
+</body>
+
+</html>

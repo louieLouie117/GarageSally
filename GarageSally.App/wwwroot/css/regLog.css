@@ -15,8 +15,14 @@ button{
 
 input{
     color: black;
+    border: solid 1px black;
+    
 }
 
+
+input:focus{
+	outline: none;
+}
 
 
  ::-webkit-scrollbar {
@@ -46,16 +52,22 @@ input{
     z-index: 2;
     border-radius: 10px;
     align-items: flex-end;
+    row-gap: 15px;
 
 }
 
 .form-container form{
     display: grid;
-    row-gap: 5px;
+    row-gap: 10px;
+}
+
+.form-container form>label{
+    font: 1.1em sans-serif;
+    color: rgb(232, 30, 30);
 }
 
 #SignInHeight{
-    height: 200px;
+    height: 300px;
 }
 
 
