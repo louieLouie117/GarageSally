@@ -1,0 +1,62 @@
+{
+    "background_color": "#b936d2",
+    "description": "Garage Sally helps people list and find garage sales. Create a free account and start listing and finding garage sales.",
+    "dir": "ltr",
+    "display": "standalone",
+    "name": "garage sally",
+    "orientation": "any",
+    "scope": "https://www.garagesallyapp.com/",
+    "short_name": "garage sally",
+    "start_url": "https://www.garagesallyapp.com/",
+    "theme_color": "#b936d2",
+    "icons": [
+        {
+            "src": "~/assets/manifest/24Icon.png",
+            "sizes": "24x24",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/Assets/favIcon.png",
+            "type": "image/png",
+            "sizes": "32x32"
+        },
+        
+        {
+        "src": "~/assets/manifest/48Icon.png",
+        "sizes": "48Icon.png",
+        "type": "image/png"
+        },
+    
+        {
+            "src": "~/assets/manifest/192Icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "~/assets/manifest/256Icon.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "~/assets/manifest/384Icon.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "https://www.garagesallyapp.com/assets/manifest/512Icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "features": [
+        "Cross Platform",
+        "fast",
+        "simple"
+      ],
+    
+      "categories": [
+        "utility",
+        "shopping"
+      ],
+    "shortcuts": []
+  }
