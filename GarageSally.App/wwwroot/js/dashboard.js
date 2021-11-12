@@ -477,3 +477,12 @@ const ComingSoonNotice = (e) => {
 //     document.getElementById("mainMenu").style.transition = "1s";
     
 // };
+
+
+const ErrorLabelHandler = (e)=> {
+    if(e.target.id === "Description"){
+        document.querySelector("#DescriptionLabelError").innerHTML = ""
+        document.querySelector("#Description").style.border = "solid 1px black"
+
+    }
+}

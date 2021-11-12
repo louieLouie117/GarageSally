@@ -32,6 +32,9 @@ input {
 .hidden{
 	display: none;
 }
+#DescriptionLabelError{
+	color: red;
+}
 
 .userPicSmall{
 	height: 70px;

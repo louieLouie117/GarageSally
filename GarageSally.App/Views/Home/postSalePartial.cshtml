@@ -384,6 +384,9 @@
                         document.querySelector("#NewPostForm").style.display = "grid";
                         document.querySelector("#multiDayPost").style.display = "none"
                         document.querySelector("#DescriptionLabelError").innerHTML = "Description can not be empty!"
+                        document.querySelector("#Description").style.border = "solid 1px red"
+
+
 
 
 
@@ -541,8 +544,8 @@
                     <main>
                         <h2>Description:</h2>
                         <label for="Description" id="DescriptionLabelError"></label>
-                        <textarea id="Description" placeholder="describe what you have for sale."
-                        maxlength="250"></textarea>
+                        <textarea id="Description" onkeypress="ErrorLabelHandler(event)"
+                        placeholder="describe what you have for sale." maxlength="250"></textarea>
                         <h2>Location:</h2>
                         <div class="locationHeader">
                             <input id='StreetNumber' type='text' placeholder='street #:'>
