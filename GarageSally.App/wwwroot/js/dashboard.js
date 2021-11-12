@@ -233,7 +233,7 @@ const postSalePartialHandler = (e) =>{
         return (postSaleEvent = "close");
         }
 
-    if (e.target.innerText === "Post a sale" || "+") { 
+    if (e.target.innerText === "Post a sale" || "+" || "List a sale") { 
     document.getElementById("postSalePartial").style.marginLeft = "0";
     document.getElementById("postSalePartial").style.transform = "smooth";
     document.getElementById("postSalePartial").style.transition = "1s";

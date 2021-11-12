@@ -375,6 +375,20 @@
                 $('#userPostsList').load("/displayUserGarageSales #userPostsList", data => {
                     data = JSON.parse(data);
                     RenderUserPost(data);
+
+                    console.log("Drecitpion...", result.status);
+
+
+                    if (result.status === "Description can not be empty!") {
+                        console.log("Description can not be empty!")
+                        document.querySelector("#NewPostForm").style.display = "grid";
+                        document.querySelector("#multiDayPost").style.display = "none"
+                        document.querySelector("#DescriptionLabelError").innerHTML = "Description can not be empty!"
+
+
+
+                        return
+                    }
                 });
                 LoadData();
                 document.querySelector("#multiDayPost").style.display = "grid"
@@ -526,6 +540,7 @@
                     </header>
                     <main>
                         <h2>Description:</h2>
+                        <label for="Description" id="DescriptionLabelError"></label>
                         <textarea id="Description" placeholder="describe what you have for sale."
                         maxlength="250"></textarea>
                         <h2>Location:</h2>
@@ -540,7 +555,7 @@
                         </div>
                     </main>
 
-                    <button type="submit" id="submitForm">Post Sale</button>
+                    <button type="submit" id="submitForm">List Sale</button>
 
                     @* <input type="submit" value="Post Sale"> *@
                 </form>

@@ -89,6 +89,15 @@ namespace UserLogin.Controllers
         public IActionResult PostGarageSaleHandler(GarageSale FromForm)
         {
             // Still need these for debugging? Console.Writelines should be removed
+            if (FromForm.StreetNumber == null)
+            {
+                FromForm.StreetNumber = "";
+            }
+            if (FromForm.Description == null)
+            {
+                return Json(new { Status = "Description can not be empty!" });
+
+            }
             System.Console.WriteLine("you have reached the backend of post garage sale.");
             System.Console.WriteLine("test button was click");
             System.Console.WriteLine("the backend has been reached");
