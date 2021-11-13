@@ -33,6 +33,7 @@ input {
 	display: none;
 }
 
+
 .userPicSmall{
 	height: 70px;
 	width: 70px;
@@ -335,6 +336,11 @@ input {
 .form-postContainer form main {
 	display: grid;
 	row-gap: 10px;
+}
+
+#StartDateLabelError, #DescriptionLabelError, #AddressLabelErrors{
+	color: red;
+	font: 1em sans-serif;
 }
 
 .locationHeader {

@@ -89,14 +89,72 @@ namespace UserLogin.Controllers
         public IActionResult PostGarageSaleHandler(GarageSale FromForm)
         {
             // Still need these for debugging? Console.Writelines should be removed
+            if (FromForm.StartDate == DateTime.MinValue)
+            {
+                return Json(new { Status = "Date has not been selected!" });
+
+            }
+
+
+            if (FromForm.StartTime == DateTime.MinValue)
+            {
+                return Json(new { Status = "Start time has not be selected!" });
+
+            };
+
+            if (FromForm.EndTime == DateTime.MinValue)
+            {
+                return Json(new { Status = "End time has not be selected!" });
+
+            };
+            if (FromForm.StreetNumber == null)
+            {
+                FromForm.StreetNumber = "";
+            }
+
+            if (FromForm.Description == null)
+            {
+                return Json(new { Status = "Description can not be empty!" });
+
+            }
+
+            if (FromForm.StreetName == null)
+            {
+                return Json(new { Status = "Street name can not be empty!" });
+
+            }
+
+            if (FromForm.City == null)
+            {
+                return Json(new { Status = "City can not be empty!" });
+
+            }
+
+            if (FromForm.State == null)
+            {
+                return Json(new { Status = "State can not be empty!" });
+
+            }
+            if (FromForm.Zipcode == 0)
+            {
+                return Json(new { Status = "Zipcode can not be empty!" });
+
+            }
+
+
+
             System.Console.WriteLine("you have reached the backend of post garage sale.");
             System.Console.WriteLine("test button was click");
             System.Console.WriteLine("the backend has been reached");
             System.Console.WriteLine($"FromForm: {FromForm}");
+            System.Console.WriteLine($"ZipCode: {FromForm.StartDate}");
+            System.Console.WriteLine($"ZipCode: {FromForm.StartDate}");
+
             System.Console.WriteLine($"Street #: {FromForm.StreetNumber}");
             System.Console.WriteLine($"Street name: {FromForm.StreetName}");
             System.Console.WriteLine($"City: {FromForm.City}");
             System.Console.WriteLine($"ZipCode: {FromForm.Zipcode}");
+
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             var Entry = new GarageSale
             {

@@ -65,6 +65,8 @@ const profile = (e) =>{
 
 
 const DateSelectedHandler = (e) =>{
+    document.querySelector("#StartDateLabelError").innerHTML = ""
+    document.querySelector("#StartDate").style.border = "solid 1px black"
 
     const DateFormat = {
         weekday: "long",
@@ -233,7 +235,7 @@ const postSalePartialHandler = (e) =>{
         return (postSaleEvent = "close");
         }
 
-    if (e.target.innerText === "Post a sale" || "+") { 
+    if (e.target.innerText === "Post a sale" || "+" || "List a sale") { 
     document.getElementById("postSalePartial").style.marginLeft = "0";
     document.getElementById("postSalePartial").style.transform = "smooth";
     document.getElementById("postSalePartial").style.transition = "1s";
@@ -477,3 +479,47 @@ const ComingSoonNotice = (e) => {
 //     document.getElementById("mainMenu").style.transition = "1s";
     
 // };
+
+
+const ErrorLabelHandler = (e)=> {
+    if(e.target.id === "Description"){
+        document.querySelector("#DescriptionLabelError").innerHTML = ""
+        document.querySelector("#Description").style.border = "solid 1px black"
+
+    }
+
+    if(e.target.id === "StartTime"){
+        document.querySelector("#StartDateLabelError").innerHTML = ""
+        document.querySelector("#StartTime").style.border = "solid 1px black"
+    }
+
+    
+    if(e.target.id === "EndTime"){
+        document.querySelector("#StartDateLabelError").innerHTML = ""
+        document.querySelector("#EndTime").style.border = "solid 1px black"
+    }
+
+      
+    if(e.target.id === "StreetName"){
+        document.querySelector("#AddressLabelErrors").innerHTML = ""
+        document.querySelector("#StreetName").style.border = "solid 1px black"
+    }
+
+    if(e.target.id === "City"){
+        document.querySelector("#AddressLabelErrors").innerHTML = ""
+        document.querySelector("#City").style.border = "solid 1px black"
+    }
+
+    
+    if(e.target.id === "State"){
+        document.querySelector("#AddressLabelErrors").innerHTML = ""
+        document.querySelector("#State").style.border = "solid 1px black"
+    }
+    
+    if(e.target.id === "Zipcode"){
+        document.querySelector("#AddressLabelErrors").innerHTML = ""
+        document.querySelector("#Zipcode").style.border = "solid 1px black"
+    }
+
+
+}
