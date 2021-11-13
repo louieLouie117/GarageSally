@@ -65,6 +65,8 @@ const profile = (e) =>{
 
 
 const DateSelectedHandler = (e) =>{
+    document.querySelector("#StartDateLabelError").innerHTML = ""
+    document.querySelector("#StartDate").style.border = "solid 1px black"
 
     const DateFormat = {
         weekday: "long",
@@ -485,4 +487,16 @@ const ErrorLabelHandler = (e)=> {
         document.querySelector("#Description").style.border = "solid 1px black"
 
     }
+
+    if(e.target.id === "StartTime"){
+        document.querySelector("#StartDateLabelError").innerHTML = ""
+        document.querySelector("#StartTime").style.border = "solid 1px black"
+    }
+
+    
+    if(e.target.id === "EndTime"){
+        document.querySelector("#StartDateLabelError").innerHTML = ""
+        document.querySelector("#EndTime").style.border = "solid 1px black"
+    }
+
 }

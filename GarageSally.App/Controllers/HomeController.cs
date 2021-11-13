@@ -94,6 +94,19 @@ namespace UserLogin.Controllers
                 return Json(new { Status = "Date has not been selected!" });
 
             }
+
+
+            if (FromForm.StartTime == DateTime.MinValue)
+            {
+                return Json(new { Status = "Start time has not be selected!" });
+
+            };
+
+            if (FromForm.EndTime == DateTime.MinValue)
+            {
+                return Json(new { Status = "End time has not be selected!" });
+
+            };
             if (FromForm.StreetNumber == null)
             {
                 FromForm.StreetNumber = "";

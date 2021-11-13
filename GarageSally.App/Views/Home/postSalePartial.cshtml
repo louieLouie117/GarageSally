@@ -387,6 +387,26 @@
                         return
                     }
 
+                    if (result.status === "Start time has not be selected!") {
+                        console.log("Start time has not be selected!")
+                        document.querySelector("#NewPostForm").style.display = "grid";
+                        document.querySelector("#multiDayPost").style.display = "none"
+                        document.querySelector("#StartDateLabelError").innerHTML = "Start time must be selected!"
+                        document.querySelector("#StartTime").style.border = "solid 1px red"
+
+                        return
+                    }
+                    if (result.status === "End time has not be selected!") {
+                        console.log("Start time has not be selected!")
+                        document.querySelector("#NewPostForm").style.display = "grid";
+                        document.querySelector("#multiDayPost").style.display = "none"
+                        document.querySelector("#StartDateLabelError").innerHTML = "End time must be selected!"
+                        document.querySelector("#EndTime").style.border = "solid 1px red"
+
+                        return
+                    }
+
+
 
                     if (result.status === "Description can not be empty!") {
                         console.log("Description can not be empty!")
@@ -543,9 +563,9 @@
 
 
                         <label>Start Time:</label>
-                        <input id="StartTime" type="time">
+                        <input id="StartTime" type="time" onchange="ErrorLabelHandler(event)">
                         <label>End Time:</label>
-                        <input id="EndTime" type="time">
+                        <input id="EndTime" type="time" onchange="ErrorLabelHandler(event)">
                     </header>
                     <main>
                         <h2>Description:</h2>
