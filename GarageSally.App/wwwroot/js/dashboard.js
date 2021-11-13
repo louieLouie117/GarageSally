@@ -499,4 +499,27 @@ const ErrorLabelHandler = (e)=> {
         document.querySelector("#EndTime").style.border = "solid 1px black"
     }
 
+      
+    if(e.target.id === "StreetName"){
+        document.querySelector("#AddressLabelErrors").innerHTML = ""
+        document.querySelector("#StreetName").style.border = "solid 1px black"
+    }
+
+    if(e.target.id === "City"){
+        document.querySelector("#AddressLabelErrors").innerHTML = ""
+        document.querySelector("#City").style.border = "solid 1px black"
+    }
+
+    
+    if(e.target.id === "State"){
+        document.querySelector("#AddressLabelErrors").innerHTML = ""
+        document.querySelector("#State").style.border = "solid 1px black"
+    }
+    
+    if(e.target.id === "Zipcode"){
+        document.querySelector("#AddressLabelErrors").innerHTML = ""
+        document.querySelector("#Zipcode").style.border = "solid 1px black"
+    }
+
+
 }

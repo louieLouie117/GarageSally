@@ -417,6 +417,44 @@
 
                         return
                     }
+
+                    if (result.status === "Street name can not be empty!") {
+                        console.log("Street name can not be empty!")
+                        document.querySelector("#NewPostForm").style.display = "grid";
+                        document.querySelector("#multiDayPost").style.display = "none"
+                        document.querySelector("#AddressLabelErrors").innerHTML = "Street name can not be empty!"
+                        document.querySelector("#StreetName").style.border = "solid 1px red"
+
+                        return
+                    }
+
+                    if (result.status === "City can not be empty!") {
+                        console.log("City can not be empty!")
+                        document.querySelector("#NewPostForm").style.display = "grid";
+                        document.querySelector("#multiDayPost").style.display = "none"
+                        document.querySelector("#AddressLabelErrors").innerHTML = "City can not be empty!"
+                        document.querySelector("#City").style.border = "solid 1px red"
+
+                        return
+                    }
+                    if (result.status === "State can not be empty!") {
+                        console.log("State can not be empty!")
+                        document.querySelector("#NewPostForm").style.display = "grid";
+                        document.querySelector("#multiDayPost").style.display = "none"
+                        document.querySelector("#AddressLabelErrors").innerHTML = "State can not be empty!"
+                        document.querySelector("#State").style.border = "solid 1px red"
+
+                        return
+                    }
+                    if (result.status === "Zipcode can not be empty!") {
+                        console.log("Zipcode can not be empty!")
+                        document.querySelector("#NewPostForm").style.display = "grid";
+                        document.querySelector("#multiDayPost").style.display = "none"
+                        document.querySelector("#AddressLabelErrors").innerHTML = "Zipcode can not be empty!"
+                        document.querySelector("#Zipcode").style.border = "solid 1px red"
+
+                        return
+                    }
                 });
                 LoadData();
                 document.querySelector("#multiDayPost").style.display = "grid"
@@ -573,14 +611,17 @@
                         <textarea id="Description" onkeypress="ErrorLabelHandler(event)"
                         placeholder="describe what you have for sale." maxlength="250"></textarea>
                         <h2>Location:</h2>
+                        <label id="AddressLabelErrors"></label>
                         <div class="locationHeader">
-                            <input id='StreetNumber' type='text' placeholder='street #:'>
-                            <input id='StreetName' type='text' placeholder='Street Name: '>
+                            <input id='StreetNumber' type='text' placeholder='street #:'
+                            onkeypress="ErrorLabelHandler(event)">
+                            <input id='StreetName' type='text' placeholder='Street Name:'
+                            onkeypress="ErrorLabelHandler(event)">
                         </div>
                         <div class="locationFooter">
-                            <input id='City' type='text' placeholder='City:'>
-                            <input id='State' type='text' placeholder='State:'>
-                            <input id='Zipcode' type='text' placeholder='zipecode: '>
+                            <input id='City' type='text' placeholder='City:' onkeypress="ErrorLabelHandler(event)">
+                            <input id='State' type='text' placeholder='State:' onkeypress="ErrorLabelHandler(event)">
+                            <input id='Zipcode' type='text' placeholder='zipcode:' onkeypress="ErrorLabelHandler(event)">
                         </div>
                     </main>
 

@@ -117,6 +117,32 @@ namespace UserLogin.Controllers
                 return Json(new { Status = "Description can not be empty!" });
 
             }
+
+            if (FromForm.StreetName == null)
+            {
+                return Json(new { Status = "Street name can not be empty!" });
+
+            }
+
+            if (FromForm.City == null)
+            {
+                return Json(new { Status = "City can not be empty!" });
+
+            }
+
+            if (FromForm.State == null)
+            {
+                return Json(new { Status = "State can not be empty!" });
+
+            }
+            if (FromForm.Zipcode == 0)
+            {
+                return Json(new { Status = "Zipcode can not be empty!" });
+
+            }
+
+
+
             System.Console.WriteLine("you have reached the backend of post garage sale.");
             System.Console.WriteLine("test button was click");
             System.Console.WriteLine("the backend has been reached");

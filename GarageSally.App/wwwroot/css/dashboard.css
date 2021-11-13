@@ -338,7 +338,7 @@ input {
 	row-gap: 10px;
 }
 
-#StartDateLabelError, #DescriptionLabelError{
+#StartDateLabelError, #DescriptionLabelError, #AddressLabelErrors{
 	color: red;
 	font: 1em sans-serif;
 }
