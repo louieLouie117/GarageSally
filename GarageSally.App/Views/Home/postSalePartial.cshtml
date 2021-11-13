@@ -608,20 +608,20 @@
                     <main>
                         <h2>Description:</h2>
                         <label for="Description" id="DescriptionLabelError"></label>
-                        <textarea id="Description" onkeypress="ErrorLabelHandler(event)"
+                        <textarea id="Description" onkeydown="ErrorLabelHandler(event)"
                         placeholder="describe what you have for sale." maxlength="250"></textarea>
                         <h2>Location:</h2>
                         <label id="AddressLabelErrors"></label>
                         <div class="locationHeader">
                             <input id='StreetNumber' type='text' placeholder='street #:'
-                            onkeypress="ErrorLabelHandler(event)">
+                            onkeydown="ErrorLabelHandler(event)">
                             <input id='StreetName' type='text' placeholder='Street Name:'
-                            onkeypress="ErrorLabelHandler(event)">
+                            onkeydown="ErrorLabelHandler(event)">
                         </div>
                         <div class="locationFooter">
-                            <input id='City' type='text' placeholder='City:' onkeypress="ErrorLabelHandler(event)">
-                            <input id='State' type='text' placeholder='State:' onkeypress="ErrorLabelHandler(event)">
-                            <input id='Zipcode' type='text' placeholder='zipcode:' onkeypress="ErrorLabelHandler(event)">
+                            <input id='City' type='text' placeholder='City:' onkeydown="ErrorLabelHandler(event)">
+                            <input id='State' type='text' placeholder='State:' onkeydown="ErrorLabelHandler(event)">
+                            <input id='Zipcode' type='text' placeholder='zipcode:' onkeydown="ErrorLabelHandler(event)">
                         </div>
                     </main>
 
