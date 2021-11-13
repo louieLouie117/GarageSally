@@ -32,9 +32,7 @@ input {
 .hidden{
 	display: none;
 }
-#DescriptionLabelError{
-	color: red;
-}
+
 
 .userPicSmall{
 	height: 70px;
@@ -338,6 +336,11 @@ input {
 .form-postContainer form main {
 	display: grid;
 	row-gap: 10px;
+}
+
+#StartDateLabelError, #DescriptionLabelError{
+	color: red;
+	font: 1em sans-serif;
 }
 
 .locationHeader {

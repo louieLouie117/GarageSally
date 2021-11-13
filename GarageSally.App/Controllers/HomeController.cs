@@ -89,10 +89,16 @@ namespace UserLogin.Controllers
         public IActionResult PostGarageSaleHandler(GarageSale FromForm)
         {
             // Still need these for debugging? Console.Writelines should be removed
+            if (FromForm.StartDate == DateTime.MinValue)
+            {
+                return Json(new { Status = "Date has not been selected!" });
+
+            }
             if (FromForm.StreetNumber == null)
             {
                 FromForm.StreetNumber = "";
             }
+
             if (FromForm.Description == null)
             {
                 return Json(new { Status = "Description can not be empty!" });
@@ -102,10 +108,14 @@ namespace UserLogin.Controllers
             System.Console.WriteLine("test button was click");
             System.Console.WriteLine("the backend has been reached");
             System.Console.WriteLine($"FromForm: {FromForm}");
+            System.Console.WriteLine($"ZipCode: {FromForm.StartDate}");
+            System.Console.WriteLine($"ZipCode: {FromForm.StartDate}");
+
             System.Console.WriteLine($"Street #: {FromForm.StreetNumber}");
             System.Console.WriteLine($"Street name: {FromForm.StreetName}");
             System.Console.WriteLine($"City: {FromForm.City}");
             System.Console.WriteLine($"ZipCode: {FromForm.Zipcode}");
+
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             var Entry = new GarageSale
             {
