@@ -19,6 +19,49 @@
         gtag('js', new Date());
         gtag('config', 'G-WGFK1GC4RE');
     </script>
+
+    <script>
+        $(document).ready(() => {
+            console.log("Ajax is running on buyer register")
+            $("#RegisterBuyer").submit(e => {
+                e.preventDefault();
+
+                let BuyerEmail = $("#BuyerEmail").val();
+                let BuyerPassword = $("#BuyerPassword").val();
+                let BuyerConfirm = $("#BuyerConfirm").val();
+                let BuyerState = $("#BuyerState").val();
+                let BuyerZipcode = $("#BuyerZipcode").val();
+
+
+                let jsonData = {
+                    email: BuyerEmail,
+                    password: BuyerPassword,
+                    confirm: BuyerConfirm,
+                    state: BuyerState,
+                    zipcode: BuyerZipcode
+
+                }
+
+                console.log(jsonData)
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("RegisterBuyer", "Home")',
+                    data: jsonData,
+                    success: SuccessBuyerReg,
+                    @* error: ErrorBuyerReg, *@
+                    @* complete: CompleteBuyerReg *@
+                });
+
+        });
+        const SuccessBuyerReg = (result) => {
+            console.log("Buyer Reg Success result", result)
+        };
+
+        });
+    </script>
+
+
 </head>
 
 <body>
@@ -34,11 +77,11 @@
                 <h4 id="sectionHeading">Start a free account.</h4>
             </div>
 
-            <form asp-action="Redgister" asp-controller="Home" method="POST" enctype="multipart/form-data">
+            <form id="RegisterBuyer" asp-controller="Home" method="POST" enctype="multipart/form-data">
                 <div class="section1-container" id="section1Reg">
                     <span asp-validation-for="Email"></span>
                     <label class="hidden" for="email">email</label>
-                    <input asp-for="Email" placeholder="Email:">
+                    <input id="BuyerEmail" placeholder="Email:">
 
                     <button type="button" onclick="Step2Reg()">Next</button>
                 </div>
@@ -46,11 +89,11 @@
                 <div class="section2-container" id="section2Reg">
                     <label class="hidden" for="Password">Password</label>
                     <span asp-validation-for="Password"></span>
-                    <input asp-for="Password" placeholder="Password:">
+                    <input id="BuyerPassword" placeholder="Password:" type="password">
 
                     <label class="hidden" for="Confirm">Confirm Password</label>
                     <span asp-validation-for="Confirm"></span>
-                    <input asp-for="Confirm" placeholder="Confirm Password:">
+                    <input id="BuyerConfirm" placeholder="Confirm Password:" type="password">
 
                     <footer>
                         <button type="button" onclick="Step1Reg()">back</button>
@@ -77,11 +120,11 @@
                     <aside>
                         <label for="State">Select your state</label>
                         <partial name="_StateListBuyer" />
-                        <input asp-for="State" value="AL" class="hidden" placeholder="State:" id="BuyerState">
+                        <input id="BuyerState" value="AL" class="hidden" placeholder="State:" id="BuyerState">
 
                         <label class="hidden" for="Zipcode">zip code</label>
                         <span asp-validation-for="Zipcode"></span>
-                        <input asp-for="Zipcode" placeholder="Zipcode:">
+                        <input id="BuyerZipcode" placeholder="Zipcode:">
                     </aside>
 
                     <footer>
