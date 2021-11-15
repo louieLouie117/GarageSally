@@ -56,6 +56,52 @@
         });
         const SuccessBuyerReg = (result) => {
             console.log("Buyer Reg Success result", result)
+            if (result.status === "Email can not be empty!") {
+                Step1Reg();
+                document.getElementById("emailBuyerLabel").innerHTML = result.status;
+                document.getElementById("emailBuyerLabel").style.display = "block";
+                document.getElementById("emailBuyerLabel").style.color = "red";
+                document.getElementById("BuyerEmail").style.border = "red solid 2px";
+
+            }
+
+            if (result.status === "Password can not be empty!") {
+                Step2Reg();
+                document.getElementById("passwordBuyerLabel").innerHTML = result.status;
+                document.getElementById("passwordBuyerLabel").style.display = "block";
+                document.getElementById("passwordBuyerLabel").style.color = "red";
+                document.getElementById("BuyerPassword").style.border = "red solid 2px";
+
+            }
+
+
+            if (result.status === "Password do not match!") {
+                Step2Reg();
+                document.getElementById("passwordBuyerLabel").innerHTML = result.status;
+                document.getElementById("passwordBuyerLabel").style.display = "block";
+                document.getElementById("passwordBuyerLabel").style.color = "red";
+                document.getElementById("BuyerPassword").style.border = "red solid 2px";
+                document.getElementById("BuyerConfirm").style.border = "red solid 2px";
+
+
+            }
+
+
+
+
+            if (result.status === "Zipcode can not be empty!") {
+                Step3Reg();
+                document.getElementById("zipcodeBuyerLabel").innerHTML = result.status;
+                document.getElementById("zipcodeBuyerLabel").style.display = "block";
+                document.getElementById("zipcodeBuyerLabel").style.color = "red";
+                document.getElementById("BuyerZipcode").style.border = "red solid 2px";
+
+            }
+
+            if (result.status === "Successfully registered buyer!") {
+                window.location.href = '@Url.Action("SendToDashboard", "Home")'
+            }
+
         };
 
         });
@@ -79,20 +125,15 @@
 
             <form id="RegisterBuyer" asp-controller="Home" method="POST" enctype="multipart/form-data">
                 <div class="section1-container" id="section1Reg">
-                    <span asp-validation-for="Email"></span>
-                    <label class="hidden" for="email">email</label>
+                    <label class="hidden" id="emailBuyerLabel">email</label>
                     <input id="BuyerEmail" placeholder="Email:">
 
                     <button type="button" onclick="Step2Reg()">Next</button>
                 </div>
 
                 <div class="section2-container" id="section2Reg">
-                    <label class="hidden" for="Password">Password</label>
-                    <span asp-validation-for="Password"></span>
+                    <label class="hidden" id="passwordBuyerLabel">password</label>
                     <input id="BuyerPassword" placeholder="Password:" type="password">
-
-                    <label class="hidden" for="Confirm">Confirm Password</label>
-                    <span asp-validation-for="Confirm"></span>
                     <input id="BuyerConfirm" placeholder="Confirm Password:" type="password">
 
                     <footer>
@@ -118,11 +159,11 @@
                         </footer> *@
 
                     <aside>
+                        <label class="hidden" id="zipcodeBuyerLabel">zipecode</label>
                         <label for="State">Select your state</label>
                         <partial name="_StateListBuyer" />
                         <input id="BuyerState" value="AL" class="hidden" placeholder="State:" id="BuyerState">
 
-                        <label class="hidden" for="Zipcode">zip code</label>
                         <span asp-validation-for="Zipcode"></span>
                         <input id="BuyerZipcode" placeholder="Zipcode:">
                     </aside>
