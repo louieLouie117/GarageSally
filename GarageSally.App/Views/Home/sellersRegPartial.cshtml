@@ -140,7 +140,7 @@
                         <label id="State">Select your State</label>
                         <partial name="_StateListSeller" />
                         <input value="AL" placeholder="State:" class="hidden" id="SellerState">
-                        <input id="SellerZipcode" placeholder="zipcode:">
+                        <input id="SellerZipcode" placeholder="zipcode:" onkeydown="RegErrorHandler(event)">
 
 
                     </aside>
@@ -149,9 +149,9 @@
 
                 <div class="section2-container" id="section2SellerReg">
 
-                        <label class="hidden" for="Zipcode" id="emailSellerLabel"></label>
+                        <label class="hidden" for="Email" id="emailSellerLabel"></label>
 
-                    <input id="SellerEmail" placeholder="Email:">
+                    <input id="SellerEmail" placeholder="email:" onkeydown="RegErrorHandler(event)">
 
                     <footer>
                         <button type="button" onclick="Step1SellerReg()">back</button>
@@ -162,10 +162,10 @@
                 <div class="section3-container" id="section3SellerReg">
                         <label class="hidden" for="Zipcode" id="passwordSellerLabel">Password</label>
 
-                    <input id="SellerPassword" placeholder="Password:" type="password">
+                    <input id="SellerPassword" placeholder="password:" type="password" onkeydown="RegErrorHandler(event)">
 
                     <label class="hidden" for="Confirm">Confirm Password</label>
-                    <input id="SellerConfirm" placeholder="Confirm Password:" type="password">
+                    <input id="SellerConfirm" placeholder="confirm password:" type="password" onkeydown="RegErrorHandler(event)">
                     @* <img src="~/img/Assets/placeholder.png" alt="">
                             <p>Incress discoverability by adding a photo to your profile.</p>
                             <input asp-for="files" type="file" multiple> *@

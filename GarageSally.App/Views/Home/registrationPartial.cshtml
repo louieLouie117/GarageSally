@@ -136,7 +136,7 @@
             <form id="RegisterBuyer" asp-controller="Home" method="POST" enctype="multipart/form-data">
                 <div class="section1-container" id="section1Reg">
                     <label class="hidden" id="emailBuyerLabel">email</label>
-                    <input id="BuyerEmail" placeholder="email:" onkeydown="BuyerRegErrorHandler(event)">
+                    <input id="BuyerEmail" placeholder="email:" onkeydown="RegErrorHandler(event)">
 
                     <button type="button" onclick="Step2Reg()">Next</button>
                 </div>
@@ -144,9 +144,9 @@
                 <div class="section2-container" id="section2Reg">
                     <label class="hidden" id="passwordBuyerLabel">password</label>
                     <input id="BuyerPassword" placeholder="password:" type="password"
-                        onkeydown="BuyerRegErrorHandler(event)">
+                        onkeydown="RegErrorHandler(event)">
                     <input id="BuyerConfirm" placeholder="confirm password:" type="password"
-                        onkeydown="BuyerRegErrorHandler(event)">
+                        onkeydown="RegErrorHandler(event)">
 
                     <footer>
                         <button type="button" onclick="Step1Reg()">back</button>

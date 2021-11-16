@@ -74,7 +74,7 @@ const SearchStateHandler = (e) =>{
 }
 
 
-const BuyerRegErrorHandler = (e)=>{
+const RegErrorHandler = (e)=>{
     if(e.target.id === "BuyerEmail"){
         document.getElementById("emailBuyerLabel").innerHTML = "Email";
         document.getElementById("emailBuyerLabel").style.display = "none";
@@ -100,5 +100,36 @@ const BuyerRegErrorHandler = (e)=>{
         document.getElementById("zipcodeBuyerLabel").innerHTML = "zipcode";
         document.getElementById("zipcodeBuyerLabel").style.display = "none";
         document.getElementById("BuyerZipcode").style.border = "black solid 1px";
+    }
+
+
+    // seller validations
+
+    if(e.target.id === "SellerZipcode"){
+        document.getElementById("zipcodeSellerLabel").innerHTML = "zipcode";
+        document.getElementById("zipcodeSellerLabel").style.display = "none";
+        document.getElementById("SellerZipcode").style.border = "black solid 1px";
+    }
+
+    if(e.target.id === "SellerEmail"){
+        document.getElementById("emailSellerLabel").innerHTML = "Seller";
+        document.getElementById("emailSellerLabel").style.display = "none";
+        document.getElementById("SellerEmail").style.border = "black solid 1px";
+
+    }
+
+    if(e.target.id === "SellerPassword"){
+        document.getElementById("passwordSellerLabel").innerHTML = "password";
+        document.getElementById("passwordSellerLabel").style.display = "none";
+        document.getElementById("SellerPassword").style.border = "black solid 1px";
+        document.getElementById("SellerConfirm").style.border = "black solid 1px";
+
+    }
+
+    if(e.target.id === "SellerConfirm"){
+        document.getElementById("passwordSellerLabel").innerHTML = "password";
+        document.getElementById("passwordSellerLabel").style.display = "none";
+        document.getElementById("SellerPassword").style.border = "black solid 1px";
+        document.getElementById("SellerConfirm").style.border = "black solid 1px";
     }
 }
