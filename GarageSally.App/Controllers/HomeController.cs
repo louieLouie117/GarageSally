@@ -575,7 +575,7 @@ namespace UserLogin.Controllers
         public JsonResult RegisterBuyer(User FromForm)
         {
 
-            System.Console.WriteLine($"You have reached the backend of buyer registration! {FromForm.Zipcode}");
+            System.Console.WriteLine($"You have reached the backend of buyer registration! {FromForm.Email}");
             // DashboardWrapper wMod = new DashboardWrapper();
 
             if (FromForm.Email == null)
@@ -630,11 +630,23 @@ namespace UserLogin.Controllers
                 HttpContext.Session.SetString("UserState", _context.Users.FirstOrDefault(i => i.State == FromForm.State).State);
                 // Still need these for debugging? Console.Writelines should be removed
                 Console.WriteLine("You may contine!");
-                return Json(new { Status = "You successfully registered buyer!" });
+                return Json(new { Status = "Successfully registered buyer!" });
 
             }
 
 
+
+
+        }
+
+
+        [HttpPost("SellerRegistration")]
+        public JsonResult SellerRegistration(User FromForm)
+        {
+
+            System.Console.WriteLine("You have reach the back end of seller registration");
+
+            return Json(new { Status = "You successfully registered seller!" });
 
 
         }

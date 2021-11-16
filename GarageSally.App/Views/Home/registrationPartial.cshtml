@@ -97,9 +97,7 @@
 
             }
 
-            if (result.status === "Successfully registered buyer!") {
-                window.location.href = '@Url.Action("SendToDashboard", "Home")'
-            }
+
             if (result.status === "Email already in use!") {
                 Step1Reg();
                 document.getElementById("emailBuyerLabel").innerHTML = result.status;
@@ -107,6 +105,12 @@
                 document.getElementById("emailBuyerLabel").style.color = "red";
                 document.getElementById("BuyerEmail").style.border = "red solid 2px";
 
+            }
+
+            console.log(result.status)
+
+            if (result.status === "Successfully registered buyer!") {
+                window.location.href = '@Url.Action("SendToDashboard", "Home")'
             }
 
         };
