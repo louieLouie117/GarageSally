@@ -571,6 +571,138 @@ namespace UserLogin.Controllers
             return RedirectToAction("dashboard");
         }
 
+        [HttpPost("RegisterBuyer")]
+        public JsonResult RegisterBuyer(User FromForm)
+        {
+
+            System.Console.WriteLine($"You have reached the backend of buyer registration! {FromForm.Email}");
+            // DashboardWrapper wMod = new DashboardWrapper();
+
+            if (FromForm.Email == null)
+            {
+                return Json(new { Status = "Email can not be empty!" });
+
+            }
+
+            if (FromForm.Password == null)
+            {
+                return Json(new { Status = "Password can not be empty!" });
+
+            }
+
+            if (FromForm.Password != FromForm.Confirm)
+            {
+                return Json(new { Status = "Password do not match!" });
+
+            }
+
+
+            if (FromForm.Zipcode == 0)
+            {
+                return Json(new { Status = "Zipcode can not be empty!" });
+
+            }
+
+
+
+            if (_context.Users.Any(u => u.Email == FromForm.Email))
+            {
+                return Json(new { Status = "Email already in use!" });
+
+            }
+            else
+            {
+
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
+
+                FromForm.AccountType = AccountType.Buyer;
+                FromForm.SubscriptionStatus = SubscriptionStatus.Free;
+                FromForm.FirstName = "";
+                FromForm.LastName = "";
+                FromForm.StreetNumber = "";
+                FromForm.StreetName = "";
+                FromForm.City = "";
+                FromForm.ProfilePic = "placeholder.png";
+                _context.Add(FromForm);
+                _context.SaveChanges();
+                HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
+                HttpContext.Session.SetString("UserState", _context.Users.FirstOrDefault(i => i.State == FromForm.State).State);
+                // Still need these for debugging? Console.Writelines should be removed
+                Console.WriteLine("You may contine!");
+                return Json(new { Status = "Successfully registered buyer!" });
+
+            }
+
+
+
+
+        }
+
+
+        [HttpPost("SellerRegistration")]
+        public JsonResult SellerRegistration(User FromForm)
+        {
+
+            System.Console.WriteLine($"You have reach the back end of seller registration {FromForm.Email}");
+
+
+            if (FromForm.Zipcode == 0)
+            {
+                return Json(new { Status = "Zipcode can not be empty!" });
+
+            }
+            if (FromForm.Email == null)
+            {
+                return Json(new { Status = "Email can not be empty!" });
+
+            }
+
+            if (FromForm.Password == null)
+            {
+                return Json(new { Status = "Password can not be empty!" });
+
+            }
+
+            if (FromForm.Password != FromForm.Confirm)
+            {
+                return Json(new { Status = "Password do not match!" });
+
+            }
+
+
+            if (_context.Users.Any(u => u.Email == FromForm.Email))
+            {
+                return Json(new { Status = "Email already in use!" });
+
+            }
+
+            else
+            {
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                FromForm.Password = Hasher.HashPassword(FromForm, FromForm.Password);
+                FromForm.AccountType = AccountType.Seller;
+                FromForm.SubscriptionStatus = SubscriptionStatus.Free;
+                FromForm.FirstName = "";
+                FromForm.LastName = "";
+                FromForm.StreetNumber = "";
+                FromForm.StreetName = "";
+                FromForm.City = "";
+                FromForm.ProfilePic = "placeholder.png";
+                _context.Add(FromForm);
+                _context.SaveChanges();
+                HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
+                HttpContext.Session.SetString("UserState", _context.Users.FirstOrDefault(i => i.State == FromForm.State).State);
+                // Still need these for debugging? Console.Writelines should be removed
+                Console.WriteLine("You may contine!");
+                return Json(new { Status = "Successfully registered seller!" });
+
+            }
+
+
+
+        }
+
         [HttpPost("registerSeller")]
         public async Task<IActionResult> registerSeller(List<IFormFile> files, User FromForm)
         {
