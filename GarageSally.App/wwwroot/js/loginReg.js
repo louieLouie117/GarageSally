@@ -63,7 +63,7 @@ const Step2SellerReg = (e) =>{
     document.getElementById("section4SellerReg").style.display = "none";
     document.getElementById("sellerHeading").innerText = "Congratulation, Garage Sally is available in your area, start your account."
 
-    document.querySelector('#Redgister').innerHTML = "registerSeller"
+    // document.querySelector('#Redgister').innerHTML = "registerSeller"
 
 
 }
