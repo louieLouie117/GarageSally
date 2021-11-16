@@ -72,3 +72,33 @@ const SearchStateHandler = (e) =>{
     console.log(stateSelected);
 
 }
+
+
+const BuyerRegErrorHandler = (e)=>{
+    if(e.target.id === "BuyerEmail"){
+        document.getElementById("emailBuyerLabel").innerHTML = "Email";
+        document.getElementById("emailBuyerLabel").style.display = "none";
+        document.getElementById("BuyerEmail").style.border = "black solid 1px";
+
+    }
+    if(e.target.id === "BuyerPassword"){
+        document.getElementById("passwordBuyerLabel").innerHTML = "password";
+        document.getElementById("passwordBuyerLabel").style.display = "none";
+        document.getElementById("BuyerPassword").style.border = "black solid 1px";
+        document.getElementById("BuyerConfirm").style.border = "black solid 1px";
+
+    }
+
+    if(e.target.id === "BuyerConfirm"){
+        document.getElementById("passwordBuyerLabel").innerHTML = "password";
+        document.getElementById("passwordBuyerLabel").style.display = "none";
+        document.getElementById("BuyerPassword").style.border = "black solid 1px";
+        document.getElementById("BuyerConfirm").style.border = "black solid 1px";
+    }
+
+    if(e.target.id === "BuyerZipcode"){
+        document.getElementById("zipcodeBuyerLabel").innerHTML = "zipcode";
+        document.getElementById("zipcodeBuyerLabel").style.display = "none";
+        document.getElementById("BuyerZipcode").style.border = "black solid 1px";
+    }
+}

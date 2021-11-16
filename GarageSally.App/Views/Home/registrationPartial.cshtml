@@ -55,7 +55,6 @@
 
         });
         const SuccessBuyerReg = (result) => {
-            console.log("Buyer Reg Success result", result)
             if (result.status === "Email can not be empty!") {
                 Step1Reg();
                 document.getElementById("emailBuyerLabel").innerHTML = result.status;
@@ -101,6 +100,14 @@
             if (result.status === "Successfully registered buyer!") {
                 window.location.href = '@Url.Action("SendToDashboard", "Home")'
             }
+            if (result.status === "Email already in use!") {
+                Step1Reg();
+                document.getElementById("emailBuyerLabel").innerHTML = result.status;
+                document.getElementById("emailBuyerLabel").style.display = "block";
+                document.getElementById("emailBuyerLabel").style.color = "red";
+                document.getElementById("BuyerEmail").style.border = "red solid 2px";
+
+            }
 
         };
 
@@ -126,15 +133,17 @@
             <form id="RegisterBuyer" asp-controller="Home" method="POST" enctype="multipart/form-data">
                 <div class="section1-container" id="section1Reg">
                     <label class="hidden" id="emailBuyerLabel">email</label>
-                    <input id="BuyerEmail" placeholder="Email:">
+                    <input id="BuyerEmail" placeholder="email:" onkeydown="BuyerRegErrorHandler(event)">
 
                     <button type="button" onclick="Step2Reg()">Next</button>
                 </div>
 
                 <div class="section2-container" id="section2Reg">
                     <label class="hidden" id="passwordBuyerLabel">password</label>
-                    <input id="BuyerPassword" placeholder="Password:" type="password">
-                    <input id="BuyerConfirm" placeholder="Confirm Password:" type="password">
+                    <input id="BuyerPassword" placeholder="password:" type="password"
+                        onkeydown="BuyerRegErrorHandler(event)">
+                    <input id="BuyerConfirm" placeholder="confirm password:" type="password"
+                        onkeydown="BuyerRegErrorHandler(event)">
 
                     <footer>
                         <button type="button" onclick="Step1Reg()">back</button>
@@ -165,7 +174,7 @@
                         <input id="BuyerState" value="AL" class="hidden" placeholder="State:" id="BuyerState">
 
                         <span asp-validation-for="Zipcode"></span>
-                        <input id="BuyerZipcode" placeholder="Zipcode:">
+                        <input id="BuyerZipcode" placeholder="Zipcode:" onkeydown="BuyerRegErrorHandler(event)">
                     </aside>
 
                     <footer>
