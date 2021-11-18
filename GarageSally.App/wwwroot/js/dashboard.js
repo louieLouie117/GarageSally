@@ -524,3 +524,31 @@ const ErrorLabelHandler = (e)=> {
 
 }
 
+const UpgradeErrorHandler = (e)=>{
+    console.log("key was pressed")
+
+    if(e.target.id === "StreetNameUpgrade"){
+        document.getElementById("UpgradeErrorLabel").innerHTML = "";
+        document.getElementById("StreetNameUpgrade").style.border = "solid 1px black";
+
+    }
+
+    
+    if(e.target.id === "CityUpgrade"){
+        document.getElementById("UpgradeErrorLabel").innerHTML = "";
+        document.getElementById("CityUpgrade").style.border = "solid 1px black";
+
+    }
+    
+    if(e.target.id === "StateUpgrade"){
+        document.getElementById("UpgradeErrorLabel").innerHTML = "";
+        document.getElementById("StateUpgrade").style.border = "solid 1px black";
+
+    }
+    
+    if(e.target.id === "ZipcodeUpgrade"){
+        document.getElementById("UpgradeErrorLabel").innerHTML = "";
+        document.getElementById("ZipcodeUpgrade").style.border = "solid 1px black";
+
+    }
+}
