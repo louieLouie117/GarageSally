@@ -39,9 +39,43 @@
                 })
             })
             const SuccessStatusUpgrade = (result) => {
-                console.log("You have sucessfuly upgraded...", result);
-                LoadData();
-                location.reload();
+
+                console.log("Json Result...", result);
+
+                if (result.status === "Street name can not be empty!") {
+                    document.getElementById("UpgradeErrorLabel").innerHTML = "Street name can not be empty!";
+                    document.getElementById("StreetNameUpgrade").style.border = "solid 2px red";
+
+                }
+
+
+                if (result.status === "City can not be empty!") {
+                    document.getElementById("UpgradeErrorLabel").innerHTML = "City can not be empty!";
+                    document.getElementById("CityUpgrade").style.border = "solid 2px red";
+
+                }
+
+                if (result.status === "State can not be empty!") {
+                    document.getElementById("UpgradeErrorLabel").innerHTML = "State can not be empty!";
+                    document.getElementById("StateUpgrade").style.border = "solid 2px red";
+
+                }
+
+                if (result.status === "Zipcode can not be empty!") {
+                    document.getElementById("UpgradeErrorLabel").innerHTML = "Zipcode can not be empty!";
+                    document.getElementById("ZipcodeUpgrade").style.border = "solid 2px red";
+
+                }
+
+
+
+                if (result.status === "Success") {
+
+                    LoadData();
+                    location.reload();
+
+                }
+
             };
             const ErrorStatusUpgrade = (xhr, status, strErr) => {
                 console.log("There was an error when upgrading!");
@@ -573,6 +607,7 @@
                     </li>`).prependTo("#userPostsList");
                 });
             };
+
         })
     </script>
 </head>
