@@ -254,6 +254,32 @@ namespace UserLogin.Controllers
         {
             // Still need these for debugging? Console.Writelines should be removed
             System.Console.WriteLine("you have reach the backend of upgraded user");
+
+            if (FromForm.StreetName == null)
+            {
+                return Json(new { Status = "Street name can not be empty!" });
+
+            }
+
+            if (FromForm.City == null)
+            {
+                return Json(new { Status = "City can not be empty!" });
+
+            }
+
+            if (FromForm.State == null)
+            {
+                return Json(new { Status = "State can not be empty!" });
+
+            }
+
+            if (FromForm.Zipcode == 0)
+            {
+                return Json(new { Status = "Zipcode can not be empty!" });
+
+            }
+
+
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             User GetUser = _context.Users.FirstOrDefault(u => u.UserId == UserIdInSession);
             GetUser.AccountType = AccountType.Seller;
