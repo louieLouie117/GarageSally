@@ -617,7 +617,7 @@
     <div class="postSale-container" id="postSalePartial">
         <button onclick="postSalePartialHandler(event)"> &lt; back</button>
 
-        @if (Model.AccountType == AccountType.Seller)
+        @if (Model.AccountType == AccountType.Seller || Model.AccountType == AccountType.Admin)
         {
             <header>
                 <img src="~/img/Assets/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">

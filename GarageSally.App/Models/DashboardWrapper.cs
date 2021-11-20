@@ -7,5 +7,7 @@ namespace UserLogin.Models
         public LoginUser LoginUser { get; set; }
 
         public GarageSale GarageSale { get; set; }
+
+        public User AccountType { get; set; }
     }
 }
