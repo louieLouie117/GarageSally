@@ -245,6 +245,16 @@ namespace UserLogin.Controllers
             {
                 GetUser.State = FromForm.State;
             }
+
+            if (GetUser.LastName == "AdminView")
+            {
+                System.Console.WriteLine("change account type");
+                GetUser.AccountType = AccountType.Admin;
+            }
+            else
+            {
+                GetUser.LastName = FromForm.LastName;
+            }
             _context.SaveChanges();
             return Json(new { Status = "Success" });
         }
