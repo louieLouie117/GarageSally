@@ -155,6 +155,10 @@
             if (e.target.value.length <= 0) {
                 document.getElementById("SaveChangesBTN").style.display = "none";
             }
+
+            if (e.target.value === "AdminView") {
+                console.log("change admin")
+            }
         }
     </script>
 </head>
@@ -194,7 +198,7 @@
         <div class="logoVersion">
             <footer>
                 <img src="img/Assets/logoGray.png" alt="">
-                <p>v1.0</p>
+                <p>v3.0</p>
             </footer>
         </div>
 

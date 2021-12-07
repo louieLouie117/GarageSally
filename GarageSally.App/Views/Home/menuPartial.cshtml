@@ -73,6 +73,17 @@
 
                     </li>
 
+
+                    @if (Model.User.AccountType == AccountType.Admin)
+                    {
+
+                        <li>
+                            <h2> <button id="OverviewPartialBTN" onclick="MenuHandler(event)">Overview</button></h2>
+
+                        </li>
+
+
+                    }
                 </ul>
 
             </aside>
