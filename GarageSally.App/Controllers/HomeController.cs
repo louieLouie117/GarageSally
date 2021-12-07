@@ -478,6 +478,220 @@ namespace UserLogin.Controllers
 
         }
 
+        [HttpGet("GetNewGarageSalesForOverview")]
+        public JsonResult GetNewGarageSalesForOverview()
+        {
+            // Still need these for debugging? Console.Writelines should be removed
+            // DashboardWrapper wMode = new DashboardWrapper();
+
+            List<GarageSale> ALList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "AL")
+            .ToList();
+            List<GarageSale> WYList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "WY")
+            .ToList();
+            List<GarageSale> WIList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "WI")
+            .ToList();
+            List<GarageSale> WVList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "WV")
+           .ToList();
+            List<GarageSale> WAList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "WA")
+           .ToList();
+            List<GarageSale> VAList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "VA")
+           .ToList();
+            List<GarageSale> UTList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "UT")
+           .ToList();
+
+            List<GarageSale> TXList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "TX")
+            .ToList();
+
+            List<GarageSale> TNList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "TN")
+           .ToList();
+
+            List<GarageSale> SDList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "SD")
+           .ToList();
+
+            List<GarageSale> SCList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "SC")
+           .ToList();
+            List<GarageSale> RIList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "RI")
+           .ToList();
+            List<GarageSale> PAList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "PA")
+           .ToList();
+            List<GarageSale> ORList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "OR")
+           .ToList();
+
+            List<GarageSale> OKList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "OK")
+           .ToList();
+            List<GarageSale> OHList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "OH")
+           .ToList();
+            List<GarageSale> NDList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "ND")
+           .ToList();
+            List<GarageSale> NCList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "NC")
+           .ToList();
+            List<GarageSale> NYList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "NY")
+           .ToList();
+            List<GarageSale> NMList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "NM")
+           .ToList();
+            List<GarageSale> NJList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "NJ")
+           .ToList();
+            List<GarageSale> NHList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "NH")
+           .ToList();
+            List<GarageSale> NVList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "NV")
+           .ToList();
+            List<GarageSale> NEList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "NE")
+           .ToList();
+            List<GarageSale> MTList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "MT")
+           .ToList();
+            List<GarageSale> MOList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "MO")
+           .ToList();
+            List<GarageSale> MSList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "MS")
+           .ToList();
+            List<GarageSale> MNList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "MN")
+           .ToList();
+            List<GarageSale> MIList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "MI")
+           .ToList();
+            List<GarageSale> MAList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "MA")
+           .ToList();
+            List<GarageSale> MDList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "MD")
+           .ToList();
+            List<GarageSale> MEList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "ME")
+           .ToList();
+            List<GarageSale> LAList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "LA")
+           .ToList();
+            List<GarageSale> KYList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "KY")
+           .ToList();
+            List<GarageSale> KSList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "KS")
+           .ToList();
+            List<GarageSale> IAList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "IA")
+           .ToList();
+            List<GarageSale> INList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "IN")
+           .ToList();
+            List<GarageSale> ILList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "IL")
+           .ToList();
+            List<GarageSale> IDList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "ID")
+           .ToList();
+            List<GarageSale> HIList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "HI")
+           .ToList();
+            List<GarageSale> GAList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "GA")
+           .ToList();
+            List<GarageSale> FLList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "FL")
+           .ToList();
+            List<GarageSale> DEList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "DE")
+           .ToList();
+            List<GarageSale> CTList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "CT")
+           .ToList();
+            List<GarageSale> COList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "CO")
+           .ToList();
+            List<GarageSale> CAList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "CA")
+           .ToList();
+            List<GarageSale> ARList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "AR")
+           .ToList();
+            List<GarageSale> AZList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "AZ")
+           .ToList();
+            List<GarageSale> AKList = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "AK")
+           .ToList();
+
+
+
+            return Json(new { AL = ALList.Count, AK = AKList.Count, AZ = AZList.Count, AR = ARList.Count, CA = CAList.Count, CO = COList.Count, CT = CTList.Count, DE = DEList.Count, FL = FLList.Count, GA = GAList.Count, HI = HIList.Count, ID = IDList.Count, IL = ILList.Count, IN = INList.Count, IA = IAList.Count, KS = KSList.Count, KY = KYList.Count, LA = LAList.Count, ME = MEList.Count, MD = MDList.Count, MA = MAList.Count, MI = MIList.Count, MN = MNList.Count, MS = MSList.Count, MO = MOList.Count, MT = MTList.Count, NE = NEList.Count, NV = NVList.Count, NH = NHList.Count, NJ = NJList.Count, NM = NMList.Count, NY = NYList.Count, NC = NCList.Count, ND = NDList.Count, OH = OHList.Count, OK = OKList.Count, OR = ORList.Count, PA = PAList.Count, RI = RIList.Count, SC = SCList.Count, SD = SDList.Count, TN = TNList.Count, TX = TXList.Count, UT = UTList.Count, VA = VAList.Count, WA = WAList.Count, WV = WVList.Count, WI = WIList.Count, WY = WYList.Count });
+
+        }
+
 
 
 

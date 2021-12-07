@@ -33,6 +33,11 @@
                         data = JSON.parse(data);
                         console.log(data)
                     })
+
+                    $('#NewGarageSalesOverviewList').load("/GetNewGarageSalesForOverview #NewGarageSalesOverviewList", data => {
+                        data = JSON.parse(data);
+                        console.log(data)
+                    })
                 })
 
             }
