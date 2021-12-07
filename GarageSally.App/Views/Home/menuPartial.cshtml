@@ -14,6 +14,33 @@
         gtag('js', new Date());
         gtag('config', 'G-WGFK1GC4RE');
     </script>
+    <script>
+
+
+        const MenuHandler = (e) => {
+            if (e.target.id === "OverviewPartialBTN") {
+                document.getElementById("overviewPartial").style.display = "grid"
+                showMainMenu()
+                document.getElementById("mainMenu").style.left = "95vw";
+
+                $(document).ready((e) => {
+                    alert("ajax for menue is working!!")
+
+
+
+
+                    $('#AllGarageSalesOverviewList').load("/GetAllGarageSalesForOverview #AllGarageSalesOverviewList", data => {
+                        data = JSON.parse(data);
+                        console.log(data)
+                    })
+                })
+
+            }
+
+        }
+
+
+    </script>
 </head>
 
 <body>
