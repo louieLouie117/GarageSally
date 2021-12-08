@@ -40,10 +40,14 @@
 
                     $.get("/GetSellersForOverview ", data => {
                         console.log(data.data)
+                        RenderSellersData(data);
+
                     })
 
                     $.get("/GetBuyersForOverview", data => {
                         console.log(data.data)
+                        RenderBuyersData(data);
+
                     })
                     @* $('#BuyersOverviewList').load("/GetBuyersForOverview #BuyersOverviewList", data => {
                             data = JSON.parse(data);
@@ -58,8 +62,6 @@
         const RenderAllSalesData = (data) => {
             $.each(data.data, function (key, value) {
                 console.log(key, value)
-
-
                 $(`<li>
                         <h2 id="${key}">${key}</h2>
                         <h2>${value}</h2>
@@ -72,12 +74,35 @@
         const RenderNewSalesData = (data) => {
             $.each(data.data, function (key, value) {
                 console.log(key, value)
-
-
                 $(`<li>
                         <h2 id="${key}">${key}</h2>
                         <h2>${value}</h2>
                 </li>`).appendTo("#NewGarageSalesOverviewList");
+
+            });
+
+        };
+
+        const RenderSellersData = (data) => {
+            $.each(data.data, function (key, value) {
+                console.log("All Sellers:", key, value)
+                $(`<li>
+                        <h2 id="${key}">${value.email}</h2>
+                        <h2 id="${key}">${value.state}</h2>
+
+                        </li>`).appendTo("#SellersForOverviewList");
+
+            });
+
+        };
+
+        const RenderBuyersData = (data) => {
+            $.each(data.data, function (key, value) {
+                console.log("All Sellers:", key, value)
+                $(`<li>
+                        <h2 id="${key}">${value.email}</h2>
+                        <h2 id="${key}">${value.state}</h2>
+                        </li>`).appendTo("#BuyersForOverviewList");
 
             });
 
@@ -110,7 +135,7 @@
                 repellat vitae necessitatibus porro fugit earum quaerat mollitia sit? Eius alias ducimus culpa eligendi
                 eaque
                 neque!</p>
-            <ul id="BuyersOverviewList"></ul>
+            <ul id="BuyersForOverviewList"></ul>
 
 
         </section>
