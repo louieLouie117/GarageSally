@@ -467,14 +467,62 @@ namespace UserLogin.Controllers
            .Where(st => st.State == "AK")
            .ToList();
 
+            var AllSales = new
+            {
+                AL = ALList.Count,
+                AK = AKList.Count,
+                AZ = AZList.Count,
+                AR = ARList.Count,
+                CA = CAList.Count,
+                CO = COList.Count,
+                CT = CTList.Count,
+                DE = DEList.Count,
+                FL = FLList.Count,
+                GA = GAList.Count,
+                HI = HIList.Count,
+                ID = IDList.Count,
+                IL = ILList.Count,
+                IN = INList.Count,
+                IA = IAList.Count,
+                KS = KSList.Count,
+                KY = KYList.Count,
+                LA = LAList.Count,
+                ME = MEList.Count,
+                MD = MDList.Count,
+                MA = MAList.Count,
+                MI = MIList.Count,
+                MN = MNList.Count,
+                MS = MSList.Count,
+                MO = MOList.Count,
+                MT = MTList.Count,
+                NE = NEList.Count,
+                NV = NVList.Count,
+                NH = NHList.Count,
+                NJ = NJList.Count,
+                NM = NMList.Count,
+                NY = NYList.Count,
+                NC = NCList.Count,
+                ND = NDList.Count,
+                OH = OHList.Count,
+                OK = OKList.Count,
+                OR = ORList.Count,
+                PA = PAList.Count,
+                RI = RIList.Count,
+                SC = SCList.Count,
+                SD = SDList.Count,
+                TN = TNList.Count,
+                TX = TXList.Count,
+                UT = UTList.Count,
+                VA = VAList.Count,
+                WA = WAList.Count,
+                WV = WVList.Count,
+                WI = WIList.Count,
+                WY = WYList.Count
+            };
 
 
 
-
-
-
-
-            return Json(new { AL = ALList.Count, AK = AKList.Count, AZ = AZList.Count, AR = ARList.Count, CA = CAList.Count, CO = COList.Count, CT = CTList.Count, DE = DEList.Count, FL = FLList.Count, GA = GAList.Count, HI = HIList.Count, ID = IDList.Count, IL = ILList.Count, IN = INList.Count, IA = IAList.Count, KS = KSList.Count, KY = KYList.Count, LA = LAList.Count, ME = MEList.Count, MD = MDList.Count, MA = MAList.Count, MI = MIList.Count, MN = MNList.Count, MS = MSList.Count, MO = MOList.Count, MT = MTList.Count, NE = NEList.Count, NV = NVList.Count, NH = NHList.Count, NJ = NJList.Count, NM = NMList.Count, NY = NYList.Count, NC = NCList.Count, ND = NDList.Count, OH = OHList.Count, OK = OKList.Count, OR = ORList.Count, PA = PAList.Count, RI = RIList.Count, SC = SCList.Count, SD = SDList.Count, TN = TNList.Count, TX = TXList.Count, UT = UTList.Count, VA = VAList.Count, WA = WAList.Count, WV = WVList.Count, WI = WIList.Count, WY = WYList.Count });
+            return Json(new { data = AllSales });
 
         }
 
@@ -687,14 +735,84 @@ namespace UserLogin.Controllers
            .ToList();
 
 
-
-            return Json(new { AL = ALList.Count, AK = AKList.Count, AZ = AZList.Count, AR = ARList.Count, CA = CAList.Count, CO = COList.Count, CT = CTList.Count, DE = DEList.Count, FL = FLList.Count, GA = GAList.Count, HI = HIList.Count, ID = IDList.Count, IL = ILList.Count, IN = INList.Count, IA = IAList.Count, KS = KSList.Count, KY = KYList.Count, LA = LAList.Count, ME = MEList.Count, MD = MDList.Count, MA = MAList.Count, MI = MIList.Count, MN = MNList.Count, MS = MSList.Count, MO = MOList.Count, MT = MTList.Count, NE = NEList.Count, NV = NVList.Count, NH = NHList.Count, NJ = NJList.Count, NM = NMList.Count, NY = NYList.Count, NC = NCList.Count, ND = NDList.Count, OH = OHList.Count, OK = OKList.Count, OR = ORList.Count, PA = PAList.Count, RI = RIList.Count, SC = SCList.Count, SD = SDList.Count, TN = TNList.Count, TX = TXList.Count, UT = UTList.Count, VA = VAList.Count, WA = WAList.Count, WV = WVList.Count, WI = WIList.Count, WY = WYList.Count });
+            var NewSales = new
+            {
+                AL = ALList.Count,
+                AK = AKList.Count,
+                AZ = AZList.Count,
+                AR = ARList.Count,
+                CA = CAList.Count,
+                CO = COList.Count,
+                CT = CTList.Count,
+                DE = DEList.Count,
+                FL = FLList.Count,
+                GA = GAList.Count,
+                HI = HIList.Count,
+                ID = IDList.Count,
+                IL = ILList.Count,
+                IN = INList.Count,
+                IA = IAList.Count,
+                KS = KSList.Count,
+                KY = KYList.Count,
+                LA = LAList.Count,
+                ME = MEList.Count,
+                MD = MDList.Count,
+                MA = MAList.Count,
+                MI = MIList.Count,
+                MN = MNList.Count,
+                MS = MSList.Count,
+                MO = MOList.Count,
+                MT = MTList.Count,
+                NE = NEList.Count,
+                NV = NVList.Count,
+                NH = NHList.Count,
+                NJ = NJList.Count,
+                NM = NMList.Count,
+                NY = NYList.Count,
+                NC = NCList.Count,
+                ND = NDList.Count,
+                OH = OHList.Count,
+                OK = OKList.Count,
+                OR = ORList.Count,
+                PA = PAList.Count,
+                RI = RIList.Count,
+                SC = SCList.Count,
+                SD = SDList.Count,
+                TN = TNList.Count,
+                TX = TXList.Count,
+                UT = UTList.Count,
+                VA = VAList.Count,
+                WA = WAList.Count,
+                WV = WVList.Count,
+                WI = WIList.Count,
+                WY = WYList.Count
+            };
+            return Json(new { data = NewSales });
 
         }
 
 
 
+        [HttpGet("GetSellersForOverview")]
+        public JsonResult GetSellersForOverview()
+        {
+            List<User> GetSellersForOverview = _context.Users
+            .Where(us => us.AccountType == AccountType.Seller)
+            .ToList();
+            return Json(new { data = GetSellersForOverview });
+        }
 
+
+        [HttpGet("GetBuyersForOverview")]
+        public JsonResult GetBuyersForOverview()
+        {
+            List<User> GetBuyersForOverview = _context.Users
+            .Where(us => us.AccountType == AccountType.Buyer)
+            .ToList();
+            return Json(new { data = GetBuyersForOverview });
+        }
+
+        // Count for landing page----------------------
         [HttpGet("ListedGarageSaleCount")]
         public JsonResult ListedGarageSaleCount()
         {
@@ -702,7 +820,6 @@ namespace UserLogin.Controllers
             .ToList();
             return Json(new { data = garageSaleItems.Count });
         }
-
 
         [HttpGet("SellerCount")]
         public JsonResult SellerCount()

@@ -673,8 +673,7 @@ input {
 
 .Overview-Container{
 	display: none;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	column-gap: 10px;
+	
 	background: none;
 	grid-row: 1/2;
 	grid-column: 1/2;
@@ -687,9 +686,32 @@ input {
 
 .Overview-Container section{
 	background: white;
+	height: 90vh;
 	margin: 10px;
 	padding: 20px;
 	border-radius: 7px;
 	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.557);
+	overflow: scroll;
 
 }
+
+.Overview-Container section ul li {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+
+@media screen and (min-width: 1100px){
+.Overview-Container{
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	column-gap: 10px;
+}
+.Overview-Container section{
+	height: 94vh;
+}
+
+
+}
+
+
+
