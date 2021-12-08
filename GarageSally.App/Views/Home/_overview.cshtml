@@ -12,6 +12,81 @@
 
         })
     </script>
+
+    <script>
+
+
+
+        const MenuHandler = (e) => {
+            if (e.target.id === "OverviewPartialBTN") {
+                document.getElementById("overviewPartial").style.display = "grid"
+                showMainMenu()
+                document.getElementById("mainMenu").style.left = "95vw";
+
+                $(document).ready((e) => {
+                    alert("ajax for menue is working!!")
+
+                    $.get("/GetAllGarageSalesForOverview", data => {
+                        console.log("All sales:", data.data)
+                        RenderAllSalesData(data);
+                        @* data = JSON.parse(data.allSalesData); you do not need JSON.parse with $.get()*@
+                    });
+
+                    $.get("/GetNewGarageSalesForOverview", data => {
+                        console.log(data.data)
+                        RenderNewSalesData(data);
+
+                    })
+
+                    $.get("/GetSellersForOverview ", data => {
+                        console.log(data.data)
+                    })
+
+                    $.get("/GetBuyersForOverview", data => {
+                        console.log(data.data)
+                    })
+                    @* $('#BuyersOverviewList').load("/GetBuyersForOverview #BuyersOverviewList", data => {
+                            data = JSON.parse(data);
+                            console.log(data)
+                            }) *@
+                })
+
+            }
+
+        }
+
+        const RenderAllSalesData = (data) => {
+            $.each(data.data, function (key, value) {
+                console.log(key, value)
+
+
+                $(`<li>
+                        <h2 id="${key}">${key}</h2>
+                        <h2>${value}</h2>
+                </li>`).appendTo("#AllGarageSalesOverviewList");
+
+            });
+
+        };
+
+        const RenderNewSalesData = (data) => {
+            $.each(data.data, function (key, value) {
+                console.log(key, value)
+
+
+                $(`<li>
+                        <h2 id="${key}">${key}</h2>
+                        <h2>${value}</h2>
+                </li>`).appendTo("#NewGarageSalesOverviewList");
+
+            });
+
+        };
+
+
+
+
+    </script>
 </head>
 
 <body>
