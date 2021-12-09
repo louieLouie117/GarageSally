@@ -78,8 +78,8 @@
             $.each(data.data, function (key, value) {
                 @* console.log("All Sellers:", key, value) *@
                     $(`<li>
-                        <h2 id="${key}">${value.email}</h2>
                         <h2 id="${key}">${value.state}</h2>
+                        <h2 id="${key}">${value.email}</h2>
 
                         </li>`).appendTo("#AllUserOverview");
 

@@ -673,10 +673,10 @@ input {
 
 .Overview-Container{
 	display: none;
-	background: none;
+	background: rgba(0, 0, 0, 0.384);
 	grid-row: 1/2;
 	grid-column: 1/2;
-	height: 100vh;
+	height: 100%;
 	width: 100vw;
 	z-index: 0;
 
@@ -689,7 +689,7 @@ input {
 
 
 .Overview-Container section{
-	background: white;
+	background: whitesmoke;
 	height: 90vh;
 	margin: 10px;
 	padding: 20px;
@@ -749,10 +749,10 @@ input {
 	text-transform: capitalize;
 }
 
-
+/* 
 .UserBySate-AdminOverview {
 	background: red;
-}
+} */
 
 .UserBySate-AdminOverview section header{
 	display: grid;
@@ -760,13 +760,20 @@ input {
 }
 
 
+.UserBySate-AdminOverview section ul li {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+
 @media screen and (min-width: 1100px){
 .Overview-Container{
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 2fr 1fr;
 	column-gap: 10px;
+	padding: 40px 0;
 }
 .Overview-Container section{
-	height: 94vh;
+	height: 90vh;
 }
 
 
