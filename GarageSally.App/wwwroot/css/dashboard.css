@@ -673,13 +673,17 @@ input {
 
 .Overview-Container{
 	display: none;
-	
 	background: none;
 	grid-row: 1/2;
 	grid-column: 1/2;
 	height: 100vh;
 	width: 100vw;
 	z-index: 0;
+
+}
+
+.Overview-Container h2 {
+	font: 1em sans-serif;
 
 }
 
@@ -692,27 +696,57 @@ input {
 	border-radius: 7px;
 	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.557);
 	overflow: scroll;
+	
+
+}
+
+.Overview-Container section ul {
+	display: grid;
+	row-gap: 10px;
 
 }
 
 .Overview-Container section ul li {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	justify-items: center;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.331);
+	border: none;
+	padding: 10px;
+	border-radius: 3px;
+
+
 }
 
 
-.SalesByState-AdminOverview{
+/* .SalesByState-AdminOverview{
 	background: red;
-}
+} */
+
+
 
 .SalesByState-AdminOverview section header{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+	padding: 10px;
 }
+.SalesByState-AdminOverview section header :first-child{
+	justify-self: left;
+}
+
+.SalesByState-AdminOverview section ul li :first-child{
+	justify-self: left;
+}
+
+
 
 .SalesByState-AdminOverview section ul li{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+}
+.SalesByState-AdminOverview section ul li h2::first-letter{
+	text-transform: capitalize;
 }
 
 

@@ -24,12 +24,12 @@
                 document.getElementById("mainMenu").style.left = "95vw";
 
                 $(document).ready((e) => {
-                    alert("ajax for menue is working!!")
+                    @* alert("ajax for menue is working!!") *@
 
-                    $.get("/GetAllGarageSalesForOverview", data => {
-                        @* console.log("All sales:", data.data) *@
-                            RenderAllSalesData(data);
-                        @* data = JSON.parse(data.allSalesData); you do not need JSON.parse with $.get()*@
+                        $.get("/GetAllGarageSalesForOverview", data => {
+                            @* console.log("All sales:", data.data) *@
+                                RenderAllSalesData(data);
+                            @* data = JSON.parse(data.allSalesData); you do not need JSON.parse with $.get()*@
                     });
 
                     $.get("/GetSalesByState", data => {
@@ -74,8 +74,6 @@
 
         const RenderSalesByStateData = (data) => {
             $.each(data.data, function (key, value) {
-                console.log("Sales by state", key, value)
-                console.log("test", value[0])
                 $(`<li>
                         <h2 id="${key}">${key}</h2>
                         <h3>${value[0]}</h3>
