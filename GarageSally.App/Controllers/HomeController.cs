@@ -309,8 +309,8 @@ namespace UserLogin.Controllers
             return Json(new { data = garageSaleItems });
         }
 
-        [HttpGet("GetAllGarageSalesForOverview")]
-        public JsonResult GetAllGarageSalesForOverview()
+        [HttpGet("GetAllUsersByState")]
+        public JsonResult GetAllUsersByState()
         {
             // Still need these for debugging? Console.Writelines should be removed
             // DashboardWrapper wMode = new DashboardWrapper();
@@ -1270,12 +1270,12 @@ namespace UserLogin.Controllers
 
 
 
-        [HttpGet("GetUsersForOverview")]
-        public JsonResult GetUsersForOverview()
+        [HttpGet("GetAllUsersForOverview")]
+        public JsonResult GetAllUsersForOverview()
         {
-            List<User> GetUsersForOverview = _context.Users
+            List<User> GetAllUsersForOverview = _context.Users
             .ToList();
-            return Json(new { data = GetUsersForOverview });
+            return Json(new { data = GetAllUsersForOverview });
         }
 
 

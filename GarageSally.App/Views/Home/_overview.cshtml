@@ -16,7 +16,6 @@
     <script>
 
 
-
         const MenuHandler = (e) => {
             if (e.target.id === "OverviewPartialBTN") {
                 document.getElementById("overviewPartial").style.display = "grid"
@@ -24,31 +23,22 @@
                 document.getElementById("mainMenu").style.left = "95vw";
 
                 $(document).ready((e) => {
-                    @* alert("ajax for menue is working!!") *@
+                    $.get("/GetAllUsersForOverview ", data => {
+                        RenderAllUsersOverview(data);
 
-                        $.get("/GetAllGarageSalesForOverview", data => {
-                            @* console.log("All sales:", data.data) *@
-                                RenderAllSalesData(data);
-                            @* data = JSON.parse(data.allSalesData); you do not need JSON.parse with $.get()*@
-                    });
+                    })
 
                     $.get("/GetSalesByState", data => {
-                        @* console.log("Sales by state", data.data) *@
-                            RenderSalesByStateData(data);
-
+                        RenderSalesByStateData(data);
                     })
 
-                    $.get("/GetUsersForOverview ", data => {
-                        @* console.log(data.data) *@
-                            RenderSellersData(data);
 
-                    })
 
-                    $.get("/GetBuyersForOverview", data => {
-                        @* console.log(data.data) *@
-                            RenderBuyersData(data);
+                    $.get("/GetAllUsersByState", data => {
+                        RnderAllUserByState(data);
+                    });
 
-                    })
+
                     @* $('#BuyersOverviewList').load("/GetBuyersForOverview #BuyersOverviewList", data => {
                             data = JSON.parse(data);
                             console.log(data)
@@ -59,14 +49,14 @@
 
         }
 
-        const RenderAllSalesData = (data) => {
+        const RnderAllUserByState = (data) => {
             $.each(data.data, function (key, value) {
                 @* console.log(key, value) *@
                     $(`<li>
                         <h3 id="${key}">${key}</h3>
 
 
-                </li>`).appendTo("#AllGarageSalesOverviewList");
+                </li>`).appendTo("#UserByStateList");
 
             });
 
@@ -78,37 +68,24 @@
                         <h2 id="${key}">${key}</h2>
                         <h3>${value[0]}</h3>
                         <h3>${value[1]}</h3>
-                </li>`).appendTo("#NewGarageSalesOverviewList");
+                </li>`).appendTo("#AllSalesByStateOverview");
 
             });
 
         };
 
-        const RenderSellersData = (data) => {
+        const RenderAllUsersOverview = (data) => {
             $.each(data.data, function (key, value) {
                 @* console.log("All Sellers:", key, value) *@
                     $(`<li>
                         <h2 id="${key}">${value.email}</h2>
                         <h2 id="${key}">${value.state}</h2>
 
-                        </li>`).appendTo("#SellersForOverviewList");
+                        </li>`).appendTo("#AllUserOverview");
 
             });
 
         };
-
-        const RenderBuyersData = (data) => {
-            $.each(data.data, function (key, value) {
-                @* console.log("All Sellers:", key, value) *@
-                    $(`<li>
-                        <h2 id="${key}">${value.email}</h2>
-                        <h2 id="${key}">${value.state}</h2>
-                        </li>`).appendTo("#BuyersForOverviewList");
-
-            });
-
-        };
-
 
 
 
@@ -118,39 +95,29 @@
 <body>
     <div class="Overview-Container" id="overviewPartial">
         <section>
-            <h2>Users</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde perferendis omnis voluptas dolores,
-                officiis
-                repellat vitae necessitatibus porro fugit earum quaerat mollitia sit? Eius alias ducimus culpa eligendi
-                eaque
-                neque!</p>
-            <ul id="SellersForOverviewList"></ul>
+            <h1>All Users</h1>
+            <ul id="AllUserOverview"></ul>
 
 
 
         </section>
-        <section>
-            <h2>User by State</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde perferendis omnis voluptas dolores,
-                officiis
-                repellat vitae necessitatibus porro fugit earum quaerat mollitia sit? Eius alias ducimus culpa eligendi
-                eaque
-                neque!</p>
-            <ul id="BuyersForOverviewList"></ul>
+
+        <div class="UserBySate-AdminOverview">
+            <section>
+                <h1>User by State</h1>
+                <header>
+                    <h2>State</h2>
+                    <h2>All Users</h2>
+                    <h2>Sellers</h2>
+                    <h2>Buyers</h2>
+                </header>
+                <ul id="UserByStateList"></ul>
+
+            </section>
+
+        </div>
 
 
-        </section>
-
-        <section>
-            <h2>All Sales</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde perferendis omnis voluptas dolores,
-                officiis
-                repellat vitae necessitatibus porro fugit earum quaerat mollitia sit? Eius alias ducimus culpa eligendi
-                eaque
-                neque!</p>
-            <ul id="AllGarageSalesOverviewList"></ul>
-
-        </section>
 
         <div class="SalesByState-AdminOverview">
             <section>
@@ -161,7 +128,7 @@
                     <h2>New Sales</h2>
 
                 </header>
-                <ul id="NewGarageSalesOverviewList"></ul>
+                <ul id="AllSalesByStateOverview"></ul>
 
 
             </section>
