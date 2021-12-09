@@ -701,6 +701,22 @@ input {
 }
 
 
+.SalesByState-AdminOverview{
+	background: red;
+}
+
+.SalesByState-AdminOverview section header{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.SalesByState-AdminOverview section ul li{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+
 @media screen and (min-width: 1100px){
 .Overview-Container{
 	grid-template-columns: 1fr 1fr 1fr 1fr;

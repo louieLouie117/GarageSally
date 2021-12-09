@@ -526,16 +526,31 @@ namespace UserLogin.Controllers
 
         }
 
-        [HttpGet("GetNewGarageSalesForOverview")]
-        public JsonResult GetNewGarageSalesForOverview()
+        [HttpGet("GetSalesByState")]
+        public JsonResult GetSalesByState()
         {
             // Still need these for debugging? Console.Writelines should be removed
             // DashboardWrapper wMode = new DashboardWrapper();
 
-            List<GarageSale> ALList = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+
+
+            List<GarageSale> AllSalesInAL = _context.GarageSales
             .Where(st => st.State == "AL")
             .ToList();
+
+            List<GarageSale> NewSalesInAL = _context.GarageSales
+           .Where(td => td.StartDate >= DateTime.Now)
+           .Where(st => st.State == "AL")
+           .ToList();
+
+            var Alabama = new List<int>();
+            Alabama.Add(AllSalesInAL.Count);
+            Alabama.Add(NewSalesInAL.Count);
+
+
+
+
+
             List<GarageSale> WYList = _context.GarageSales
             .Where(td => td.StartDate >= DateTime.Now)
             .Where(st => st.State == "WY")
@@ -735,71 +750,71 @@ namespace UserLogin.Controllers
            .ToList();
 
 
-            var NewSales = new
+            var StateData = new
             {
-                AL = ALList.Count,
-                AK = AKList.Count,
-                AZ = AZList.Count,
-                AR = ARList.Count,
-                CA = CAList.Count,
-                CO = COList.Count,
-                CT = CTList.Count,
-                DE = DEList.Count,
-                FL = FLList.Count,
-                GA = GAList.Count,
-                HI = HIList.Count,
-                ID = IDList.Count,
-                IL = ILList.Count,
-                IN = INList.Count,
-                IA = IAList.Count,
-                KS = KSList.Count,
-                KY = KYList.Count,
-                LA = LAList.Count,
-                ME = MEList.Count,
-                MD = MDList.Count,
-                MA = MAList.Count,
-                MI = MIList.Count,
-                MN = MNList.Count,
-                MS = MSList.Count,
-                MO = MOList.Count,
-                MT = MTList.Count,
-                NE = NEList.Count,
-                NV = NVList.Count,
-                NH = NHList.Count,
-                NJ = NJList.Count,
-                NM = NMList.Count,
-                NY = NYList.Count,
-                NC = NCList.Count,
-                ND = NDList.Count,
-                OH = OHList.Count,
-                OK = OKList.Count,
-                OR = ORList.Count,
-                PA = PAList.Count,
-                RI = RIList.Count,
-                SC = SCList.Count,
-                SD = SDList.Count,
-                TN = TNList.Count,
-                TX = TXList.Count,
-                UT = UTList.Count,
-                VA = VAList.Count,
-                WA = WAList.Count,
-                WV = WVList.Count,
-                WI = WIList.Count,
-                WY = WYList.Count
+                Alabama = Alabama,
+                // AL = ALList.Count,
+                // AK = AKList.Count,
+                // AZ = AZList.Count,
+                // AR = ARList.Count,
+                // CA = CAList.Count,
+                // CO = COList.Count,
+                // CT = CTList.Count,
+                // DE = DEList.Count,
+                // FL = FLList.Count,
+                // GA = GAList.Count,
+                // HI = HIList.Count,
+                // ID = IDList.Count,
+                // IL = ILList.Count,
+                // IN = INList.Count,
+                // IA = IAList.Count,
+                // KS = KSList.Count,
+                // KY = KYList.Count,
+                // LA = LAList.Count,
+                // ME = MEList.Count,
+                // MD = MDList.Count,
+                // MA = MAList.Count,
+                // MI = MIList.Count,
+                // MN = MNList.Count,
+                // MS = MSList.Count,
+                // MO = MOList.Count,
+                // MT = MTList.Count,
+                // NE = NEList.Count,
+                // NV = NVList.Count,
+                // NH = NHList.Count,
+                // NJ = NJList.Count,
+                // NM = NMList.Count,
+                // NY = NYList.Count,
+                // NC = NCList.Count,
+                // ND = NDList.Count,
+                // OH = OHList.Count,
+                // OK = OKList.Count,
+                // OR = ORList.Count,
+                // PA = PAList.Count,
+                // RI = RIList.Count,
+                // SC = SCList.Count,
+                // SD = SDList.Count,
+                // TN = TNList.Count,
+                // TX = TXList.Count,
+                // UT = UTList.Count,
+                // VA = VAList.Count,
+                // WA = WAList.Count,
+                // WV = WVList.Count,
+                // WI = WIList.Count,
+                // WY = WYList.Count
             };
-            return Json(new { data = NewSales });
+            return Json(new { data = StateData });
 
         }
 
 
 
-        [HttpGet("GetSellersForOverview")]
-        public JsonResult GetSellersForOverview()
+        [HttpGet("GetUsersForOverview")]
+        public JsonResult GetUsersForOverview()
         {
-            List<User> GetSellersForOverview = _context.Users
-            .Where(us => us.AccountType == AccountType.Seller)
+            List<User> GetUsersForOverview = _context.Users
             .ToList();
-            return Json(new { data = GetSellersForOverview });
+            return Json(new { data = GetUsersForOverview });
         }
 
 

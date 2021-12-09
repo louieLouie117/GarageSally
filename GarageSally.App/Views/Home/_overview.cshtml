@@ -27,26 +27,26 @@
                     alert("ajax for menue is working!!")
 
                     $.get("/GetAllGarageSalesForOverview", data => {
-                        console.log("All sales:", data.data)
-                        RenderAllSalesData(data);
+                        @* console.log("All sales:", data.data) *@
+                            RenderAllSalesData(data);
                         @* data = JSON.parse(data.allSalesData); you do not need JSON.parse with $.get()*@
                     });
 
-                    $.get("/GetNewGarageSalesForOverview", data => {
-                        console.log(data.data)
-                        RenderNewSalesData(data);
+                    $.get("/GetSalesByState", data => {
+                        @* console.log("Sales by state", data.data) *@
+                            RenderSalesByStateData(data);
 
                     })
 
-                    $.get("/GetSellersForOverview ", data => {
-                        console.log(data.data)
-                        RenderSellersData(data);
+                    $.get("/GetUsersForOverview ", data => {
+                        @* console.log(data.data) *@
+                            RenderSellersData(data);
 
                     })
 
                     $.get("/GetBuyersForOverview", data => {
-                        console.log(data.data)
-                        RenderBuyersData(data);
+                        @* console.log(data.data) *@
+                            RenderBuyersData(data);
 
                     })
                     @* $('#BuyersOverviewList').load("/GetBuyersForOverview #BuyersOverviewList", data => {
@@ -61,22 +61,25 @@
 
         const RenderAllSalesData = (data) => {
             $.each(data.data, function (key, value) {
-                console.log(key, value)
-                $(`<li>
-                        <h2 id="${key}">${key}</h2>
-                        <h2>${value}</h2>
+                @* console.log(key, value) *@
+                    $(`<li>
+                        <h3 id="${key}">${key}</h3>
+
+
                 </li>`).appendTo("#AllGarageSalesOverviewList");
 
             });
 
         };
 
-        const RenderNewSalesData = (data) => {
+        const RenderSalesByStateData = (data) => {
             $.each(data.data, function (key, value) {
-                console.log(key, value)
+                console.log("Sales by state", key, value)
+                console.log("test", value[0])
                 $(`<li>
                         <h2 id="${key}">${key}</h2>
-                        <h2>${value}</h2>
+                        <h3>${value[0]}</h3>
+                        <h3>${value[1]}</h3>
                 </li>`).appendTo("#NewGarageSalesOverviewList");
 
             });
@@ -85,8 +88,8 @@
 
         const RenderSellersData = (data) => {
             $.each(data.data, function (key, value) {
-                console.log("All Sellers:", key, value)
-                $(`<li>
+                @* console.log("All Sellers:", key, value) *@
+                    $(`<li>
                         <h2 id="${key}">${value.email}</h2>
                         <h2 id="${key}">${value.state}</h2>
 
@@ -98,8 +101,8 @@
 
         const RenderBuyersData = (data) => {
             $.each(data.data, function (key, value) {
-                console.log("All Sellers:", key, value)
-                $(`<li>
+                @* console.log("All Sellers:", key, value) *@
+                    $(`<li>
                         <h2 id="${key}">${value.email}</h2>
                         <h2 id="${key}">${value.state}</h2>
                         </li>`).appendTo("#BuyersForOverviewList");
@@ -117,7 +120,7 @@
 <body>
     <div class="Overview-Container" id="overviewPartial">
         <section>
-            <h2>Sellers</h2>
+            <h2>Users</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde perferendis omnis voluptas dolores,
                 officiis
                 repellat vitae necessitatibus porro fugit earum quaerat mollitia sit? Eius alias ducimus culpa eligendi
@@ -129,7 +132,7 @@
 
         </section>
         <section>
-            <h2>Buyers</h2>
+            <h2>User by State</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde perferendis omnis voluptas dolores,
                 officiis
                 repellat vitae necessitatibus porro fugit earum quaerat mollitia sit? Eius alias ducimus culpa eligendi
@@ -151,17 +154,20 @@
 
         </section>
 
-        <section>
-            <h2>New Sales</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde perferendis omnis voluptas dolores,
-                officiis
-                repellat vitae necessitatibus porro fugit earum quaerat mollitia sit? Eius alias ducimus culpa eligendi
-                eaque
-                neque!</p>
-            <ul id="NewGarageSalesOverviewList"></ul>
+        <div class="SalesByState-AdminOverview">
+            <section>
+                <h1>Sales by State</h1>
+                <header>
+                    <h2>State</h2>
+                    <h2>All Sales</h2>
+                    <h2>New Sales</h2>
+
+                </header>
+                <ul id="NewGarageSalesOverviewList"></ul>
 
 
-        </section>
+            </section>
+        </div>
 
 
     </div>
