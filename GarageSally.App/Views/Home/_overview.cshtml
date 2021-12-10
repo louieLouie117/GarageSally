@@ -65,9 +65,9 @@
         const RenderSalesByStateData = (data) => {
             $.each(data.data, function (key, value) {
                 $(`<li>
-                        <h2 id="${key}">${key}</h2>
-                        <h3>${value[0]}</h3>
+                        <h2 id="${key}">${value[0]}</h2>
                         <h3>${value[1]}</h3>
+                        <h3>${value[2]}</h3>
                 </li>`).appendTo("#AllSalesByStateOverview");
 
             });
