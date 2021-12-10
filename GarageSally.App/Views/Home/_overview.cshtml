@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overview</title>
-    <script>
 
+
+    <script>
         const NewSalesOverviewHandler = (e) => {
 
             let userSateSelected = e.target.id;
@@ -23,15 +24,20 @@
                     url: '@Url.Action("GetZipCodeBySate", "Home")',
                     type: 'GET',
                     data: jsonData,
+                    success: SuccessStatusZipcode,
+
                 })
             })
 
 
         }
 
-    </script>
+        const SuccessStatusZipcode = (result) => {
+            console.log("all is well in zipcode ajax call")
+            console.log(result)
+        };
 
-    <script>
+
 
 
         const MenuHandler = (e) => {
@@ -55,14 +61,11 @@
                     $.get("/GetAllUsersByState", data => {
                         RnderAllUserByState(data);
                     });
-                    @*
-                            $.get("/GetZipCodeBySate", data => {
-                            RenderZipcode(data);
-
-                            }); *@
 
 
-                        @* $('#BuyersOverviewList').load("/GetBuyersForOverview #BuyersOverviewList", data => {
+
+
+                    @* $('#BuyersOverviewList').load("/GetBuyersForOverview #BuyersOverviewList", data => {
                             data = JSON.parse(data);
                             console.log(data)
                             }) *@
@@ -85,14 +88,6 @@
 
         };
 
-        const RenderZipcode = (data) => {
-            $.each(data.data, function (key, value) {
-                console.log("zipcode date", key, value.zipcode)
-
-
-            });
-
-        };
 
         const RenderSalesByStateData = (data) => {
             $.each(data.data, function (key, value) {

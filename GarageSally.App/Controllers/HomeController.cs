@@ -1276,10 +1276,13 @@ namespace UserLogin.Controllers
         {
             System.Console.WriteLine("you have reached the backend of get zipcode!!");
 
+            var stateSelected = userSateSelected.State;
+            System.Console.WriteLine(stateSelected);
+
 
             List<GarageSale> GetZipCodeBySate = _context.GarageSales
             .Where(td => td.StartDate >= DateTime.Now)
-            .Where(st => st.State == "AL")
+            .Where(st => st.State == stateSelected)
             .ToList();
             return Json(new { data = GetZipCodeBySate });
         }
