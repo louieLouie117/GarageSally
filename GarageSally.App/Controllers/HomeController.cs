@@ -1038,6 +1038,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "PA")
             .ToList();
             var Pennsylvania = new List<string>();
+            Pennsylvania.Add("Pennsylvania");
             Pennsylvania.Add(AllSalesInPA.Count.ToString());
             Pennsylvania.Add(NewSalesInPA.Count.ToString());
 
@@ -1169,6 +1170,7 @@ namespace UserLogin.Controllers
             .ToList();
             var WestVirginia = new List<string>();
             WestVirginia.Add("West Virginia");
+            WestVirginia.Add(AllSalesInWV.Count.ToString());
             WestVirginia.Add(NewSalesInWV.Count.ToString());
 
             // 49.Wisconsin
