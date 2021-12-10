@@ -7,10 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overview</title>
     <script>
-        $(document).ready((e) => {
-            @* alert("ajax for overview is working!!") *@
 
-        })
+        const NewSalesOverviewHandler = (e) => {
+
+            let userSateSelected = e.target.id;
+
+            $(document).ready((e) => {
+                console.log(userSateSelected)
+
+                let jsonData = {
+                    state: userSateSelected,
+                }
+                console.log(jsonData)
+                $.ajax({
+                    url: '@Url.Action("GetZipCodeBySate", "Home")',
+                    type: 'GET',
+                    data: jsonData,
+                })
+            })
+
+
+        }
+
     </script>
 
     <script>
@@ -37,9 +55,14 @@
                     $.get("/GetAllUsersByState", data => {
                         RnderAllUserByState(data);
                     });
+                    @*
+                            $.get("/GetZipCodeBySate", data => {
+                            RenderZipcode(data);
+
+                            }); *@
 
 
-                    @* $('#BuyersOverviewList').load("/GetBuyersForOverview #BuyersOverviewList", data => {
+                        @* $('#BuyersOverviewList').load("/GetBuyersForOverview #BuyersOverviewList", data => {
                             data = JSON.parse(data);
                             console.log(data)
                             }) *@
@@ -62,12 +85,21 @@
 
         };
 
+        const RenderZipcode = (data) => {
+            $.each(data.data, function (key, value) {
+                console.log("zipcode date", key, value.zipcode)
+
+
+            });
+
+        };
+
         const RenderSalesByStateData = (data) => {
             $.each(data.data, function (key, value) {
                 $(`<li>
-                        <h2 id="${key}">${value[0]}</h2>
+                        <h2>${value[0]}</h2>
                         <h3>${value[1]}</h3>
-                        <h3>${value[2]}</h3>
+                        <h3 id="${key}" onclick="NewSalesOverviewHandler(event)">${value[2]}</h3>
                 </li>`).appendTo("#AllSalesByStateOverview");
 
             });

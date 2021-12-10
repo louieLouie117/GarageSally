@@ -1271,6 +1271,20 @@ namespace UserLogin.Controllers
 
         }
 
+        [HttpGet("GetZipCodeBySate")]
+        public JsonResult GetZipCodeBySate(GarageSale userSateSelected)
+        {
+            System.Console.WriteLine("you have reached the backend of get zipcode!!");
+
+
+            List<GarageSale> GetZipCodeBySate = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "AL")
+            .ToList();
+            return Json(new { data = GetZipCodeBySate });
+        }
+
+
 
 
         [HttpGet("GetAllUsersForOverview")]
