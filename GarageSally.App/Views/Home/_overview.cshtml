@@ -42,6 +42,7 @@
         const SuccessStatusZipcode = (result) => {
             console.log("all is well in zipcode ajax call")
             console.log(result)
+            $('#AllZipeCodeByState').empty();
             RenderZipcode(result);
         };
 
