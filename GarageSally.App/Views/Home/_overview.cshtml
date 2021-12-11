@@ -9,32 +9,53 @@
 
 
     <script>
+
         const NewSalesOverviewHandler = (e) => {
 
+            let check = document.getElementById("SalesBySateTitle").innerHTML;
+
+            if (check != "Sales by State") {
+                document.getElementById("SalesbySateList").style.display = "grid";
+                document.getElementById("SelectedSateZipcodeList").style.display = "none";
+                document.getElementById("SalesBySateTitle").innerHTML = "Sales by State";
+                return
+            }
+
+            document.getElementById("SalesbySateList").style.display = "none";
+            document.getElementById("SelectedSateZipcodeList").style.display = "grid";
+            document.getElementById("SalesBySateTitle").innerHTML = e.target.title
+
             let userSateSelected = e.target.id;
+            let jsonData = {
+                state: userSateSelected,
+            }
+            console.log(jsonData)
+            $.ajax({
+                url: '@Url.Action("GetZipCodeBySate", "Home")',
+                type: 'GET',
+                data: jsonData,
+                success: SuccessStatusZipcode,
 
-            $(document).ready((e) => {
-                console.log(userSateSelected)
-
-                let jsonData = {
-                    state: userSateSelected,
-                }
-                console.log(jsonData)
-                $.ajax({
-                    url: '@Url.Action("GetZipCodeBySate", "Home")',
-                    type: 'GET',
-                    data: jsonData,
-                    success: SuccessStatusZipcode,
-
-                })
             })
-
-
         }
 
         const SuccessStatusZipcode = (result) => {
             console.log("all is well in zipcode ajax call")
             console.log(result)
+            RenderZipcode(result);
+        };
+
+        const RenderZipcode = (data) => {
+            $.each(data.data, function (key, value) {
+                console.log("zipecode data:", key, value)
+                $(`<li>
+                        <h3 id="${key}">${value.city}</h3>
+                        <h3 id="${key}">${value.zipcode}</h3>
+
+                </li>`).appendTo("#AllZipeCodeByState");
+
+            });
+
         };
 
 
@@ -94,7 +115,7 @@
                 $(`<li>
                         <h2>${value[0]}</h2>
                         <h3>${value[1]}</h3>
-                        <h3 id="${key}" onclick="NewSalesOverviewHandler(event)">${value[2]}</h3>
+                        <h3 id="${key}" title="${value[0]}" onclick="NewSalesOverviewHandler(event)">${value[2]}</h3>
                 </li>`).appendTo("#AllSalesByStateOverview");
 
             });
@@ -148,14 +169,22 @@
 
         <div class="SalesByState-AdminOverview">
             <section>
-                <h1>Sales by State</h1>
-                <header>
-                    <h2>State</h2>
-                    <h2>All Sales</h2>
-                    <h2>New Sales</h2>
-
-                </header>
-                <ul id="AllSalesByStateOverview"></ul>
+                <h1 id="SalesBySateTitle" onclick="NewSalesOverviewHandler(event)">Sales by State</h1>
+                <div id="SalesbySateList">
+                    <header>
+                        <h2>State</h2>
+                        <h2>All Sales</h2>
+                        <h2>New Sales</h2>
+                    </header>
+                    <ul id="AllSalesByStateOverview"></ul>
+                </div>
+                <div id="SelectedSateZipcodeList">
+                    <header>
+                        <h2>City</h2>
+                        <h2>Zipcode</h2>
+                    </header>
+                    <ul id="AllZipeCodeByState"></ul>
+                </div>
 
 
             </section>

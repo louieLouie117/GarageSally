@@ -749,6 +749,16 @@ input {
 	text-transform: capitalize;
 }
 
+.SalesByState-AdminOverview section ul li h3{
+	cursor: pointer;
+	padding: 2px 5px ;
+	
+}
+
+#SelectedSateZipcodeList{
+	display: none;
+}
+
 /* 
 .UserBySate-AdminOverview {
 	background: red;
