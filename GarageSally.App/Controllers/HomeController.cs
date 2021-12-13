@@ -309,8 +309,1006 @@ namespace UserLogin.Controllers
             return Json(new { data = garageSaleItems });
         }
 
+        [HttpGet("GetAllUsersByState")]
+        public JsonResult GetAllUsersByState()
+        {
+            // Still need these for debugging? Console.Writelines should be removed
+            // DashboardWrapper wMode = new DashboardWrapper();
+
+            List<GarageSale> ALList = _context.GarageSales
+            .Where(st => st.State == "AL")
+            .ToList();
+            List<GarageSale> WYList = _context.GarageSales
+           .Where(st => st.State == "WY")
+           .ToList();
+            List<GarageSale> WIList = _context.GarageSales
+           .Where(st => st.State == "WI")
+           .ToList();
+            List<GarageSale> WVList = _context.GarageSales
+           .Where(st => st.State == "WV")
+           .ToList();
+            List<GarageSale> WAList = _context.GarageSales
+           .Where(st => st.State == "WA")
+           .ToList();
+            List<GarageSale> VAList = _context.GarageSales
+           .Where(st => st.State == "VA")
+           .ToList();
+            List<GarageSale> UTList = _context.GarageSales
+           .Where(st => st.State == "UT")
+           .ToList();
+
+            List<GarageSale> TXList = _context.GarageSales
+            .Where(st => st.State == "TX")
+            .ToList();
+
+            List<GarageSale> TNList = _context.GarageSales
+           .Where(st => st.State == "TN")
+           .ToList();
+
+            List<GarageSale> SDList = _context.GarageSales
+           .Where(st => st.State == "SD")
+           .ToList();
+
+            List<GarageSale> SCList = _context.GarageSales
+           .Where(st => st.State == "SC")
+           .ToList();
+            List<GarageSale> RIList = _context.GarageSales
+           .Where(st => st.State == "RI")
+           .ToList();
+            List<GarageSale> PAList = _context.GarageSales
+           .Where(st => st.State == "PA")
+           .ToList();
+            List<GarageSale> ORList = _context.GarageSales
+           .Where(st => st.State == "OR")
+           .ToList();
+            List<GarageSale> OKList = _context.GarageSales
+           .Where(st => st.State == "OK")
+           .ToList();
+            List<GarageSale> OHList = _context.GarageSales
+           .Where(st => st.State == "OH")
+           .ToList();
+            List<GarageSale> NDList = _context.GarageSales
+           .Where(st => st.State == "ND")
+           .ToList();
+            List<GarageSale> NCList = _context.GarageSales
+           .Where(st => st.State == "NC")
+           .ToList();
+            List<GarageSale> NYList = _context.GarageSales
+           .Where(st => st.State == "NY")
+           .ToList();
+            List<GarageSale> NMList = _context.GarageSales
+           .Where(st => st.State == "NM")
+           .ToList();
+            List<GarageSale> NJList = _context.GarageSales
+           .Where(st => st.State == "NJ")
+           .ToList();
+            List<GarageSale> NHList = _context.GarageSales
+           .Where(st => st.State == "NH")
+           .ToList();
+            List<GarageSale> NVList = _context.GarageSales
+           .Where(st => st.State == "NV")
+           .ToList();
+            List<GarageSale> NEList = _context.GarageSales
+           .Where(st => st.State == "NE")
+           .ToList();
+            List<GarageSale> MTList = _context.GarageSales
+           .Where(st => st.State == "MT")
+           .ToList();
+            List<GarageSale> MOList = _context.GarageSales
+           .Where(st => st.State == "MO")
+           .ToList();
+            List<GarageSale> MSList = _context.GarageSales
+           .Where(st => st.State == "MS")
+           .ToList();
+            List<GarageSale> MNList = _context.GarageSales
+           .Where(st => st.State == "MN")
+           .ToList();
+            List<GarageSale> MIList = _context.GarageSales
+           .Where(st => st.State == "MI")
+           .ToList();
+            List<GarageSale> MAList = _context.GarageSales
+           .Where(st => st.State == "MA")
+           .ToList();
+            List<GarageSale> MDList = _context.GarageSales
+           .Where(st => st.State == "MD")
+           .ToList();
+            List<GarageSale> MEList = _context.GarageSales
+           .Where(st => st.State == "ME")
+           .ToList();
+            List<GarageSale> LAList = _context.GarageSales
+           .Where(st => st.State == "LA")
+           .ToList();
+            List<GarageSale> KYList = _context.GarageSales
+           .Where(st => st.State == "KY")
+           .ToList();
+            List<GarageSale> KSList = _context.GarageSales
+           .Where(st => st.State == "KS")
+           .ToList();
+            List<GarageSale> IAList = _context.GarageSales
+           .Where(st => st.State == "IA")
+           .ToList();
+            List<GarageSale> INList = _context.GarageSales
+           .Where(st => st.State == "IN")
+           .ToList();
+            List<GarageSale> ILList = _context.GarageSales
+           .Where(st => st.State == "IL")
+           .ToList();
+            List<GarageSale> IDList = _context.GarageSales
+           .Where(st => st.State == "ID")
+           .ToList();
+            List<GarageSale> HIList = _context.GarageSales
+           .Where(st => st.State == "HI")
+           .ToList();
+            List<GarageSale> GAList = _context.GarageSales
+           .Where(st => st.State == "GA")
+           .ToList();
+            List<GarageSale> FLList = _context.GarageSales
+           .Where(st => st.State == "FL")
+           .ToList();
+            List<GarageSale> DEList = _context.GarageSales
+           .Where(st => st.State == "DE")
+           .ToList();
+            List<GarageSale> CTList = _context.GarageSales
+           .Where(st => st.State == "CT")
+           .ToList();
+            List<GarageSale> COList = _context.GarageSales
+           .Where(st => st.State == "CO")
+           .ToList();
+            List<GarageSale> CAList = _context.GarageSales
+           .Where(st => st.State == "CA")
+           .ToList();
+            List<GarageSale> ARList = _context.GarageSales
+           .Where(st => st.State == "AR")
+           .ToList();
+            List<GarageSale> AZList = _context.GarageSales
+           .Where(st => st.State == "AZ")
+           .ToList();
+            List<GarageSale> AKList = _context.GarageSales
+           .Where(st => st.State == "AK")
+           .ToList();
+
+            var AllSales = new
+            {
+                AL = ALList.Count,
+                AK = AKList.Count,
+                AZ = AZList.Count,
+                AR = ARList.Count,
+                CA = CAList.Count,
+                CO = COList.Count,
+                CT = CTList.Count,
+                DE = DEList.Count,
+                FL = FLList.Count,
+                GA = GAList.Count,
+                HI = HIList.Count,
+                ID = IDList.Count,
+                IL = ILList.Count,
+                IN = INList.Count,
+                IA = IAList.Count,
+                KS = KSList.Count,
+                KY = KYList.Count,
+                LA = LAList.Count,
+                ME = MEList.Count,
+                MD = MDList.Count,
+                MA = MAList.Count,
+                MI = MIList.Count,
+                MN = MNList.Count,
+                MS = MSList.Count,
+                MO = MOList.Count,
+                MT = MTList.Count,
+                NE = NEList.Count,
+                NV = NVList.Count,
+                NH = NHList.Count,
+                NJ = NJList.Count,
+                NM = NMList.Count,
+                NY = NYList.Count,
+                NC = NCList.Count,
+                ND = NDList.Count,
+                OH = OHList.Count,
+                OK = OKList.Count,
+                OR = ORList.Count,
+                PA = PAList.Count,
+                RI = RIList.Count,
+                SC = SCList.Count,
+                SD = SDList.Count,
+                TN = TNList.Count,
+                TX = TXList.Count,
+                UT = UTList.Count,
+                VA = VAList.Count,
+                WA = WAList.Count,
+                WV = WVList.Count,
+                WI = WIList.Count,
+                WY = WYList.Count
+            };
 
 
+
+            return Json(new { data = AllSales });
+
+        }
+
+        [HttpGet("GetSalesByState")]
+        public JsonResult GetSalesByState()
+        {
+            // Still need these for debugging? Console.Writelines should be removed
+            // DashboardWrapper wMode = new DashboardWrapper();
+
+
+            // 1.Alabama
+            List<GarageSale> AllSalesInAL = _context.GarageSales
+            .Where(st => st.State == "AL")
+            .ToList();
+            List<GarageSale> NewSalesInAL = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "AL")
+            .ToList();
+            var Alabama = new List<string>();
+            Alabama.Add("Alabama");
+            Alabama.Add(AllSalesInAL.Count.ToString());
+            Alabama.Add(NewSalesInAL.Count.ToString());
+
+            // 2.Alaska
+            List<GarageSale> AllSalesInAK = _context.GarageSales
+            .Where(st => st.State == "AK")
+            .ToList();
+            List<GarageSale> NewSalesInAK = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "AK")
+            .ToList();
+            var Alaska = new List<string>();
+            Alaska.Add("Alaska");
+            Alaska.Add(AllSalesInAK.Count.ToString());
+            Alaska.Add(NewSalesInAK.Count.ToString());
+
+            // 3.Arizona
+            List<GarageSale> AllSalesInAZ = _context.GarageSales
+            .Where(st => st.State == "AZ")
+            .ToList();
+            List<GarageSale> NewSalesInAZ = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "AZ")
+            .ToList();
+            var Arizona = new List<string>();
+            Arizona.Add("Arizona");
+            Arizona.Add(AllSalesInAZ.Count.ToString());
+            Arizona.Add(NewSalesInAZ.Count.ToString());
+
+            // 4.Arkansas
+            List<GarageSale> AllSalesInAR = _context.GarageSales
+            .Where(st => st.State == "AR")
+            .ToList();
+            List<GarageSale> NewSalesInAR = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "AR")
+            .ToList();
+            var Arkansas = new List<string>();
+            Arkansas.Add("Arkansas");
+            Arkansas.Add(AllSalesInAR.Count.ToString());
+            Arkansas.Add(NewSalesInAR.Count.ToString());
+
+            // 5.California
+            List<GarageSale> AllSalesInAC = _context.GarageSales
+            .Where(st => st.State == "AC")
+            .ToList();
+            List<GarageSale> NewSalesInAC = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "AC")
+            .ToList();
+            var California = new List<string>();
+            California.Add("California");
+            California.Add(NewSalesInAC.Count.ToString());
+            California.Add(AllSalesInAC.Count.ToString());
+
+
+            // 6.Colorado
+            List<GarageSale> AllSalesInCO = _context.GarageSales
+            .Where(st => st.State == "CO")
+            .ToList();
+            List<GarageSale> NewSalesInCO = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "CO")
+            .ToList();
+            var Colorado = new List<string>();
+            Colorado.Add("Colorado");
+            Colorado.Add(AllSalesInCO.Count.ToString());
+            Colorado.Add(NewSalesInCO.Count.ToString());
+
+
+            // 7.Connecticut
+            List<GarageSale> AllSalesInCT = _context.GarageSales
+            .Where(st => st.State == "CT")
+            .ToList();
+            List<GarageSale> NewSalesInCT = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "CT")
+            .ToList();
+            var Connecticut = new List<string>();
+            Connecticut.Add("Connecticut");
+            Connecticut.Add(AllSalesInCT.Count.ToString());
+            Connecticut.Add(NewSalesInCT.Count.ToString());
+
+            // 8.Delaware
+            List<GarageSale> AllSalesInDE = _context.GarageSales
+            .Where(st => st.State == "DE")
+            .ToList();
+            List<GarageSale> NewSalesInDE = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "DE")
+            .ToList();
+            var Delaware = new List<string>();
+            Delaware.Add("Delaware");
+            Delaware.Add(AllSalesInDE.Count.ToString());
+            Delaware.Add(NewSalesInDE.Count.ToString());
+
+
+            // 9.Florida
+            List<GarageSale> AllSalesInFL = _context.GarageSales
+            .Where(st => st.State == "FL")
+            .ToList();
+            List<GarageSale> NewSalesInFL = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "FL")
+            .ToList();
+            var Florida = new List<string>();
+            Florida.Add("Florida");
+            Florida.Add(AllSalesInFL.Count.ToString());
+            Florida.Add(NewSalesInFL.Count.ToString());
+
+            // 10.Georgia
+            List<GarageSale> AllSalesInGA = _context.GarageSales
+            .Where(st => st.State == "GA")
+            .ToList();
+            List<GarageSale> NewSalesInGA = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "GA")
+            .ToList();
+            var Georgia = new List<string>();
+            Georgia.Add("Georgia");
+            Georgia.Add(AllSalesInGA.Count.ToString());
+            Georgia.Add(NewSalesInGA.Count.ToString());
+
+
+            // 11.Hawaii
+            List<GarageSale> AllSalesInHI = _context.GarageSales
+            .Where(st => st.State == "HI")
+            .ToList();
+            List<GarageSale> NewSalesInHI = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "HI")
+            .ToList();
+            var Hawaii = new List<string>();
+            Hawaii.Add("Hawaii");
+            Hawaii.Add(AllSalesInHI.Count.ToString());
+            Hawaii.Add(NewSalesInHI.Count.ToString());
+
+            //12.Idaho
+            List<GarageSale> AllSalesInID = _context.GarageSales
+            .Where(st => st.State == "ID")
+            .ToList();
+            List<GarageSale> NewSalesInID = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "ID")
+            .ToList();
+            var Idaho = new List<string>();
+            Idaho.Add("Idaho");
+            Idaho.Add(AllSalesInID.Count.ToString());
+            Idaho.Add(NewSalesInID.Count.ToString());
+
+            // 13.Illinois
+            List<GarageSale> AllSalesInIL = _context.GarageSales
+            .Where(st => st.State == "IL")
+            .ToList();
+            List<GarageSale> NewSalesInIL = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "IL")
+            .ToList();
+            var Illinois = new List<string>();
+            Illinois.Add("Illinois");
+            Illinois.Add(AllSalesInIL.Count.ToString());
+            Illinois.Add(NewSalesInIL.Count.ToString());
+
+            // 14.Indiana
+            List<GarageSale> AllSalesInIN = _context.GarageSales
+            .Where(st => st.State == "IN")
+            .ToList();
+            List<GarageSale> NewSalesInIN = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "IN")
+            .ToList();
+            var Indiana = new List<string>();
+            Indiana.Add("Indiana");
+            Indiana.Add(AllSalesInIN.Count.ToString());
+            Indiana.Add(NewSalesInIN.Count.ToString());
+
+
+            // 15.Iowa
+            List<GarageSale> AllSalesInIA = _context.GarageSales
+            .Where(st => st.State == "IA")
+            .ToList();
+            List<GarageSale> NewSalesInIA = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "IA")
+            .ToList();
+            var Iowa = new List<string>();
+            Iowa.Add("Iowa");
+            Iowa.Add(AllSalesInIA.Count.ToString());
+            Iowa.Add(NewSalesInIA.Count.ToString());
+
+            // 16.Kansas
+            List<GarageSale> AllSalesInKS = _context.GarageSales
+            .Where(st => st.State == "KS")
+            .ToList();
+            List<GarageSale> NewSalesInKS = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "KS")
+            .ToList();
+            var Kansas = new List<string>();
+            Kansas.Add("Kansas");
+            Kansas.Add(AllSalesInKS.Count.ToString());
+            Kansas.Add(NewSalesInKS.Count.ToString());
+
+            // 17.Kentucky
+            List<GarageSale> AllSalesInKY = _context.GarageSales
+            .Where(st => st.State == "KY")
+            .ToList();
+            List<GarageSale> NewSalesInKY = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "KY")
+            .ToList();
+            var Kentucky = new List<string>();
+            Kentucky.Add("Kentucky");
+            Kentucky.Add(AllSalesInKY.Count.ToString());
+            Kentucky.Add(NewSalesInKY.Count.ToString());
+
+
+            // 18. Louisiana
+            List<GarageSale> AllSalesInLA = _context.GarageSales
+            .Where(st => st.State == "LA")
+            .ToList();
+            List<GarageSale> NewSalesInLA = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "LA")
+            .ToList();
+            var Louisiana = new List<string>();
+            Louisiana.Add("Louisiana");
+            Louisiana.Add(AllSalesInLA.Count.ToString());
+            Louisiana.Add(NewSalesInLA.Count.ToString());
+
+            // 19.Maine
+            List<GarageSale> AllSalesInME = _context.GarageSales
+            .Where(st => st.State == "ME")
+            .ToList();
+            List<GarageSale> NewSalesInME = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "ME")
+            .ToList();
+            var Maine = new List<string>();
+            Maine.Add("Maine");
+            Maine.Add(AllSalesInME.Count.ToString());
+            Maine.Add(NewSalesInME.Count.ToString());
+
+
+            // 20.Maryland
+            List<GarageSale> AllSalesInMD = _context.GarageSales
+            .Where(st => st.State == "MD")
+            .ToList();
+            List<GarageSale> NewSalesInMD = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "MD")
+            .ToList();
+            var Maryland = new List<string>();
+            Maryland.Add("Maryland");
+            Maryland.Add(AllSalesInMD.Count.ToString());
+            Maryland.Add(NewSalesInMD.Count.ToString());
+
+            // 21.Massachusetts
+            List<GarageSale> AllSalesInMA = _context.GarageSales
+            .Where(st => st.State == "MA")
+            .ToList();
+            List<GarageSale> NewSalesInMA = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "MA")
+            .ToList();
+            var Massachusetts = new List<string>();
+            Massachusetts.Add("Massachusetts");
+            Massachusetts.Add(AllSalesInMA.Count.ToString());
+            Massachusetts.Add(NewSalesInMA.Count.ToString());
+
+
+            // 22.Michigan
+            List<GarageSale> AllSalesInMI = _context.GarageSales
+            .Where(st => st.State == "MI")
+            .ToList();
+            List<GarageSale> NewSalesInMI = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "MI")
+            .ToList();
+            var Michigan = new List<string>();
+            Michigan.Add("Michigan");
+            Michigan.Add(AllSalesInMI.Count.ToString());
+            Michigan.Add(NewSalesInMI.Count.ToString());
+
+
+            // 23.Minnesota
+            List<GarageSale> AllSalesInMN = _context.GarageSales
+            .Where(st => st.State == "MN")
+            .ToList();
+            List<GarageSale> NewSalesInMN = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "MN")
+            .ToList();
+            var Minnesota = new List<string>();
+            Minnesota.Add("Minnesota");
+            Minnesota.Add(AllSalesInMN.Count.ToString());
+            Minnesota.Add(NewSalesInMN.Count.ToString());
+
+
+            //24.Mississippi
+            List<GarageSale> AllSalesInMS = _context.GarageSales
+            .Where(st => st.State == "MS")
+            .ToList();
+            List<GarageSale> NewSalesInMS = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "MS")
+            .ToList();
+            var Mississippi = new List<string>();
+            Mississippi.Add("Mississippi");
+            Mississippi.Add(AllSalesInMS.Count.ToString());
+            Mississippi.Add(NewSalesInMS.Count.ToString());
+
+
+            // 25.Missouri
+            List<GarageSale> AllSalesInMO = _context.GarageSales
+            .Where(st => st.State == "MO")
+            .ToList();
+            List<GarageSale> NewSalesInMO = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "MO")
+            .ToList();
+            var Missouri = new List<string>();
+            Missouri.Add("Missouri");
+            Missouri.Add(AllSalesInMO.Count.ToString());
+            Missouri.Add(NewSalesInMO.Count.ToString());
+
+
+            // 26.Montana
+            List<GarageSale> AllSalesInMT = _context.GarageSales
+            .Where(st => st.State == "MT")
+            .ToList();
+            List<GarageSale> NewSalesInMT = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "MT")
+            .ToList();
+            var Montana = new List<string>();
+            Montana.Add("Montana");
+            Montana.Add(AllSalesInMT.Count.ToString());
+            Montana.Add(NewSalesInMT.Count.ToString());
+
+
+            // 27.Nebraska
+            List<GarageSale> AllSalesInNE = _context.GarageSales
+            .Where(st => st.State == "NE")
+            .ToList();
+            List<GarageSale> NewSalesInNE = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "NE")
+            .ToList();
+            var Nebraska = new List<string>();
+            Nebraska.Add("Nebraska");
+            Nebraska.Add(AllSalesInNE.Count.ToString());
+            Nebraska.Add(NewSalesInNE.Count.ToString());
+
+            // 28.Nevada
+            List<GarageSale> AllSalesInNV = _context.GarageSales
+            .Where(st => st.State == "NV")
+            .ToList();
+            List<GarageSale> NewSalesInNV = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "NV")
+            .ToList();
+            var Nevada = new List<string>();
+            Nevada.Add("Nevada");
+            Nevada.Add(AllSalesInNV.Count.ToString());
+            Nevada.Add(NewSalesInNV.Count.ToString());
+
+            // 29.NewHampshire
+            List<GarageSale> AllSalesInNH = _context.GarageSales
+            .Where(st => st.State == "NH")
+            .ToList();
+            List<GarageSale> NewSalesInNH = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "NH")
+            .ToList();
+            var NewHampshire = new List<string>();
+            NewHampshire.Add("New Hampshire");
+            NewHampshire.Add(AllSalesInNH.Count.ToString());
+            NewHampshire.Add(NewSalesInNH.Count.ToString());
+
+            // 30.NewJersey
+            List<GarageSale> AllSalesInNJ = _context.GarageSales
+            .Where(st => st.State == "NJ")
+            .ToList();
+            List<GarageSale> NewSalesInNJ = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "NJ")
+            .ToList();
+            var NewJersey = new List<string>();
+            NewJersey.Add("New Jersey");
+            NewJersey.Add(AllSalesInNJ.Count.ToString());
+            NewJersey.Add(NewSalesInNJ.Count.ToString());
+
+            // 31.NewMexico
+            List<GarageSale> AllSalesInNM = _context.GarageSales
+            .Where(st => st.State == "NM")
+            .ToList();
+            List<GarageSale> NewSalesInNM = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "NM")
+            .ToList();
+            var NewMexico = new List<string>();
+            NewMexico.Add("New Mexico");
+            NewMexico.Add(AllSalesInNM.Count.ToString());
+            NewMexico.Add(NewSalesInNM.Count.ToString());
+
+            // 32.NewYork
+            List<GarageSale> AllSalesInNY = _context.GarageSales
+            .Where(st => st.State == "NY")
+            .ToList();
+            List<GarageSale> NewSalesInNY = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "NY")
+            .ToList();
+            var NewYork = new List<string>();
+            NewYork.Add("New York");
+            NewYork.Add(AllSalesInNY.Count.ToString());
+            NewYork.Add(NewSalesInNY.Count.ToString());
+
+
+            // 33.NorthCarolina
+            List<GarageSale> AllSalesInNC = _context.GarageSales
+            .Where(st => st.State == "NC")
+            .ToList();
+            List<GarageSale> NewSalesInNC = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "NC")
+            .ToList();
+            var NorthCarolina = new List<string>();
+            NorthCarolina.Add("North Carolina");
+            NorthCarolina.Add(AllSalesInNC.Count.ToString());
+            NorthCarolina.Add(NewSalesInNC.Count.ToString());
+
+            // 34.NorthDakota
+            List<GarageSale> AllSalesInND = _context.GarageSales
+            .Where(st => st.State == "ND")
+            .ToList();
+            List<GarageSale> NewSalesInND = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "ND")
+            .ToList();
+            var NorthDakota = new List<string>();
+            NorthDakota.Add("North Dakota");
+            NorthDakota.Add(AllSalesInND.Count.ToString());
+            NorthDakota.Add(NewSalesInND.Count.ToString());
+
+            // 35.Ohio
+            List<GarageSale> AllSalesInOH = _context.GarageSales
+            .Where(st => st.State == "OH")
+            .ToList();
+            List<GarageSale> NewSalesInOH = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "OH")
+            .ToList();
+            var Ohio = new List<string>();
+            Ohio.Add("Ohio");
+            Ohio.Add(NewSalesInOH.Count.ToString());
+            Ohio.Add(NewSalesInOH.Count.ToString());
+
+            // 36.Oklahoma
+            List<GarageSale> AllSalesInOK = _context.GarageSales
+            .Where(st => st.State == "OK")
+            .ToList();
+            List<GarageSale> NewSalesInOK = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "OK")
+            .ToList();
+            var Oklahoma = new List<string>();
+            Oklahoma.Add("Oklahoma");
+            Oklahoma.Add(AllSalesInOK.Count.ToString());
+            Oklahoma.Add(NewSalesInOK.Count.ToString());
+
+            // 37.Oregon
+            List<GarageSale> AllSalesInOR = _context.GarageSales
+            .Where(st => st.State == "OR")
+            .ToList();
+            List<GarageSale> NewSalesInOR = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "OR")
+            .ToList();
+            var Oregon = new List<string>();
+            Oregon.Add("Oregon");
+            Oregon.Add(AllSalesInOR.Count.ToString());
+            Oregon.Add(NewSalesInOR.Count.ToString());
+
+
+            // 38.Pennsylvania
+            List<GarageSale> AllSalesInPA = _context.GarageSales
+            .Where(st => st.State == "PA")
+            .ToList();
+            List<GarageSale> NewSalesInPA = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "PA")
+            .ToList();
+            var Pennsylvania = new List<string>();
+            Pennsylvania.Add("Pennsylvania");
+            Pennsylvania.Add(AllSalesInPA.Count.ToString());
+            Pennsylvania.Add(NewSalesInPA.Count.ToString());
+
+
+            // 39.RhodeIsland
+            List<GarageSale> AllSalesInRI = _context.GarageSales
+            .Where(st => st.State == "RI")
+            .ToList();
+            List<GarageSale> NewSalesInRI = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "RI")
+            .ToList();
+            var RhodeIsland = new List<string>();
+            RhodeIsland.Add("Rhode Island");
+            RhodeIsland.Add(AllSalesInRI.Count.ToString());
+            RhodeIsland.Add(NewSalesInRI.Count.ToString());
+
+            // 40.SouthCarolina
+            List<GarageSale> AllSalesInSC = _context.GarageSales
+            .Where(st => st.State == "SC")
+            .ToList();
+            List<GarageSale> NewSalesInSC = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "SC")
+            .ToList();
+            var SouthCarolina = new List<string>();
+            SouthCarolina.Add("South Carolina");
+            SouthCarolina.Add(AllSalesInSC.Count.ToString());
+            SouthCarolina.Add(NewSalesInSC.Count.ToString());
+
+            // 41.SouthDakota
+            List<GarageSale> AllSalesInSD = _context.GarageSales
+            .Where(st => st.State == "SD")
+            .ToList();
+            List<GarageSale> NewSalesInSD = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "SD")
+            .ToList();
+            var SouthDakota = new List<string>();
+            SouthDakota.Add("South Dakota");
+            SouthDakota.Add(AllSalesInSD.Count.ToString());
+            SouthDakota.Add(NewSalesInSD.Count.ToString());
+
+            // 42.Tennessee
+            List<GarageSale> AllSalesInTN = _context.GarageSales
+            .Where(st => st.State == "TN")
+            .ToList();
+            List<GarageSale> NewSalesInTN = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "TN")
+            .ToList();
+            var Tennessee = new List<string>();
+            Tennessee.Add("Tennessee");
+            Tennessee.Add(AllSalesInTN.Count.ToString());
+            Tennessee.Add(NewSalesInTN.Count.ToString());
+
+            // 43.Texas
+            List<GarageSale> AllSalesInTX = _context.GarageSales
+            .Where(st => st.State == "TX")
+            .ToList();
+            List<GarageSale> NewSalesInTX = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "TX")
+            .ToList();
+            var Texas = new List<string>();
+            Texas.Add("Texas");
+            Texas.Add(AllSalesInTX.Count.ToString());
+            Texas.Add(NewSalesInTX.Count.ToString());
+
+            // 44.Utah
+            List<GarageSale> AllSalesInUT = _context.GarageSales
+            .Where(st => st.State == "UT")
+            .ToList();
+            List<GarageSale> NewSalesInUT = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "UT")
+            .ToList();
+            var Utah = new List<string>();
+            Utah.Add("Utah");
+            Utah.Add(NewSalesInUT.Count.ToString());
+            Utah.Add(NewSalesInUT.Count.ToString());
+
+            // 45.Vermont
+            List<GarageSale> AllSalesInVT = _context.GarageSales
+            .Where(st => st.State == "VT")
+            .ToList();
+            List<GarageSale> NewSalesInVT = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "VT")
+            .ToList();
+            var Vermont = new List<string>();
+            Vermont.Add("Vermont");
+            Vermont.Add(AllSalesInVT.Count.ToString());
+            Vermont.Add(NewSalesInVT.Count.ToString());
+
+            // 46.Virginia
+            List<GarageSale> AllSalesInVA = _context.GarageSales
+            .Where(st => st.State == "VA")
+            .ToList();
+            List<GarageSale> NewSalesInVA = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "VA")
+            .ToList();
+            var Virginia = new List<string>();
+            Virginia.Add("Virginia");
+            Virginia.Add(AllSalesInVA.Count.ToString());
+            Virginia.Add(NewSalesInVA.Count.ToString());
+
+            // 47.Washington
+            List<GarageSale> AllSalesInWA = _context.GarageSales
+            .Where(st => st.State == "WA")
+            .ToList();
+            List<GarageSale> NewSalesInWA = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "WA")
+            .ToList();
+            var Washington = new List<string>();
+            Washington.Add("Washington");
+            Washington.Add(AllSalesInWA.Count.ToString());
+            Washington.Add(NewSalesInWA.Count.ToString());
+
+            // 48.WestVirginia
+            List<GarageSale> AllSalesInWV = _context.GarageSales
+            .Where(st => st.State == "WV")
+            .ToList();
+            List<GarageSale> NewSalesInWV = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "WV")
+            .ToList();
+            var WestVirginia = new List<string>();
+            WestVirginia.Add("West Virginia");
+            WestVirginia.Add(AllSalesInWV.Count.ToString());
+            WestVirginia.Add(NewSalesInWV.Count.ToString());
+
+            // 49.Wisconsin
+            List<GarageSale> AllSalesInWI = _context.GarageSales
+            .Where(st => st.State == "WI")
+            .ToList();
+            List<GarageSale> NewSalesInWI = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "WI")
+            .ToList();
+            var Wisconsin = new List<string>();
+            Wisconsin.Add("Wisconsin");
+            Wisconsin.Add(AllSalesInWI.Count.ToString());
+            Wisconsin.Add(NewSalesInWI.Count.ToString());
+
+            // 50.Wyoming
+            List<GarageSale> AllSalesInWY = _context.GarageSales
+            .Where(st => st.State == "WY")
+            .ToList();
+            List<GarageSale> NewSalesInWY = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == "WY")
+            .ToList();
+            var Wyoming = new List<string>();
+            Wyoming.Add("Wyoming");
+            Wyoming.Add(AllSalesInWY.Count.ToString());
+            Wyoming.Add(NewSalesInWY.Count.ToString());
+
+            var StateData = new
+            {
+                AL = Alabama,
+                AK = Alaska,
+                AZ = Arizona,
+                AR = Arkansas,
+                CA = California,
+                CO = Colorado,
+                CT = Connecticut,
+                DE = Delaware,
+                FL = Florida,
+                GA = Georgia,
+                HI = Hawaii,
+                ID = Idaho,
+                IL = Illinois,
+                IN = Indiana,
+                IA = Iowa,
+                KY = Kentucky,
+                LA = Louisiana,
+                ME = Maine,
+                MD = Maryland,
+                MA = Massachusetts,
+                MI = Michigan,
+                MN = Minnesota,
+                MS = Mississippi,
+                MO = Missouri,
+                MT = Montana,
+                NE = Nebraska,
+                NA = Nevada,
+                NH = NewHampshire,
+                NJ = NewJersey,
+                NM = NewMexico,
+                NY = NewYork,
+                NC = NorthCarolina,
+                ND = NorthDakota,
+                OH = Ohio,
+                OK = Oklahoma,
+                OR = Oregon,
+                PA = Pennsylvania,
+                RI = RhodeIsland,
+                SC = SouthCarolina,
+                SD = SouthDakota,
+                TN = Tennessee,
+                TX = Texas,
+                UT = Utah,
+                VT = Vermont,
+                VA = Virginia,
+                WA = Washington,
+                WV = WestVirginia,
+                WI = Wisconsin,
+                WY = Wyoming
+
+            };
+
+            // 5.ADDState
+            //     List<GarageSale> AllSalesInXX = _context.GarageSales
+            //    .Where(td => td.StartDate >= DateTime.Now)
+            //    .Where(st => st.State == "XX")
+            //    .ToList();
+            //     List<GarageSale> NewSalesInXX = _context.GarageSales
+            //     .Where(td => td.StartDate >= DateTime.Now)
+            //     .Where(st => st.State == "XX")
+            //     .ToList();
+            //     var ADDState = new List<int>();
+            //     ADDState.Add(AllSalesInXX.Count);
+            //     ADDState.Add(NewSalesInXX.Count);
+
+
+            return Json(new { data = StateData });
+
+        }
+
+        [HttpGet("GetZipCodeBySate")]
+        public JsonResult GetZipCodeBySate(GarageSale userSateSelected)
+        {
+            System.Console.WriteLine("you have reached the backend of get zipcode!!");
+
+            var stateSelected = userSateSelected.State;
+            System.Console.WriteLine(stateSelected);
+
+
+            List<GarageSale> GetZipCodeBySate = _context.GarageSales
+            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(st => st.State == stateSelected)
+            .ToList();
+            return Json(new { data = GetZipCodeBySate });
+        }
+
+
+
+
+        [HttpGet("GetAllUsersForOverview")]
+        public JsonResult GetAllUsersForOverview()
+        {
+            List<User> GetAllUsersForOverview = _context.Users
+            .ToList();
+            return Json(new { data = GetAllUsersForOverview });
+        }
+
+
+        [HttpGet("GetBuyersForOverview")]
+        public JsonResult GetBuyersForOverview()
+        {
+            List<User> GetBuyersForOverview = _context.Users
+            .Where(us => us.AccountType == AccountType.Buyer)
+            .ToList();
+            return Json(new { data = GetBuyersForOverview });
+        }
+
+        // Count for landing page----------------------
         [HttpGet("ListedGarageSaleCount")]
         public JsonResult ListedGarageSaleCount()
         {
@@ -318,7 +1316,6 @@ namespace UserLogin.Controllers
             .ToList();
             return Json(new { data = garageSaleItems.Count });
         }
-
 
         [HttpGet("SellerCount")]
         public JsonResult SellerCount()

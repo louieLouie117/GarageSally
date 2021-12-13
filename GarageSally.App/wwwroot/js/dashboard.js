@@ -262,16 +262,6 @@ const postSalePartialHandler = (e) =>{
 
 
 
-const MenuHandler = (e) =>{
-    if(e.target.id === "OverviewPartialBTN" ){
-        document.getElementById("overviewPartial").style.display = "grid"
-        showMainMenu()
-
-    }
-
-}
-
-
 let aboutGarageSallyEvent = "close"
 
 const aboutGarageSallyHandler = (e) =>{

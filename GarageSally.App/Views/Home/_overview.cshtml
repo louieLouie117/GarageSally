@@ -5,16 +5,192 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Overview</title>
+
+
+    <script>
+
+        const NewSalesOverviewHandler = (e) => {
+
+            let check = document.getElementById("SalesBySateTitle").innerHTML;
+
+            if (check != "Sales by State") {
+                document.getElementById("SalesbySateList").style.display = "grid";
+                document.getElementById("SelectedSateZipcodeList").style.display = "none";
+                document.getElementById("SalesBySateTitle").innerHTML = "Sales by State";
+                return
+            }
+
+            document.getElementById("SalesbySateList").style.display = "none";
+            document.getElementById("SelectedSateZipcodeList").style.display = "grid";
+            document.getElementById("SalesBySateTitle").innerHTML = e.target.title
+
+            let userSateSelected = e.target.id;
+            let jsonData = {
+                state: userSateSelected,
+            }
+            console.log(jsonData)
+            $.ajax({
+                url: '@Url.Action("GetZipCodeBySate", "Home")',
+                type: 'GET',
+                data: jsonData,
+                success: SuccessStatusZipcode,
+
+            })
+        }
+
+        const SuccessStatusZipcode = (result) => {
+            console.log("all is well in zipcode ajax call")
+            console.log(result)
+            $('#AllZipeCodeByState').empty();
+            RenderZipcode(result);
+        };
+
+        const RenderZipcode = (data) => {
+            $.each(data.data, function (key, value) {
+                console.log("zipecode data:", key, value)
+                $(`<li>
+                        <h3 id="${key}">${value.city}</h3>
+                        <h3 id="${key}">${value.zipcode}</h3>
+
+                </li>`).appendTo("#AllZipeCodeByState");
+
+            });
+
+        };
+
+
+
+
+        const MenuHandler = (e) => {
+            if (e.target.id === "OverviewPartialBTN") {
+                document.getElementById("overviewPartial").style.display = "grid"
+                showMainMenu()
+                document.getElementById("mainMenu").style.left = "95vw";
+
+                $(document).ready((e) => {
+                    $.get("/GetAllUsersForOverview ", data => {
+                        RenderAllUsersOverview(data);
+
+                    })
+
+                    $.get("/GetSalesByState", data => {
+                        RenderSalesByStateData(data);
+                    })
+
+
+
+                    $.get("/GetAllUsersByState", data => {
+                        RnderAllUserByState(data);
+                    });
+
+
+
+
+                    @* $('#BuyersOverviewList').load("/GetBuyersForOverview #BuyersOverviewList", data => {
+                            data = JSON.parse(data);
+                            console.log(data)
+                            }) *@
+                })
+
+            }
+
+        }
+
+        const RnderAllUserByState = (data) => {
+            $.each(data.data, function (key, value) {
+                @* console.log(key, value) *@
+                    $(`<li>
+                        <h3 id="${key}">${key}</h3>
+
+
+                </li>`).appendTo("#UserByStateList");
+
+            });
+
+        };
+
+
+        const RenderSalesByStateData = (data) => {
+            $.each(data.data, function (key, value) {
+                $(`<li>
+                        <h2>${value[0]}</h2>
+                        <h3>${value[1]}</h3>
+                        <h3 id="${key}" title="${value[0]}" onclick="NewSalesOverviewHandler(event)">${value[2]}</h3>
+                </li>`).appendTo("#AllSalesByStateOverview");
+
+            });
+
+        };
+
+        const RenderAllUsersOverview = (data) => {
+            $.each(data.data, function (key, value) {
+                @* console.log("All Sellers:", key, value) *@
+                    $(`<li>
+                        <h2 id="${key}">${value.state}</h2>
+                        <h2 id="${key}">${value.email}</h2>
+
+                        </li>`).appendTo("#AllUserOverview");
+
+            });
+
+        };
+
+
+
+    </script>
 </head>
 
 <body>
     <div class="Overview-Container" id="overviewPartial">
-        <h1>This is the overview</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde perferendis omnis voluptas dolores, officiis
-            repellat vitae necessitatibus porro fugit earum quaerat mollitia sit? Eius alias ducimus culpa eligendi
-            eaque
-            neque!</p>
+        <section>
+            <h1>All Users</h1>
+            <ul id="AllUserOverview"></ul>
+
+
+
+        </section>
+
+        <div class="UserBySate-AdminOverview">
+            <section>
+                <h1>User by State</h1>
+                <header>
+                    <h2>State</h2>
+                    <h2>All Users</h2>
+                    <h2>Sellers</h2>
+                    <h2>Buyers</h2>
+                </header>
+                <ul id="UserByStateList"></ul>
+
+            </section>
+
+        </div>
+
+
+
+        <div class="SalesByState-AdminOverview">
+            <section>
+                <h1 id="SalesBySateTitle" onclick="NewSalesOverviewHandler(event)">Sales by State</h1>
+                <div id="SalesbySateList">
+                    <header>
+                        <h2>State</h2>
+                        <h2>All Sales</h2>
+                        <h2>New Sales</h2>
+                    </header>
+                    <ul id="AllSalesByStateOverview"></ul>
+                </div>
+                <div id="SelectedSateZipcodeList">
+                    <header>
+                        <h2>City</h2>
+                        <h2>Zipcode</h2>
+                    </header>
+                    <ul id="AllZipeCodeByState"></ul>
+                </div>
+
+
+            </section>
+        </div>
+
 
     </div>
 </body>
