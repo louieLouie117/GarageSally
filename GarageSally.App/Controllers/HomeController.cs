@@ -586,17 +586,17 @@ namespace UserLogin.Controllers
             Arkansas.Add(NewSalesInAR.Count.ToString());
 
             // 5.California
-            List<GarageSale> AllSalesInAC = _context.GarageSales
-            .Where(st => st.State == "AC")
+            List<GarageSale> AllSalesInCA = _context.GarageSales
+            .Where(st => st.State == "CA")
             .ToList();
-            List<GarageSale> NewSalesInAC = _context.GarageSales
+            List<GarageSale> NewSalesInCA = _context.GarageSales
             .Where(td => td.StartDate >= DateTime.Now)
-            .Where(st => st.State == "AC")
+            .Where(st => st.State == "CA")
             .ToList();
             var California = new List<string>();
             California.Add("California");
-            California.Add(NewSalesInAC.Count.ToString());
-            California.Add(AllSalesInAC.Count.ToString());
+            California.Add(NewSalesInCA.Count.ToString());
+            California.Add(AllSalesInCA.Count.ToString());
 
 
             // 6.Colorado
