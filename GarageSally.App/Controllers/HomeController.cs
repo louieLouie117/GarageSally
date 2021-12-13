@@ -595,8 +595,8 @@ namespace UserLogin.Controllers
             .ToList();
             var California = new List<string>();
             California.Add("California");
-            California.Add(NewSalesInCA.Count.ToString());
             California.Add(AllSalesInCA.Count.ToString());
+            California.Add(NewSalesInCA.Count.ToString());
 
 
             // 6.Colorado
