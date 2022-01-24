@@ -1381,6 +1381,8 @@ namespace UserLogin.Controllers
             System.Console.WriteLine("seesion zip code", SearchZipCodeInSession);
 
             List<GarageSale> SearchResults = _context.GarageSales
+            // Filter out sales that are in the past
+            .Where(d => d.StartDate >= DateTime.Now)
             .Where(r => r.Zipcode == SearchZipCodeInSession)
             .OrderByDescending(d => d.StartDate)
             .ToList();

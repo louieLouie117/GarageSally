@@ -56,47 +56,21 @@
 
                 $('#HomeSearchResults').load("/SearchResultsZipcode #HomeSearchResults", data => {
                     data = JSON.parse(data);
+
+
                     if (data.data.length === 0) {
                         let zipcode = document.querySelector("#ZipCodeValue").value;
                         console.log("no garage sales in this zip code.")
                         $(`
 
-                        <li >
+                       <li>
                         <section>
-
-                              <footer>
-                                <p>You are the first person to discover Garage Sally in your community ${zipcode} :) there are currently no garage sales listed. Follow us on social media to see what state we are currently marketing in.</p>
-                            </footer>
-                            <main>
-
-                            <a  href="https://www.linkedin.com/company/garagesally" target="blank">
-                               <button> follow </button>
-                               </a>
-                            </main>
-                        </section>
-                    </li>
-
-                        <li >
-                        <section>
-
-                              <footer>
-                                <p>Help build a garage sales community by telling your neighbors, friends, and family about Garage Sally.</p>
-                            </footer>
-                            <main>
-                               <button onclick="SignInDirectionsHandler(event)">share</button>
-                            </main>
-                        </section>
-                    </li>
-
-                        <li >
-                        <section>
-
                               <footer>
                                 <h3></h3>
-                                <p>Be the frist to post a garage sale. Create a free account and start posting.</p>
+                                 <p>There are currently no garage sales listed in your community ${zipcode}. Stay infrom get email notification when there is a garage sale near you.</p>
                             </footer>
                             <main>
-                               <button onclick="SignInDirectionsHandler(event)">register</button>
+                               <button onclick="SignInDirectionsHandler(event)">email</button>
 
                                 @* <p>20 people visted.</p> *@
                             </main>
