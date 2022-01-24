@@ -30,6 +30,20 @@ const SignInDirectionsHandler = (e) =>{
         document.querySelector("#regNewUserHeading").innerText = "Create a free account and find garage sales in your state."
     }
 
+
+    if( e.target.innerText === "email"){
+        document.querySelector("#FreeAccount").style.left ="0%"
+        document.querySelector("#FreeAccount").style.transition = "1s";
+        document.querySelector("#FreeAccount").style.transform = "smooth";
+        document.querySelector("#regNewUserHeading").innerText = "Get an email notification when someone in your community lists a garage sale."
+        document.querySelector("#sectionHeading").innerText = "Email notification."
+
+    }
+
+    
+
+    
+
     if(e.target.innerText === "Directions"){
         document.querySelector("#FreeAccount").style.left ="0%"
         document.querySelector("#FreeAccount").style.transition = "1s";
