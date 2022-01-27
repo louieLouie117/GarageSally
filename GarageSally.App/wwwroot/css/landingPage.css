@@ -13,6 +13,7 @@ h1,h2,h3,p{
 .landingPage-container{
     display: grid;
     row-gap: 10px;
+    
 
 }
 
@@ -153,6 +154,8 @@ h1,h2,h3,p{
     row-gap: 20px;
     padding: 0 30px;
     align-content: center;
+    padding: 20px 20px;
+    margin-bottom: -20px;
 }
 
 
@@ -300,9 +303,7 @@ h1,h2,h3,p{
     .sellersForm{
         margin-top: 100px;
     }
-
-
-  
+ 
   
 }
 
@@ -312,7 +313,7 @@ h1,h2,h3,p{
     display: grid;
     width: 100vw;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 50px 0;
 
 }
 
