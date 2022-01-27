@@ -67,11 +67,10 @@
                         <section>
                               <footer>
                                 <h3></h3>
-                                 <p>There are currently no garage sales listed in your community 94561. Stay informed get an email notification when there is a garage sale near you.</p>
+                                 <p>There are currently no garage sales listed in your community ${zipcode}. Stay informed get an email notification when there is a garage sale near you.</p>
                             </footer>
                             <main>
                                <button onclick="SignInDirectionsHandler(event)">email</button>
-
                                 @* <p>20 people visted.</p> *@
                             </main>
                         </section>
@@ -194,42 +193,14 @@
                         console.log("no garage sales in this zip code.")
                         $(`
 
-                         <li >
+                         <li>
                         <section>
-
                               <footer>
-                                <p>You are the first person to discover Garage Sally in your community ${city} ${state} :) there are currently no garage sales listed. Follow us on social media to see what state we are currently marketing in.</p>
+                                <h3></h3>
+                                 <p>There are currently no garage sales listed in your community  ${city} ${state}. Stay informed get an email notification when there is a garage sale near you.</p>
                             </footer>
                             <main>
-
-                            <a  href="https://www.linkedin.com/company/garagesally" target="blank">
-                               <button> follow </button>
-                               </a>
-                            </main>
-                        </section>
-                    </li>
-
-                        <li >
-                        <section>
-
-                              <footer>
-                                <p>Help build a garage sales community by telling your neighbors, friends, and family about Garage Sally.</p>
-                            </footer>
-                            <main>
-                               <button onclick="SignInDirectionsHandler(event)">share</button>
-                            </main>
-                        </section>
-                    </li>
-                        <li >
-                        <section>
-
-                              <footer>
-                                <p>Be the frist to post a garage sale. Create a free account and start posting.</p>
-                            </footer>
-                            <main>
-                               <button onclick="SignInDirectionsHandler(event)"> register</button>
-
-
+                               <button onclick="SignInDirectionsHandler(event)">email</button>
                                 @* <p>20 people visted.</p> *@
                             </main>
                         </section>
@@ -292,8 +263,6 @@
                 });
             };
 
-
-
         })
 
 
@@ -326,8 +295,10 @@
             </form>
 
             <aside>
+
                 <button id="zipcodeBTN" onclick="SearchTypeHandler(event)">zip code</button>
-                <button id="cityBTN" onclick="SearchTypeHandler(event)">city</button>
+                <p>or</p>
+                <button id="cityBTN" onclick="SearchTypeHandler(event)"> city</button>
 
             </aside>
         </header>
