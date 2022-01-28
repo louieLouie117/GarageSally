@@ -390,9 +390,9 @@ input {
 
 }
 .userInfo-container header h1{
-	font: 1.5em sans-serif;
+	font: 1em sans-serif;
 	justify-self: left;
-	max-width: 200px;
+	max-width: 150px;
 	overflow: hidden;
 }
 
