@@ -168,6 +168,7 @@ namespace UserLogin.Controllers
                 City = FromForm.City,
                 State = FromForm.State,
                 Zipcode = FromForm.Zipcode,
+                County = FromForm.County = "",
                 Image = "placeholder.png"
             };
             // Still need these for debugging? Console.Writelines should be removed
@@ -1588,6 +1589,7 @@ namespace UserLogin.Controllers
             FromForm.StreetNumber = "";
             FromForm.StreetName = "";
             FromForm.City = "";
+            FromForm.County = "";
             FromForm.ProfilePic = "placeholder.png";
             _context.Add(FromForm);
             _context.SaveChanges();
@@ -1650,6 +1652,7 @@ namespace UserLogin.Controllers
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
+                FromForm.County = "";
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
                 _context.SaveChanges();
@@ -1715,6 +1718,7 @@ namespace UserLogin.Controllers
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
+                FromForm.County = "";
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
                 _context.SaveChanges();
@@ -1776,6 +1780,7 @@ namespace UserLogin.Controllers
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
+                FromForm.County = "";
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
                 _context.SaveChanges();
