@@ -32,6 +32,8 @@ namespace UserLogin.Models
 
         public int Zipcode { get; set; }
 
+        public string County { get; set; }
+
         public string Image { get; set; }
 
         public int VisitedCount { get; set; }

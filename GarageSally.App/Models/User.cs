@@ -62,6 +62,9 @@ namespace UserLogin.Models
 
         public int Zipcode { get; set; }
 
+        public string County { get; set; }
+
+
         [Display(Name = "Profile Picture")]
         public string ProfilePic { get; set; }
 
