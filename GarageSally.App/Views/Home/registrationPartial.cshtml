@@ -20,10 +20,20 @@
         gtag('config', 'G-WGFK1GC4RE');
     </script>
 
+
     <script>
+
+
+
+    </script>
+
+    <script>
+
+
         $(document).ready(() => {
             $("#RegisterBuyer").submit(e => {
                 e.preventDefault();
+
 
                 let BuyerEmail = $("#BuyerEmail").val();
                 let BuyerPassword = $("#BuyerPassword").val();
@@ -31,15 +41,31 @@
                 let BuyerState = $("#BuyerState").val();
                 let BuyerZipcode = $("#BuyerZipcode").val();
 
+                $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${BuyerZipcode}`, data => {
+                    console.log("API Data:", data);
+                    console.log("Results", data.results);
+                    console.log("County", data.results);
 
-                let jsonData = {
-                    email: BuyerEmail,
-                    password: BuyerPassword,
-                    confirm: BuyerConfirm,
-                    state: BuyerState,
-                    zipcode: BuyerZipcode
 
-                }
+                });
+                @*
+                        $.getJSON(`https://app.zipcodebase.com/api/v1/radius?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&code=${BuyerZipcode}&radius=30&country=us`, data => {
+                        console.log("Radius:", data);
+                        console.log("Radius Results", data.results);
+
+                        }); *@
+
+
+
+
+                    let jsonData = {
+                        email: BuyerEmail,
+                        password: BuyerPassword,
+                        confirm: BuyerConfirm,
+                        state: BuyerState,
+                        zipcode: BuyerZipcode
+
+                    }
 
                 console.log(jsonData)
 
