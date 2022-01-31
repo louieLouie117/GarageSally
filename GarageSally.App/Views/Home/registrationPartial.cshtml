@@ -59,6 +59,7 @@
                     }
 
                     console.log(County, "Before API")
+                    BuyerState = data.results[BuyerZipcode][0].state_code
                     County = data.results[BuyerZipcode][0].province
                     console.log(County, "After API")
 
@@ -212,7 +213,7 @@
                     <aside>
                         <label class="hidden" id="zipcodeBuyerLabel">zipecode</label>
                         <label for="State">Select your state</label>
-                        <partial name="_StateListBuyer" />
+                        @* <partial name="_StateListBuyer" /> *@
                         <input id="BuyerState" value="AL" class="hidden" placeholder="State:" id="BuyerState">
 
                         <span asp-validation-for="Zipcode"></span>
