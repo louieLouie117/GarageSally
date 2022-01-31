@@ -1652,7 +1652,6 @@ namespace UserLogin.Controllers
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
-                FromForm.County = "";
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
                 _context.SaveChanges();

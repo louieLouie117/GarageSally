@@ -62,18 +62,17 @@
                     County = data.results[BuyerZipcode][0].province
                     console.log(County, "After API")
 
-
-
                     let jsonData = {
                         email: BuyerEmail,
                         password: BuyerPassword,
                         confirm: BuyerConfirm,
                         state: BuyerState,
-                        zipcode: BuyerZipcode
+                        zipcode: BuyerZipcode,
+                        county: County 
 
                     }
 
-                    console.log(jsonData)
+                    console.log(jsonData, "JsonData")
 
 
                     $.ajax({
