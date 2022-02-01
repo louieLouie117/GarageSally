@@ -20,6 +20,7 @@
                 let City = document.getElementById("CityUpgrade").value;
                 let State = document.getElementById("StateUpgrade").value;
                 let Zipcode = document.getElementById("ZipcodeUpgrade").value;
+
                 @* console.log("address", StreetNumber, StreetName, City, State, Zipcode) *@
                 var jsonData = {
                     streetnumber: StreetNumber,
@@ -97,6 +98,8 @@
                 let city = $('#City').val()
                 let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
+                let county = $('#County').val()
+
 
                 console.log(startDate);
 
@@ -110,6 +113,7 @@
                     city: city,
                     state: state,
                     zipcode: zipcode,
+                    county: county,
                 }
                 $.ajax({
                     type: "POST",
@@ -138,6 +142,8 @@
                 let city = $('#City').val()
                 let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
+                let county = $('#County').val()
+
 
                 console.log(startDate);
 
@@ -151,6 +157,8 @@
                     city: city,
                     state: state,
                     zipcode: zipcode,
+                    county: county,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -182,6 +190,8 @@
                 let city = $('#City').val()
                 let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
+                let county = $('#County').val()
+
 
                 console.log(startDate);
 
@@ -195,6 +205,8 @@
                     city: city,
                     state: state,
                     zipcode: zipcode,
+                    county: county,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -223,6 +235,8 @@
                 let city = $('#City').val()
                 let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
+                let county = $('#County').val()
+
 
                 console.log(startDate);
 
@@ -236,6 +250,8 @@
                     city: city,
                     state: state,
                     zipcode: zipcode,
+                    county: county,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -263,6 +279,8 @@
                 let city = $('#City').val()
                 let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
+                let county = $('#County').val()
+
 
                 console.log(startDate);
 
@@ -276,6 +294,8 @@
                     city: city,
                     state: state,
                     zipcode: zipcode,
+                    county: county,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -302,6 +322,8 @@
                 let city = $('#City').val()
                 let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
+                let county = $('#County').val()
+
 
                 console.log(startDate);
 
@@ -315,6 +337,8 @@
                     city: city,
                     state: state,
                     zipcode: zipcode,
+                    county: county,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -342,6 +366,8 @@
                 let city = $('#City').val()
                 let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
+                let county = $('#County').val()
+
 
                 console.log(startDate);
 
@@ -355,6 +381,8 @@
                     city: city,
                     state: state,
                     zipcode: zipcode,
+                    county: county,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -381,6 +409,8 @@
                 let city = $('#City').val()
                 let state = $('#State').val()
                 let zipcode = $('#Zipcode').val()
+                let county = $('#County').val()
+
 
                 console.log(startDate);
 
@@ -394,6 +424,8 @@
                     city: city,
                     state: state,
                     zipcode: zipcode,
+                    county: county,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -657,7 +689,8 @@
                             <input id='City' type='text' placeholder='City:' onkeydown="ErrorLabelHandler(event)">
                             <input id='State' type='text' placeholder='State:' onkeydown="ErrorLabelHandler(event)">
                             <input id='Zipcode' type='text' placeholder='zipcode:' onkeydown="ErrorLabelHandler(event)">
-                            <input id='County' type='text' placeholder='County:' onkeydown="ErrorLabelHandler(event)">
+                            <input class="hidden" id='County' type='text' placeholder='County:'
+                            onkeydown="ErrorLabelHandler(event)">
                         </div>
                     </main>
 

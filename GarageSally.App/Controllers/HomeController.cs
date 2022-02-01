@@ -144,16 +144,7 @@ namespace UserLogin.Controllers
 
 
             System.Console.WriteLine("you have reached the backend of post garage sale.");
-            System.Console.WriteLine("test button was click");
-            System.Console.WriteLine("the backend has been reached");
-            System.Console.WriteLine($"FromForm: {FromForm}");
-            System.Console.WriteLine($"ZipCode: {FromForm.StartDate}");
-            System.Console.WriteLine($"ZipCode: {FromForm.StartDate}");
 
-            System.Console.WriteLine($"Street #: {FromForm.StreetNumber}");
-            System.Console.WriteLine($"Street name: {FromForm.StreetName}");
-            System.Console.WriteLine($"City: {FromForm.City}");
-            System.Console.WriteLine($"ZipCode: {FromForm.Zipcode}");
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             var Entry = new GarageSale
@@ -168,7 +159,7 @@ namespace UserLogin.Controllers
                 City = FromForm.City,
                 State = FromForm.State,
                 Zipcode = FromForm.Zipcode,
-                County = FromForm.County = "",
+                County = FromForm.County,
                 Image = "placeholder.png"
             };
             // Still need these for debugging? Console.Writelines should be removed
