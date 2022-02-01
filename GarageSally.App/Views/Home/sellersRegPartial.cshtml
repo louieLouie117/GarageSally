@@ -31,6 +31,27 @@
                 let SellerConfirm = $("#SellerConfirm").val();
                 let SellerState = $("#SellerState").val();
                 let SellerZipcode = $("#SellerZipcode").val();
+                let County = "no county"
+
+
+  $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${SellerZipcode}`, data => {
+
+
+                console.log(data, "data is here")
+
+                    if (data.results.length === 0) {
+                        Step3Reg();
+                        document.getElementById("zipcodeBuyerLabel").innerHTML = "zip code can not be empty!";
+                        document.getElementById("zipcodeBuyerLabel").style.display = "block";
+                        document.getElementById("zipcodeBuyerLabel").style.color = "red";
+                        document.getElementById("SellerZipcode").style.border = "red solid 2px";
+                        return
+                    }
+
+                    console.log(County, "Before API")
+                    SellerState = data.results[SellerZipcode][0].state_code
+                    County = data.results[SellerZipcode][0].province
+                    console.log(County, "After API")
 
 
                 let jsonData = {
@@ -38,7 +59,8 @@
                     password: SellerPassword,
                     confirm: SellerConfirm,
                     state: SellerState,
-                    zipcode: SellerZipcode
+                    zipcode: SellerZipcode,
+                    county: County
 
                 }
 
@@ -52,6 +74,8 @@
                     @* error: ErrorBuyerReg, *@
                     @* complete: CompleteBuyerReg *@
                 });
+
+        });
 
         });
         const SuccessSellerReg = (result) => {
@@ -130,17 +154,17 @@
 
             <form id="SellerRegistration" asp-controller="Home" method="POST" enctype="multipart/form-data">
                 @* <span asp-validation-for="FirstName"></span>
-                        <input asp-for="FirstName" placeholder="First Name">
+                            <input asp-for="FirstName" placeholder="First Name">
 
-                        <span asp-validation-for="LastName"></span>
-                        <input asp-for="LastName" placeholder="Last Name">*@
+                            <span asp-validation-for="LastName"></span>
+                            <input asp-for="LastName" placeholder="Last Name">*@
                 <div class="section1-container" id="section1SellerReg">
                     <aside>
                         <label class="hidden" for="Zipcode" id="zipcodeSellerLabel">Zipcode</label>
-                        <label id="State">Select your State</label>
-                        <partial name="_StateListSeller" />
-                        <input value="AL" placeholder="State:" class="hidden" id="SellerState">
-                        <input id="SellerZipcode" placeholder="zipcode:" onkeydown="RegErrorHandler(event)">
+                        @* <label id="State">Select your State</label> *@
+                        @* <partial name="_StateListSeller" /> *@
+                        @* <input value="AL" placeholder="State:" class="hidden" id="SellerState"> *@
+                        <input type= "number"id="SellerZipcode" placeholder="zipcode:" onkeydown="RegErrorHandler(event)">
 
 
                     </aside>
@@ -167,8 +191,8 @@
                     <label class="hidden" for="Confirm">Confirm Password</label>
                     <input id="SellerConfirm" placeholder="confirm password:" type="password" onkeydown="RegErrorHandler(event)">
                     @* <img src="~/img/Assets/placeholder.png" alt="">
-                            <p>Incress discoverability by adding a photo to your profile.</p>
-                            <input asp-for="files" type="file" multiple> *@
+                                <p>Incress discoverability by adding a photo to your profile.</p>
+                                <input asp-for="files" type="file" multiple> *@
 
                     <footer>
                         <button type="button" onclick="Step2SellerReg()">back</button>
@@ -179,16 +203,16 @@
 
                 <div class="section4-container" id="section4SellerReg">
                     @* <p>Add the location of your garage sale.</p>
-                            <span asp-validation-for="StreetNumber"></span>
-                            <input asp-for="StreetNumber" placeholder="Street #:">
-                            <span asp-validation-for="StreetName"></span>
-                            <input asp-for="StreetName" placeholder="Street Name:">
-                            <span asp-validation-for="City"></span>
-                            <input asp-for="City" placeholder="City:">
+                                <span asp-validation-for="StreetNumber"></span>
+                                <input asp-for="StreetNumber" placeholder="Street #:">
+                                <span asp-validation-for="StreetName"></span>
+                                <input asp-for="StreetName" placeholder="Street Name:">
+                                <span asp-validation-for="City"></span>
+                                <input asp-for="City" placeholder="City:">
 
-                            <footer>
-                                <button type="button" onclick="Step3SellerReg()">back</button>
-                            </footer> *@
+                                <footer>
+                                    <button type="button" onclick="Step3SellerReg()">back</button>
+                                </footer> *@
                 </div>
 
                 @* <input class="btn" type="submit" value="submit"> *@

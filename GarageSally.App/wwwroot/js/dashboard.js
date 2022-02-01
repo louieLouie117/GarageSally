@@ -246,6 +246,8 @@ const postSalePartialHandler = (e) =>{
     let city = document.getElementById("CityEdit").value;
     let state = document.getElementById("StateEdit").value;
     let zipcode = document.getElementById("ZipcodeEdit").value;
+    let county = document.getElementById("CountyEdit").value;
+
 
 
     document.getElementById("StreetNumber").value = streetNumber;
@@ -253,6 +255,8 @@ const postSalePartialHandler = (e) =>{
     document.getElementById("City").value = city;
     document.getElementById("State").value = state;
     document.getElementById("Zipcode").value = zipcode;
+    document.getElementById("County").value = county;
+
 
     return (postSaleEvent = "open")
 
