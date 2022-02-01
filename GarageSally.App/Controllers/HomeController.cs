@@ -1652,11 +1652,16 @@ namespace UserLogin.Controllers
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
+                // remove the county empty string
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
                 _context.SaveChanges();
                 HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
                 HttpContext.Session.SetString("UserState", _context.Users.FirstOrDefault(i => i.State == FromForm.State).State);
+                HttpContext.Session.SetString("UserCounty", _context.Users.FirstOrDefault(i => i.County == FromForm.County).County);
+                HttpContext.Session.SetInt32("UserZipcode", _context.Users.FirstOrDefault(i => i.Zipcode == FromForm.Zipcode).Zipcode);
+
+
                 // Still need these for debugging? Console.Writelines should be removed
                 Console.WriteLine("You may contine!");
                 return Json(new { Status = "Successfully registered buyer!" });
@@ -1717,12 +1722,13 @@ namespace UserLogin.Controllers
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
-                FromForm.County = "";
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
                 _context.SaveChanges();
                 HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
                 HttpContext.Session.SetString("UserState", _context.Users.FirstOrDefault(i => i.State == FromForm.State).State);
+                HttpContext.Session.SetString("UserCounty", _context.Users.FirstOrDefault(i => i.County == FromForm.County).County);
+                HttpContext.Session.SetInt32("UserZipcode", _context.Users.FirstOrDefault(i => i.Zipcode == FromForm.Zipcode).Zipcode);
                 // Still need these for debugging? Console.Writelines should be removed
                 Console.WriteLine("You may contine!");
                 return Json(new { Status = "Successfully registered seller!" });

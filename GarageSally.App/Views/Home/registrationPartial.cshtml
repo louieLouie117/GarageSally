@@ -42,7 +42,11 @@
                 let BuyerZipcode = $("#BuyerZipcode").val();
                 let County = "no county"
 
+  @*$.getJSON(`https://app.zipcodebase.com/api/v1/radius?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&code=${BuyerZipcode}&radius=30&country=us`, data => {
+                            console.log("Radius:", data);
+                            console.log("Radius Results", data.results);
 
+                            }); *@
 
                 $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${BuyerZipcode}`, data => {
 
@@ -84,13 +88,6 @@
                     });
 
                 });
-
-                @*$.getJSON(`https://app.zipcodebase.com/api/v1/radius?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&code=${BuyerZipcode}&radius=30&country=us`, data => {
-                            console.log("Radius:", data);
-                            console.log("Radius Results", data.results);
-
-                            }); *@
-
 
         });
             const SuccessBuyerReg = (result) => {
