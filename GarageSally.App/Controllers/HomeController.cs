@@ -1879,10 +1879,13 @@ namespace UserLogin.Controllers
                 }
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
                 HttpContext.Session.SetString("UserState", userInDb.State);
+                
                 if (userInDb.County == null || userInDb.County == "")
                 {
                     HttpContext.Session.SetString("UserCounty", "No county");
                     Console.WriteLine($"needs to update county");
+                    // return Json(new { Status = "County needs to be updated." });
+
 
 
 

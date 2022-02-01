@@ -59,19 +59,10 @@
 
             const RenderData = (data) => {
                 @* console.log("user Data", data.data) *@
+
+
+
                     $.each(data.data, function (i, v) {
-                        @* console.log(v) *@
-
-                          if (v.county === null || v.county === "") {
-                            console.log("User needs to confirm zipcode")
-                            return
-                        } else {
-                            console.log("no updates needed")
-                            return
-
-                        }
-
-
                         if (v.profilePic === "placeholder.png") {
                             $(`
                         <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
@@ -79,11 +70,13 @@
                         <button onclick="popUpNoticeHandler(event)">Change Photo</button>
                         `).prependTo("#UserPhoto");
                         } else {
+
                             $(`
                         <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
                         <h1 id="UserNameText">Hello, ${v.firstName}</h1>
                         `).prependTo("#UserPhoto");
                         }
+
                         $(`
                         <h3 class="span2Columns">Name</h3>
 
@@ -92,9 +85,6 @@
                         id="FirstNameEdit" placeholder="First name:"
                         onkeyup="ShowSaveChangesBTN(event)" >
 
-
-
-                        @* <input class="span2Columns" value="${v.email}" id="EmailEdit" placeholder="Email" > *@
                     `).prependTo("#UserFormName");
                         $(`
                         <h3 class="span2Columns">Garage Sale Default Address</h3>
@@ -147,8 +137,13 @@
                             <input onkeydown="UpgradeErrorHandler(event)" value="${v.zipcode}" id='ZipcodeUpgrade' type='text' placeholder='zipecode: '>
                         </div>
                     `).prependTo("#noticeForm");
-
                     });
+
+                     if (data.data[0].county === null || data.data[0].county === "") {
+                            console.log("User needs to confirm zipcode")
+
+                        }else{
+                            console.log("no updates needed")}
             };
         })
 
