@@ -144,16 +144,7 @@ namespace UserLogin.Controllers
 
 
             System.Console.WriteLine("you have reached the backend of post garage sale.");
-            System.Console.WriteLine("test button was click");
-            System.Console.WriteLine("the backend has been reached");
-            System.Console.WriteLine($"FromForm: {FromForm}");
-            System.Console.WriteLine($"ZipCode: {FromForm.StartDate}");
-            System.Console.WriteLine($"ZipCode: {FromForm.StartDate}");
 
-            System.Console.WriteLine($"Street #: {FromForm.StreetNumber}");
-            System.Console.WriteLine($"Street name: {FromForm.StreetName}");
-            System.Console.WriteLine($"City: {FromForm.City}");
-            System.Console.WriteLine($"ZipCode: {FromForm.Zipcode}");
 
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             var Entry = new GarageSale
@@ -168,7 +159,7 @@ namespace UserLogin.Controllers
                 City = FromForm.City,
                 State = FromForm.State,
                 Zipcode = FromForm.Zipcode,
-                County = FromForm.County = "",
+                County = FromForm.County,
                 Image = "placeholder.png"
             };
             // Still need these for debugging? Console.Writelines should be removed
@@ -1652,12 +1643,16 @@ namespace UserLogin.Controllers
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
-                FromForm.County = "";
+                // remove the county empty string
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
                 _context.SaveChanges();
                 HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
                 HttpContext.Session.SetString("UserState", _context.Users.FirstOrDefault(i => i.State == FromForm.State).State);
+                HttpContext.Session.SetString("UserCounty", _context.Users.FirstOrDefault(i => i.County == FromForm.County).County);
+                HttpContext.Session.SetInt32("UserZipcode", _context.Users.FirstOrDefault(i => i.Zipcode == FromForm.Zipcode).Zipcode);
+
+
                 // Still need these for debugging? Console.Writelines should be removed
                 Console.WriteLine("You may contine!");
                 return Json(new { Status = "Successfully registered buyer!" });
@@ -1718,12 +1713,13 @@ namespace UserLogin.Controllers
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
                 FromForm.City = "";
-                FromForm.County = "";
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
                 _context.SaveChanges();
                 HttpContext.Session.SetInt32("UserId", _context.Users.FirstOrDefault(i => i.UserId == FromForm.UserId).UserId);
                 HttpContext.Session.SetString("UserState", _context.Users.FirstOrDefault(i => i.State == FromForm.State).State);
+                HttpContext.Session.SetString("UserCounty", _context.Users.FirstOrDefault(i => i.County == FromForm.County).County);
+                HttpContext.Session.SetInt32("UserZipcode", _context.Users.FirstOrDefault(i => i.Zipcode == FromForm.Zipcode).Zipcode);
                 // Still need these for debugging? Console.Writelines should be removed
                 Console.WriteLine("You may contine!");
                 return Json(new { Status = "Successfully registered seller!" });
@@ -1859,6 +1855,8 @@ namespace UserLogin.Controllers
             if (ModelState.IsValid)
             {
                 User userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
+
+
                 if (userInDb == null)
                 {
                     Console.WriteLine($"email error");
@@ -1881,6 +1879,25 @@ namespace UserLogin.Controllers
                 }
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
                 HttpContext.Session.SetString("UserState", userInDb.State);
+                
+                if (userInDb.County == null || userInDb.County == "")
+                {
+                    HttpContext.Session.SetString("UserCounty", "No county");
+                    Console.WriteLine($"needs to update county");
+                    // return Json(new { Status = "County needs to be updated." });
+
+
+
+
+                }
+                else
+                {
+                    HttpContext.Session.SetString("UserCounty", userInDb.County);
+
+                }
+                HttpContext.Session.SetInt32("UserZipcode", userInDb.Zipcode);
+
+
                 Console.WriteLine("Success user is register");
 
                 return Json(new { Status = "Access Granted" });
