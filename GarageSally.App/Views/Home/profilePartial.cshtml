@@ -61,7 +61,18 @@
                 @* console.log("user Data", data.data) *@
                     $.each(data.data, function (i, v) {
                         @* console.log(v) *@
-                    if (v.profilePic === "placeholder.png") {
+
+                          if (v.county === null || v.county === "") {
+                            console.log("User needs to confirm zipcode")
+                            return
+                        } else {
+                            console.log("no updates needed")
+                            return
+
+                        }
+
+
+                        if (v.profilePic === "placeholder.png") {
                             $(`
                         <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
                         <h1 id="UserNameText">Hello, ${v.firstName}</h1>
@@ -136,6 +147,7 @@
                             <input onkeydown="UpgradeErrorHandler(event)" value="${v.zipcode}" id='ZipcodeUpgrade' type='text' placeholder='zipecode: '>
                         </div>
                     `).prependTo("#noticeForm");
+
                     });
             };
         })

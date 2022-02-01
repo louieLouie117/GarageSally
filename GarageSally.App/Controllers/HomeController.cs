@@ -1855,6 +1855,8 @@ namespace UserLogin.Controllers
             if (ModelState.IsValid)
             {
                 User userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
+
+
                 if (userInDb == null)
                 {
                     Console.WriteLine($"email error");
@@ -1877,6 +1879,22 @@ namespace UserLogin.Controllers
                 }
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
                 HttpContext.Session.SetString("UserState", userInDb.State);
+                if (userInDb.County == null || userInDb.County == "")
+                {
+                    HttpContext.Session.SetString("UserCounty", "No county");
+                    Console.WriteLine($"needs to update county");
+
+
+
+                }
+                else
+                {
+                    HttpContext.Session.SetString("UserCounty", userInDb.County);
+
+                }
+                HttpContext.Session.SetInt32("UserZipcode", userInDb.Zipcode);
+
+
                 Console.WriteLine("Success user is register");
 
                 return Json(new { Status = "Access Granted" });
