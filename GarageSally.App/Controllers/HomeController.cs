@@ -1712,7 +1712,7 @@ namespace UserLogin.Controllers
                 FromForm.LastName = "";
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
-                FromForm.City = "";
+                // FromForm.City = "";
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
                 _context.SaveChanges();
@@ -1879,7 +1879,7 @@ namespace UserLogin.Controllers
                 }
                 HttpContext.Session.SetInt32("UserId", userInDb.UserId);
                 HttpContext.Session.SetString("UserState", userInDb.State);
-                
+
                 if (userInDb.County == null || userInDb.County == "")
                 {
                     HttpContext.Session.SetString("UserCounty", "No county");
