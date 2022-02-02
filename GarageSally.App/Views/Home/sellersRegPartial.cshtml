@@ -32,6 +32,8 @@
                 let SellerState = $("#SellerState").val();
                 let SellerZipcode = $("#SellerZipcode").val();
                 let County = "no county"
+                let City = "no city"
+
 
 
   $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${SellerZipcode}`, data => {
@@ -40,10 +42,10 @@
                 console.log(data, "data is here")
 
                     if (data.results.length === 0) {
-                        Step3Reg();
-                        document.getElementById("zipcodeBuyerLabel").innerHTML = "zip code can not be empty!";
-                        document.getElementById("zipcodeBuyerLabel").style.display = "block";
-                        document.getElementById("zipcodeBuyerLabel").style.color = "red";
+                        Step1SellerReg();
+                        document.getElementById("zipcodeSellerLabel").innerHTML = `${SellerZipcode} is not a valid zip code!`;
+                        document.getElementById("zipcodeSellerLabel").style.display = "block";
+                        document.getElementById("zipcodeSellerLabel").style.color = "red";
                         document.getElementById("SellerZipcode").style.border = "red solid 2px";
                         return
                     }
@@ -51,6 +53,7 @@
                     console.log(County, "Before API")
                     SellerState = data.results[SellerZipcode][0].state_code
                     County = data.results[SellerZipcode][0].province
+                    City = data.results[SellerZipcode][0].city
                     console.log(County, "After API")
 
 
@@ -60,8 +63,8 @@
                     confirm: SellerConfirm,
                     state: SellerState,
                     zipcode: SellerZipcode,
-                    county: County
-
+                    county: County,
+                    city: City
                 }
 
                 console.log(jsonData)
@@ -160,7 +163,7 @@
                             <input asp-for="LastName" placeholder="Last Name">*@
                 <div class="section1-container" id="section1SellerReg">
                     <aside>
-                        <label class="hidden" for="Zipcode" id="zipcodeSellerLabel">Zipcode</label>
+                        <label  for="Zipcode" id="zipcodeSellerLabel"></label>
                         @* <label id="State">Select your State</label> *@
                         @* <partial name="_StateListSeller" /> *@
                         @* <input value="AL" placeholder="State:" class="hidden" id="SellerState"> *@
