@@ -1579,7 +1579,7 @@ namespace UserLogin.Controllers
             FromForm.LastName = "";
             FromForm.StreetNumber = "";
             FromForm.StreetName = "";
-            FromForm.City = "";
+            // FromForm.City = "";
             FromForm.County = "";
             FromForm.ProfilePic = "placeholder.png";
             _context.Add(FromForm);
@@ -1642,7 +1642,7 @@ namespace UserLogin.Controllers
                 FromForm.LastName = "";
                 FromForm.StreetNumber = "";
                 FromForm.StreetName = "";
-                FromForm.City = "";
+                // FromForm.City = "";
                 // remove the county empty string
                 FromForm.ProfilePic = "placeholder.png";
                 _context.Add(FromForm);
