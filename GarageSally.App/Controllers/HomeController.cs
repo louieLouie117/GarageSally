@@ -1340,8 +1340,6 @@ namespace UserLogin.Controllers
 
 
 
-
-
         [HttpGet("displayUserGarageSales")]
         public JsonResult displayUserGarageSales()
         {
