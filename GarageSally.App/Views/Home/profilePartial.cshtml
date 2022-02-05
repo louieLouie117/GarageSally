@@ -22,32 +22,54 @@
                 let email = $('#EmailEdit').val()
                 let streetNumber = $('#StreetNumberEdit').val()
                 let streetName = $('#StreetNameEdit').val()
-                let city = $('#CityEdit').val()
+                let City = $('#CityEdit').val()
                 let County = $('#CountyEdit').val()
-                let state = $('#StateEdit').val()
-                let zipcode = $('#ZipcodeEdit').val()
+                let State = $('#StateEdit').val()
+                let Zipcode = $('#ZipcodeEdit').val()
+
+                $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${Zipcode}`, data => {
+                    console.log(data, "data is here")
+
+                    if (data.results.length === 0) {
+                        console.log("no data found")
+                        return
+                    }
+
+                    console.log(County, "Before API")
+                    State = data.results[Zipcode][0].state_code
+                    County = data.results[Zipcode][0].province
+                    City = data.results[Zipcode][0].city
+
+                    console.log(County, "After API")
 
 
-                let jsonData = {
-                    firstName: firstName,
-                    lastName: lastName,
-                    streetnumber: streetNumber,
-                    streetname: streetName,
-                    city: city,
-                    state: state,
-                    county: County,
-                    zipcode: zipcode
-                }
-                console.log("user info Data", jsonData)
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("UpdateProfileHandler", "Home")',
-                    data: jsonData,
-                    success: SuccessStatus,
-                    error: ErrorStatus,
-                    complete: CompleteStatus
-                })
+                    let jsonData = {
+                        firstName: firstName,
+                        lastName: lastName,
+                        streetnumber: streetNumber,
+                        streetname: streetName,
+                        city: City,
+                        state: State,
+                        county: County,
+                        zipcode: Zipcode
+                    }
+                    console.log("user info Data", jsonData)
+
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("UpdateProfileHandler", "Home")',
+                        data: jsonData,
+                        success: SuccessStatus,
+                        error: ErrorStatus,
+                        complete: CompleteStatus
+                    })
+                });
             })
+
+
+
+
+
             const SuccessStatus = (result) => {
                 document.getElementById("SaveChangesBTN").style.display = "none";
                 console.log("Success...", result);
