@@ -61,7 +61,6 @@
             const SuccessStatusZipcode = (result) => {
                 console.log("You have sucessfuly searched...");
                 RenderZipcodeSearch(result);
-                @* LoadSearchZipecode(); *@
 
 
             };
@@ -73,6 +72,7 @@
             };
 
 
+           
             const RenderZipcodeSearch = (data) => {
 
                 $('#HomeSearchResults').empty();
@@ -130,130 +130,7 @@
 
 
 
-            $('#SearchCityForm').submit(function (event) {
-                event.preventDefault();
-                if (!navigator.geolocation) {
-                    alert(`Your browser doesn't support Geolocation`);
-                }
-                document.querySelector("#IndexSearchResults").style.display = "grid";
-
-                let City = document.querySelector("#CitySearch").value
-                let State = document.querySelector("#StateSearch").value
-
-                console.log("search", typeof Zipcode)
-
-                var jsonData = {
-                    city: City,
-                    state: State,
-
-                }
-
-                console.log(jsonData);
-
-                $.ajax({
-                    type: "GET",
-                    url: '@Url.Action("SearchCityHandler", "Home")',
-                    data: jsonData,
-                    success: SuccessStatus,
-                    error: ErrorStatus,
-                    complete: CompleteStatus
-                })
-
-            })
-            const SuccessStatus = (result) => {
-                console.log("You have sucessfuly searched...");
-                LoadSearchCity();
-
-            };
-            const ErrorStatus = (xhr, status, strErr) => {
-                console.log("There was an error when searching!");
-            };
-            const CompleteStatus = (xhr, status) => {
-                console.log("Search has completed...");
-            };
-
-            const LoadSearchCity = () => {
-                $('#HomeSearchResults').load("/SearchCityResults #HomeSearchResults", data => {
-                    data = JSON.parse(data);
-                    if (data.data.length === 0) {
-                        let city = document.querySelector("#CitySearch").value;
-                        let state = document.querySelector("#StateSearch").value;
-
-
-                        console.log("no garage sales in this zip code.")
-                        $(`
-
-                         <li>
-                        <section>
-                              <footer>
-                                <h3></h3>
-                                 <p>There are currently no garage sales listed in your community  ${city} ${state}. Stay informed get an email notification when there is a garage sale near you.</p>
-                            </footer>
-                            <main>
-                               <button onclick="SignInDirectionsHandler(event)">email</button>
-                                @* <p>20 people visted.</p> *@
-                            </main>
-                        </section>
-                    </li>`).prependTo("#HomeSearchResults");
-                        return
-                    }
-                    RenderSearchCity(data);
-
-                });
-            };
-
-
-            const RenderSearchCity = (data) => {
-                $.each(data.data, function (i, v) {
-                    console.log("Value", v)
-                    const TimeFormat = {
-                        hour12: true,
-                        hour: "numeric",
-                        minute: "numeric", seconds: "numeric"
-                    }
-                    const DateFormat = {
-                        weekday: "long",
-                        month: "long",
-                        day: "numeric"
-                    };
-                    const CheckDateFormat = {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric"
-                    };
-                    let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
-                    let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
-                    let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
-                    let checkDate = new Date(v.startDate);
-                    let checkToday = new Date();
-                    checkToday.setDate(checkToday.getDate() - 1);
-
-                    let garageItemId = v.garageSaleId;
-
-                    if (checkDate < checkToday) {
-                        console.log("this event has expired")
-                    } else {
-                        $(`<li id="${garageItemId}">
-                        <section>
-                            <header>
-                                <h1>${dateFormated}</h1>
-                                <h2>${startTimeFormatted}-${endTimeFormatted}</h2>
-                            </header>
-                              <footer>
-                                <h3> ${v.city} ${v.state}</h3>
-                                <p>${v.description}</p>
-                            </footer>
-                            <main>
-                               <button onclick="SignInDirectionsHandler(event)">Directions</button>
-                                @* <p>20 people visted.</p> *@
-                            </main>
-                        </section>
-                    </li>`).prependTo("#HomeSearchResults");
-                    }
-                });
-            };
-
-        })
+       })
 
 
 
@@ -266,31 +143,11 @@
 
     <div class="search-container" id="searchPartial">
 
-
         <header>
-
-
-            <form id="SearchCityForm">
-                <input type="text" name="" id="CitySearch" placeholder="City">
-                <partial name="_StateListSearch" />
-
-                <input type="text" name="" id="StateSearch" placeholder="State" value="AL" class="hidden">
-
-                <button>Search</button>
-            </form>
-
             <form id="SearchZipCode">
-                <input type="number" name="" id="ZipCodeValue" placeholder="zip code">
+                <input type="number" name="" id="ZipCodeValue" placeholder="zip code:" >
                 <button>Search</button>
             </form>
-
-            <aside>
-
-                <button id="zipcodeBTN" onclick="SearchTypeHandler(event)">zip code</button>
-                <p>or</p>
-                <button id="cityBTN" onclick="SearchTypeHandler(event)"> city</button>
-
-            </aside>
         </header>
 
         <main id="IndexSearchResults">
