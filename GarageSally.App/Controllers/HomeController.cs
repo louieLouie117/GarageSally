@@ -192,6 +192,8 @@ namespace UserLogin.Controllers
             User GetUser = _context.Users.FirstOrDefault(u => u.UserId == UserIdInSession);
 
             GetUser.Zipcode = FromForm.Zipcode;
+            GetUser.County = FromForm.County;
+            
 
 
             if (FromForm.FirstName == null)

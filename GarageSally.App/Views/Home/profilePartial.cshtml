@@ -23,8 +23,10 @@
                 let streetNumber = $('#StreetNumberEdit').val()
                 let streetName = $('#StreetNameEdit').val()
                 let city = $('#CityEdit').val()
+                let County = $('#CountyEdit').val()
                 let state = $('#StateEdit').val()
                 let zipcode = $('#ZipcodeEdit').val()
+
 
                 let jsonData = {
                     firstName: firstName,
@@ -33,6 +35,7 @@
                     streetname: streetName,
                     city: city,
                     state: state,
+                    county: County,
                     zipcode: zipcode
                 }
                 console.log("user info Data", jsonData)
