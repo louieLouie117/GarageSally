@@ -43,11 +43,11 @@
                 let County = "no county"
                 let City = "no city"
 
-  @*$.getJSON(`https://app.zipcodebase.com/api/v1/radius?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&code=${BuyerZipcode}&radius=30&country=us`, data => {
-                            console.log("Radius:", data);
-                            console.log("Radius Results", data.results);
+                $.getJSON(`https://app.zipcodebase.com/api/v1/radius?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&code=${BuyerZipcode}&radius=30&country=us`, data => {
+                    console.log("Radius:", data);
+                    console.log("Radius Results", data.results);
 
-                            }); *@
+                });
 
                 $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${BuyerZipcode}`, data => {
 
@@ -91,7 +91,7 @@
 
                 });
 
-        });
+            });
             const SuccessBuyerReg = (result) => {
                 if (result.status === "Email can not be empty!") {
                     Step1Reg();
@@ -162,10 +162,10 @@
 <body>
     <div class="regLog-container">
         @* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#B936D2" fill-opacity="1"
-                d="M0,224L40,229.3C80,235,160,245,240,261.3C320,277,400,299,480,288C560,277,640,235,720,224C800,213,880,235,960,229.3C1040,224,1120,192,1200,160C1280,128,1360,96,1400,80L1440,64L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
-                </path>
-                </svg> *@
+            <path fill="#B936D2" fill-opacity="1"
+            d="M0,224L40,229.3C80,235,160,245,240,261.3C320,277,400,299,480,288C560,277,640,235,720,224C800,213,880,235,960,229.3C1040,224,1120,192,1200,160C1280,128,1360,96,1400,80L1440,64L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
+            </path>
+            </svg> *@
 
         <div class="form-container">
             <div class="regHeader_container">
@@ -205,13 +205,13 @@
                     @* <input asp-for="files" type="file" multiple> *@
 
                     @* <footer>
-                            <button type="button" onclick="Step2Reg()">back</button>
-                            <button type="button" onclick="Step4Reg()">Next</button>
-                            </footer> *@
+                        <button type="button" onclick="Step2Reg()">back</button>
+                        <button type="button" onclick="Step4Reg()">Next</button>
+                        </footer> *@
 
                     <aside>
                         <label class="hidden" id="zipcodeBuyerLabel">zipecode</label>
-                        <label for="State">Select your state</label>
+                        <label class="hidden">add zipe code</label>
                         @* <partial name="_StateListBuyer" /> *@
                         <input id="BuyerState" value="AL" class="hidden" placeholder="State:" id="BuyerState">
 
@@ -233,10 +233,10 @@
         </div>
 
         @* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#B936D2" fill-opacity="1"
-                d="M0,288L40,288C80,288,160,288,240,245.3C320,203,400,117,480,90.7C560,64,640,96,720,106.7C800,117,880,107,960,101.3C1040,96,1120,96,1200,96C1280,96,1360,96,1400,96L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
-                </path>
-                </svg> *@
+            <path fill="#B936D2" fill-opacity="1"
+            d="M0,288L40,288C80,288,160,288,240,245.3C320,203,400,117,480,90.7C560,64,640,96,720,106.7C800,117,880,107,960,101.3C1040,96,1120,96,1200,96C1280,96,1360,96,1400,96L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
+            </path>
+            </svg> *@
 
     </div>
 </body>

@@ -18,27 +18,45 @@
                 document.querySelector("#IndexSearchResults").style.display = "grid";
 
                 let Zipcode = document.querySelector("#ZipCodeValue").value
+                let County = "no county"
+
 
                 console.log("search", typeof Zipcode)
 
+                $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${Zipcode}`, data => {
+                    console.log(data, "data is here")
+
+                    if (data.results.length === 0) {
+                        console.log("no data found")
+                        return
+                    }
+
+                    console.log(County, "Before API")
+                    County = data.results[Zipcode][0].province
+                    console.log(County, "After API")
 
 
-                var jsonData = {
-                    zipcode: Zipcode,
-                }
+                    let jsonData = {
+                        zipcode: Zipcode,
+                        county: County
+                    }
 
-                console.log(jsonData);
+                    console.log(jsonData)
 
-                $.ajax({
-                    type: "GET",
-                    url: '@Url.Action("SearchZipCodeHandler", "Home")',
-                    data: jsonData,
-                    success: SuccessStatusZipcode,
-                    error: ErrorStatusZipcode,
-                    complete: CompleteStatusZipcode
-                })
+                    $.ajax({
+                        type: "GET",
+                        url: '@Url.Action("SearchZipCodeHandler", "Home")',
+                        data: jsonData,
+                        success: SuccessStatusZipcode,
+                        error: ErrorStatusZipcode,
+                        complete: CompleteStatusZipcode
+                    })
+                });
 
-            })
+            });
+
+
+
 
             const SuccessStatusZipcode = (result) => {
                 console.log("You have sucessfuly searched...");
@@ -122,6 +140,7 @@
                             </header>
                               <footer>
                                 <h3> ${v.city} ${v.state}</h3>
+                                <h2 class="hidden">${v.county}</h2>
                                 <p>${v.description}</p>
                             </footer>
                             <main>
