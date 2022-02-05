@@ -20,24 +20,45 @@
                 let City = document.getElementById("CityUpgrade").value;
                 let State = document.getElementById("StateUpgrade").value;
                 let Zipcode = document.getElementById("ZipcodeUpgrade").value;
+                let County = "no county";
 
-                @* console.log("address", StreetNumber, StreetName, City, State, Zipcode) *@
-                var jsonData = {
-                    streetnumber: StreetNumber,
-                    streetname: StreetName,
-                    city: City,
-                    state: State,
-                    zipcode: Zipcode,
-                }
-                console.log("jsonData:", jsonData);
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("UpgradeUserHandler", "Home")',
-                    data: jsonData,
-                    success: SuccessStatusUpgrade,
-                    error: ErrorStatusUpgrade,
-                    complete: CompleteStatusUpgrade
-                })
+                $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${Zipcode}`, data => {
+                    console.log(data, "data is here")
+
+                    if (data.results.length === 0) {
+                        console.log("no data found")
+                        return
+                    }
+
+                    console.log(County, "Before API")
+                    State = data.results[Zipcode][0].state_code
+                    County = data.results[Zipcode][0].province
+                    City = data.results[Zipcode][0].city
+
+                    console.log(County, "After API")
+
+                    var jsonData = {
+                        streetnumber: StreetNumber,
+                        streetname: StreetName,
+                        city: City,
+                        state: State,
+                        zipcode: Zipcode,
+                        county: County
+                    }
+                    console.log("jsonData:", jsonData);
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("UpgradeUserHandler", "Home")',
+                        data: jsonData,
+                        success: SuccessStatusUpgrade,
+                        error: ErrorStatusUpgrade,
+                        complete: CompleteStatusUpgrade
+                    })
+                });
+
+
+
+
             })
             const SuccessStatusUpgrade = (result) => {
 

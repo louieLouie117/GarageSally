@@ -290,6 +290,8 @@ namespace UserLogin.Controllers
             GetUser.City = FromForm.City;
             GetUser.State = FromForm.State;
             GetUser.Zipcode = FromForm.Zipcode;
+            GetUser.County = FromForm.County;
+
             _context.SaveChanges();
             return Json(new { Status = "Success" });
         }
