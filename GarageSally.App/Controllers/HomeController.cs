@@ -186,9 +186,14 @@ namespace UserLogin.Controllers
         {
             // Still need these for debugging? Console.Writelines should be removed
             System.Console.WriteLine("you have reach the backend for updating the user info!");
-            System.Console.WriteLine(FromForm.LastName);
+            System.Console.WriteLine($"Zipcode needs to update{FromForm.Zipcode}");
+
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             User GetUser = _context.Users.FirstOrDefault(u => u.UserId == UserIdInSession);
+
+            GetUser.Zipcode = FromForm.Zipcode;
+
+
             if (FromForm.FirstName == null)
             {
                 GetUser.FirstName = "";
@@ -237,6 +242,7 @@ namespace UserLogin.Controllers
             {
                 GetUser.State = FromForm.State;
             }
+
 
 
             _context.SaveChanges();

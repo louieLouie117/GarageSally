@@ -29,22 +29,21 @@
                 let jsonData = {
                     firstName: firstName,
                     lastName: lastName,
-                    email: email,
                     streetnumber: streetNumber,
                     streetname: streetName,
                     city: city,
                     state: state,
-                    zipcode: zipcode,
+                    zipcode: zipcode
                 }
-                @* console.log("user info Data", jsonData) *@
-                    $.ajax({
-                        type: "POST",
-                        url: '@Url.Action("UpdateProfileHandler", "Home")',
-                        data: jsonData,
-                        success: SuccessStatus,
-                        error: ErrorStatus,
-                        complete: CompleteStatus
-                    })
+                console.log("user info Data", jsonData)
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateProfileHandler", "Home")',
+                    data: jsonData,
+                    success: SuccessStatus,
+                    error: ErrorStatus,
+                    complete: CompleteStatus
+                })
             })
             const SuccessStatus = (result) => {
                 document.getElementById("SaveChangesBTN").style.display = "none";
@@ -117,7 +116,7 @@
                             value="${v.zipcode}"
                             id="ZipcodeEdit" placeholder="Zipcode:"
                             onkeyup="ShowSaveChangesBTN(event)">
-                               <input class="hidden"
+                               <input 
                             value="${v.county}"
                             id="CountyEdit" placeholder="County:"
                             onkeyup="ShowSaveChangesBTN(event)">
@@ -139,11 +138,12 @@
                     `).prependTo("#noticeForm");
                     });
 
-                     if (data.data[0].county === null || data.data[0].county === "") {
-                            console.log("User needs to confirm zipcode")
+                if (data.data[0].county === null || data.data[0].county === "") {
+                    console.log("User needs to confirm zipcode")
 
-                        }else{
-                            console.log("no updates needed")}
+                } else {
+                    console.log("no updates needed")
+                }
             };
         })
 
