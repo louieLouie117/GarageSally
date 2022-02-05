@@ -45,7 +45,7 @@
 
                     $.ajax({
                         type: "GET",
-                        url: '@Url.Action("SearchZipCodeHandler", "Home")',
+                        url: '@Url.Action("SearchResultsZipcode", "Home")',
                         data: jsonData,
                         success: SuccessStatusZipcode,
                         error: ErrorStatusZipcode,
@@ -60,7 +60,10 @@
 
             const SuccessStatusZipcode = (result) => {
                 console.log("You have sucessfuly searched...");
-                LoadSearchZipecode();
+                RenderZipcodeSearch(result);
+                @* LoadSearchZipecode(); *@
+
+
             };
             const ErrorStatusZipcode = (xhr, status, strErr) => {
                 console.log("There was an error when searching!");
@@ -70,39 +73,10 @@
             };
 
 
-            const LoadSearchZipecode = () => {
-
-                $('#HomeSearchResults').load("/SearchResultsZipcode #HomeSearchResults", data => {
-                    data = JSON.parse(data);
-
-
-                    if (data.data.length === 0) {
-                        let zipcode = document.querySelector("#ZipCodeValue").value;
-                        console.log("no garage sales in this zip code.")
-                        $(`
-
-                       <li>
-                        <section>
-                              <footer>
-                                <h3></h3>
-                                 <p>There are currently no garage sales listed in your community ${zipcode}. Stay informed get an email notification when there is a garage sale near you.</p>
-                            </footer>
-                            <main>
-                               <button onclick="SignInDirectionsHandler(event)">email</button>
-                                @* <p>20 people visted.</p> *@
-                            </main>
-                        </section>
-                    </li>`).prependTo("#HomeSearchResults");
-                        return
-                    }
-                    RenderZipcodeSearch(data);
-
-                });
-            };
-
-
-
             const RenderZipcodeSearch = (data) => {
+
+                $('#HomeSearchResults').empty();
+
                 $.each(data.data, function (i, v) {
                     console.log("Value", v)
                     const TimeFormat = {
@@ -166,9 +140,7 @@
                 let City = document.querySelector("#CitySearch").value
                 let State = document.querySelector("#StateSearch").value
 
-
                 console.log("search", typeof Zipcode)
-
 
                 var jsonData = {
                     city: City,
@@ -201,7 +173,6 @@
             };
 
             const LoadSearchCity = () => {
-
                 $('#HomeSearchResults').load("/SearchCityResults #HomeSearchResults", data => {
                     data = JSON.parse(data);
                     if (data.data.length === 0) {

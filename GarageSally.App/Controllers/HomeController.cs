@@ -193,7 +193,7 @@ namespace UserLogin.Controllers
 
             GetUser.Zipcode = FromForm.Zipcode;
             GetUser.County = FromForm.County;
-            
+
 
 
             if (FromForm.FirstName == null)
@@ -1362,32 +1362,28 @@ namespace UserLogin.Controllers
         public JsonResult SearchZipCodeHandler(GarageSale Data)
 
         {
-            System.Console.WriteLine("you have reached the backend of zip code");
 
+            // don't need to save to session any more method is being called directly.
+            System.Console.WriteLine("you have reached the backend of zip code");
             System.Console.WriteLine($"Data {Data.Zipcode}");
             System.Console.WriteLine($"Data {Data.County}");
-
-
             HttpContext.Session.SetInt32("SearchZipCode", Data.Zipcode);
             HttpContext.Session.SetString("SearchCounty", Data.County);
-
-
             return Json(new { status = "session success" });
-
-
 
         }
 
         [HttpGet("SearchResultsZipcode")]
-        public JsonResult SearchResultsZipcode()
+        public JsonResult SearchResultsZipcode(GarageSale Data)
         {
 
-            var SearchZipCodeInSession = HttpContext.Session.GetString("SearchCounty");
+            // var SearchZipCodeInSession = HttpContext.Session.GetString("SearchCounty");
+            var SearchZipCodeInSession = Data.County;
 
-            System.Console.WriteLine("seesion zip code", SearchZipCodeInSession);
+            System.Console.WriteLine($"Backend results: {SearchZipCodeInSession}");
 
-            List<GarageSale> SearchResults = _context.GarageSales
             // Filter out sales that are in the past
+            List<GarageSale> SearchResults = _context.GarageSales
             .Where(d => d.StartDate >= DateTime.Now)
             .Where(r => r.County == SearchZipCodeInSession)
             .OrderByDescending(d => d.StartDate)
