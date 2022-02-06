@@ -26,10 +26,7 @@
                 $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${Zipcode}`, data => {
                     console.log(data, "data is here")
 
-                    if (data.results.length === 0) {
-                        console.log("no data found")
-                        return
-                    }
+
 
                     console.log(County, "Before API")
                     County = data.results[Zipcode][0].province
@@ -72,7 +69,7 @@
             };
 
 
-           
+
             const RenderZipcodeSearch = (data) => {
 
                 $('#HomeSearchResults').empty();
@@ -103,10 +100,8 @@
 
                     let garageItemId = v.garageSaleId;
 
-                    if (checkDate < checkToday) {
-                        console.log("this event has expired")
-                    } else {
-                        $(`<li id="${garageItemId}">
+
+                    $(`<li id="${garageItemId}">
                         <section>
                             <header>
                                 <h1>${dateFormated}</h1>
@@ -124,13 +119,13 @@
                             </main>
                         </section>
                     </li>`).prependTo("#HomeSearchResults");
-                    }
+
                 });
             };
 
 
 
-       })
+        })
 
 
 
@@ -145,7 +140,7 @@
 
         <header>
             <form id="SearchZipCode">
-                <input type="number" name="" id="ZipCodeValue" placeholder="zip code:" >
+                <input type="number" name="" id="ZipCodeValue" placeholder="zip code:">
                 <button>Search</button>
             </form>
         </header>

@@ -534,11 +534,23 @@ namespace UserLogin.Controllers
             // Still need these for debugging? Console.Writelines should be removed
             // DashboardWrapper wMode = new DashboardWrapper();
 
+            IEnumerable<GarageSale> StateQuery =
+                from c in _context.GarageSales
+                where c.State == "CA"
+                select c;
 
+            foreach (GarageSale c in StateQuery)
+            {
+
+                Console.WriteLine($"This is the results State: {c.State} {c.County} ");
+
+
+            }
             // 1.Alabama
             List<GarageSale> AllSalesInAL = _context.GarageSales
             .Where(st => st.State == "AL")
             .ToList();
+
             List<GarageSale> NewSalesInAL = _context.GarageSales
             .Where(td => td.StartDate >= DateTime.Now)
             .Where(st => st.State == "AL")
@@ -1369,10 +1381,19 @@ namespace UserLogin.Controllers
 
             // Filter out sales that are in the past
             List<GarageSale> SearchResults = _context.GarageSales
-            .Where(d => d.StartDate >= DateTime.Now)
+            .Where(d => d.StartDate >= DateTime.Now.AddDays(-1))
             .Where(r => r.County == SearchZipCodeInSession)
             .OrderByDescending(d => d.StartDate)
             .ToList();
+
+            if (SearchResults.Count == 0)
+            {
+
+                return Json(new { Data = "no sales" });
+
+            }
+
+
 
             return Json(new { Data = SearchResults });
 
