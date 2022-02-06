@@ -63,6 +63,9 @@
 
                 console.log("You have sucessfuly searched...", result);
                 if (result.data === "no sales") {
+
+                    $('#HomeSearchResults').empty();
+
                     let zipcode = document.querySelector("#ZipCodeValue").value;
                     console.log("no garage sales in this zip code.")
                     $(`<li>
@@ -118,14 +121,9 @@
                     let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
                     let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
-                    let checkDate = new Date(v.startDate);
-                    let checkToday = new Date();
-                    checkToday.setDate(checkToday.getDate() - 1);
-
-                    let garageItemId = v.garageSaleId;
 
 
-                    $(`<li id="${garageItemId}">
+                    $(`<li id="${v.garageSaleId}">
                         <section>
                             <header>
                                 <h1>${dateFormated}</h1>
