@@ -48,6 +48,8 @@
 
                 if (result.status === "County needs to be updated.") {
                     document.querySelector('#LoginAjax').style.display = "none";
+                    document.querySelector('#ConfirmZipcodeForm').style.display = "grid";
+                    document.querySelector('#ConfirmZipcode').value = result.data;
                 }
 
                 if (result.status === "Access Granted") {
@@ -111,6 +113,13 @@
             <button type="submit">log in</button>
             @* <input class="btn" type="submit" value="submit"> *@
         </form>
+        <form id="ConfirmZipcodeForm" asp-controller="Home">
+            <input id="ConfirmZipcode" placeholder="zip code" onclick="SignInErrorHandler(event)">
+            <button type="submit">Confirm</button>
+            @* <input class="btn" type="submit" value="submit"> *@
+        </form>
+
+
         <button onclick="SignInDirectionsHandler(event)">Register as a new user.</button>
 
     </div>

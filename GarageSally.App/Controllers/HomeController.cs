@@ -1851,17 +1851,10 @@ namespace UserLogin.Controllers
 
                 if (userInDb.County == null || userInDb.County == "")
                 {
-                    HttpContext.Session.SetString("UserCounty", "No county");
                     Console.WriteLine($"needs to update county");
+                    System.Console.WriteLine($"user current zip code {userInDb.Zipcode}");
 
-
-                    int UserId = (int)HttpContext.Session.GetInt32("UserId");
-
-                    var CurrentZipcode = userInDb.Zipcode;
-
-                    System.Console.WriteLine($"user current zip code {CurrentZipcode}");
-
-                    return Json(new { Status = "County needs to be updated.", data = CurrentZipcode });
+                    return Json(new { Status = "County needs to be updated.", data = userInDb.Zipcode });
 
                 }
                 else
