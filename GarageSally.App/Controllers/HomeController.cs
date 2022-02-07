@@ -1376,9 +1376,7 @@ namespace UserLogin.Controllers
 
             // var SearchZipCodeInSession = HttpContext.Session.GetString("SearchCounty");
             var SearchZipCodeInSession = Data.County;
-
             System.Console.WriteLine($"Backend results: {SearchZipCodeInSession}");
-
             // Filter out sales that are in the past
             List<GarageSale> SearchResults = _context.GarageSales
             .Where(d => d.StartDate >= DateTime.Now.AddDays(-1))
@@ -1388,12 +1386,8 @@ namespace UserLogin.Controllers
 
             if (SearchResults.Count == 0)
             {
-
                 return Json(new { Data = "no sales" });
-
             }
-
-
 
             return Json(new { Data = SearchResults });
 
@@ -1831,6 +1825,7 @@ namespace UserLogin.Controllers
                 User userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
 
 
+
                 if (userInDb == null)
                 {
                     Console.WriteLine($"email error");
@@ -1858,10 +1853,15 @@ namespace UserLogin.Controllers
                 {
                     HttpContext.Session.SetString("UserCounty", "No county");
                     Console.WriteLine($"needs to update county");
-                    // return Json(new { Status = "County needs to be updated." });
 
 
+                    int UserId = (int)HttpContext.Session.GetInt32("UserId");
 
+                    var CurrentZipcode = userInDb.Zipcode;
+
+                    System.Console.WriteLine($"user current zip code {CurrentZipcode}");
+
+                    return Json(new { Status = "County needs to be updated.", data = CurrentZipcode });
 
                 }
                 else

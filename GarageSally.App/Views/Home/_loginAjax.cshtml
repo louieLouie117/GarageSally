@@ -46,6 +46,10 @@
 
             const SuccessStatusLogin = (result) => {
 
+                if (result.status === "County needs to be updated.") {
+                    document.querySelector('#LoginAjax').style.display = "none";
+                }
+
                 if (result.status === "Access Granted") {
                     window.location.href = '@Url.Action("SendToDashboard", "Home")'
                 }
