@@ -228,6 +228,7 @@ h1,h2,h3,p{
     .landingPage-container>header p{
         padding-top: 10px;
         font-family: cursive;
+        padding-left: 5px;
     }
 
     .freeAccount-container{
