@@ -110,33 +110,40 @@
                 let City = "";
                         
                 $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${Zipcode}`, data => {
+                    if (data.results.length === 0) {
+                        console.log("not valid zip code");
+                        return
+                    }
 
-                        if (data.results.length === 0) {
-                            console.log("not valid zip code");
-                            return
-                        }
+                    console.log(County, "Before API")
+                    State = data.results[Zipcode][0].state_code
+                    County = data.results[Zipcode][0].province
+                    City = data.results[Zipcode][0].city
+                    console.log(County, "After API")
 
-                        console.log(County, "Before API")
-                        State = data.results[Zipcode][0].state_code
-                        County = data.results[Zipcode][0].province
-                        City = data.results[Zipcode][0].city
-                        console.log(County, "After API")
+                    let jsonData = {
+                        zipcode: Zipcode,
+                        state: State,
+                        county: County,
+                        city: City
+                    }
+                     console.log(jsonData)
 
-                        let jsonData = {
-                            zipcode: Zipcode,
-                            state: State,
-                            county: County,
-                            city: City
-                        }
-
-                        console.log(jsonData)
-
-                        $.ajax({
-                            type: "POST",
-                            url: '@Url.Action("ConfirmZipcodeMethod", "Home")',
-                            data: jsonData,
-                        })
+                     $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("ConfirmZipcodeMethod", "Home")',
+                        data: jsonData,
+                        success: SuccessStatusUpdates,
+                    })
                 })
+            };
+
+            const SuccessStatusUpdates = (result) => {
+
+                console.log("Sucssessfuly completed", result)
+                if (result.status === "Account has been update") {
+                    window.location.href = '@Url.Action("SendToDashboard", "Home")'
+                }
             };
     </script>
 
