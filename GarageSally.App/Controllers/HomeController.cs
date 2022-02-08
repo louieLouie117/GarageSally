@@ -1852,9 +1852,8 @@ namespace UserLogin.Controllers
                 if (userInDb.County == null || userInDb.County == "")
                 {
                     Console.WriteLine($"needs to update county");
-                    System.Console.WriteLine($"user current zip code {userInDb.Zipcode}");
-
-                    return Json(new { Status = "County needs to be updated.", data = userInDb.Zipcode });
+                    System.Console.WriteLine($"user current zip code { userInDb.Zipcode}");
+                    return Json(new { Status = "County needs to be updated.", Zipcode = userInDb.Zipcode, FirstName = userInDb.FirstName });
 
                 }
                 else

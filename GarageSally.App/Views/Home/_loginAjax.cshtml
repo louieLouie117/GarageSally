@@ -47,9 +47,11 @@
             const SuccessStatusLogin = (result) => {
 
                 if (result.status === "County needs to be updated.") {
+                    console.log(result)
                     document.querySelector('#LoginAjax').style.display = "none";
                     document.querySelector('#ConfirmZipcodeForm').style.display = "grid";
-                    document.querySelector('#ConfirmZipcode').value = result.data;
+                    document.querySelector('#ConfirmZipcode').value = result.zipcode;
+                    document.querySelector('#LogInTitle').innerText = `Welcome Back ${result.firstName}`;
                 }
 
                 if (result.status === "Access Granted") {
@@ -101,7 +103,7 @@
 
 <body>
     <div class="form-container" id="SignInHeight">
-        <h3>Welcome back</h3>
+        <h3 id="LogInTitle">Log in</h3>
 
         <form id="LoginAjax" asp-controller="Home">
             <span asp-validation-for="Email"></span>
@@ -111,12 +113,12 @@
             <label for="LoginEmail" id="passwordError" type="email"></label>
             <input id="LoginPassword" placeholder="password" type="password" onclick="SignInErrorHandler(event)">
             <button type="submit">log in</button>
-            @* <input class="btn" type="submit" value="submit"> *@
         </form>
         <form id="ConfirmZipcodeForm" asp-controller="Home">
+            <p>Thank you for helping build the Garage Sally online community.</p>
+            <p> We have made some updates since the last time you were here. Please confirm or update your zip code to get garages relevant to your community.</p>
             <input id="ConfirmZipcode" placeholder="zip code" onclick="SignInErrorHandler(event)">
             <button type="submit">Confirm</button>
-            @* <input class="btn" type="submit" value="submit"> *@
         </form>
 
 
@@ -124,10 +126,10 @@
 
     </div>
     @* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#B936D2" fill-opacity="1"
-        d="M0,96L60,117.3C120,139,240,181,360,165.3C480,149,600,75,720,48C840,21,960,43,1080,90.7C1200,139,1320,213,1380,250.7L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
-        </path>
-        </svg> *@
+                <path fill="#B936D2" fill-opacity="1"
+                d="M0,96L60,117.3C120,139,240,181,360,165.3C480,149,600,75,720,48C840,21,960,43,1080,90.7C1200,139,1320,213,1380,250.7L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                </path>
+                </svg> *@
 </body>
 
 </html>
