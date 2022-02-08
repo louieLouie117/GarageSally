@@ -123,6 +123,7 @@
                         console.log(County, "After API")
 
                         let jsonData = {
+                            zipcode: Zipcode,
                             state: State,
                             county: County,
                             city: City
@@ -130,12 +131,11 @@
 
                         console.log(jsonData)
 
-                        @* $.ajax({
+                        $.ajax({
                             type: "POST",
-                            url: '@Url.Action("SellerRegistration", "Home")',
+                            url: '@Url.Action("ConfirmZipcodeMethod", "Home")',
                             data: jsonData,
-                            success: SuccessSellerReg,
-                        }) *@
+                        })
                 })
             };
     </script>

@@ -1810,6 +1810,31 @@ namespace UserLogin.Controllers
         //     return View("index", wMod);
         // }
 
+
+        [HttpPost("ConfirmZipcodeMethod")]
+        public JsonResult ConfirmZipcodeMethod(User UserEntry)
+        {
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+            System.Console.WriteLine($"You have reached the backend of confirm zip code! user:{UserIdInSession}");
+
+            User UserSelected = _context.Users.FirstOrDefault(u => u.UserId == UserIdInSession);
+
+
+            UserSelected.State = UserEntry.State;
+            UserSelected.County = UserEntry.County;
+            UserSelected.City = UserEntry.City;
+            UserSelected.Zipcode = UserEntry.Zipcode;
+
+
+            _context.SaveChanges();
+
+
+
+            return Json(new { Status = "Account has been update" });
+
+        }
+
+
         [HttpPost("login")]
         public JsonResult Login(LoginUser userSubmission)
         {
