@@ -46,6 +46,7 @@ h1,h2,h3,p{
     grid-template-columns: 1fr 100px;
     column-gap: 10px;
     padding-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
     justify-items: flex-end;
 }
@@ -56,12 +57,13 @@ h1,h2,h3,p{
 .landingPage-container>header main button{
     background: white;
     border: none;
-    height: 40px;
+    height: 35px;
     border-radius: 5px;
     color: #B936D2;
-    font: 1.2em sans-serif;
+    font: .9em sans-serif;
     text-decoration: underline;
-    padding: 10px;
+    padding: 3px;
+
 }
 
 .landingPage-container>header main button:last-of-type {
@@ -69,7 +71,8 @@ h1,h2,h3,p{
     background: #B936D2;
     text-decoration: none;
     color: white;
-    border-radius: 100px;
+    border-radius: 10px;
+    width: 70px;
 }
 
 .landingPage-container>main{
@@ -313,7 +316,7 @@ h1,h2,h3,p{
     display: grid;
     width: 100vw;
     margin: 0 auto;
-    padding: 50px 0;
+    padding-bottom: 50px;
 
 }
 

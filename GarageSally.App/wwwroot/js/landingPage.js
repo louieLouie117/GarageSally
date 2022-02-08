@@ -23,11 +23,11 @@ const SearchTypeHandler =(e)=>{
 const SignInDirectionsHandler = (e) =>{
 
   
-    if(e.target.innerText === "register"){
+    if(e.target.innerText === "register" || e.target.innerText === "new account"){
         document.querySelector("#FreeAccount").style.left ="0%"
         document.querySelector("#FreeAccount").style.transition = "1s";
         document.querySelector("#FreeAccount").style.transform = "smooth";
-        document.querySelector("#regNewUserHeading").innerText = "Create a free account and find garage sales in your state."
+        document.querySelector("#regNewUserHeading").innerText = "Create a free account and find garage sales in your community."
     }
 
 
