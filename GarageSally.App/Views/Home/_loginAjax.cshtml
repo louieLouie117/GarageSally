@@ -96,7 +96,14 @@
                 console.log("Upgaded has completed...");
             };
 
+           
+
         })
+
+         const ConfirmZipcodeHandlerTest = e =>{
+                e.preventDefault();
+                console.log("Confirm button was click")
+            }
     </script>
 
 </head>
@@ -114,11 +121,12 @@
             <input id="LoginPassword" placeholder="password" type="password" onclick="SignInErrorHandler(event)">
             <button type="submit">Sign in</button>
         </form>
-        <form id="ConfirmZipcodeForm" asp-controller="Home">
+
+        <form id="ConfirmZipcodeForm">
             <p>Thank you for helping build the Garage Sally online community.</p>
             <p> We have made some updates since the last time you were here. Please confirm or update your zip code to get garages relevant to your community.</p>
-            <input id="ConfirmZipcode" placeholder="zip code" onclick="SignInErrorHandler(event)">
-            <button type="submit">Confirm</button>
+            <input id="ConfirmZipcode" placeholder="zip code">
+            <button onclick="ConfirmZipcodeHandlerTest(event)">Confirm</button>
         </form>
 
 

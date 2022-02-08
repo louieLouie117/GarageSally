@@ -21,6 +21,7 @@ h1,h2,h3,p{
 
 .landingPage-container>header picture img{
     width: 300px;
+    padding-bottom: 20px;
 }
 
 .landingPage-container>header p{
@@ -317,7 +318,6 @@ h1,h2,h3,p{
     width: 100vw;
     margin: 0 auto;
     padding-bottom: 50px;
-
 }
 
 .search-container header{

@@ -26,32 +26,32 @@
                 $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${Zipcode}`, data => {
                     console.log(data, "data is here")
 
-                    if(data.results.length === 0){
+                    if (data.results.length === 0) {
                         console.log("not a valid zip code!")
                         return
-                    }else{
+                    } else {
 
-                            console.log(County, "Before API")
-                            County = data.results[Zipcode][0].province
-                            console.log(County, "After API")
+                        console.log(County, "Before API")
+                        County = data.results[Zipcode][0].province
+                        console.log(County, "After API")
 
 
-                            let jsonData = {
-                                zipcode: Zipcode,
-                                county: County
-                            }
+                        let jsonData = {
+                            zipcode: Zipcode,
+                            county: County
+                        }
 
-                            console.log(jsonData)
+                        console.log(jsonData)
 
-                            $.ajax({
-                                type: "GET",
-                                url: '@Url.Action("SearchResultsZipcode", "Home")',
-                                data: jsonData,
-                                success: SuccessStatusZipcode,
-                                error: ErrorStatusZipcode,
-                                complete: CompleteStatusZipcode
-                            })
-                        }      
+                        $.ajax({
+                            type: "GET",
+                            url: '@Url.Action("SearchResultsZipcode", "Home")',
+                            data: jsonData,
+                            success: SuccessStatusZipcode,
+                            error: ErrorStatusZipcode,
+                            complete: CompleteStatusZipcode
+                        })
+                    }
                 });
 
             });
@@ -82,8 +82,8 @@
                     </li>`).prependTo("#HomeSearchResults");
                     return
                 }
-                    RenderZipcodeSearch(result);
-                    
+                RenderZipcodeSearch(result);
+
 
 
 
@@ -145,8 +145,6 @@
                 });
             };
 
-
-
         })
 
 
@@ -162,7 +160,7 @@
 
         <header>
             <form id="SearchZipCode">
-                <input type="number" name="" id="ZipCodeValue" placeholder="zip code:">
+                <input type="number" name="" id="ZipCodeValue" placeholder="zip code:" autofocus>
                 <button>Search</button>
             </form>
         </header>
