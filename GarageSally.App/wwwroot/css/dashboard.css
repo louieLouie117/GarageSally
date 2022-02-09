@@ -430,7 +430,7 @@ input {
 .userInfo-container header h1{
 	font: 1em sans-serif;
 	justify-self: left;
-	max-width: 150px;
+	max-width: 170px;
 	overflow: hidden;
 }
 
