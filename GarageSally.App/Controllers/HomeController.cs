@@ -186,9 +186,16 @@ namespace UserLogin.Controllers
         {
             // Still need these for debugging? Console.Writelines should be removed
             System.Console.WriteLine("you have reach the backend for updating the user info!");
-            System.Console.WriteLine(FromForm.LastName);
+            System.Console.WriteLine($"Zipcode needs to update{FromForm.Zipcode}");
+
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             User GetUser = _context.Users.FirstOrDefault(u => u.UserId == UserIdInSession);
+
+            GetUser.Zipcode = FromForm.Zipcode;
+            GetUser.County = FromForm.County;
+
+
+
             if (FromForm.FirstName == null)
             {
                 GetUser.FirstName = "";
@@ -239,6 +246,7 @@ namespace UserLogin.Controllers
             }
 
 
+
             _context.SaveChanges();
             return Json(new { Status = "Success" });
         }
@@ -282,6 +290,8 @@ namespace UserLogin.Controllers
             GetUser.City = FromForm.City;
             GetUser.State = FromForm.State;
             GetUser.Zipcode = FromForm.Zipcode;
+            GetUser.County = FromForm.County;
+
             _context.SaveChanges();
             return Json(new { Status = "Success" });
         }
@@ -524,11 +534,23 @@ namespace UserLogin.Controllers
             // Still need these for debugging? Console.Writelines should be removed
             // DashboardWrapper wMode = new DashboardWrapper();
 
+            IEnumerable<GarageSale> StateQuery =
+                from c in _context.GarageSales
+                where c.State == "CA"
+                select c;
 
+            foreach (GarageSale c in StateQuery)
+            {
+
+                Console.WriteLine($"This is the results State: {c.State} {c.County} ");
+
+
+            }
             // 1.Alabama
             List<GarageSale> AllSalesInAL = _context.GarageSales
             .Where(st => st.State == "AL")
             .ToList();
+
             List<GarageSale> NewSalesInAL = _context.GarageSales
             .Where(td => td.StartDate >= DateTime.Now)
             .Where(st => st.State == "AL")
@@ -1330,8 +1352,6 @@ namespace UserLogin.Controllers
 
 
 
-
-
         [HttpGet("displayUserGarageSales")]
         public JsonResult displayUserGarageSales()
         {
@@ -1348,80 +1368,28 @@ namespace UserLogin.Controllers
         }
 
 
-        [HttpGet("SearchZipCodeHandler")]
-        public JsonResult SearchZipCodeHandler(GarageSale Data)
 
-        {
-            System.Console.WriteLine("you have reached the backend of zip code");
-
-            System.Console.WriteLine($"Data {Data.Zipcode}");
-
-            HttpContext.Session.SetInt32("SearchZipCode", Data.Zipcode);
-
-            return Json(new { status = "session success" });
-
-
-
-        }
 
         [HttpGet("SearchResultsZipcode")]
-        public JsonResult SearchResultsZipcode()
+        public JsonResult SearchResultsZipcode(GarageSale Data)
         {
 
-            int SearchZipCodeInSession = (int)HttpContext.Session.GetInt32("SearchZipCode");
-
-            System.Console.WriteLine("seesion zip code", SearchZipCodeInSession);
-
-            List<GarageSale> SearchResults = _context.GarageSales
+            // var SearchZipCodeInSession = HttpContext.Session.GetString("SearchCounty");
+            var SearchZipCodeInSession = Data.County;
+            System.Console.WriteLine($"Backend results: {SearchZipCodeInSession}");
             // Filter out sales that are in the past
-            .Where(d => d.StartDate >= DateTime.Now)
-            .Where(r => r.Zipcode == SearchZipCodeInSession)
+            List<GarageSale> SearchResults = _context.GarageSales
+            .Where(d => d.StartDate >= DateTime.Now.AddDays(-1))
+            .Where(r => r.County == SearchZipCodeInSession)
             .OrderByDescending(d => d.StartDate)
             .ToList();
+
+            if (SearchResults.Count == 0)
+            {
+                return Json(new { Data = "no sales" });
+            }
 
             return Json(new { Data = SearchResults });
-
-        }
-
-
-        [HttpGet("SearchCityHandler")]
-        public JsonResult SearchCityHandler(GarageSale Data)
-
-        {
-            System.Console.WriteLine("you have reached the backend of city");
-
-            System.Console.WriteLine($"City: {Data.City}");
-            System.Console.WriteLine($"State: {Data.State}");
-
-
-            HttpContext.Session.SetString("SearchCity", Data.City);
-            HttpContext.Session.SetString("SearchState", Data.State);
-
-
-            return Json(new { status = "session success" });
-
-
-
-        }
-
-
-        [HttpGet("SearchCityResults")]
-        public JsonResult SearchCityResults()
-        {
-
-            string SearchCityInSession = HttpContext.Session.GetString("SearchCity");
-            string SearchStateInSession = HttpContext.Session.GetString("SearchState");
-
-
-            System.Console.WriteLine("seesion zip code", SearchCityInSession);
-
-            List<GarageSale> CitySearchResults = _context.GarageSales
-            .Where(c => c.City == SearchCityInSession)
-            .Where(s => s.State == SearchStateInSession)
-            .OrderByDescending(d => d.StartDate)
-            .ToList();
-
-            return Json(new { Data = CitySearchResults });
 
         }
 
@@ -1842,6 +1810,31 @@ namespace UserLogin.Controllers
         //     return View("index", wMod);
         // }
 
+
+        [HttpPost("ConfirmZipcodeMethod")]
+        public JsonResult ConfirmZipcodeMethod(User UserEntry)
+        {
+            int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
+            System.Console.WriteLine($"You have reached the backend of confirm zip code! user:{UserIdInSession}");
+
+            User UserSelected = _context.Users.FirstOrDefault(u => u.UserId == UserIdInSession);
+
+
+            UserSelected.State = UserEntry.State;
+            UserSelected.County = UserEntry.County;
+            UserSelected.City = UserEntry.City;
+            UserSelected.Zipcode = UserEntry.Zipcode;
+
+
+            _context.SaveChanges();
+
+
+
+            return Json(new { Status = "Account has been update" });
+
+        }
+
+
         [HttpPost("login")]
         public JsonResult Login(LoginUser userSubmission)
         {
@@ -1855,6 +1848,7 @@ namespace UserLogin.Controllers
             if (ModelState.IsValid)
             {
                 User userInDb = _context.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
+
 
 
                 if (userInDb == null)
@@ -1882,12 +1876,9 @@ namespace UserLogin.Controllers
 
                 if (userInDb.County == null || userInDb.County == "")
                 {
-                    HttpContext.Session.SetString("UserCounty", "No county");
                     Console.WriteLine($"needs to update county");
-                    // return Json(new { Status = "County needs to be updated." });
-
-
-
+                    System.Console.WriteLine($"user current zip code { userInDb.Zipcode}");
+                    return Json(new { Status = "County needs to be updated.", Zipcode = userInDb.Zipcode, FirstName = userInDb.FirstName });
 
                 }
                 else

@@ -21,6 +21,7 @@ h1,h2,h3,p{
 
 .landingPage-container>header picture img{
     width: 300px;
+    padding-bottom: 20px;
 }
 
 .landingPage-container>header p{
@@ -46,6 +47,7 @@ h1,h2,h3,p{
     grid-template-columns: 1fr 100px;
     column-gap: 10px;
     padding-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
     justify-items: flex-end;
 }
@@ -56,12 +58,13 @@ h1,h2,h3,p{
 .landingPage-container>header main button{
     background: white;
     border: none;
-    height: 40px;
+    height: 35px;
     border-radius: 5px;
     color: #B936D2;
-    font: 1.2em sans-serif;
+    font: .9em sans-serif;
     text-decoration: underline;
-    padding: 10px;
+    padding: 3px;
+
 }
 
 .landingPage-container>header main button:last-of-type {
@@ -69,7 +72,8 @@ h1,h2,h3,p{
     background: #B936D2;
     text-decoration: none;
     color: white;
-    border-radius: 100px;
+    border-radius: 10px;
+    width: 70px;
 }
 
 .landingPage-container>main{
@@ -224,6 +228,7 @@ h1,h2,h3,p{
     .landingPage-container>header p{
         padding-top: 10px;
         font-family: cursive;
+        padding-left: 5px;
     }
 
     .freeAccount-container{
@@ -313,8 +318,7 @@ h1,h2,h3,p{
     display: grid;
     width: 100vw;
     margin: 0 auto;
-    padding: 50px 0;
-
+    padding-bottom: 50px;
 }
 
 .search-container header{
@@ -367,10 +371,10 @@ h1,h2,h3,p{
     height: 40px;
     font: 1em sans-serif;
     padding-left: 15px;
-    border-radius: 10px 0 0 10px;
-    border: solid 2px rgb(188, 188, 188);
+    border-radius: 7px 0 0 7px;
+    border: solid 2px rgb(172, 172, 172);
     border-right: none;
-    background: white   ;
+    background: white;
     /* box-shadow: 0 0  5px rgba(0, 0, 0, 0.432); */
 }
 
@@ -388,7 +392,7 @@ h1,h2,h3,p{
     color: white;
     font: 1em sans-serif;
     border: solid 1px #B936D2;
-    border-radius: 0 10px 10px  0;
+    border-radius: 0 7px 7px  0;
 
 
 }
@@ -459,3 +463,6 @@ h1,h2,h3,p{
 }
 
 
+#ConfirmZipcodeForm{
+    display: none;
+}

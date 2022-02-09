@@ -46,6 +46,14 @@
 
             const SuccessStatusLogin = (result) => {
 
+                if (result.status === "County needs to be updated.") {
+                    console.log(result)
+                    document.querySelector('#LoginAjax').style.display = "none";
+                    document.querySelector('#ConfirmZipcodeForm').style.display = "grid";
+                    document.querySelector('#ConfirmZipcode').value = result.zipcode;
+                    document.querySelector('#LogInTitle').innerText = `Welcome Back ${result.firstName}`;
+                }
+
                 if (result.status === "Access Granted") {
                     window.location.href = '@Url.Action("SendToDashboard", "Home")'
                 }
@@ -88,14 +96,62 @@
                 console.log("Upgaded has completed...");
             };
 
+
+
         })
+
+        const ConfirmZipcodeHandlerTest = e => {
+            e.preventDefault();
+            console.log("Confirm button was click")
+
+            let Zipcode = document.querySelector('#ConfirmZipcode').value;
+            let Sate = "";
+            let County = "";
+            let City = "";
+
+            $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${Zipcode}`, data => {
+                if (data.results.length === 0) {
+                    console.log("not valid zip code");
+                    return
+                }
+
+                console.log(County, "Before API")
+                State = data.results[Zipcode][0].state_code
+                County = data.results[Zipcode][0].province
+                City = data.results[Zipcode][0].city
+                console.log(County, "After API")
+
+                let jsonData = {
+                    zipcode: Zipcode,
+                    state: State,
+                    county: County,
+                    city: City
+                }
+                console.log(jsonData)
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ConfirmZipcodeMethod", "Home")',
+                    data: jsonData,
+                    success: SuccessStatusUpdates,
+                })
+            })
+        };
+
+        const SuccessStatusUpdates = (result) => {
+
+            console.log("Sucssessfuly completed", result)
+            if (result.status === "Account has been update") {
+                window.location.href = '@Url.Action("SendToDashboard", "Home")'
+            }
+        };
     </script>
 
 </head>
 
 <body>
     <div class="form-container" id="SignInHeight">
-        <h3>Welcome back</h3>
+        <h3 id="LogInTitle">Sign in</h3>
 
         <form id="LoginAjax" asp-controller="Home">
             <span asp-validation-for="Email"></span>
@@ -104,9 +160,18 @@
 
             <label for="LoginEmail" id="passwordError" type="email"></label>
             <input id="LoginPassword" placeholder="password" type="password" onclick="SignInErrorHandler(event)">
-            <button type="submit">log in</button>
-            @* <input class="btn" type="submit" value="submit"> *@
+            <button type="submit">Sign in</button>
         </form>
+
+        <form id="ConfirmZipcodeForm">
+            <p>Thank you for helping build the Garage Sally online community.</p>
+            <p> We have made some updates since the last time you were here. Please confirm or update your zip code to
+                get garage sales relevant to your community.</p>
+            <input id="ConfirmZipcode" placeholder="zip code">
+            <button onclick="ConfirmZipcodeHandlerTest(event)">Confirm</button>
+        </form>
+
+
         <button onclick="SignInDirectionsHandler(event)">Register as a new user.</button>
 
     </div>

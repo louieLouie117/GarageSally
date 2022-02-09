@@ -20,24 +20,45 @@
                 let City = document.getElementById("CityUpgrade").value;
                 let State = document.getElementById("StateUpgrade").value;
                 let Zipcode = document.getElementById("ZipcodeUpgrade").value;
+                let County = "no county";
 
-                @* console.log("address", StreetNumber, StreetName, City, State, Zipcode) *@
-                var jsonData = {
-                    streetnumber: StreetNumber,
-                    streetname: StreetName,
-                    city: City,
-                    state: State,
-                    zipcode: Zipcode,
-                }
-                console.log("jsonData:", jsonData);
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("UpgradeUserHandler", "Home")',
-                    data: jsonData,
-                    success: SuccessStatusUpgrade,
-                    error: ErrorStatusUpgrade,
-                    complete: CompleteStatusUpgrade
-                })
+                $.getJSON(`https://app.zipcodebase.com/api/v1/search?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&country=us&codes=${Zipcode}`, data => {
+                    console.log(data, "data is here")
+
+                    if (data.results.length === 0) {
+                        console.log("no data found")
+                        return
+                    }
+
+                    console.log(County, "Before API")
+                    State = data.results[Zipcode][0].state_code
+                    County = data.results[Zipcode][0].province
+                    City = data.results[Zipcode][0].city
+
+                    console.log(County, "After API")
+
+                    var jsonData = {
+                        streetnumber: StreetNumber,
+                        streetname: StreetName,
+                        city: City,
+                        state: State,
+                        zipcode: Zipcode,
+                        county: County
+                    }
+                    console.log("jsonData:", jsonData);
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("UpgradeUserHandler", "Home")',
+                        data: jsonData,
+                        success: SuccessStatusUpgrade,
+                        error: ErrorStatusUpgrade,
+                        complete: CompleteStatusUpgrade
+                    })
+                });
+
+
+
+
             })
             const SuccessStatusUpgrade = (result) => {
 
@@ -124,6 +145,8 @@
                     complete: CompleteStatus
                 })
             })
+
+
             $('#OneDayAfterForm').submit(function (event) {
                 event.preventDefault();
 
@@ -677,19 +700,26 @@
                         <label for="Description" id="DescriptionLabelError"></label>
                         <textarea id="Description" onkeydown="ErrorLabelHandler(event)"
                         placeholder="describe what you have for sale." maxlength="250"></textarea>
-                        <h2>Location:</h2>
-                        <label id="AddressLabelErrors"></label>
+                        <div class="locationOptions">
+                            <h2>Location:</h2>
+                            <button type="button" onclick="profile(event)">Edit</button>
+                        </div>
+
+                        <label class="hidden" id="AddressLabelErrors"></label>
                         <div class="locationHeader">
-                            <input id='StreetNumber' type='text' placeholder='street #:'
+                            <input id='StreetNumber' type='text' placeholder='street #:' disabled="disabled"
                             onkeydown="ErrorLabelHandler(event)">
-                            <input id='StreetName' type='text' placeholder='Street Name:'
+                            <input id='StreetName' type='text' placeholder='Street Name:' disabled="disabled"
                             onkeydown="ErrorLabelHandler(event)">
                         </div>
                         <div class="locationFooter">
-                            <input id='City' type='text' placeholder='City:' onkeydown="ErrorLabelHandler(event)">
-                            <input id='State' type='text' placeholder='State:' onkeydown="ErrorLabelHandler(event)">
-                            <input id='Zipcode' type='text' placeholder='zipcode:' onkeydown="ErrorLabelHandler(event)">
-                            <input class="hidden" id='County' type='text' placeholder='County:'
+                            <input id='City' type='text' placeholder='City:' disabled="disabled"
+                            onkeydown="ErrorLabelHandler(event)">
+                            <input id='State' type='text' placeholder='State:' disabled="disabled"
+                            onkeydown="ErrorLabelHandler(event)">
+                            <input id='Zipcode' type='text' placeholder='zipcode:' disabled="disabled"
+                            onkeydown="ErrorLabelHandler(event)">
+                            <input class="hidden" id='County' type='text' disabled="disabled" placeholder='County:'
                             onkeydown="ErrorLabelHandler(event)">
                         </div>
                     </main>
