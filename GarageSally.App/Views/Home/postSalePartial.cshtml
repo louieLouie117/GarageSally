@@ -700,8 +700,12 @@
                         <label for="Description" id="DescriptionLabelError"></label>
                         <textarea id="Description" onkeydown="ErrorLabelHandler(event)"
                         placeholder="describe what you have for sale." maxlength="250"></textarea>
-                        <h2>Location:</h2>
-                        <label id="AddressLabelErrors"></label>
+                        <div class="locationOptions">
+                            <h2>Location:</h2>
+                            <button type="button" onclick="profile(event)">Edit</button>
+                        </div>
+
+                        <label class="hidden" id="AddressLabelErrors"></label>
                         <div class="locationHeader">
                             <input id='StreetNumber' type='text' placeholder='street #:' disabled="disabled"
                             onkeydown="ErrorLabelHandler(event)">

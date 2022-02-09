@@ -42,13 +42,32 @@ let profilePage = "close"
 
 const profile = (e) =>{
 
+    if(e.target.innerText === "Edit"){
+        document.getElementById("profile").style.marginLeft = "0";
+        document.getElementById("profile").style.transform = "smooth";
+        document.getElementById("profile").style.transition = "1s";
+        document.getElementById("mainMenu").style.marginLeft = "-700px";
+        document.getElementById("postSalePartial").style.marginLeft = "-700px";
+        document.getElementById("profile").style.transform = "smooth";
+        return (profilePage = "BackToListing")
+    }
+
+    if(profilePage === "BackToListing"){
+        document.getElementById("profile").style.marginLeft = "-700px";
+        document.getElementById("profile").style.transform = "smooth";
+        document.getElementById("profile").style.transition = "1s";
+        document.getElementById("mainMenu").style.marginLeft = "-700px";
+        document.getElementById("postSalePartial").style.marginLeft = "0";
+        document.getElementById("profile").style.transform = "smooth";
+        return (profilePage = "NavToAddress")
+
+    }
+
     if (profilePage === "close") { 
     document.getElementById("profile").style.marginLeft = "0";
     document.getElementById("profile").style.transform = "smooth";
     document.getElementById("profile").style.transition = "1s";
     document.getElementById("mainMenu").style.marginLeft = "-700px";
-
-
     return (profilePage = "open")
 
     } else{
@@ -56,10 +75,11 @@ const profile = (e) =>{
     document.getElementById("profile").style.transform = "smooth";
     document.getElementById("profile").style.transition = "1s";
     document.getElementById("mainMenu").style.marginLeft = "0";
-
     return (profilePage = "close");
     }
-// Page
+
+    
+
 
 }
 
