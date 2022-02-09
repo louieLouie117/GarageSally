@@ -90,7 +90,7 @@
                         if (v.profilePic === "placeholder.png") {
                             $(`
                         <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
-                        <h1 id="UserNameText">Hello, ${v.firstName}</h1>
+                        <h1 id="UserNameText">Hello, ${v.firstName} ${v.lastName}</h1>
                         <button onclick="popUpNoticeHandler(event)">Change Photo</button>
                         `).prependTo("#UserPhoto");
                         } else {
@@ -104,9 +104,13 @@
                         $(`
                         <h3 class="span2Columns">Name</h3>
 
-                        <input class="span2Columns"
+                        <input
                         value="${v.firstName}"
-                        id="FirstNameEdit" placeholder="First name:"
+                        id="FirstNameEdit" placeholder="First Name:"
+                        onkeyup="ShowSaveChangesBTN(event)" >
+                         <input
+                        value="${v.lastName}"
+                        id="LastNameEdit" placeholder="Last Name:"
                         onkeyup="ShowSaveChangesBTN(event)" >
 
                     `).prependTo("#UserFormName");
@@ -195,7 +199,7 @@
 
 <body>
     <div class="profile-container" id="profile">
-        <button onclick="profile()"> &lt; back</button>
+        <button onclick="profile(event)"> &lt; back</button>
 
         <div class="userInfo-container" id="UserInfo">
 
