@@ -306,10 +306,19 @@ namespace UserLogin.Controllers
             DashboardWrapper wMode = new DashboardWrapper();
             List<GarageSale> garageSaleItems = _context.GarageSales
             .Where(us => us.State == UserStateInSession)
+            .Where(d => d.StartDate >= DateTime.Now.AddDays(-1))
             .OrderByDescending(d => d.StartDate)
             .ToList();
+
+            if (garageSaleItems.Count == 0)
+            {
+                return Json(new { data = "no sales" });
+
+            }
+
             return Json(new { data = garageSaleItems });
         }
+
 
         [HttpGet("GetAllUsersByState")]
         public JsonResult GetAllUsersByState()
@@ -1352,8 +1361,8 @@ namespace UserLogin.Controllers
 
 
 
-        [HttpGet("displayUserGarageSales")]
-        public JsonResult displayUserGarageSales()
+        [HttpGet("ListingUserHistrory")]
+        public JsonResult ListingUserHistrory()
         {
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             string UserStateInSession = HttpContext.Session.GetString("UserState");

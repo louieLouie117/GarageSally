@@ -10,7 +10,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DocumentALLSales</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGFK1GC4RE"></script>
@@ -24,8 +24,8 @@
     <script>
         $(document).ready(function () {
             $.get("/displayGarageSales", data => {
-                RenderData(data);
-                if (data.data.length === 0) {
+                console.log("Dashboard Data:", data)
+                if (data.data === "no sales") {
                     console.log("no garage sales in this zip code.")
                     $(`<li >
                         <section>
@@ -69,18 +69,13 @@
 
                     `).prependTo("#garageSaleList");
                     return
+                } else {
+                    RenderData(data);
+
                 }
+
             });
 
-            const LoadData = () => {
-                $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
-                    data = JSON.parse(data);
-
-                    @* console.log("in load", data); *@
-                        RenderData(data);
-                    @* data = $.parseJSON(data); deprecated*@
-                });
-            };
             const RenderData = (data) => {
                 $.each(data.data, function (i, v) {
                     @* console.log(v) *@
@@ -107,18 +102,12 @@
                     let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
 
 
-                    let checkDate = new Date(v.startDate);
-                    let checkToday = new Date();
-                    checkToday.setDate(checkToday.getDate() - 1);
 
-                    console.log(checkToday)
 
                     let garageItemId = v.garageSaleId;
 
-                    if (checkDate < checkToday) {
-                        console.log("this event has expired")
-                    } else {
-                        $(`<li id="${garageItemId}">
+
+                    $(`<li id="${garageItemId}">
                         <section>
                             <header>
                                 <h1>${dateFormated}</h1>
@@ -138,7 +127,6 @@
                         </section>
 
                     </li>`).prependTo("#garageSaleList");
-                    }
                 });
             };
         })
