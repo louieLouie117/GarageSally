@@ -301,11 +301,13 @@ namespace UserLogin.Controllers
         {
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             string UserStateInSession = HttpContext.Session.GetString("UserState");
+            string UserCountyInSession = HttpContext.Session.GetString("UserCounty");
+
             // Still need these for debugging? Console.Writelines should be removed
             System.Console.WriteLine(UserStateInSession);
             DashboardWrapper wMode = new DashboardWrapper();
             List<GarageSale> garageSaleItems = _context.GarageSales
-            .Where(us => us.State == UserStateInSession)
+            .Where(us => us.County == UserCountyInSession)
             .Where(d => d.StartDate >= DateTime.Now.AddDays(-1))
             .OrderByDescending(d => d.StartDate)
             .ToList();
@@ -1365,9 +1367,7 @@ namespace UserLogin.Controllers
         public JsonResult ListingUserHistrory()
         {
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
-            string UserStateInSession = HttpContext.Session.GetString("UserState");
             // Still need these for debugging? Console.Writelines should be removed
-            System.Console.WriteLine(UserStateInSession);
             DashboardWrapper wMode = new DashboardWrapper();
             List<GarageSale> garageSaleItems = _context.GarageSales
             .Where(us => us.UserId == UserIdInSession)
