@@ -547,7 +547,7 @@
                     return
                 }
                 LoadData();
-                @* LoadUserPost(); *@
+                LoadUserPost();
 
             };
             const ErrorStatus = (xhr, status, strErr) => {
@@ -565,7 +565,7 @@
             const LoadUserPost = () => {
                 $('#userPostsList').load("/ListingUserHistrory #userPostsList", data => {
                     data = JSON.parse(data);
-                    RenderData(data);
+                    RenderUserPost(data);
                 });
             };
             const RenderData = (data) => {
