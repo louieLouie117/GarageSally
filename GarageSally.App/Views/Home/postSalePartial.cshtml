@@ -466,7 +466,6 @@
 
                 if (result.status === "Sale was add to db") {
                     LoadData();
-                    LoadUserPost();
 
                     document.querySelector("#multiDayPost").style.display = "grid"
                     document.querySelector("#NewPostForm").style.display = "none"
@@ -561,13 +560,13 @@
                     data = JSON.parse(data);
                     RenderData(data);
                 });
-            };
-            const LoadUserPost = () => {
-                $('#userPostsList').load("/ListingUserHistrory #userPostsList", data => {
+
+                  $('#userPostsList').load("/ListingUserHistrory #userPostsList", data => {
                     data = JSON.parse(data);
                     RenderUserPost(data);
                 });
             };
+       
             const RenderData = (data) => {
 
                 $.each(data.data, function (i, v) {
