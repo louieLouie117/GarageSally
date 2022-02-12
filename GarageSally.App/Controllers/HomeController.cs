@@ -166,7 +166,7 @@ namespace UserLogin.Controllers
             System.Console.WriteLine($"Entry to be send to db {Entry}");
             _context.Add(Entry);
             _context.SaveChanges();
-            return Json(new { Status = "success" });
+            return Json(new { Status = "Sale was add to db" });
         }
 
         [HttpPost("DeleteSaleHandler")]

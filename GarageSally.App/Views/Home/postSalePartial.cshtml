@@ -464,8 +464,10 @@
 
                 console.log("Drecitpion...", result.status);
 
-                if (result.status === "success") {
-                   
+                if (result.status === "Sale was add to db") {
+                    LoadData();
+                    LoadUserPost();
+
                     document.querySelector("#multiDayPost").style.display = "grid"
                     document.querySelector("#NewPostForm").style.display = "none"
                     document.querySelector("#PostSaleTitle1").innerText = "Your sale is now listed. Would you like to list your sale on other dates?"
@@ -546,9 +548,7 @@
 
                     return
                 }
-                LoadData();
-                LoadUserPost();
-
+                
             };
             const ErrorStatus = (xhr, status, strErr) => {
                 console.log("There was an error!");
