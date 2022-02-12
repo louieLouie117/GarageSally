@@ -166,7 +166,7 @@ namespace UserLogin.Controllers
             System.Console.WriteLine($"Entry to be send to db {Entry}");
             _context.Add(Entry);
             _context.SaveChanges();
-            return Json(new { Status = "success" });
+            return Json(new { Status = "Sale was add to db" });
         }
 
         [HttpPost("DeleteSaleHandler")]
@@ -301,15 +301,26 @@ namespace UserLogin.Controllers
         {
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
             string UserStateInSession = HttpContext.Session.GetString("UserState");
+            string UserCountyInSession = HttpContext.Session.GetString("UserCounty");
+
             // Still need these for debugging? Console.Writelines should be removed
             System.Console.WriteLine(UserStateInSession);
             DashboardWrapper wMode = new DashboardWrapper();
             List<GarageSale> garageSaleItems = _context.GarageSales
-            .Where(us => us.State == UserStateInSession)
+            .Where(us => us.County == UserCountyInSession)
+            .Where(d => d.StartDate >= DateTime.Now.AddDays(-1))
             .OrderByDescending(d => d.StartDate)
             .ToList();
+
+            if (garageSaleItems.Count == 0)
+            {
+                return Json(new { data = "no sales" });
+
+            }
+
             return Json(new { data = garageSaleItems });
         }
+
 
         [HttpGet("GetAllUsersByState")]
         public JsonResult GetAllUsersByState()
@@ -1352,13 +1363,11 @@ namespace UserLogin.Controllers
 
 
 
-        [HttpGet("displayUserGarageSales")]
-        public JsonResult displayUserGarageSales()
+        [HttpGet("ListingUserHistrory")]
+        public JsonResult ListingUserHistrory()
         {
             int UserIdInSession = (int)HttpContext.Session.GetInt32("UserId");
-            string UserStateInSession = HttpContext.Session.GetString("UserState");
             // Still need these for debugging? Console.Writelines should be removed
-            System.Console.WriteLine(UserStateInSession);
             DashboardWrapper wMode = new DashboardWrapper();
             List<GarageSale> garageSaleItems = _context.GarageSales
             .Where(us => us.UserId == UserIdInSession)
