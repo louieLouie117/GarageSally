@@ -76,10 +76,7 @@
         }
         const SuccessStatus = (result) => {
             console.log("Success...", result);
-            $('#userPostsList').load("/ListingUserHistrory #userPostsList", data => {
-                data = JSON.parse(data);
-                RenderUserPostAfterDeleting(data);
-            });
+            LoadData();
         };
         const ErrorStatus = (xhr, status, strErr) => {
             console.log("There was an error!");
@@ -87,6 +84,19 @@
         const CompleteStatus = (xhr, status) => {
             console.log("Ajax has completed...");
         };
+
+        const LoadData = () => {
+            $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
+                data = JSON.parse(data);
+                RenderData(data);
+            });
+
+            $('#userPostsList').load("/ListingUserHistrory #userPostsList", data => {
+                data = JSON.parse(data);
+                RenderUserPostAfterDeleting(data);
+            });
+        };
+
         const RenderUserPostAfterDeleting = (data) => {
             $.each(data.data, function (i, v) {
                 @* console.log(v) *@
@@ -127,37 +137,31 @@
                     </li>`).prependTo("#userPostsList");
             });
         };
-        @* const LoadData = () => {
-                    $('#garageSaleList').load("/displayGarageSales #garageSaleList", data => {
-                    data = JSON.parse(data);
-                    RenderData(data);
-                    });
-        };     *@
         const RenderData = (data) => {
-                $.each(data.data, function (i, v) {
-                    @* console.log(v) *@
-                        @* console.log("Date Time:", v.startDate, v.startTime, v.endTime) *@
-                        @* console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.state, v.zipcode); *@
+            $.each(data.data, function (i, v) {
+                @* console.log(v) *@
+                    @* console.log("Date Time:", v.startDate, v.startTime, v.endTime) *@
+                    @* console.log("id:", v.garageSaleId, "address:", v.streetNumber, v.streetName, v.city, v.state, v.zipcode); *@
                         const TimeFormat = {
-                        hour12: true,
+                    hour12: true,
                     hour: "numeric",
-                        minute: "numeric", seconds: "numeric"
-                   } 
-                    const DateFormat = {
-                        weekday: "long",
-                        month: "long",
-                        day: "numeric"
-                   }; 
-                    const CheckDateFormat = {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric"
-                   }; 
-                    let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
-                    let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
-                    let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
-                    let checkDate = new Date(v.startDate);
-                    let checkToday = new Date();
+                    minute: "numeric", seconds: "numeric"
+                }
+                const DateFormat = {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric"
+                };
+                const CheckDateFormat = {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                };
+                let dateFormated = new Date(v.startDate).toLocaleDateString("en-US", DateFormat);
+                let startTimeFormatted = new Date(v.startTime).toLocaleTimeString("en-US", TimeFormat);
+                let endTimeFormatted = new Date(v.endTime).toLocaleTimeString("en-US", TimeFormat);
+                let checkDate = new Date(v.startDate);
+                let checkToday = new Date();
 
 
                 let garageItemId = v.garageSaleId;
@@ -184,8 +188,8 @@
 </head>
 
 <body>
-      <div class="  updatesSupport-container" id="updatesSupportPartial">
-           <button ton onclick="SalesHistoryHandler()"> &lt; back</button>
+    <div class="  updatesSupport-container" id="updatesSupportPartial">
+        <button ton onclick="SalesHistoryHandler()"> &lt; back</button>
 
         <h2>Sales History</h2>
         <button onclick="postSalePartialHandler(event)">+ Another garage sale</button>
