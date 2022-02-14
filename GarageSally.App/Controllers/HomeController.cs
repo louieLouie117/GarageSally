@@ -1315,6 +1315,18 @@ namespace UserLogin.Controllers
             return Json(new { data = GetZipCodeBySate });
         }
 
+        [HttpGet("GetEmailsByCounty")]
+        public JsonResult GetEmailsByCounty(User userCountySelected)
+        {
+            System.Console.WriteLine("you have reached the backend of emails by county!!");
+            System.Console.WriteLine($"Data from user: {userCountySelected}");
+
+            List<User> GetEmailsByCounty = _context.Users
+            .Where(c => c.County == userCountySelected.County)
+            .ToList();
+            return Json(new { data = GetEmailsByCounty });
+        }
+
 
 
 
@@ -1851,9 +1863,7 @@ namespace UserLogin.Controllers
         public JsonResult Login(LoginUser userSubmission)
         {
 
-            System.Console.WriteLine("you reach the backend!!");
-            System.Console.WriteLine($"email {userSubmission.Email}");
-            System.Console.WriteLine($"password {userSubmission.Password}");
+            System.Console.WriteLine("you reach the backend of sign in!!");
 
             DashboardWrapper wMod = new DashboardWrapper();
 
@@ -1878,7 +1888,6 @@ namespace UserLogin.Controllers
                 {
                     // Still need these for debugging? Console.Writelines should be removed
                     // something else should happer here besides a WriteLine
-                    Console.WriteLine("Password error");
                     return Json(new { Status = "password error" });
 
 
@@ -1901,7 +1910,7 @@ namespace UserLogin.Controllers
                 HttpContext.Session.SetInt32("UserZipcode", userInDb.Zipcode);
 
 
-                Console.WriteLine("Success user is register");
+                Console.WriteLine("Success user is sign in");
 
                 return Json(new { Status = "Access Granted" });
 

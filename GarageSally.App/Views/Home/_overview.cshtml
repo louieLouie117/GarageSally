@@ -50,7 +50,7 @@
             $.each(data.data, function (key, value) {
                 console.log("zipecode data:", key, value)
                 $(`<li>
-                        <h3 id="${key}">${value.county}</h3>
+                        <h3 id="${key}" onclick="CountyHandler(event)">${value.county}</h3>
                         <h3 id="${key}">${value.city}</h3>
                         <h3 id="${key}">${value.zipcode}</h3>
 
@@ -158,6 +158,30 @@
 
         };
 
+
+        const CountyHandler = e => {
+            console.log(e.target.id);
+
+            let CountySelected = e.target.innerHTML;
+            let jsonData = {
+                county: CountySelected,
+            }
+            console.log(jsonData)
+            $.ajax({
+                url: '@Url.Action("GetEmailsByCounty", "Home")',
+                type: 'GET',
+                data: jsonData,
+                success: SuccessGetEmaisByCounty,
+
+            })
+        }
+
+        const SuccessGetEmaisByCounty = (result) => {
+            console.log("all is well in zipcode ajax call")
+            console.log(result)
+            $('#AllUserOverview').empty();
+            RenderAllUsersOverview(result);
+        };
 
 
     </script>
