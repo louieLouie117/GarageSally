@@ -50,6 +50,7 @@
             $.each(data.data, function (key, value) {
                 console.log("zipecode data:", key, value)
                 $(`<li>
+                        <h3 id="${key}">${value.county}</h3>
                         <h3 id="${key}">${value.city}</h3>
                         <h3 id="${key}">${value.zipcode}</h3>
 
@@ -126,9 +127,30 @@
         const RenderAllUsersOverview = (data) => {
             $.each(data.data, function (key, value) {
                 @* console.log("All Sellers:", key, value) *@
-                    $(`<li>
-                        <h2 id="${key}">${value.state}</h2>
+
+                    let AcccountType = "";
+                if (value.accountType == 0) {
+                    AcccountType = "Buyer Account"
+                }
+
+                if (value.accountType == 1) {
+                    AcccountType = "Seller Account"
+                }
+
+
+
+                $(`<li>
+                        <div>
+                        <h2 id="${key}">${AcccountType} from ${value.state}</h2>
                         <h2 id="${key}">${value.email}</h2>
+                        </div>
+
+                        <div>
+                            <h2 id="${key}">${value.county}</h2>
+                            <h2 id="${key}">${value.city}</h2>
+                            <h2 id="${key}">${value.zipcode}</h2>
+                        </div>
+
 
                         </li>`).appendTo("#AllUserOverview");
 
@@ -156,6 +178,7 @@
                 </div>
                 <div id="SelectedSateZipcodeList">
                     <header>
+                        <h2>County</h2>
                         <h2>City</h2>
                         <h2>Zipcode</h2>
                     </header>
@@ -165,10 +188,14 @@
 
             </section>
         </div>
-        <section>
-            <h1>All Users</h1>
-            <ul id="AllUserOverview"></ul>
-        </section>
+
+        <div class="AllUserOverview-GridContainer">
+            <section>
+                <h1>All Users</h1>
+                <ul id="AllUserOverview"></ul>
+            </section>
+
+        </div>
 
         <div class="UserBySate-AdminOverview">
             <section>
