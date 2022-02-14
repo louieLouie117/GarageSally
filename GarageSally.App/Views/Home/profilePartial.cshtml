@@ -73,6 +73,7 @@
             const SuccessStatus = (result) => {
                 document.getElementById("SaveChangesBTN").style.display = "none";
                 console.log("Success...", result);
+                location.reload();
             };
             const ErrorStatus = (xhr, status, strErr) => {
                 console.log("There was an error!");
@@ -232,7 +233,7 @@
         <div class="logoVersion">
             <footer>
                 <img src="img/Assets/logoGray.png" alt="">
-                <p>v3.2</p>
+                <p>v3.3</p>
             </footer>
         </div>
 
