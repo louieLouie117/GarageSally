@@ -245,6 +245,9 @@ namespace UserLogin.Controllers
                 GetUser.State = FromForm.State;
             }
 
+            HttpContext.Session.SetString("UserState", FromForm.State);
+            HttpContext.Session.SetString("UserCounty", FromForm.County);
+            HttpContext.Session.SetInt32("UserZipcode", FromForm.Zipcode);
 
 
             _context.SaveChanges();
