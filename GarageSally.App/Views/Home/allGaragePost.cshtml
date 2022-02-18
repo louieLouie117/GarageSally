@@ -27,41 +27,16 @@
                 console.log("Dashboard Data:", data)
                 if (data.data === "no sales") {
                     console.log("no garage sales in this zip code.")
-                    $(`<li >
-                        <section>
-
-                              <footer>
-                                <p>You are the first person to discover Garage Sally in your state :) there are currently no garage sales listed. Follow us on social media to see what state we are currently marketing in.</p>
-                            </footer>
-                            <main>
-
-                            <a  href="https://www.linkedin.com/company/garagesally" target="blank">
-                               <button> follow </button>
-                               </a>
-                            </main>
-                        </section>
-                    </li>
-
-                        <li >
-                        <section>
-
-                              <footer>
-                                <p>Help build a garage sales community by telling your neighbors, friends, and family about Garage Sally.</p>
-                            </footer>
-                            <main>
-                               <button onclick="popUpNoticeHandler(event)">share</button>
-                            </main>
-                        </section>
-                    </li>
+                    $(`
 
                       <li >
                         <section>
 
                               <footer>
-                                <p> Be the first to post a garage sale.</p>
+                                <p>There are currently no garage sales listed in your community. Be the first to list a garage sale.</p>
                             </footer>
                             <main>
-                               <button onclick="popUpNoticeHandler(event)">post</button>
+                               <button onclick="postSalePartialHandler(event)">List a sale</button>
                             </main>
                         </section>
                     </li>
