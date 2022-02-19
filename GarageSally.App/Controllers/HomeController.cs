@@ -1327,6 +1327,17 @@ namespace UserLogin.Controllers
             return Json(new { data = GetEmailsByCounty });
         }
 
+        [HttpGet("GetEmailsByZipcode")]
+        public JsonResult GetEmailsByZipcode(User userZipcodeSelected)
+        {
+            System.Console.WriteLine("you have reached the backend of emails by zipcode!!");
+            System.Console.WriteLine($"Data from user: {userZipcodeSelected}");
+
+            List<User> GetEmailsByZipcode = _context.Users
+            .Where(z => z.Zipcode == userZipcodeSelected.Zipcode)
+            .ToList();
+            return Json(new { data = GetEmailsByZipcode });
+        }
 
 
 

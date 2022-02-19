@@ -180,14 +180,11 @@
         const ZipcodeHandler = e => {
             console.log(e.target.id);
 
-            let zipCodeSelected = 33919;
+            let zipCodeSelected = e.target.innerHTML;
             $.getJSON(`https://app.zipcodebase.com/api/v1/radius?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&code=${zipCodeSelected}&radius=20&country=us`, data => {
                 @* console.log("Radius:", data); *@
                     @* console.log("Radius Results", data.results); *@
-
                     RenderZipecodeRadius(data.results);
-
-
             });
 
 
@@ -209,9 +206,6 @@
             $('#UserByStateList').empty();
 
             $.each(data, function (key, value) {
-                console.log("Data in loop", key, value)
-
-
                 $(`<li>
                         <div>
                         <h2 id="${key}">${value.code}</h2>
