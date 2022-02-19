@@ -52,7 +52,7 @@
                 $(`<li>
                         <h3 id="${key}" onclick="CountyHandler(event)">${value.county}</h3>
                         <h3 id="${key}">${value.city}</h3>
-                        <h3 id="${key}">${value.zipcode}</h3>
+                        <h3 id="${key}" onclick="ZipcodeHandler(event)">${value.zipcode}</h3>
 
                 </li>`).appendTo("#AllZipeCodeByState");
 
@@ -175,6 +175,61 @@
 
             })
         }
+
+
+        const ZipcodeHandler = e => {
+            console.log(e.target.id);
+
+            let zipCodeSelected = 33919;
+            $.getJSON(`https://app.zipcodebase.com/api/v1/radius?apikey=d4c1e590-8034-11ec-8466-0d7faea78a60&code=${zipCodeSelected}&radius=20&country=us`, data => {
+                @* console.log("Radius:", data); *@
+                    @* console.log("Radius Results", data.results); *@
+
+                    RenderZipecodeRadius(data.results);
+
+
+            });
+
+
+            let jsonData = {
+                zipcode: zipCodeSelected,
+            }
+            console.log(jsonData)
+            $.ajax({
+                url: '@Url.Action("GetEmailsByZipcode", "Home")',
+                type: 'GET',
+                data: jsonData,
+                success: SuccessGetEmaisByCounty,
+
+            })
+        }
+
+        const RenderZipecodeRadius = (data) => {
+            console.log("Hope to see zipcode radius", data)
+            $('#UserByStateList').empty();
+
+            $.each(data, function (key, value) {
+                console.log("Data in loop", key, value)
+
+
+                $(`<li>
+                        <div>
+                        <h2 id="${key}">${value.code}</h2>
+                        </div>
+
+                        <div>
+                        <h2 id="${key}">${value.city}</h2>
+
+
+                        </div>
+
+
+                        </li>`).appendTo("#UserByStateList");
+
+
+            });
+
+        };
 
         const SuccessGetEmaisByCounty = (result) => {
             console.log("all is well in zipcode ajax call")
