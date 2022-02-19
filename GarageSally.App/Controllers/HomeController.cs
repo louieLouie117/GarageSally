@@ -566,7 +566,7 @@ namespace UserLogin.Controllers
             .ToList();
 
             List<GarageSale> NewSalesInAL = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "AL")
             .ToList();
             var Alabama = new List<string>();
@@ -579,7 +579,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "AK")
             .ToList();
             List<GarageSale> NewSalesInAK = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "AK")
             .ToList();
             var Alaska = new List<string>();
@@ -592,7 +592,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "AZ")
             .ToList();
             List<GarageSale> NewSalesInAZ = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "AZ")
             .ToList();
             var Arizona = new List<string>();
@@ -605,7 +605,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "AR")
             .ToList();
             List<GarageSale> NewSalesInAR = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "AR")
             .ToList();
             var Arkansas = new List<string>();
@@ -618,7 +618,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "CA")
             .ToList();
             List<GarageSale> NewSalesInCA = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "CA")
             .ToList();
             var California = new List<string>();
@@ -632,7 +632,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "CO")
             .ToList();
             List<GarageSale> NewSalesInCO = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "CO")
             .ToList();
             var Colorado = new List<string>();
@@ -646,7 +646,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "CT")
             .ToList();
             List<GarageSale> NewSalesInCT = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "CT")
             .ToList();
             var Connecticut = new List<string>();
@@ -659,7 +659,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "DE")
             .ToList();
             List<GarageSale> NewSalesInDE = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "DE")
             .ToList();
             var Delaware = new List<string>();
@@ -673,7 +673,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "FL")
             .ToList();
             List<GarageSale> NewSalesInFL = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "FL")
             .ToList();
             var Florida = new List<string>();
@@ -686,7 +686,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "GA")
             .ToList();
             List<GarageSale> NewSalesInGA = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "GA")
             .ToList();
             var Georgia = new List<string>();
@@ -700,7 +700,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "HI")
             .ToList();
             List<GarageSale> NewSalesInHI = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "HI")
             .ToList();
             var Hawaii = new List<string>();
@@ -713,7 +713,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "ID")
             .ToList();
             List<GarageSale> NewSalesInID = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "ID")
             .ToList();
             var Idaho = new List<string>();
@@ -726,7 +726,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "IL")
             .ToList();
             List<GarageSale> NewSalesInIL = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "IL")
             .ToList();
             var Illinois = new List<string>();
@@ -739,7 +739,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "IN")
             .ToList();
             List<GarageSale> NewSalesInIN = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "IN")
             .ToList();
             var Indiana = new List<string>();
@@ -753,7 +753,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "IA")
             .ToList();
             List<GarageSale> NewSalesInIA = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "IA")
             .ToList();
             var Iowa = new List<string>();
@@ -766,7 +766,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "KS")
             .ToList();
             List<GarageSale> NewSalesInKS = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "KS")
             .ToList();
             var Kansas = new List<string>();
@@ -779,7 +779,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "KY")
             .ToList();
             List<GarageSale> NewSalesInKY = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "KY")
             .ToList();
             var Kentucky = new List<string>();
@@ -793,7 +793,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "LA")
             .ToList();
             List<GarageSale> NewSalesInLA = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "LA")
             .ToList();
             var Louisiana = new List<string>();
@@ -806,7 +806,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "ME")
             .ToList();
             List<GarageSale> NewSalesInME = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "ME")
             .ToList();
             var Maine = new List<string>();
@@ -820,7 +820,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "MD")
             .ToList();
             List<GarageSale> NewSalesInMD = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "MD")
             .ToList();
             var Maryland = new List<string>();
@@ -833,7 +833,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "MA")
             .ToList();
             List<GarageSale> NewSalesInMA = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "MA")
             .ToList();
             var Massachusetts = new List<string>();
@@ -847,7 +847,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "MI")
             .ToList();
             List<GarageSale> NewSalesInMI = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "MI")
             .ToList();
             var Michigan = new List<string>();
@@ -861,7 +861,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "MN")
             .ToList();
             List<GarageSale> NewSalesInMN = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "MN")
             .ToList();
             var Minnesota = new List<string>();
@@ -875,7 +875,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "MS")
             .ToList();
             List<GarageSale> NewSalesInMS = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "MS")
             .ToList();
             var Mississippi = new List<string>();
@@ -889,7 +889,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "MO")
             .ToList();
             List<GarageSale> NewSalesInMO = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "MO")
             .ToList();
             var Missouri = new List<string>();
@@ -903,7 +903,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "MT")
             .ToList();
             List<GarageSale> NewSalesInMT = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "MT")
             .ToList();
             var Montana = new List<string>();
@@ -917,7 +917,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "NE")
             .ToList();
             List<GarageSale> NewSalesInNE = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "NE")
             .ToList();
             var Nebraska = new List<string>();
@@ -930,7 +930,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "NV")
             .ToList();
             List<GarageSale> NewSalesInNV = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "NV")
             .ToList();
             var Nevada = new List<string>();
@@ -943,7 +943,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "NH")
             .ToList();
             List<GarageSale> NewSalesInNH = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "NH")
             .ToList();
             var NewHampshire = new List<string>();
@@ -956,7 +956,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "NJ")
             .ToList();
             List<GarageSale> NewSalesInNJ = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "NJ")
             .ToList();
             var NewJersey = new List<string>();
@@ -969,7 +969,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "NM")
             .ToList();
             List<GarageSale> NewSalesInNM = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "NM")
             .ToList();
             var NewMexico = new List<string>();
@@ -982,7 +982,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "NY")
             .ToList();
             List<GarageSale> NewSalesInNY = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "NY")
             .ToList();
             var NewYork = new List<string>();
@@ -996,7 +996,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "NC")
             .ToList();
             List<GarageSale> NewSalesInNC = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "NC")
             .ToList();
             var NorthCarolina = new List<string>();
@@ -1009,7 +1009,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "ND")
             .ToList();
             List<GarageSale> NewSalesInND = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "ND")
             .ToList();
             var NorthDakota = new List<string>();
@@ -1022,7 +1022,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "OH")
             .ToList();
             List<GarageSale> NewSalesInOH = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "OH")
             .ToList();
             var Ohio = new List<string>();
@@ -1035,7 +1035,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "OK")
             .ToList();
             List<GarageSale> NewSalesInOK = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "OK")
             .ToList();
             var Oklahoma = new List<string>();
@@ -1048,7 +1048,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "OR")
             .ToList();
             List<GarageSale> NewSalesInOR = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "OR")
             .ToList();
             var Oregon = new List<string>();
@@ -1062,7 +1062,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "PA")
             .ToList();
             List<GarageSale> NewSalesInPA = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "PA")
             .ToList();
             var Pennsylvania = new List<string>();
@@ -1076,7 +1076,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "RI")
             .ToList();
             List<GarageSale> NewSalesInRI = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "RI")
             .ToList();
             var RhodeIsland = new List<string>();
@@ -1089,7 +1089,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "SC")
             .ToList();
             List<GarageSale> NewSalesInSC = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "SC")
             .ToList();
             var SouthCarolina = new List<string>();
@@ -1102,7 +1102,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "SD")
             .ToList();
             List<GarageSale> NewSalesInSD = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "SD")
             .ToList();
             var SouthDakota = new List<string>();
@@ -1115,7 +1115,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "TN")
             .ToList();
             List<GarageSale> NewSalesInTN = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "TN")
             .ToList();
             var Tennessee = new List<string>();
@@ -1128,7 +1128,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "TX")
             .ToList();
             List<GarageSale> NewSalesInTX = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "TX")
             .ToList();
             var Texas = new List<string>();
@@ -1141,7 +1141,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "UT")
             .ToList();
             List<GarageSale> NewSalesInUT = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "UT")
             .ToList();
             var Utah = new List<string>();
@@ -1154,7 +1154,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "VT")
             .ToList();
             List<GarageSale> NewSalesInVT = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "VT")
             .ToList();
             var Vermont = new List<string>();
@@ -1167,7 +1167,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "VA")
             .ToList();
             List<GarageSale> NewSalesInVA = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "VA")
             .ToList();
             var Virginia = new List<string>();
@@ -1180,7 +1180,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "WA")
             .ToList();
             List<GarageSale> NewSalesInWA = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "WA")
             .ToList();
             var Washington = new List<string>();
@@ -1193,7 +1193,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "WV")
             .ToList();
             List<GarageSale> NewSalesInWV = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "WV")
             .ToList();
             var WestVirginia = new List<string>();
@@ -1206,7 +1206,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "WI")
             .ToList();
             List<GarageSale> NewSalesInWI = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "WI")
             .ToList();
             var Wisconsin = new List<string>();
@@ -1219,7 +1219,7 @@ namespace UserLogin.Controllers
             .Where(st => st.State == "WY")
             .ToList();
             List<GarageSale> NewSalesInWY = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == "WY")
             .ToList();
             var Wyoming = new List<string>();
@@ -1309,7 +1309,7 @@ namespace UserLogin.Controllers
 
 
             List<GarageSale> GetZipCodeBySate = _context.GarageSales
-            .Where(td => td.StartDate >= DateTime.Now)
+            .Where(td => td.StartDate >= DateTime.Now.AddDays(-1))
             .Where(st => st.State == stateSelected)
             .ToList();
             return Json(new { data = GetZipCodeBySate });
@@ -1327,6 +1327,17 @@ namespace UserLogin.Controllers
             return Json(new { data = GetEmailsByCounty });
         }
 
+        [HttpGet("GetEmailsByZipcode")]
+        public JsonResult GetEmailsByZipcode(User userZipcodeSelected)
+        {
+            System.Console.WriteLine("you have reached the backend of emails by zipcode!!");
+            System.Console.WriteLine($"Data from user: {userZipcodeSelected}");
+
+            List<User> GetEmailsByZipcode = _context.Users
+            .Where(z => z.Zipcode == userZipcodeSelected.Zipcode)
+            .ToList();
+            return Json(new { data = GetEmailsByZipcode });
+        }
 
 
 
