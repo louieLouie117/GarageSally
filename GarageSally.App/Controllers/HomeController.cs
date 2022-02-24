@@ -311,6 +311,7 @@ namespace UserLogin.Controllers
             DashboardWrapper wMode = new DashboardWrapper();
             List<GarageSale> garageSaleItems = _context.GarageSales
             .Where(us => us.County == UserCountyInSession)
+            .Where(st => st.State == UserStateInSession)
             .Where(d => d.StartDate >= DateTime.Now.AddDays(-1))
             .OrderByDescending(d => d.StartDate)
             .ToList();
@@ -1416,6 +1417,7 @@ namespace UserLogin.Controllers
             List<GarageSale> SearchResults = _context.GarageSales
             .Where(d => d.StartDate >= DateTime.Now.AddDays(-1))
             .Where(r => r.County == SearchZipCodeInSession)
+            .Where(st => st.State == Data.State)
             .OrderByDescending(d => d.StartDate)
             .ToList();
 

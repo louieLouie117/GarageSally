@@ -19,6 +19,8 @@
 
                 let Zipcode = document.querySelector("#ZipCodeValue").value
                 let County = "no county"
+                let State = "no state"
+
 
 
                 console.log("search", typeof Zipcode)
@@ -33,12 +35,15 @@
 
                         console.log(County, "Before API")
                         County = data.results[Zipcode][0].province
+                        State = data.results[Zipcode][0].state_code
                         console.log(County, "After API")
 
 
                         let jsonData = {
                             zipcode: Zipcode,
-                            county: County
+                            county: County,
+                            state: State
+
                         }
 
                         console.log(jsonData)
