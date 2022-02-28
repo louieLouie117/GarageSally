@@ -232,6 +232,18 @@ let postSaleEvent = "close"
 
 const postSalePartialHandler = (e) =>{
 
+    let checkAddress = document.getElementById("StreetNameEdit").value;
+    let checkAccountType = document.getElementById("AccountTypeText1").innerHTML;
+    console.log(checkAccountType)
+
+
+    if(checkAddress === "" && checkAccountType === "1" ){
+     document.querySelector("#upgradeNotice").style.display = "grid";
+
+
+        return
+    }
+
 
     if(e.target.innerText === "+ Another garage sale"){
         document.getElementById("postSalePartial").style.marginLeft = "0";

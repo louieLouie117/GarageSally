@@ -547,7 +547,7 @@
 
                     return
                 }
-                
+
             };
             const ErrorStatus = (xhr, status, strErr) => {
                 console.log("There was an error!");
@@ -561,12 +561,12 @@
                     RenderData(data);
                 });
 
-                  $('#userPostsList').load("/ListingUserHistrory #userPostsList", data => {
+                $('#userPostsList').load("/ListingUserHistrory #userPostsList", data => {
                     data = JSON.parse(data);
                     RenderUserPost(data);
                 });
             };
-       
+
             const RenderData = (data) => {
 
                 $.each(data.data, function (i, v) {
@@ -670,172 +670,174 @@
 
         @if (Model.AccountType == AccountType.Seller || Model.AccountType == AccountType.Admin)
         {
-                        <header>
-                            <img src="~/img/Assets/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
-                            <h2>@ViewBag.ToDisplay.FirstName</h2>
-                        </header>
+            <header>
+                <img src="~/img/Assets/@ViewBag.ToDisplay.ProfilePic" alt="" onclick="profile()">
+                <h2>@ViewBag.ToDisplay.FirstName</h2>
+            </header>
 
 
 
-                        <div class="form-postContainer" id="NewPostForm">
-                            <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
+            <div class="form-postContainer" id="NewPostForm">
+                <form id="postForm" asp-action='postSale' method='POST' asp-controller='Home'
                 asp-route-id="@ViewBag.ToDisplay.UserId">
-                                <header>
-                                    <h2 class="span2Columns">Date & Time:</h2>
-                                    <label class="span2Columns" for="date" id="StartDateLabelError"></label>
-                                    <input class="span2Columns" id="StartDate" type="date" onchange="DateSelectedHandler(event)">
+                    <header>
+                        <h2 class="span2Columns">Date & Time:</h2>
+                        <label class="span2Columns" for="date" id="StartDateLabelError"></label>
+                        <input class="span2Columns" id="StartDate" type="date" onchange="DateSelectedHandler(event)">
 
 
-                                    <label>Start Time:</label>
-                                    <input id="StartTime" type="time" onchange="ErrorLabelHandler(event)">
-                                    <label>End Time:</label>
-                                    <input id="EndTime" type="time" onchange="ErrorLabelHandler(event)">
-                                </header>
-                                <main>
-                                    <h2>Description:</h2>
-                                    <label for="Description" id="DescriptionLabelError"></label>
-                                    <textarea id="Description" onkeydown="ErrorLabelHandler(event)"
+                        <label>Start Time:</label>
+                        <input id="StartTime" type="time" onchange="ErrorLabelHandler(event)">
+                        <label>End Time:</label>
+                        <input id="EndTime" type="time" onchange="ErrorLabelHandler(event)">
+                    </header>
+                    <main>
+                        <h2>Description:</h2>
+                        <label for="Description" id="DescriptionLabelError"></label>
+                        <textarea id="Description" onkeydown="ErrorLabelHandler(event)"
                         placeholder="describe what you have for sale." maxlength="250"></textarea>
-                                    <div class="locationOptions">
-                                        <h2>Location:</h2>
-                                        <button type="button" onclick="profile(event)">Edit</button>
-                                    </div>
-
-                                    <label class="hidden" id="AddressLabelErrors"></label>
-                                    <div class="locationHeader">
-                                        <input id='StreetNumber' type='text' placeholder='street #:' disabled="disabled"
-                            onkeydown="ErrorLabelHandler(event)">
-                                        <input id='StreetName' type='text' placeholder='Street Name:' disabled="disabled"
-                            onkeydown="ErrorLabelHandler(event)">
-                                    </div>
-                                    <div class="locationFooter">
-                                        <input id='City' type='text' placeholder='City:' disabled="disabled"
-                            onkeydown="ErrorLabelHandler(event)">
-                                        <input id='State' type='text' placeholder='State:' disabled="disabled"
-                            onkeydown="ErrorLabelHandler(event)">
-                                        <input id='Zipcode' type='text' placeholder='zipcode:' disabled="disabled"
-                            onkeydown="ErrorLabelHandler(event)">
-                                        <input class="hidden" id='County' type='text' disabled="disabled" placeholder='County:'
-                            onkeydown="ErrorLabelHandler(event)">
-                                    </div>
-                                </main>
-
-                                <button type="submit" id="submitForm">List Sale</button>
-
-                    @* <input type="submit" value="Post Sale"> *@
-                            </form>
-
-
+                        <div class="locationOptions">
+                            <h2>Location:</h2>
+                            <button type="button" onclick="profile(event)">Edit</button>
                         </div>
 
-
-                        <div id="multiDayPost">
-                            <p id="PostSaleTitle1"></p>
-
-                            <header id="ListSaleDate">
-
-                                <main>
-                                    <button onclick="PostToOtherDates(event)">Yes</button>
-                                    <button onclick="PostToOtherDates(event)">No, thank you</button>
-                                </main>
-                            </header>
-
-
-                            <form id="OneDayAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
-                                <button type="submit" id="submitForm">+</button>
-                                <input id="1DayFromDateSelected" type="text" disabled>
-
-                    @* <input type="submit" value="Post Sale"> *@
-                            </form>
-
-                            <form id="TwoDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
-                                <button type="submit" id="submitForm">+</button>
-                                <input id="2DayFromDateSelected" type="text" disabled>
-
-                    @* <input type="submit" value="Post Sale"> *@
-                            </form>
-
-                            <form id="ThreeDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
-                                <button type="submit" id="submitForm">+</button>
-                                <input id="3DayFromDateSelected" type="text" disabled>
-
-                    @* <input type="submit" value="Post Sale"> *@
-                            </form>
-
-                            <form id="FourDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
-                                <button type="submit" id="submitForm">+</button>
-                                <input id="4DayFromDateSelected" type="text" disabled>
-
-                    @* <input type="submit" value="Post Sale"> *@
-                            </form>
-
-                            <form id="FiveDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
-                                <button type="submit" id="submitForm">+</button>
-                                <input id="5DayFromDateSelected" type="text" disabled>
-
-                    @* <input type="submit" value="Post Sale"> *@
-                            </form>
-
-                            <form id="SixDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
-                                <button type="submit" id="submitForm">+</button>
-                                <input id="6DayFromDateSelected" type="text" disabled>
-
-                    @* <input type="submit" value="Post Sale"> *@
-                            </form>
-
-                            <form id="SevenDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
-                asp-route-id="@ViewBag.ToDisplay.UserId">
-                                <button type="submit" id="submitForm">+</button>
-                                <input id="7DayFromDateSelected" type="text" disabled>
-
-                    @* <input type="submit" value="Post Sale"> *@
-                            </form>
-
-                            <button onclick="PostToOtherDates(event)">Done</button>
-
-
-
+                        <label class="hidden" id="AddressLabelErrors"></label>
+                        <div class="locationHeader">
+                            <input id='StreetNumber' type='text' placeholder='street #:' disabled="disabled"
+                            onkeydown="ErrorLabelHandler(event)">
+                            <input id='StreetName' type='text' placeholder='Street Name:' disabled="disabled"
+                            onkeydown="ErrorLabelHandler(event)">
                         </div>
+                        <div class="locationFooter">
+                            <input id='City' type='text' placeholder='City:' disabled="disabled"
+                            onkeydown="ErrorLabelHandler(event)">
+                            <input id='State' type='text' placeholder='State:' disabled="disabled"
+                            onkeydown="ErrorLabelHandler(event)">
+                            <input id='Zipcode' type='text' placeholder='zipcode:' disabled="disabled"
+                            onkeydown="ErrorLabelHandler(event)">
+                            <input class="hidden" id='County' type='text' disabled="disabled" placeholder='County:'
+                            onkeydown="ErrorLabelHandler(event)">
+                        </div>
+                    </main>
+
+                    <button type="submit" id="submitForm">List Sale</button>
+
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
 
 
-                        <partial name="_userSales" />
+            </div>
 
-                        <footer>
-                            <img src="img/Assets/logoGray.png" alt="">
-                        </footer>
+
+            <div id="multiDayPost">
+                <p id="PostSaleTitle1"></p>
+
+                <header id="ListSaleDate">
+
+                    <main>
+                        <button onclick="PostToOtherDates(event)">Yes</button>
+                        <button onclick="PostToOtherDates(event)">No, thank you</button>
+                    </main>
+                </header>
+
+
+                <form id="OneDayAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="1DayFromDateSelected" type="text" disabled>
+
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+
+                <form id="TwoDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="2DayFromDateSelected" type="text" disabled>
+
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+
+                <form id="ThreeDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="3DayFromDateSelected" type="text" disabled>
+
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+
+                <form id="FourDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="4DayFromDateSelected" type="text" disabled>
+
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+
+                <form id="FiveDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="5DayFromDateSelected" type="text" disabled>
+
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+
+                <form id="SixDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="6DayFromDateSelected" type="text" disabled>
+
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+
+                <form id="SevenDaysAfterForm" asp-action='postSale' method='POST' asp-controller='Home'
+                asp-route-id="@ViewBag.ToDisplay.UserId">
+                    <button type="submit" id="submitForm">+</button>
+                    <input id="7DayFromDateSelected" type="text" disabled>
+
+                    @* <input type="submit" value="Post Sale"> *@
+                </form>
+
+                <button onclick="PostToOtherDates(event)">Done</button>
+
+
+
+            </div>
+
+
+            <partial name="_userSales" />
+
+            <footer>
+                <img src="img/Assets/logoGray.png" alt="">
+            </footer>
         }
         @if (Model.AccountType == AccountType.Buyer)
         {
-                        <section class="upgrade-container">
-                            <button onclick="popUpNoticeHandler(event)">Upgrade Account</button>
-                            <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
+            <section class="upgrade-container">
+                <button onclick="popUpNoticeHandler(event)">Upgrade Account</button>
+                <p class="span2Columns">Upgrade to a FREE seller account and start posting garage sales.</p>
 
-                        </section>
+            </section>
 
-                        <aside class="notice-container" id="upgradeNotice">
-                            <form id="postFormUpgrade">
-                                <header>
-                                    <p>Upgrading.</p>
-                                    <p>Please add your address for posting garage sales.</p>
 
-                                    <main id="noticeForm">
-
-                                    </main>
-                                </header>
-
-                                <footer>
-                                    <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
-                                    <button>Upgrade</button>
-                                </footer>
-                            </form>
-                        </aside>
         }
+
+        <aside class="notice-container" id="upgradeNotice">
+            <form id="postFormUpgrade">
+                <header>
+                    <p>Upgrading.</p>
+                    <p>Please add your address for posting garage sales.</p>
+
+                    <main id="noticeForm">
+
+                    </main>
+                </header>
+
+                <footer>
+                    <button type="button" onclick="popUpNoticeHandler(event)">Cancel</button>
+                    <button>Upgrade</button>
+                </footer>
+            </form>
+        </aside>
     </div>
 </body>
 
