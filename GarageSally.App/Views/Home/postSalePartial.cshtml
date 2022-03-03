@@ -92,10 +92,6 @@
 
 
                 if (result.status === "Success") {
-
-                    document.getElementById("photoUploadNotice").style.display = "none";
-                    document.getElementById("upgradeNotice").style.display = "none";
-
                     $.get("/DisplayUserProfile", data => {
                         console.log("user profile was rendered")
                         $('#UserPhoto').empty();
@@ -103,12 +99,15 @@
                         $('#UserFormAddress').empty();
                         $('#UserFormAddress').empty();
                         $('#noticeForm').empty();
+
                         RenderProfile(data);
                     });
-
                 }
 
-                LoadData();
+                document.getElementById("photoUploadNotice").style.display = "none";
+                document.getElementById("upgradeNotice").style.display = "none";
+
+
             };
 
 
@@ -611,90 +610,90 @@
                 $('UserInfo').empty();
 
                 console.log("user Data", data.data)
-                $.each(data.data, function (i, v) {
+              $.each(data.data, function (i, v) {
                     if (v.profilePic === "placeholder.png") {
                         $(`
-                                    <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
-                                    <h1 id="UserNameText">Hello, ${v.firstName} ${v.lastName}</h1>
-                                    <button onclick="popUpNoticeHandler(event)">Change Photo</button>
-                                    <h2 id="AccountTypeText1">${v.accountType}</h2>
+                        <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
+                        <h1 id="UserNameText">Hello, ${v.firstName} ${v.lastName}</h1>
+                        <button onclick="popUpNoticeHandler(event)">Change Photo</button>
+                        <h2 class="hidden" id="AccountTypeText1">${v.accountType}</h2>
 
-                                    `).prependTo("#UserPhoto");
+                        `).prependTo("#UserPhoto");
                     } else {
 
                         $(`
-                                    <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
-                                    <h1 id="UserNameText">Hello, ${v.firstName}</h1>
-                                    <h2 id="AccountTypeText">${v.accountType}</h2>
+                        <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
+                        <h1 id="UserNameText">Hello, ${v.firstName}</h1>
+                        <h2 class="hidden" id="AccountTypeText">${v.accountType}</h2>
 
 
-                                    `).prependTo("#UserPhoto");
+                        `).prependTo("#UserPhoto");
                     }
 
                     $(`
-                                    <h3 class="span2Columns">Name</h3>
+                        <h3 class="span2Columns">Name</h3>
 
-                                    <input
-                                    value="${v.firstName}"
-                                    id="FirstNameEdit" placeholder="First Name:"
-                                    onkeyup="ShowSaveChangesBTN(event)" >
-                                     <input
-                                    value="${v.lastName}"
-                                    id="LastNameEdit" placeholder="Last Name:"
-                                    onkeyup="ShowSaveChangesBTN(event)" >
+                        <input
+                        value="${v.firstName}"
+                        id="FirstNameEdit" placeholder="First Name:"
+                        onkeyup="ShowSaveChangesBTN(event)" >
+                         <input
+                        value="${v.lastName}"
+                        id="LastNameEdit" placeholder="Last Name:"
+                        onkeyup="ShowSaveChangesBTN(event)" >
 
-                                `).prependTo("#UserFormName");
+                    `).prependTo("#UserFormName");
                     $(`
-                                    <h3 class="span2Columns">Garage Sale Default Address</h3>
+                        <h3 class="span2Columns">Garage Sale Default Address</h3>
 
-                                    <input
-                                    type="number"
-                                    value="${v.streetNumber}"
-                                    id="StreetNumberEdit"
-                                    placeholder="Street#:"
-                                    onkeyup="ShowSaveChangesBTN(event)">
+                        <input
+                        type="number"
+                        value="${v.streetNumber}"
+                        id="StreetNumberEdit"
+                        placeholder="Street#:"
+                        onkeyup="ShowSaveChangesBTN(event)">
 
-                                    <input
-                                    value="${v.streetName}"
-                                    id="StreetNameEdit"
-                                    placeholder="Street Name:"
-                                    onkeyup="ShowSaveChangesBTN(event)" >
+                        <input
+                        value="${v.streetName}"
+                        id="StreetNameEdit"
+                        placeholder="Street Name:"
+                        onkeyup="ShowSaveChangesBTN(event)" >
 
-                                    <footer class="span2Columns">
-                                        <input
-                                        value="${v.city}"
-                                        id="CityEdit" placeholder="City:"
-                                        onkeyup="ShowSaveChangesBTN(event)">
+                        <footer class="span2Columns">
+                            <input
+                            value="${v.city}"
+                            id="CityEdit" placeholder="City:"
+                            onkeyup="ShowSaveChangesBTN(event)">
 
-                                        <input
-                                        value="${v.state}"
-                                        id="StateEdit" placeholder="State:"
-                                        onkeyup="ShowSaveChangesBTN(event)">
+                            <input
+                            value="${v.state}"
+                            id="StateEdit" placeholder="State:"
+                            onkeyup="ShowSaveChangesBTN(event)">
 
-                                        <input
-                                        value="${v.zipcode}"
-                                        id="ZipcodeEdit" placeholder="Zipcode:"
-                                        onkeyup="ShowSaveChangesBTN(event)">
-                                           <input class="hidden"
-                                        value="${v.county}"
-                                        id="CountyEdit" placeholder="County:"
-                                        onkeyup="ShowSaveChangesBTN(event)">
-                                    </footer>
-                                `).prependTo("#UserFormAddress");
+                            <input
+                            value="${v.zipcode}"
+                            id="ZipcodeEdit" placeholder="Zipcode:"
+                            onkeyup="ShowSaveChangesBTN(event)">
+                               <input class="hidden"
+                            value="${v.county}"
+                            id="CountyEdit" placeholder="County:"
+                            onkeyup="ShowSaveChangesBTN(event)">
+                        </footer>
+                    `).prependTo("#UserFormAddress");
                     $(`
-                                    <h2>Location:</h2>
-                                    <label id="UpgradeErrorLabel"></label>
+                        <h2>Location:</h2>
+                        <label id="UpgradeErrorLabel"></label>
 
-                                    <div class="locationHeader">
-                                        <input value="${v.streetNumber}" id='StreetNumberUpgrade' type='text' placeholder='street #:'>
-                                        <input onkeydown="UpgradeErrorHandler(event)" value="${v.streetName}" id='StreetNameUpgrade' type='text' placeholder='Street Name: '>
-                                    </div>
-                                    <div class="locationFooter">
-                                        <input onkeydown="UpgradeErrorHandler(event)" value="${v.city}" id='CityUpgrade' type='text' placeholder='City:'>
-                                        <input onkeydown="UpgradeErrorHandler(event)" value="${v.state}" id='StateUpgrade' type='text' placeholder='State:'>
-                                        <input onkeydown="UpgradeErrorHandler(event)" value="${v.zipcode}" id='ZipcodeUpgrade' type='text' placeholder='zipecode: '>
-                                    </div>
-                                `).prependTo("#noticeForm");
+                        <div class="locationHeader">
+                            <input value="${v.streetNumber}" id='StreetNumberUpgrade' type='text' placeholder='street #:'>
+                            <input onkeydown="UpgradeErrorHandler(event)" value="${v.streetName}" id='StreetNameUpgrade' type='text' placeholder='Street Name: '>
+                        </div>
+                        <div class="locationFooter">
+                            <input onkeydown="UpgradeErrorHandler(event)" value="${v.city}" id='CityUpgrade' type='text' placeholder='City:'>
+                            <input onkeydown="UpgradeErrorHandler(event)" value="${v.state}" id='StateUpgrade' type='text' placeholder='State:'>
+                            <input onkeydown="UpgradeErrorHandler(event)" value="${v.zipcode}" id='ZipcodeUpgrade' type='text' placeholder='zipecode: '>
+                        </div>
+                    `).prependTo("#noticeForm");
                 });
 
                 if (data.data[0].county === null || data.data[0].county === "") {
