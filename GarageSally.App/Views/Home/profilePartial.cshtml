@@ -13,7 +13,7 @@
     <script>
         $(document).ready(function () {
             $.get("/DisplayUserProfile", data => {
-                RenderData(data);
+                RenderProfile(data);
             });
             $('#UserInfoEdit').submit(function (event) {
                 event.preventDefault();
@@ -82,7 +82,7 @@
                 console.log("Ajax has completed...");
             };
 
-            const RenderData = (data) => {
+            const RenderProfile = (data) => {
                 console.log("user Data", data.data)
 
 
@@ -93,7 +93,7 @@
                         <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
                         <h1 id="UserNameText">Hello, ${v.firstName} ${v.lastName}</h1>
                         <button onclick="popUpNoticeHandler(event)">Change Photo</button>
-                        <h2 id="AccountTypeText1">${v.accountType}</h2>
+                        <h2 class="hidden" id="AccountTypeText1">${v.accountType}</h2>
 
                         `).prependTo("#UserPhoto");
                     } else {
@@ -101,7 +101,7 @@
                         $(`
                         <img class="userPicSmall" src="/img/uploads/${v.profilePic}">
                         <h1 id="UserNameText">Hello, ${v.firstName}</h1>
-                        <h2 id="AccountTypeText">${v.accountType}</h2>
+                        <h2 class="hidden" id="AccountTypeText">${v.accountType}</h2>
 
 
                         `).prependTo("#UserPhoto");
@@ -238,7 +238,7 @@
         <div class="logoVersion">
             <footer>
                 <img src="img/Assets/logoGray.png" alt="">
-                <p>v3.3.3</p>
+                <p>v3.3.4</p>
             </footer>
         </div>
 

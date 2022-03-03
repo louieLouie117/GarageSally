@@ -241,10 +241,7 @@ const postSalePartialHandler = (e) =>{
      document.querySelector("#AddressNoticeTitle").innerHTML = "Finish setting up address.";
      document.querySelector("#AddressNoticeBTN").innerHTML = "Complete";
      document.querySelector("#upgradeNotice").style.display = "grid";
-
-
-
-        return
+    return
     }
 
 
@@ -409,6 +406,9 @@ const SalesHistoryHandler = (e) =>{
 
 
 const popUpNoticeHandler = (e) => {
+
+
+
     if(e.target.innerText === "Change Photo"){
         document.getElementById("photoUploadNotice").style.display = "grid";
     }
