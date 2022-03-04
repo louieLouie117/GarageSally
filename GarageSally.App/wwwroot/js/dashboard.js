@@ -232,6 +232,18 @@ let postSaleEvent = "close"
 
 const postSalePartialHandler = (e) =>{
 
+    let checkAddress = document.getElementById("StreetNameEdit").value;
+    let checkAccountType = document.getElementById("AccountTypeText1").innerHTML;
+    console.log(checkAccountType)
+
+
+    if(checkAddress === "" && checkAccountType === "1" ){
+     document.querySelector("#AddressNoticeTitle").innerHTML = "Finish setting up address.";
+     document.querySelector("#AddressNoticeBTN").innerHTML = "Complete";
+     document.querySelector("#upgradeNotice").style.display = "grid";
+    return
+    }
+
 
     if(e.target.innerText === "+ Another garage sale"){
         document.getElementById("postSalePartial").style.marginLeft = "0";
@@ -394,6 +406,9 @@ const SalesHistoryHandler = (e) =>{
 
 
 const popUpNoticeHandler = (e) => {
+
+
+
     if(e.target.innerText === "Change Photo"){
         document.getElementById("photoUploadNotice").style.display = "grid";
     }
