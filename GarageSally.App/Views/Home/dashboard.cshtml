@@ -33,6 +33,12 @@
 
         gtag('config', 'UA-206670028-1');
     </script>
+
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('sw.js')
+        }
+    </script>
 </head>
 
 <body>
