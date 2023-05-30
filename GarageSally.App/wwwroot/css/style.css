@@ -27,6 +27,11 @@ ul {
     list-style: none;
 }
 
+
+
+.privacyPolicy-container>a>img{
+	width: 200px;
+}
  ::-webkit-scrollbar{
     display: none;}
 
