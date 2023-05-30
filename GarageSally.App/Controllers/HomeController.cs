@@ -31,6 +31,12 @@ namespace UserLogin.Controllers
             return RedirectToAction("index");
         }
 
+        [HttpGet("PrivacyPolicy")]
+        public IActionResult gotoPrivacyPolicy()
+        {
+            return View("_privacyPolicy");
+        }
+
         [HttpGet("registration")]
         public IActionResult gotoRegistration()
         {
@@ -1911,7 +1917,7 @@ namespace UserLogin.Controllers
                 if (userInDb.County == null || userInDb.County == "")
                 {
                     Console.WriteLine($"needs to update county");
-                    System.Console.WriteLine($"user current zip code { userInDb.Zipcode}");
+                    System.Console.WriteLine($"user current zip code {userInDb.Zipcode}");
                     return Json(new { Status = "County needs to be updated.", Zipcode = userInDb.Zipcode, FirstName = userInDb.FirstName });
 
                 }
